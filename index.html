@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluciones Web · @jlope7820 | Webs, automatizaciones y redes</title>
+    <meta name="description" content="Páginas web profesionales, citas automáticas desde Instagram, automatización de redes sociales y cartas digitales con reserva por WhatsApp para tu negocio.">
+    <meta name="theme-color" content="#0B0B0F">
+    <meta property="og:title" content="Soluciones Web · @jlope7820">
+    <meta property="og:description" content="Tu negocio atiende, agenda y vende aunque tú no estés. Webs, automatizaciones y redes sociales.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0B0F'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='800' font-size='28' text-anchor='middle' fill='%23E8B04A'%3EJL%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0B0B0F;
+            --surface: #14141A;
+            --surface-2: #1B1B23;
+            --line: #272731;
+            --text: #F4F4F6;
+            --muted: #A1A1AD;
+            --gold: #E8B04A;
+            --gold-soft: rgba(232, 176, 74, 0.14);
+            --blue: #4C8DFF;
+            --green: #25D366;
+            --radius: 18px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+        a { color: inherit; text-decoration: none; }
+        h1, h2, h3 { font-family: 'Sora', 'Inter', sans-serif; line-height: 1.15; letter-spacing: -0.02em; }
+        .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+        /* Botones */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            font-family: 'Sora', sans-serif; font-weight: 600; font-size: 15px;
+            padding: 15px 22px; border-radius: 999px; border: 1px solid transparent;
+            transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
+            min-height: 52px;
+        }
+        .btn:active { transform: scale(0.97); }
+        .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+        .btn-wa { background: var(--green); color: #06210F; }
+        .btn-wa:hover { background: #2fe172; }
+        .btn-ghost { border-color: var(--line); color: var(--text); background: var(--surface); }
+        .btn-ghost:hover { border-color: var(--gold); }
+
+        /* Cabecera */
+        header.top { position: sticky; top: 0; z-index: 20; background: rgba(11, 11, 15, 0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(39, 39, 49, 0.6); }
+        .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .brand { display: flex; align-items: center; gap: 10px; }
+        .mono { width: 36px; height: 36px; border-radius: 10px; background: var(--gold); color: var(--bg); display: grid; place-items: center; font-family: 'Sora'; font-weight: 800; font-size: 14px; letter-spacing: -0.03em; }
+        .brand b { font-family: 'Sora'; font-weight: 700; font-size: 15px; display: block; }
+        .brand span { font-size: 12px; color: var(--muted); display: block; margin-top: -2px; }
+        .top .btn { padding: 10px 16px; min-height: 40px; font-size: 13px; }
+
+        /* Portada */
+        .hero { padding: 56px 0 40px; position: relative; overflow: hidden; }
+        .hero::before { content: ""; position: absolute; inset: -20% -10% auto auto; width: 520px; height: 520px; background: radial-gradient(circle, rgba(232,176,74,0.16), transparent 65%); pointer-events: none; }
+        .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: center; position: relative; }
+        .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: var(--gold-soft); padding: 7px 12px; border-radius: 999px; }
+        .eyebrow i { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); display: block; }
+        .hero h1 { font-size: clamp(34px, 8vw, 56px); font-weight: 800; margin: 18px 0 16px; }
+        .hero h1 em { font-style: normal; color: var(--gold); }
+        .hero p.lead { color: var(--muted); font-size: 17px; max-width: 520px; }
+        .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+        .trust { margin-top: 18px; font-size: 13px; color: var(--muted); display: flex; gap: 16px; flex-wrap: wrap; }
+        .trust span { display: inline-flex; align-items: center; gap: 6px; }
+        .trust svg { width: 15px; height: 15px; color: var(--gold); }
+
+        /* Conversación de ejemplo */
+        .chat { background: linear-gradient(180deg, #121826, #0E1119); border: 1px solid rgba(76,141,255,0.35); border-radius: 24px; padding: 20px; box-shadow: 0 0 0 1px rgba(76,141,255,0.08), 0 20px 60px rgba(76,141,255,0.15); max-width: 420px; width: 100%; justify-self: center; }
+        .chat-head { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 14px; }
+        .chat-head .av { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #F58529, #DD2A7B 50%, #8134AF); display: grid; place-items: center; }
+        .chat-head .av svg { width: 18px; height: 18px; color: #fff; }
+        .chat-head b { font-size: 14px; display: block; }
+        .chat-head small { font-size: 11px; color: #7FE3A3; display: flex; align-items: center; gap: 5px; }
+        .chat-head small i { width: 6px; height: 6px; border-radius: 50%; background: #7FE3A3; display: block; }
+        .msg { max-width: 82%; padding: 10px 14px; border-radius: 16px; font-size: 14px; margin-bottom: 8px; }
+        .msg.in { background: #232A3A; border-bottom-left-radius: 4px; }
+        .msg.out { background: var(--blue); color: #fff; margin-left: auto; border-bottom-right-radius: 4px; }
+        .msg small { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.7; margin-bottom: 2px; font-weight: 600; }
+        .confirm { margin-top: 12px; display: flex; align-items: center; gap: 10px; background: rgba(37,211,102,0.12); border: 1px solid rgba(37,211,102,0.35); color: #9BF0BC; padding: 10px 14px; border-radius: 12px; font-size: 13px; font-weight: 600; }
+        .confirm svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .flow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; margin-top: 14px; color: var(--muted); font-size: 11px; }
+        .flow span { background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 6px; }
+
+        /* Franja del problema */
+        .pain { padding: 8px 0 24px; }
+        .pain-box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; gap: 16px; align-items: flex-start; }
+        .pain-box svg { width: 28px; height: 28px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+        .pain-box p { font-size: 16px; }
+        .pain-box p b { font-family: 'Sora'; }
+        .pain-box p span { color: var(--muted); }
+
+        /* Secciones */
+        section.block { padding: 48px 0; }
+        .sec-head { margin-bottom: 28px; max-width: 620px; }
+        .sec-head .eyebrow { margin-bottom: 14px; }
+        .sec-head h2 { font-size: clamp(26px, 6vw, 38px); font-weight: 700; }
+        .sec-head p { color: var(--muted); margin-top: 10px; }
+
+        /* Servicios */
+        .grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+        .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; transition: border-color .2s ease, transform .2s ease; }
+        .card:hover { border-color: rgba(232,176,74,0.5); }
+        .card .ic { width: 48px; height: 48px; border-radius: 14px; background: var(--gold-soft); color: var(--gold); display: grid; place-items: center; margin-bottom: 18px; }
+        .card .ic svg { width: 24px; height: 24px; }
+        .card .num { font-family: 'Sora'; font-size: 12px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 6px; }
+        .card h3 { font-size: 21px; font-weight: 700; margin-bottom: 8px; }
+        .card > p { color: var(--muted); font-size: 15px; }
+        .card ul { list-style: none; margin: 18px 0 22px; display: grid; gap: 10px; }
+        .card li { display: flex; gap: 10px; font-size: 14.5px; }
+        .card li svg { width: 18px; height: 18px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+        .card .more { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-family: 'Sora'; font-weight: 600; font-size: 14px; color: var(--gold); padding: 12px 0 2px; }
+        .card .more svg { width: 16px; height: 16px; transition: transform .2s ease; }
+        .card .more:hover svg { transform: translateX(3px); }
+        .card.featured { background: linear-gradient(180deg, #1A1710, var(--surface) 55%); border-color: rgba(232,176,74,0.4); }
+        .tag { align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--gold); color: var(--bg); padding: 4px 9px; border-radius: 6px; margin-bottom: 14px; }
+
+        /* Ejemplo real */
+        .case { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; display: grid; }
+        .case-media { background: #000; display: grid; place-items: center; padding: 28px; position: relative; }
+        .case-media img { width: 100%; max-width: 260px; height: auto; display: block; }
+        .case-media .phone { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); font-size: 11px; color: #c9a227; letter-spacing: 0.3em; text-transform: uppercase; font-family: 'Sora'; font-weight: 700; white-space: nowrap; }
+        .case-body { padding: 26px; }
+        .case-body h3 { font-size: 22px; margin: 12px 0 8px; }
+        .case-body p { color: var(--muted); }
+        .case-body ul { list-style: none; margin: 18px 0 24px; display: grid; gap: 10px; }
+        .case-body li { display: flex; gap: 10px; font-size: 14.5px; }
+        .case-body li svg { width: 18px; height: 18px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+        /* Pasos */
+        .steps { display: grid; gap: 14px; counter-reset: paso; }
+        .step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; gap: 16px; }
+        .step::before { counter-increment: paso; content: counter(paso); width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); display: grid; place-items: center; font-family: 'Sora'; font-weight: 700; flex-shrink: 0; }
+        .step h3 { font-size: 17px; margin-bottom: 4px; }
+        .step p { color: var(--muted); font-size: 14.5px; }
+
+        /* Llamada final */
+        .final { padding: 56px 0 72px; }
+        .final-box { background: radial-gradient(120% 120% at 50% 0%, rgba(232,176,74,0.18), transparent 60%), var(--surface); border: 1px solid rgba(232,176,74,0.35); border-radius: 28px; padding: 40px 24px; text-align: center; }
+        .final-box h2 { font-size: clamp(26px, 6.5vw, 40px); font-weight: 800; max-width: 640px; margin: 0 auto 12px; }
+        .final-box p { color: var(--muted); max-width: 520px; margin: 0 auto; }
+        .final-box .cta-row { justify-content: center; }
+        .contact-line { margin-top: 22px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+        .contact-line a { display: inline-flex; align-items: center; gap: 6px; }
+        .contact-line a:hover { color: var(--text); }
+        .contact-line svg { width: 16px; height: 16px; color: var(--gold); }
+
+        footer { border-top: 1px solid var(--line); padding: 28px 0 100px; color: var(--muted); font-size: 13px; text-align: center; }
+
+        /* Botón flotante de WhatsApp */
+        .float-wa { position: fixed; right: 16px; bottom: 16px; z-index: 30; width: 58px; height: 58px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; box-shadow: 0 10px 30px rgba(37,211,102,0.35); transition: transform .15s ease; }
+        .float-wa:active { transform: scale(0.94); }
+        .float-wa svg { width: 30px; height: 30px; }
+
+        @media (min-width: 760px) {
+            .hero { padding: 88px 0 64px; }
+            .hero .wrap { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+            .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .case { grid-template-columns: 1fr 1.2fr; }
+            .case-body { padding: 36px; align-self: center; }
+            .steps { grid-template-columns: repeat(3, 1fr); }
+            .step { flex-direction: column; }
+            .final-box { padding: 64px 40px; }
+            footer { padding-bottom: 32px; }
+        }
+        @media (hover: none) { .card:hover { border-color: var(--line); } .card.featured:hover { border-color: rgba(232,176,74,0.4); } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header class="top">
+        <div class="wrap">
+            <a href="#" class="brand" aria-label="Inicio">
+                <div class="mono">JL</div>
+                <div><b>Soluciones Web</b><span>@jlope7820</span></div>
+            </a>
+            <a class="btn btn-wa" href="https://wa.me/34644694667?text=%C2%A1Hola!%20Vengo%20de%20tu%20p%C3%A1gina%20y%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener">Escríbeme</a>
+        </div>
+    </header>
+
+    <!-- Portada -->
+    <section class="hero">
+        <div class="wrap">
+            <div>
+                <span class="eyebrow"><i></i>Webs · Automatizaciones · Redes</span>
+                <h1>Tu negocio atiende, agenda y vende <em>aunque tú no estés.</em></h1>
+                <p class="lead">Creo páginas web profesionales, asistentes que agendan citas desde Instagram 24/7 y automatizaciones para tus redes sociales. Tú te dedicas a tu trabajo; lo demás funciona solo.</p>
+                <div class="cta-row">
+                    <a class="btn btn-wa" href="https://wa.me/34644694667?text=%C2%A1Hola!%20Vengo%20de%20tu%20p%C3%A1gina%20y%20quiero%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.41 9.41 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.24 9.43-9.44 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.7C5.8.7.7 5.8.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.3l5.72-1.5a11.33 11.33 0 0 0 5.42 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.32-8.02"/></svg>
+                        Pide información por WhatsApp
+                    </a>
+                    <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+                </div>
+                <div class="trust">
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sin compromiso</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Te lo dejo funcionando</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pensado para el móvil</span>
+                </div>
+            </div>
+
+            <!-- Ejemplo de conversación del asistente -->
+            <div class="chat" aria-label="Ejemplo: un cliente pide cita por Instagram y el asistente la confirma solo">
+                <div class="chat-head">
+                    <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r=".6" fill="currentColor"/></svg></div>
+                    <div><b>Tu negocio</b><small><i></i>Asistente activo 24/7</small></div>
+                </div>
+                <div class="msg in"><small>Cliente</small>Hola, ¿tienes cita para hoy?</div>
+                <div class="msg out"><small>Asistente</small>¡Claro! Tengo libre a las 16:00 y a las 18:30.</div>
+                <div class="msg in"><small>Cliente</small>A las 16:00.</div>
+                <div class="msg out"><small>Asistente</small>¡Hecho! Te espero hoy a las 16:00.</div>
+                <div class="confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>Cita apuntada en tu agenda</div>
+                <div class="flow"><span>Instagram</span>→<span>Asistente</span>→<span>Agenda</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- El problema -->
+    <div class="pain">
+        <div class="wrap">
+            <div class="pain-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <p><b>¿Pierdes horas al día cuadrando horarios con tus clientes?</b> <span>Cada mensaje que contestas tarde es una cita que se va a otro sitio. Un asistente automático responde al momento, también de noche y en fin de semana.</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Servicios -->
+    <section class="block" id="servicios">
+        <div class="wrap">
+            <div class="sec-head">
+                <span class="eyebrow"><i></i>Servicios</span>
+                <h2>Todo lo que tu negocio necesita para estar en internet y trabajar solo.</h2>
+                <p>Elige uno o combínalos. Cada servicio se adapta a tu negocio, no al revés.</p>
+            </div>
+
+            <div class="grid">
+                <!-- 01 Citas automáticas -->
+                <article class="card featured">
+                    <span class="tag">Recomendado</span>
+                    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></div>
+                    <div class="num">01</div>
+                    <h3>Citas automáticas desde Instagram</h3>
+                    <p>Un asistente contesta los mensajes de tus clientes, les ofrece los huecos libres y deja la cita apuntada. Sin que tengas que intervenir.</p>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Responde 24/7, también de noche y en festivos</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ofrece solo las horas que tienes libres</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Confirma la cita al cliente al momento</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Nunca más una cita perdida por contestar tarde</li>
+                    </ul>
+                    <a class="more" href="https://wa.me/34644694667?text=%C2%A1Hola!%20Quiero%20informaci%C3%B3n%20sobre%20las%20citas%20autom%C3%A1ticas%20desde%20Instagram." target="_blank" rel="noopener">Quiero mi asistente <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <!-- 02 Redes sociales -->
+                <article class="card">
+                    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></div>
+                    <div class="num">02</div>
+                    <h3>Automatización de redes sociales</h3>
+                    <p>Tus redes publican y responden solas mientras tú atiendes a tus clientes en persona.</p>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Programación de contenidos</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Respuestas automáticas a mensajes y comentarios</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Gestión eficiente de todas tus cuentas</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Crecimiento orgánico, sin pagar anuncios</li>
+                    </ul>
+                    <a class="more" href="https://wa.me/34644694667?text=%C2%A1Hola!%20Quiero%20informaci%C3%B3n%20sobre%20la%20automatizaci%C3%B3n%20de%20redes%20sociales." target="_blank" rel="noopener">Automatizar mis redes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <!-- 03 Páginas web -->
+                <article class="card">
+                    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m9 8-2 2 2 2M15 8l2 2-2 2"/></svg></div>
+                    <div class="num">03</div>
+                    <h3>Páginas web profesionales</h3>
+                    <p>¿Tu negocio aún no tiene página web? Es hora de digitalizarte y destacar frente a tu competencia.</p>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Diseño único y moderno</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Se ve perfecta en móvil, tablet y ordenador</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Preparada para salir en Google (SEO)</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pensada para convertir visitas en clientes</li>
+                    </ul>
+                    <a class="more" href="https://wa.me/34644694667?text=%C2%A1Hola!%20Quiero%20informaci%C3%B3n%20para%20hacer%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">Quiero mi web <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <!-- 04 Carta digital -->
+                <article class="card">
+                    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 6h4"/><path d="M9 10h6M9 13.5h6M9 17h3"/></svg></div>
+                    <div class="num">04</div>
+                    <h3>Carta digital con reservas (link en bio)</h3>
+                    <p>Tus servicios y precios en un solo enlace para tu Instagram. El cliente elige y reserva en un toque.</p>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Todos tus servicios y tarifas, bien ordenados</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Cada servicio abre WhatsApp con la reserva ya escrita</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Con tu logo y los colores de tu marca</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tu propio enlace para poner en la bio</li>
+                    </ul>
+                    <a class="more" href="#ejemplo">Ver un ejemplo real <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ejemplo real: Galindo -->
+    <section class="block" id="ejemplo">
+        <div class="wrap">
+            <div class="sec-head">
+                <span class="eyebrow"><i></i>Trabajo real</span>
+                <h2>Así queda una carta digital hecha por mí.</h2>
+            </div>
+            <div class="case">
+                <div class="case-media">
+                    <img src="galindo-logo.jpeg" alt="Logo de Galindo Barber Shop" width="1427" height="1102">
+                </div>
+                <div class="case-body">
+                    <span class="eyebrow"><i></i>Barbería</span>
+                    <h3>Galindo Barber Shop</h3>
+                    <p>Una página con todas sus tarifas y bonos: cortes, barba, cejas, tratamientos y servicio a domicilio. Sus clientes eligen el servicio y le escriben por WhatsApp con la reserva ya preparada.</p>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Más de 15 servicios, ordenados por secciones</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reserva directa a WhatsApp en un toque</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Diseño negro y dorado con su propio logo</li>
+                    </ul>
+                    <div class="cta-row" style="margin-top:0">
+                        <a class="btn btn-ghost" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener">Ver la página de Galindo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo trabajo -->
+    <section class="block">
+        <div class="wrap">
+            <div class="sec-head">
+                <span class="eyebrow"><i></i>Cómo trabajo</span>
+                <h2>Tres pasos y tu negocio funciona solo.</h2>
+            </div>
+            <div class="steps">
+                <div class="step"><div><h3>Me escribes</h3><p>Por WhatsApp o por mensaje directo en Instagram. Me cuentas tu negocio y qué necesitas.</p></div></div>
+                <div class="step"><div><h3>Te propongo la solución</h3><p>Te explico qué haría y cómo quedaría, sin tecnicismos y sin compromiso.</p></div></div>
+                <div class="step"><div><h3>Te lo dejo funcionando</h3><p>Lo monto, lo pruebo contigo y te lo entrego listo para usar desde el primer día.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamada final -->
+    <section class="final">
+        <div class="wrap">
+            <div class="final-box">
+                <span class="eyebrow"><i></i>Hablemos</span>
+                <h2 style="margin-top:16px">¿Listo para que tu negocio trabaje por ti?</h2>
+                <p>Escríbeme y vemos juntos qué le hace falta a tu negocio. Información sin compromiso.</p>
+                <div class="cta-row">
+                    <a class="btn btn-wa" href="https://wa.me/34644694667?text=%C2%A1Hola!%20Vengo%20de%20tu%20p%C3%A1gina%20y%20quiero%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.41 9.41 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.24 9.43-9.44 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.7C5.8.7.7 5.8.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.3l5.72-1.5a11.33 11.33 0 0 0 5.42 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.32-8.02"/></svg>
+                        Escríbeme por WhatsApp
+                    </a>
+                    <a class="btn btn-ghost" href="https://ig.me/m/jlope7820" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r=".6" fill="currentColor"/></svg>
+                        Mándame un DM
+                    </a>
+                </div>
+                <div class="contact-line">
+                    <a href="tel:+34644694667"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>644 694 667</a>
+                    <a href="https://www.instagram.com/jlope7820/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/></svg>@jlope7820</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">© Soluciones Web · @jlope7820. Webs, automatizaciones y redes sociales para negocios.</div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a class="float-wa" href="https://wa.me/34644694667?text=%C2%A1Hola!%20Vengo%20de%20tu%20p%C3%A1gina%20y%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.41 9.41 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.24 9.43-9.44 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.7C5.8.7.7 5.8.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.3l5.72-1.5a11.33 11.33 0 0 0 5.42 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.32-8.02"/></svg>
+    </a>
+
+</body>
+</html>
