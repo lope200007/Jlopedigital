@@ -193,6 +193,16 @@
         .case dd { font-size: 15.5px; }
         .case-note { color: var(--muted); font-size: 14.5px; margin-bottom: 18px; }
         .work-copy .facts { margin: 0 0 24px; border-top: 0; }
+        .examples { margin-top: 72px; border: 1px solid var(--line-2); border-radius: 26px; padding: 32px 22px; background: radial-gradient(80% 100% at 100% 0%, rgba(200,164,106,0.10), transparent 60%), var(--raise); }
+        .examples-head h3 { font-family: var(--serif); font-size: clamp(32px, 8vw, 46px); line-height: 1.05; letter-spacing: -0.02em; max-width: 640px; }
+        .examples-head h3 em { color: var(--accent); }
+        .examples-head p { color: var(--muted); margin: 14px 0 28px; max-width: 520px; }
+        .ex-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; margin-bottom: 28px; }
+        .ex-tile { background: var(--bg); padding: 22px 20px; }
+        .ex-ic { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-2); color: var(--accent); display: grid; place-items: center; margin-bottom: 14px; }
+        .ex-ic svg { width: 19px; height: 19px; }
+        .ex-tile h4 { font-family: var(--serif); font-weight: 400; font-size: 23px; line-height: 1.15; margin-bottom: 6px; }
+        .ex-tile p { color: var(--muted); font-size: 14px; line-height: 1.5; }
         /* Proceso */
         .steps { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
         .step { border: 1px solid var(--line); border-radius: 22px; padding: 26px 24px; background: var(--raise); }
@@ -247,6 +257,7 @@
             .stat:nth-child(n+3) { border-top: 0; }
             .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .promise { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .ex-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (min-width: 900px) {
             .nav { display: flex; }
@@ -263,6 +274,8 @@
             .flow-step:last-child::after { display: none; }
             .work-grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 88px; }
             .case div { grid-template-columns: 160px minmax(0, 1fr); gap: 20px; }
+            .ex-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .examples { padding: 52px 48px; }
             .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
             .faq summary { font-size: 29px; }
             .close-box { padding: 96px 40px; }
@@ -458,9 +471,17 @@
                     <div><b>1</b><span>toque para reservar</span></div>
                     <div><b>24 h</b><span>abierta a sus clientes</span></div>
                 </div>
-                <p class="case-note">¿Tienes un restaurante, una tienda o una clínica? Lo mismo sirve para tu carta, tu catálogo o tus servicios.</p>
                 <a class="link-arrow" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener">Ver su página en directo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
             </div>
+        </div>
+
+        <div class="examples reveal">
+            <div class="examples-head">
+                <h3>Esto es solo <em>un ejemplo</em> de lo que podemos crear.</h3>
+                <p>No hacemos solo páginas para barberías y peluquerías. Diseñamos lo mismo, a medida, para cualquier tipo de negocio:</p>
+            </div>
+            <div class="ex-grid"><div class="ex-tile"><div class="ex-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v8a2 2 0 0 0 2 2v10M11 2v6M7 2v6M17 22V2c-2 1-3 4-3 7v4h3"/></svg></div><h4>Restaurantes</h4><p>Tu carta con fotos y precios, y reservas de mesa por WhatsApp.</p></div><div class="ex-tile"><div class="ex-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01"/></svg></div><h4>Hoteles y alojamientos</h4><p>Habitaciones, servicios y consultas de disponibilidad en un enlace.</p></div><div class="ex-tile"><div class="ex-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/><path d="M12 9v6M9 12h6"/></svg></div><h4>Clínicas</h4><p>Tratamientos, precios orientativos y petición de cita.</p></div><div class="ex-tile"><div class="ex-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div><h4>Tiendas</h4><p>Tu catálogo de productos y pedidos directos por WhatsApp.</p></div><div class="ex-tile"><div class="ex-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.4 14.4 9.6 9.6"/><path d="M18.66 21.49a2 2 0 1 1-2.83-2.83l-1.77 1.77a2 2 0 1 1-2.83-2.83l6.37-6.36a2 2 0 1 1 2.82 2.83l-1.76 1.76a2 2 0 1 1 2.82 2.83z"/><path d="m21.5 21.5-1.4-1.4M3.9 3.9 2.5 2.5"/><path d="M6.4 12.77a2 2 0 1 1-2.83-2.83l1.77-1.77a2 2 0 1 1-2.83-2.83l2.83-2.83a2 2 0 1 1 2.83 2.83l1.77-1.77a2 2 0 1 1 2.83 2.83z"/></svg></div><h4>Gimnasios y academias</h4><p>Horarios, clases, cuotas e inscripciones.</p></div><div class="ex-tile"><div class="ex-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></div><h4>Cualquier negocio</h4><p>Talleres, asesorías, inmobiliarias… Lo adaptamos a lo que vendes.</p></div></div>
+            <a class="btn btn-primary" href="https://wa.me/34644694667?text=Hola%2C%20he%20visto%20el%20ejemplo%20de%20Galindo%20y%20quiero%20algo%20as%C3%AD%20para%20mi%20negocio." target="_blank" rel="noopener">Quiero una así para mi negocio</a>
         </div>
     </div>
 </section>
