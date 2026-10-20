@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#0F0E0C">
     <meta property="og:title" content="jlope · Webs y automatizaciones para negocios">
     <meta property="og:description" content="Que tu negocio conteste, agende y venda mientras tú trabajas.">
-    <meta property="og:image" content="galindo-preview.jpg">
+    <meta property="og:image" content="https://jlopedigital.vercel.app/galindo-preview.jpg">
     <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F0E0C'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-style='italic' font-size='34' text-anchor='middle' fill='%23EFEAE2'%3Ej%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,6 +143,60 @@
 
         footer { padding: 26px 0 calc(26px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 
+
+        /* Textura de papel */
+        body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: 0.06; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+        /* Disponibilidad */
+        .avail { display: inline-flex; align-items: center; gap: 8px; color: var(--text); }
+        .avail i { width: 7px; height: 7px; border-radius: 50%; background: var(--wa); position: relative; display: block; }
+        .avail i::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--wa); animation: pulso 2.4s ease-out infinite; }
+        @keyframes pulso { from { transform: scale(0.6); opacity: 0.9; } to { transform: scale(1.8); opacity: 0; } }
+        .hero .note { color: var(--muted); }
+
+        /* Aparición al hacer scroll */
+        .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        .js .reveal.in { opacity: 1; transform: none; }
+
+        /* Franja de sectores */
+        .sectors { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; padding: 20px 0; margin-bottom: 56px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+        .track { display: flex; width: max-content; animation: desliza 48s linear infinite; }
+        .track span { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--text); white-space: nowrap; display: inline-flex; align-items: center; }
+        .track span::after { content: ""; width: 6px; height: 6px; background: var(--accent); transform: rotate(45deg); margin: 0 28px; display: inline-block; }
+        @keyframes desliza { to { transform: translateX(-50%); } }
+
+        /* El móvil enseña la web entera */
+        .screen img { animation: recorre 26s ease-in-out 1.5s infinite alternate; }
+        @keyframes recorre { 0%, 10% { object-position: 50% 0%; } 90%, 100% { object-position: 50% 100%; } }
+        .phone-caption { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 16px; }
+
+        /* Conversación que se escribe sola */
+        .js .thread .bubble, .js .thread .booked { opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
+        .js .thread .shown { opacity: 1; transform: none; }
+        .typing { justify-self: end; background: var(--text); border-radius: 20px; border-bottom-right-radius: 6px; padding: 14px 16px; display: none; gap: 4px; }
+        .typing.on { display: inline-flex; }
+        .typing b { width: 6px; height: 6px; border-radius: 50%; background: #121110; opacity: 0.35; animation: punto 1s infinite; }
+        .typing b:nth-child(2) { animation-delay: 0.15s; }
+        .typing b:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes punto { 0%, 60%, 100% { opacity: 0.35; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
+
+        /* Preguntas frecuentes */
+        .faq { padding: 72px 0; border-top: 1px solid var(--line); }
+        .faq-list { margin-top: 32px; border-top: 1px solid var(--line); }
+        .faq details { border-bottom: 1px solid var(--line); }
+        .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; font-family: var(--serif); font-size: 24px; line-height: 1.2; }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::after { content: "+"; font-family: var(--sans); font-size: 22px; font-weight: 300; color: var(--accent); transition: transform 0.25s ease; flex-shrink: 0; }
+        .faq details[open] summary::after { transform: rotate(45deg); }
+        .faq details p { color: var(--muted); padding: 0 0 24px; max-width: 620px; }
+
+        /* Barra fija en el móvil */
+        .bar { position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 10px 10px 18px; border-radius: 999px; background: rgba(28, 27, 24, 0.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid #34312C; transform: translateY(140%); transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        .bar.show { transform: none; }
+        .bar span { font-size: 14px; }
+        .bar .btn { min-height: 44px; padding: 0 18px; font-size: 14px; }
+        footer { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+
         @media (min-width: 820px) {
             .hero { padding: 64px 0 88px; }
             .work-grid, .assistant-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 72px; }
@@ -152,8 +206,11 @@
             .svc .body { grid-column: 3; padding-top: 6px; }
             .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 0; gap: 0 28px; }
             .step { grid-template-columns: 1fr; border-bottom: 0; border-top: 1px solid var(--line); }
+            .bar { display: none; }
+            footer { padding-bottom: 26px; }
+            .faq summary { font-size: 28px; }
         }
-        @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } .js .reveal, .js .thread .bubble, .js .thread .booked { opacity: 1; transform: none; } }
     </style>
 </head>
 <body>
@@ -170,7 +227,7 @@
 
     <!-- Portada -->
     <section class="hero">
-        <span class="label">Webs · Citas automáticas · Redes sociales</span>
+        <span class="label">Webs · Citas automáticas · Redes</span>
         <h1>Que tu negocio conteste, agende y venda <em>mientras tú trabajas.</em></h1>
         <p>Diseño la web de tu negocio, conecto tu Instagram con tu agenda para que las citas se den solas y dejo tus redes funcionando sin que tengas que estar pendiente del móvil.</p>
         <div class="actions">
@@ -180,14 +237,20 @@
             </a>
             <a class="link-arrow" href="#trabajo">Ver un trabajo real <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
         </div>
-        <p class="note">Primera conversación sin compromiso.</p>
+        <p class="note"><span class="avail"><i></i><span>Aceptando proyectos en <span data-mes>octubre</span></span></span> · Primera conversación sin compromiso.</p>
     </section>
 
+</div>
+
+<!-- Sectores -->
+<div class="sectors" aria-label="Sectores con los que trabajo"><div class="track"><span>Barberías</span><span>Peluquerías</span><span>Centros de estética</span><span>Uñas y pestañas</span><span>Clínicas</span><span>Fisioterapia</span><span>Tatuajes</span><span>Gimnasios</span><span>Restaurantes</span><span>Tiendas</span><span aria-hidden="true">Barberías</span><span aria-hidden="true">Peluquerías</span><span aria-hidden="true">Centros de estética</span><span aria-hidden="true">Uñas y pestañas</span><span aria-hidden="true">Clínicas</span><span aria-hidden="true">Fisioterapia</span><span aria-hidden="true">Tatuajes</span><span aria-hidden="true">Gimnasios</span><span aria-hidden="true">Restaurantes</span><span aria-hidden="true">Tiendas</span></div></div>
+
+<div class="wrap">
     <!-- Trabajo real -->
     <section class="work" id="trabajo">
-        <div class="work-grid">
+        <div class="work-grid reveal">
             <a class="phone" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Abrir la página de Galindo Barber Shop">
-                <div class="screen"><img src="galindo-preview.jpg" alt="Página de tarifas de Galindo Barber Shop vista en el móvil" width="780" height="1688"></div>
+                <div class="screen"><img src="galindo-completa.jpg" alt="Página de tarifas de Galindo Barber Shop vista en el móvil" width="600" height="3306"></div>
             </a>
             <div class="work-copy">
                 <span class="label">Trabajo reciente · Barbería</span>
@@ -208,10 +271,10 @@
 <section class="services">
     <div class="wrap">
         <span class="label">Servicios</span>
-        <h2 class="sec-title">Lo que puedo hacer por tu negocio</h2>
+        <h2 class="sec-title reveal">Lo que puedo hacer por tu negocio</h2>
         <p class="sec-sub">Cada encargo se hace a medida. Puedes empezar por uno y sumar los demás cuando quieras.</p>
 
-        <article class="svc">
+        <article class="svc reveal">
             <span class="n">i.</span>
             <h3>Citas automáticas desde Instagram</h3>
             <div class="body">
@@ -220,7 +283,7 @@
             </div>
         </article>
 
-        <article class="svc">
+        <article class="svc reveal">
             <span class="n">ii.</span>
             <h3>Automatización de redes sociales</h3>
             <div class="body">
@@ -230,7 +293,7 @@
             </div>
         </article>
 
-        <article class="svc">
+        <article class="svc reveal">
             <span class="n">iii.</span>
             <h3>Páginas web profesionales</h3>
             <div class="body">
@@ -240,7 +303,7 @@
             </div>
         </article>
 
-        <article class="svc">
+        <article class="svc reveal">
             <span class="n">iv.</span>
             <h3>Carta digital para tu perfil</h3>
             <div class="body">
@@ -260,6 +323,7 @@
             <div class="bubble bot">¡Hola! Mañana tengo libre a las 16:00 y a las 18:30. ¿Cuál te va mejor?</div>
             <div class="bubble them">A las 16:00</div>
             <div class="bubble bot">Perfecto, te espero mañana a las 16:00.</div>
+            <div class="typing" aria-hidden="true"><b></b><b></b><b></b></div>
             <div class="booked"><i></i>Cita apuntada en tu agenda</div>
         </div>
         <div>
@@ -275,10 +339,36 @@
     <div class="wrap">
         <span class="label">Cómo trabajamos</span>
         <h2 class="sec-title">Sencillo, de principio a fin</h2>
-        <div class="steps">
+        <div class="steps reveal">
             <div class="step"><span class="n">1</span><div><h3>Me cuentas tu negocio</h3><p>Por WhatsApp o por mensaje directo. Qué haces, cómo trabajas y qué te quita tiempo.</p></div></div>
             <div class="step"><span class="n">2</span><div><h3>Te propongo una solución</h3><p>Te explico qué haría y cómo quedaría, en claro y sin tecnicismos.</p></div></div>
             <div class="step"><span class="n">3</span><div><h3>Te lo entrego funcionando</h3><p>Lo monto, lo probamos juntos y lo usas desde el primer día.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Preguntas frecuentes -->
+<section class="faq">
+    <div class="wrap">
+        <span class="label">Preguntas frecuentes</span>
+        <h2 class="sec-title reveal">Lo que suelen preguntarme</h2>
+        <div class="faq-list reveal">
+            <details>
+                <summary>¿Tengo que saber de tecnología?</summary>
+                <p>No. Yo me encargo de montarlo todo y te lo entrego funcionando. Te enseño lo justo para usarlo y, si algo no te queda claro, me escribes.</p>
+            </details>
+            <details>
+                <summary>¿Sirve para mi tipo de negocio?</summary>
+                <p>Si atiendes a clientes con cita o te escriben por Instagram o WhatsApp para preguntar, casi seguro que sí. Cuéntame cómo trabajas y te digo con sinceridad si te compensa.</p>
+            </details>
+            <details>
+                <summary>¿Cuánto cuesta?</summary>
+                <p>Depende de lo que necesites: no es lo mismo una carta digital que una web completa con citas automáticas. Te digo el precio antes de empezar, sin compromiso.</p>
+            </details>
+            <details>
+                <summary>¿Puedo empezar con un solo servicio?</summary>
+                <p>Sí. Muchos negocios empiezan por la carta digital o por la web y añaden las citas automáticas más adelante.</p>
+            </details>
         </div>
     </div>
 </section>
@@ -287,7 +377,7 @@
 <section class="close">
     <div class="wrap">
         <span class="label">Hablemos</span>
-        <h2>¿Empezamos con <em>tu negocio?</em></h2>
+        <h2 class="reveal">¿Empezamos con <em>tu negocio?</em></h2>
         <p>Cuéntame a qué te dedicas y te digo qué haría yo. Sin compromiso.</p>
         <div class="actions">
             <a class="btn btn-primary" href="https://wa.me/34644694667?text=Hola%2C%20vengo%20de%20tu%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">
@@ -306,6 +396,71 @@
 <div class="wrap">
     <footer><span>© jlope · Soluciones web</span><span>Webs, automatizaciones y redes para negocios</span></footer>
 </div>
+
+<!-- Barra fija en el móvil -->
+<div class="bar" id="bar">
+    <span>¿Hablamos de tu negocio?</span>
+    <a class="btn btn-primary" href="https://wa.me/34644694667?text=Hola%2C%20vengo%20de%20tu%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<script>
+(function () {
+    var meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    var m = document.querySelector('[data-mes]');
+    if (m) m.textContent = meses[new Date().getMonth()];
+
+    var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window) || quieto) {
+        document.documentElement.classList.remove('js');
+        return;
+    }
+
+    // Bloques que aparecen al llegar a ellos
+    var io = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    // Seguro: nada que ya esté a la vista o por encima se queda oculto
+    function repasa() {
+        document.querySelectorAll('.reveal:not(.in)').forEach(function (el) {
+            if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('in'); io.unobserve(el); }
+        });
+    }
+    window.addEventListener('scroll', repasa, { passive: true });
+    window.addEventListener('load', repasa);
+
+    // La conversación se escribe sola
+    var hilo = document.querySelector('.thread');
+    var tecleo = hilo.querySelector('.typing');
+    var piezas = Array.prototype.slice.call(hilo.querySelectorAll('.bubble, .booked'));
+    function sigue(i) {
+        if (i >= piezas.length) return;
+        var p = piezas[i];
+        if (p.classList.contains('bot')) {
+            hilo.insertBefore(tecleo, p);
+            tecleo.classList.add('on');
+            setTimeout(function () { tecleo.classList.remove('on'); p.classList.add('shown'); setTimeout(function () { sigue(i + 1); }, 650); }, 1100);
+        } else {
+            p.classList.add('shown');
+            setTimeout(function () { sigue(i + 1); }, 750);
+        }
+    }
+    var ioHilo = new IntersectionObserver(function (e) {
+        if (e[0].isIntersecting) { ioHilo.disconnect(); setTimeout(function () { sigue(0); }, 300); }
+    }, { threshold: 0.35 });
+    ioHilo.observe(hilo);
+
+    // La barra aparece al dejar atrás la portada
+    var barra = document.getElementById('bar');
+    var portada = document.querySelector('.hero .actions');
+    var ioBarra = new IntersectionObserver(function (e) {
+        barra.classList.toggle('show', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
+    });
+    ioBarra.observe(portada);
+})();
+</script>
 
 </body>
 </html>
