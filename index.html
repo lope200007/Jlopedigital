@@ -184,6 +184,15 @@
         .facts b { font-family: var(--serif); font-size: 34px; line-height: 1; display: block; font-weight: 400; }
         .facts span { font-size: 12.5px; color: var(--muted); display: block; margin-top: 7px; line-height: 1.35; }
 
+        .phone-caption { text-align: center; font-size: 13px; color: var(--muted); margin: 18px auto 0; max-width: 260px; line-height: 1.45; }
+        .case-name { font-family: var(--serif); font-size: clamp(34px, 8vw, 46px); line-height: 1.05; letter-spacing: -0.02em; }
+        .case-tag { display: block; font-size: 13px; color: var(--accent); margin: 8px 0 24px; letter-spacing: 0.02em; }
+        .case { display: grid; border-top: 1px solid var(--line); }
+        .case div { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+        .case dt { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+        .case dd { font-size: 15.5px; }
+        .case-note { color: var(--muted); font-size: 14.5px; margin-bottom: 18px; }
+        .work-copy .facts { margin: 0 0 24px; border-top: 0; }
         /* Proceso */
         .steps { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
         .step { border: 1px solid var(--line); border-radius: 22px; padding: 26px 24px; background: var(--raise); }
@@ -253,6 +262,7 @@
             .flow-step::after { content: ""; position: absolute; top: 20px; left: 52px; right: -12px; height: 1px; background: var(--line-2); }
             .flow-step:last-child::after { display: none; }
             .work-grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 88px; }
+            .case div { grid-template-columns: 160px minmax(0, 1fr); gap: 20px; }
             .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
             .faq summary { font-size: 29px; }
             .close-box { padding: 96px 40px; }
@@ -422,20 +432,35 @@
 
 <!-- Trabajo real -->
 <section class="section" id="trabajo">
-    <div class="wrap work-grid">
-        <a class="phone reveal" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Abrir la página de Galindo Barber Shop">
-            <div class="screen"><img src="galindo-completa.jpg" alt="Página de tarifas de Galindo Barber Shop vista en el móvil" width="600" height="3306"></div>
-        </a>
-        <div class="work-copy reveal">
-            <span class="label"><b>03</b>Trabajo reciente · Barbería</span>
-            <h2>Galindo Barber Shop</h2>
-            <p>Una carta digital para su perfil de Instagram: todos sus cortes, bonos y servicios en un solo enlace. El cliente elige lo que quiere y le llega a Galindo por WhatsApp con la reserva ya escrita. Lo mismo sirve para la carta de un restaurante, el catálogo de una tienda o los servicios de una clínica.</p>
-            <div class="facts">
-                <div><b>15</b><span>servicios con su precio</span></div>
-                <div><b>1</b><span>toque para reservar</span></div>
-                <div><b>24 h</b><span>abierta a sus clientes</span></div>
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="label"><b>03</b>Caso real · Un cliente nuestro</span>
+            <h2>Nos pidió una web sencilla, <em>solo para sus tarifas.</em></h2>
+            <p>Galindo Barber Shop quería algo claro y rápido: una página con sus precios para poner en Instagram. Esto es lo que le entregamos, y quedó totalmente satisfecho.</p>
+        </div>
+        <div class="work-grid">
+            <div class="phone-wrap reveal">
+                <a class="phone" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Abrir la página de Galindo Barber Shop">
+                    <div class="screen"><img src="galindo-completa.jpg" alt="Página de tarifas de Galindo Barber Shop vista en el móvil" width="600" height="3306"></div>
+                </a>
+                <p class="phone-caption">La página real de nuestro cliente, tal y como la ven sus clientes en el móvil.</p>
             </div>
-            <a class="link-arrow" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener">Verla en directo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <div class="work-copy reveal">
+                <h3 class="case-name">Galindo Barber Shop</h3>
+                <span class="case-tag">Barbería · Carta digital de tarifas</span>
+                <dl class="case">
+                    <div><dt>Lo que nos pidió</dt><dd>Una página sencilla, solo con sus tarifas y bonos, para el enlace de su perfil de Instagram.</dd></div>
+                    <div><dt>Lo que hicimos</dt><dd>Una carta digital con su logo y sus colores: cada servicio con su precio y un botón que abre WhatsApp con la reserva ya escrita.</dd></div>
+                    <div><dt>El resultado</dt><dd>Sus clientes ven todos los precios y reservan en un toque. El cliente quedó totalmente satisfecho.</dd></div>
+                </dl>
+                <div class="facts">
+                    <div><b>15</b><span>servicios con su precio</span></div>
+                    <div><b>1</b><span>toque para reservar</span></div>
+                    <div><b>24 h</b><span>abierta a sus clientes</span></div>
+                </div>
+                <p class="case-note">¿Tienes un restaurante, una tienda o una clínica? Lo mismo sirve para tu carta, tu catálogo o tus servicios.</p>
+                <a class="link-arrow" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener">Ver su página en directo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </div>
         </div>
     </div>
 </section>
