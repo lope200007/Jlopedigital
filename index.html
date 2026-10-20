@@ -153,6 +153,24 @@
         .card li::before { content: ""; width: 5px; height: 5px; background: var(--accent); transform: rotate(45deg); flex-shrink: 0; }
         .card .link-arrow { margin-top: auto; align-self: flex-start; }
 
+        /* Tipos de página */
+        .tiers { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+        .tier { position: relative; border: 1px solid var(--line); border-radius: 24px; padding: 30px 24px; background: var(--raise); display: flex; flex-direction: column; }
+        .tier-featured { border-color: rgba(200,164,106,0.55); background: radial-gradient(120% 70% at 50% 0%, rgba(200,164,106,0.13), transparent 60%), var(--raise); }
+        .tier-tag { align-self: flex-start; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line-2); border-radius: 999px; padding: 5px 11px; margin-bottom: 22px; }
+        .tier-featured .tier-tag { color: #121110; background: var(--accent); border-color: var(--accent); font-weight: 600; }
+        .tier h3 { font-family: var(--serif); font-size: 34px; line-height: 1.05; letter-spacing: -0.015em; margin-bottom: 12px; }
+        .tier > p { color: var(--muted); font-size: 15.5px; }
+        .tier-ideal { margin: 20px 0 6px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 14.5px; }
+        .tier-ideal span { display: block; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+        .tier ul { list-style: none; margin: 16px 0 24px; display: grid; gap: 9px; }
+        .tier li { display: flex; align-items: center; gap: 11px; font-size: 14.5px; }
+        .tier li::before { content: ""; width: 5px; height: 5px; background: var(--accent); transform: rotate(45deg); flex-shrink: 0; }
+        .tier-example { font-size: 13.5px; color: var(--accent); margin: auto 0 16px; }
+        .tier-example:hover { text-decoration: underline; }
+        .tier .link-arrow { align-self: flex-start; }
+        .tier:not(:has(.tier-example)) .link-arrow { margin-top: auto; }
+
         /* Captación de clientes */
         .leads { background: var(--raise); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
         .leads::after { content: ""; position: absolute; width: 700px; height: 700px; left: -300px; bottom: -420px; background: radial-gradient(circle, rgba(200,164,106,0.12), transparent 62%); pointer-events: none; }
@@ -277,6 +295,8 @@
             .ex-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
             .examples { padding: 52px 48px; }
             .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .tiers { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+            .tier { padding: 36px 30px; }
             .faq summary { font-size: 29px; }
             .close-box { padding: 96px 40px; }
             .foot { grid-template-columns: 1.6fr 1fr 1fr; }
@@ -301,6 +321,7 @@
         </a>
         <nav class="nav" aria-label="Secciones">
             <a href="#servicios">Servicios</a>
+            <a href="#paginas">Webs</a>
             <a href="#captacion">Captación</a>
             <a href="#trabajo">Trabajos</a>
             <a href="#preguntas">Preguntas</a>
@@ -401,7 +422,7 @@
                 <h3>Páginas web profesionales</h3>
                 <p>Si tu negocio aún no tiene web, hay clientes que no te encuentran. La diseñamos a medida para que destaques frente a tu competencia.</p>
                 <ul><li>Diseño propio, sin plantillas</li><li>Perfecta en el móvil</li><li>Preparada para salir en Google</li><li>Pensada para vender</li></ul>
-                <a class="link-arrow" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir información <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="link-arrow" href="#paginas">Ver tipos de página <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             </article>
             <article class="card reveal">
                 <div class="card-top">
@@ -417,11 +438,50 @@
     </div>
 </section>
 
+<!-- Tipos de página -->
+<section class="section tiers-sec" id="paginas" style="padding-top:0">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="label"><b>02</b>Tipos de página</span>
+            <h2>Una web para cada necesidad, <em>de la más sencilla a la más completa.</em></h2>
+            <p>Te ayudamos a elegir la que de verdad le hace falta a tu negocio. Sin pagar por lo que no vas a usar.</p>
+        </div>
+        <div class="tiers">
+            <article class="tier reveal">
+                <span class="tier-tag">Básica</span>
+                <h3>Página básica</h3>
+                <p>Una sola página, clara y rápida, con tus servicios o productos, precios y contacto. Perfecta para el enlace de tu Instagram.</p>
+                <div class="tier-ideal"><span>Ideal para</span>Empezar con buen pie en internet</div>
+                <ul><li>Una página, todo a la vista</li><li>Precios y botón de WhatsApp</li><li>Tu logo y tus colores</li><li>Lista en pocos días</li></ul>
+                <a class="tier-example" href="#trabajo">Ejemplo real: Galindo Barber Shop</a>
+                <a class="link-arrow" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20b%C3%A1sica%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir presupuesto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+            <article class="tier tier-featured reveal">
+                <span class="tier-tag">Para anuncios</span>
+                <h3>Página para campañas</h3>
+                <p>La página a la que llega la gente cuando pulsa tu anuncio. Una sola oferta, un mensaje claro y un botón para escribirte: hecha para convertir visitas en clientes.</p>
+                <div class="tier-ideal"><span>Ideal para</span>Promociones, lanzamientos y captar clientes con anuncios</div>
+                <ul><li>Una oferta y un objetivo</li><li>Pensada para Instagram y Facebook</li><li>Medimos cuántas visitas te escriben</li><li>Se combina con la captación de clientes</li></ul>
+                <a class="tier-example" href="#captacion">Ver captación de clientes</a>
+                <a class="link-arrow" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20para%20campa%C3%B1as%20%28landing%20page%29." target="_blank" rel="noopener">Pedir presupuesto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+            <article class="tier reveal">
+                <span class="tier-tag">Completa</span>
+                <h3>Web profesional a medida</h3>
+                <p>Tu web completa, diseñada desde cero: quiénes sois, servicios, galería, ubicación y contacto. La imagen de tu negocio en internet.</p>
+                <div class="tier-ideal"><span>Ideal para</span>Negocios que quieren destacar y salir en Google</div>
+                <ul><li>Varias secciones o páginas</li><li>Diseño propio, sin plantillas</li><li>Preparada para salir en Google</li><li>Se puede ampliar con reservas o asistente</li></ul>
+                <a class="link-arrow" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20web%20profesional%20a%20medida%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir presupuesto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+        </div>
+    </div>
+</section>
+
 <!-- Captación de clientes -->
 <section class="section leads" id="captacion">
     <div class="wrap">
         <div class="sec-head reveal">
-            <span class="label"><b>02</b>Captación de clientes <span class="new">Nuevo</span></span>
+            <span class="label"><b>03</b>Captación de clientes <span class="new">Nuevo</span></span>
             <h2>No esperes a que te encuentren. <em>Te llevamos los clientes.</em></h2>
             <p>Creamos y gestionamos anuncios en Instagram y Facebook para las personas que pueden comprarte: en tu zona o en toda España, según tu negocio. Los interesados te escriben directamente; tú solo te ocupas de atenderlos.</p>
         </div>
@@ -447,7 +507,7 @@
 <section class="section" id="trabajo">
     <div class="wrap">
         <div class="sec-head reveal">
-            <span class="label"><b>03</b>Caso real · Un cliente nuestro</span>
+            <span class="label"><b>04</b>Caso real · Un cliente nuestro</span>
             <h2>Nos pidió una web sencilla, <em>solo para sus tarifas.</em></h2>
             <p>Galindo Barber Shop quería algo claro y rápido: una página con sus precios para poner en Instagram. Esto es lo que le entregamos, y quedó totalmente satisfecho.</p>
         </div>
@@ -490,7 +550,7 @@
 <section class="section" id="proceso" style="padding-top:0">
     <div class="wrap">
         <div class="sec-head reveal">
-            <span class="label"><b>04</b>Cómo trabajamos</span>
+            <span class="label"><b>05</b>Cómo trabajamos</span>
             <h2>Sencillo, <em>de principio a fin.</em></h2>
             <p>Sin tecnicismos y sin sorpresas: sabes en cada momento qué hacemos y por qué.</p>
         </div>
@@ -506,7 +566,7 @@
 <section class="section faq" id="preguntas" style="padding-top:0">
     <div class="wrap">
         <div class="sec-head reveal">
-            <span class="label"><b>05</b>Preguntas frecuentes</span>
+            <span class="label"><b>06</b>Preguntas frecuentes</span>
             <h2>Lo que suelen <em>preguntarnos.</em></h2>
         </div>
         <div class="faq-list reveal">
@@ -523,8 +583,12 @@
                 <p>Trabajamos con todo tipo de negocios: tiendas, restaurantes, clínicas, talleres, academias, inmobiliarias, asesorías, comercio online… Si tus clientes te buscan en internet o te escriben para preguntar, reservar o pedir presupuesto, podemos ayudarte. Cuéntanos cómo trabajas y te decimos con sinceridad si te compensa.</p>
             </details>
             <details>
+                <summary>¿Qué tipo de página necesito?</summary>
+                <p>Si quieres algo rápido para tu Instagram, una página básica. Si vas a hacer anuncios, una página para campañas. Si quieres la imagen completa de tu negocio en internet, una web a medida. Nos cuentas qué buscas y te recomendamos la que te compensa.</p>
+            </details>
+            <details>
                 <summary>¿Cuánto cuesta?</summary>
-                <p>Depende de lo que necesites: no es lo mismo una carta digital que una web completa con atención automática. Te decimos el precio antes de empezar, sin compromiso.</p>
+                <p>Depende de lo que necesites: no es lo mismo una página básica que una web completa a medida. Te decimos el precio antes de empezar, sin compromiso.</p>
             </details>
             <details>
                 <summary>¿Puedo empezar con un solo servicio?</summary>
