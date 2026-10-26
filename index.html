@@ -9,13 +9,13 @@
     <meta name="theme-color" content="#0B0B0C">
     <meta property="og:title" content="AutoWeb Studio · Webs y automatizaciones para negocios">
     <meta property="og:description" content="Webs, automatizaciones y captación de clientes para negocios.">
-    <meta property="og:image" content="https://jlopedigital.vercel.app/galindo-preview.jpg">
+    <meta property="og:image" content="https://jlopedigital.vercel.app/og-autoweb.jpg">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0B0B0C;
@@ -26,6 +26,7 @@
             --muted: #8E8C88;
             --accent: #D4AF6A;
             --head: 'Inter Tight', 'Inter', system-ui, sans-serif;
+            --serif: 'Instrument Serif', Georgia, serif;
             --body: 'Inter', system-ui, -apple-system, sans-serif;
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -75,6 +76,7 @@
         .line { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
         .line > span { display: inline-block; }
         .hero h1 em { font-style: normal; color: var(--accent); }
+        .hero h1 em, .sec-head h2 em, .cta h2 em, .project.next h3 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.015em; font-size: 1.1em; line-height: 0.9; }
         .hero p.lead { font-size: 18px; color: var(--muted); max-width: 500px; }
         .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
         .scroll-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 2; display: none; flex-direction: column; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
@@ -115,7 +117,7 @@
         .section { padding: 110px 0; position: relative; }
         .sec-head { display: grid; gap: 18px; margin-bottom: 56px; }
         .sec-head h2 { font-size: clamp(40px, 9vw, 84px); max-width: 900px; }
-        .sec-head h2 em { font-style: normal; color: var(--muted); }
+        .sec-head h2 em { color: #A8A49C; }
         .sec-head p { color: var(--muted); font-size: 17.5px; max-width: 520px; }
 
         /* Servicios */
@@ -151,6 +153,7 @@
         .project .shot .phone { position: relative; width: 190px; border-radius: 32px; padding: 7px; }
         .project .shot .phone::before { top: 14px; width: 60px; height: 17px; }
         .project .shot .phone .screen { border-radius: 26px; }
+        .phone .screen video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; display: block; }
         .project .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
         .project .meta span { font-size: 12.5px; color: #CFCDC8; border: 1px solid #33333A; border-radius: 999px; padding: 4px 11px; }
         .project h3 { font-size: clamp(32px, 6vw, 48px); margin-bottom: 14px; }
@@ -162,6 +165,7 @@
         .sector-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
         .sector-grid div { border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: var(--bg-2); transition: border-color .3s ease, transform .4s var(--ease); }
         .sector-grid div:hover { border-color: #45454D; transform: translateY(-3px); }
+        .sector-grid svg { width: 22px; height: 22px; color: var(--accent); display: block; margin-bottom: 12px; }
         .sector-grid b { font-family: var(--head); font-weight: 600; font-size: 17px; letter-spacing: -0.015em; display: block; }
         .sector-grid span { font-size: 13px; color: var(--muted); line-height: 1.45; display: block; margin-top: 4px; }
 
@@ -217,7 +221,7 @@
         .cta { padding: 130px 0 90px; text-align: center; position: relative; overflow: hidden; }
         .cta .glow { left: 50%; top: 60%; }
         .cta h2 { position: relative; font-size: clamp(56px, 15vw, 170px); letter-spacing: -0.05em; line-height: 0.92; }
-        .cta h2 em { font-style: normal; color: var(--accent); }
+        .cta h2 em { color: var(--accent); }
         .cta p { position: relative; color: var(--muted); font-size: 18px; margin: 26px auto 38px; max-width: 480px; }
         .cta .actions { position: relative; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
         .cta .btn-big { min-height: 64px; padding: 0 34px; font-size: 16px; }
@@ -290,7 +294,7 @@
         .project.next { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 300px; background: radial-gradient(90% 90% at 50% 0%, rgba(212,175,106,0.18), transparent 60%), var(--card); }
         .project.next .next-k { font-size: 13px; color: var(--accent); font-weight: 600; }
         .project.next h3 { margin: 12px 0 12px; }
-        .project.next h3 em { font-style: normal; color: var(--accent); }
+        .project.next h3 em { color: var(--accent); }
         .project.next p { margin-bottom: 26px; }
 
         /* Inclinación de las tarjetas de páginas */
@@ -339,14 +343,14 @@
     </style>
 </head>
 <body>
-<div class="loader" id="loader" aria-hidden="true"><div class="ld-in"><img src="logo-autoweb.jpg" alt="" width="72" height="72"><span>AutoWeb Studio</span></div></div>
+<div class="loader" id="loader" aria-hidden="true"><div class="ld-in"><img src="logo-aw.png" alt="" width="72" height="72"><span>AutoWeb Studio</span></div></div>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <div class="cursor" id="cursor" aria-hidden="true"><span>Ver</span></div>
 
 <!-- Cabecera -->
 <header class="top" id="top">
     <div class="wrap">
-        <a href="#" class="brand" aria-label="AutoWeb Studio, inicio"><img src="logo-autoweb.jpg" alt="" width="34" height="34">AutoWeb Studio</a>
+        <a href="#" class="brand" aria-label="AutoWeb Studio, inicio"><img src="logo-aw.png" alt="" width="34" height="34">AutoWeb Studio</a>
         <nav class="nav" aria-label="Secciones">
             <a href="#servicios">Servicios</a>
             <a href="#trabajos">Trabajos</a>
@@ -485,7 +489,7 @@
         <div class="work-track" id="track">
             <article class="project">
                 <div class="shot dark">
-                    <a class="phone" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Galindo Barber Shop"><div class="screen"><img src="galindo-completa.jpg" alt="Web de Galindo Barber Shop" width="600" height="3306" loading="lazy"></div></a>
+                    <a class="phone" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Galindo Barber Shop"><div class="screen"><video class="demo" poster="galindo-video.jpg" muted loop playsinline preload="none" aria-label="Vídeo: la web de Galindo Barber Shop en un móvil"><source src="galindo-video.webm" type="video/webm"><source src="galindo-video.mp4" type="video/mp4"></video></div></a>
                 </div>
                 <div>
                     <div class="meta"><span>Barbería</span><span>Página básica</span></div>
@@ -507,12 +511,12 @@
                 </div>
                 <div class="shot">
                     <div class="sector-grid">
-                        <div><b>Restaurantes</b><span>Carta y reservas de mesa</span></div>
-                        <div><b>Hoteles</b><span>Habitaciones y disponibilidad</span></div>
-                        <div><b>Clínicas</b><span>Tratamientos y citas</span></div>
-                        <div><b>Tiendas</b><span>Catálogo y pedidos</span></div>
-                        <div><b>Gimnasios</b><span>Horarios, clases y cuotas</span></div>
-                        <div><b>Cualquier negocio</b><span>Talleres, asesorías…</span></div>
+                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.2 1-3.5 3.6-3.5 7v3H17"/></svg><b>Restaurantes</b><span>Carta y reservas de mesa</span></div>
+                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V6M3 16h18M21 20v-6a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg><b>Hoteles</b><span>Habitaciones y disponibilidad</span></div>
+                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M12 10v4M10 12h4"/></svg><b>Clínicas</b><span>Tratamientos y citas</span></div>
+                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b>Tiendas</b><span>Catálogo y pedidos</span></div>
+                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg><b>Gimnasios</b><span>Horarios, clases y cuotas</span></div>
+                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg><b>Cualquier negocio</b><span>Talleres, asesorías…</span></div>
                     </div>
                 </div>
             </article>
@@ -689,6 +693,14 @@
     });
 
     var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Vídeo del trabajo: se reproduce solo cuando está a la vista
+    document.querySelectorAll('video.demo').forEach(function (v) {
+        if (quieto || !('IntersectionObserver' in window)) return;
+        new IntersectionObserver(function (es) {
+            es.forEach(function (e) { if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); });
+        }, { threshold: 0.25 }).observe(v);
+    });
 
     // Conversación de la portada: se escribe sola y vuelve a empezar
     (function () {
