@@ -176,8 +176,9 @@
         .project dd { font-size: 15px; }
         .project.sectors .shot { background: none; display: block; height: auto; }
         .sector-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-        .sector-grid div { border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: var(--bg-2); transition: border-color .3s ease, transform .4s var(--ease); }
-        .sector-grid div:hover { border-color: #45454D; transform: translateY(-3px); }
+        .sector-grid a { display: block; border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: var(--bg-2); transition: border-color .3s ease, background-color .3s ease; }
+        .sector-grid a:active { border-color: var(--accent); }
+        @media (hover: hover) { .sector-grid a:hover { border-color: var(--accent); background-color: #1A1A1E; } }
         .sector-grid svg { width: 22px; height: 22px; color: var(--accent); display: block; margin-bottom: 12px; }
         .sector-grid b { font-family: var(--head); font-weight: 600; font-size: 17px; letter-spacing: -0.015em; display: block; }
         .sector-grid span { font-size: 13px; color: var(--muted); line-height: 1.45; display: block; margin-top: 4px; }
@@ -526,12 +527,12 @@
                 </div>
                 <div class="shot">
                     <div class="sector-grid">
-                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.2 1-3.5 3.6-3.5 7v3H17"/></svg><b>Restaurantes</b><span>Carta y reservas de mesa</span></div>
-                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V6M3 16h18M21 20v-6a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg><b>Hoteles</b><span>Habitaciones y disponibilidad</span></div>
-                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M12 10v4M10 12h4"/></svg><b>Clínicas</b><span>Tratamientos y citas</span></div>
-                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b>Tiendas</b><span>Catálogo y pedidos</span></div>
-                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg><b>Gimnasios</b><span>Horarios, clases y cuotas</span></div>
-                        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg><b>Cualquier negocio</b><span>Talleres, asesorías…</span></div>
+                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20restaurante." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.2 1-3.5 3.6-3.5 7v3H17"/></svg><b>Restaurantes</b><span>Carta y reservas de mesa</span></a>
+                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20hotel." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V6M3 16h18M21 20v-6a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg><b>Hoteles</b><span>Habitaciones y disponibilidad</span></a>
+                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20cl%C3%ADnica." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M12 10v4M10 12h4"/></svg><b>Clínicas</b><span>Tratamientos y citas</span></a>
+                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20tienda." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b>Tiendas</b><span>Catálogo y pedidos</span></a>
+                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20gimnasio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg><b>Gimnasios</b><span>Horarios, clases y cuotas</span></a>
+                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20negocio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg><b>Cualquier negocio</b><span>Talleres, asesorías…</span></a>
                     </div>
                 </div>
             </article>
@@ -827,7 +828,7 @@
 
     // Capturas de trabajos y sectores
     gsap.from('.project .shot', { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.4, ease: 'expo.inOut', stagger: 0.15, clearProps: 'clipPath', scrollTrigger: { trigger: '#trabajos', start: 'top 70%', once: true } });
-    gsap.from('.sector-grid > *', { y: 24, opacity: 0, duration: 0.8, ease: 'expo.out', stagger: 0.05, scrollTrigger: { trigger: '#trabajos', start: 'top 55%', once: true } });
+    gsap.from('.sector-grid > *', { y: 24, opacity: 0, duration: 0.8, ease: 'expo.out', stagger: 0.05, clearProps: 'transform,opacity', scrollTrigger: { trigger: '#trabajos', start: 'top 55%', once: true } });
 
     // Cifras que cuentan
     document.querySelectorAll('[data-count]').forEach(function (b) {
