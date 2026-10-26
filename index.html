@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<script>(function(d){d.classList.add('js');var q=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;if(q)d.classList.add('ld-done');else setTimeout(function(){d.classList.add('ld-done')},3200);})(document.documentElement);</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -87,10 +88,9 @@
         .phone::before { content: ""; position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 78px; height: 22px; border-radius: 20px; background: #000; z-index: 2; }
         .phone .screen { width: 100%; height: 100%; border-radius: 32px; overflow: hidden; background: #000; }
         .phone .screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; animation: recorre 24s ease-in-out 1.5s infinite alternate; }
-        .phone.p2 .screen img { animation-delay: 4s; }
         @keyframes recorre { 0%, 10% { object-position: 50% 0%; } 90%, 100% { object-position: 50% 100%; } }
         .phone.p1 { left: 0; top: 30px; z-index: 2; }
-        .phone.p2 { right: 0; top: 0; }
+        @media (max-width: 520px) { .chatcard { width: 210px; } .phone { width: 220px; } .devices { height: 520px; } }
         .float-a { animation: flota 7s ease-in-out infinite; }
         .float-b { animation: flota 8s ease-in-out -3s infinite; }
         @keyframes flota { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
@@ -228,6 +228,74 @@
         .foot-links { display: flex; gap: 20px; flex-wrap: wrap; }
         .wordmark { font-family: var(--head); font-weight: 700; font-size: 14.6vw; letter-spacing: -0.06em; line-height: 0.8; color: #1B1B1F; white-space: nowrap; margin-top: 36px; text-align: center; user-select: none; }
 
+
+        /* Entrada */
+        .loader { position: fixed; inset: 0; z-index: 100; background: #0B0B0C; display: none; align-items: center; justify-content: center; }
+        .js .loader { display: flex; }
+        .ld-done .loader { display: none; }
+        .ld-in { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .ld-in img { width: 72px; height: 72px; border-radius: 50%; }
+        .ld-in span { font-family: var(--head); font-weight: 600; font-size: 20px; letter-spacing: -0.02em; }
+        .progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; z-index: 70; }
+
+        /* Cursor */
+        .cursor { opacity: 0; }
+        .cursor.vivo { opacity: 1; }
+        .cursor { position: fixed; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; border: 1px solid rgba(242,240,235,0.55); pointer-events: none; z-index: 90; display: none; align-items: center; justify-content: center; transition: width .35s var(--ease), height .35s var(--ease), margin .35s var(--ease), background-color .3s ease, border-color .3s ease, opacity .4s ease; }
+        .cursor span { font-size: 13px; font-weight: 600; color: var(--bg); opacity: 0; transform: scale(0.6); transition: opacity .25s ease, transform .35s var(--ease); }
+        .cursor.link { width: 56px; height: 56px; margin: -28px 0 0 -28px; border-color: var(--accent); background: rgba(212,175,106,0.12); }
+        .cursor.view { width: 86px; height: 86px; margin: -43px 0 0 -43px; background: var(--accent); border-color: var(--accent); }
+        .cursor.view span { opacity: 1; transform: scale(1); }
+
+        /* Palabras que suben */
+        .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+        .w > span { display: inline-block; }
+
+        /* Brillo en «atiendes» */
+        .shine { background: linear-gradient(100deg, #C9A35F 0%, #F3DDAE 45%, #C9A35F 60%, #B88F4C 100%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent !important; animation: brillo 6s ease-in-out infinite; }
+        @keyframes brillo { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
+        .glow.two { animation: deriva 14s ease-in-out infinite alternate; }
+        @keyframes deriva { to { transform: translate(-60%, -40%) scale(1.15); } }
+
+        /* Conversación de la portada */
+        .chatwrap { position: absolute; right: 0; top: 0; z-index: 1; }
+        .chatcard { width: 250px; background: #16161A; border: 1px solid #2C2C33; border-radius: 22px; padding: 14px; box-shadow: 0 40px 80px -30px rgba(0,0,0,0.9); }
+        .cc-head { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid #26262B; margin-bottom: 12px; }
+        .cc-av { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #F58529, #DD2A7B 55%, #8134AF); display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+        .cc-head b { font-size: 13.5px; display: block; line-height: 1.2; }
+        .cc-head small { font-size: 11.5px; color: #8FDCA9; display: flex; align-items: center; gap: 5px; }
+        .cc-head small i { width: 6px; height: 6px; border-radius: 50%; background: #25D366; display: block; }
+        .cc-thread { display: grid; gap: 7px; min-height: 196px; align-content: start; }
+        .cc-day { text-align: center; font-size: 10.5px; color: var(--muted); }
+        .cc-b { max-width: 86%; padding: 8px 11px; border-radius: 15px; font-size: 13px; line-height: 1.35; }
+        .cc-b.them { background: #26262C; justify-self: start; border-bottom-left-radius: 5px; }
+        .cc-b.bot { background: var(--text); color: var(--bg); justify-self: end; border-bottom-right-radius: 5px; }
+        .cc-typing { justify-self: end; background: var(--text); border-radius: 15px; border-bottom-right-radius: 5px; padding: 10px 12px; display: none; gap: 4px; }
+        .cc-typing.on { display: inline-flex; }
+        .cc-typing b { width: 5px; height: 5px; border-radius: 50%; background: var(--bg); opacity: .35; animation: punto 1s infinite; }
+        .cc-typing b:nth-child(2) { animation-delay: .15s; } .cc-typing b:nth-child(3) { animation-delay: .3s; }
+        @keyframes punto { 0%, 60%, 100% { opacity: .35; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
+        .cc-ok { justify-self: center; font-size: 11.5px; color: #A6EBC0; border: 1px solid rgba(37,211,102,0.35); background: rgba(37,211,102,0.08); border-radius: 999px; padding: 5px 11px; margin-top: 4px; }
+        .js .cc-b, .js .cc-ok { opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; }
+        .js .cc-b.on, .js .cc-ok.on { opacity: 1; transform: none; }
+
+        /* Cifras del caso */
+        .nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: -6px 0 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .nums div { padding: 14px 0; }
+        .nums div + div { padding-left: 14px; border-left: 1px solid var(--line); }
+        .nums b { font-family: var(--head); font-weight: 600; font-size: 34px; letter-spacing: -0.04em; line-height: 1; display: block; font-variant-numeric: tabular-nums; }
+        .nums span { font-size: 12px; color: var(--muted); display: block; margin-top: 6px; }
+
+        /* Tarjeta «el siguiente es el tuyo» */
+        .project.next { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 300px; background: radial-gradient(90% 90% at 50% 0%, rgba(212,175,106,0.18), transparent 60%), var(--card); }
+        .project.next .next-k { font-size: 13px; color: var(--accent); font-weight: 600; }
+        .project.next h3 { margin: 12px 0 12px; }
+        .project.next h3 em { font-style: normal; color: var(--accent); }
+        .project.next p { margin-bottom: 26px; }
+
+        /* Inclinación de las tarjetas de páginas */
+        .plans { perspective: 1200px; }
+        .plan { transform-style: preserve-3d; }
         @media (min-width: 720px) {
             .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); }
             .terms { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -247,6 +315,8 @@
             .svc .info { grid-column: 3; margin-top: 4px; }
             .svc:hover h3 { color: var(--accent); transform: translateX(14px); }
             .preview { display: block; }
+            .cursor { display: flex; }
+            .work.pin-on .project.next { width: min(560px, 46vw); align-self: stretch; }
             .work.pin-on { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0; }
             .work.pin-on .sec-head { margin-bottom: 30px; }
             .work.pin-on .sec-head h2 { font-size: clamp(40px, 5vw, 64px); }
@@ -269,6 +339,9 @@
     </style>
 </head>
 <body>
+<div class="loader" id="loader" aria-hidden="true"><div class="ld-in"><img src="logo-autoweb.jpg" alt="" width="72" height="72"><span>AutoWeb Studio</span></div></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span>Ver</span></div>
 
 <!-- Cabecera -->
 <header class="top" id="top">
@@ -296,7 +369,7 @@
                 <span class="line"><span>Webs que</span></span>
                 <span class="line"><span>trabajan</span></span>
                 <span class="line"><span>mientras tú</span></span>
-                <span class="line"><span><em>atiendes.</em></span></span>
+                <span class="line"><span><em class="shine">atiendes.</em></span></span>
             </h1>
             <p class="lead hero-in">Diseñamos tu web, automatizamos la atención de tu Instagram y te traemos clientes nuevos. Tú te dedicas a tu negocio; nosotros, a que te encuentren.</p>
             <div class="actions hero-in">
@@ -308,10 +381,20 @@
             </div>
         </div>
         <div class="devices" id="devices">
-            <div class="float-b"><a class="phone p2" href="https://beautygalindo.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Beauty Galindo"><div class="screen"><img src="beauty-completa.jpg" alt="Web de Beauty Galindo" width="600" height="3448"></div></a></div>
+            <div class="float-b chatwrap"><div class="chatcard" id="chatcard" aria-label="Ejemplo: el asistente de Instagram contesta a un cliente">
+                <div class="cc-head"><span class="cc-av">N</span><div><b>Tu negocio</b><small><i></i>Asistente activo 24/7</small></div></div>
+                <div class="cc-thread">
+                    <div class="cc-day">Hoy · 23:47</div>
+                    <div class="cc-b them">Hola, ¿abrís mañana?</div>
+                    <div class="cc-b bot">¡Sí! De 10:00 a 20:00. ¿Te reservo hora a las 16:00?</div>
+                    <div class="cc-b them">Perfecto 👌</div>
+                    <div class="cc-typing"><b></b><b></b><b></b></div>
+                    <div class="cc-ok">✓ Reserva apuntada</div>
+                </div>
+            </div></div>
             <div class="float-a"><a class="phone p1" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Galindo Barber Shop"><div class="screen"><img src="galindo-completa.jpg" alt="Web de Galindo Barber Shop" width="600" height="3306"></div></a></div>
-            <div class="chip c1"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Webs reales</b><span>de clientes, en funcionamiento</span></div></div>
-            <div class="chip c2"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/></svg></span><div><b>Hechas para el móvil</b><span>donde están tus clientes</span></div></div>
+            <div class="chip c1"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Webs reales</b><span>de clientes, funcionando</span></div></div>
+            
         </div>
     </div>
     <div class="scroll-hint" aria-hidden="true">Desliza<i></i></div>
@@ -384,7 +467,7 @@
 <!-- Vista previa que sigue al ratón (ordenador) -->
 <div class="preview" id="preview" aria-hidden="true">
     <div class="pv" data-k="web"><img src="galindo-completa.jpg" alt=""></div>
-    <div class="pv" data-k="carta"><img src="beauty-completa.jpg" alt=""></div>
+    <div class="pv" data-k="carta"><div class="pv-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 5.5h4M9 10h6M9 13.5h6M9 17h3"/></svg><b>Tu carta en un enlace</b><span>Precios a la vista y reserva por WhatsApp.</span></div></div>
     <div class="pv" data-k="ig"><div class="pv-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg><b>«¿Tenéis hueco mañana?»</b><span>Respondido al momento, a cualquier hora.</span></div></div>
     <div class="pv" data-k="redes"><div class="pv-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h3M8 17h6"/></svg><b>Publicaciones programadas</b><span>Tu negocio comunica todos los días.</span></div></div>
     <div class="pv" data-k="ads"><div class="pv-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg><b>Clientes nuevos</b><span>Anuncios dirigidos a quien puede comprarte.</span></div></div>
@@ -395,7 +478,7 @@
     <div class="wrap">
         <div class="sec-head">
             <span class="tag rv">Trabajos</span>
-            <h2 class="rv">Clientes reales, <em>resultados reales.</em></h2>
+            <h2 class="rv">Trabajo real, <em>resultados reales.</em></h2>
         </div>
     </div>
     <div class="wrap work-wrap">
@@ -410,24 +493,10 @@
                     <p>Nos pidió una web sencilla, solo para sus tarifas, para poner en su Instagram. Quedó totalmente satisfecho.</p>
                     <dl>
                         <div><dt>Lo que hicimos</dt><dd>Una carta digital con su logo: cada servicio con su precio y un botón que abre WhatsApp con la reserva escrita.</dd></div>
-                        <div><dt>El resultado</dt><dd>15 servicios a la vista y reserva en un toque, las 24 horas.</dd></div>
+                        <div><dt>El resultado</dt><dd>Sus clientes ven todos los precios y reservan en un toque.</dd></div>
                     </dl>
+                    <div class="nums"><div><b data-count="15">15</b><span>servicios con precio</span></div><div><b data-count="1">1</b><span>toque para reservar</span></div><div><b data-count="24" data-suf=" h">24 h</b><span>abierta a sus clientes</span></div></div>
                     <a class="btn btn-line magnet" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener">Ver en directo</a>
-                </div>
-            </article>
-            <article class="project">
-                <div class="shot lilac">
-                    <a class="phone" href="https://beautygalindo.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Beauty Galindo"><div class="screen"><img src="beauty-completa.jpg" alt="Web de Beauty Galindo" width="600" height="3448" loading="lazy"></div></a>
-                </div>
-                <div>
-                    <div class="meta"><span>Peluquería y estética</span><span>Página básica</span></div>
-                    <h3>Beauty Galindo</h3>
-                    <p>Una página con la imagen de su marca para presentar sus servicios de peluquería, barbería y estética.</p>
-                    <dl>
-                        <div><dt>Lo que hicimos</dt><dd>Una web en sus colores, con su logo, sus servicios, su equipo y la reserva por llamada en un toque.</dd></div>
-                        <div><dt>El resultado</dt><dd>Un enlace propio para su perfil, con todo lo que hacen a la vista.</dd></div>
-                    </dl>
-                    <a class="btn btn-line magnet" href="https://beautygalindo.vercel.app" target="_blank" rel="noopener">Ver en directo</a>
                 </div>
             </article>
             <article class="project sectors">
@@ -447,6 +516,14 @@
                     </div>
                 </div>
             </article>
+            <article class="project next">
+                <div>
+                    <span class="next-k">Próximo proyecto</span>
+                    <h3>¿Y si el siguiente es <em>el tuyo?</em></h3>
+                    <p>Cuéntanos tu negocio y te enseñamos cómo quedaría.</p>
+                    <a class="btn btn-light magnet" href="https://wa.me/34644694667?text=Hola%2C%20he%20visto%20vuestros%20trabajos%20y%20quiero%20algo%20as%C3%AD%20para%20mi%20negocio." target="_blank" rel="noopener">Empezar mi web</a>
+                </div>
+            </article>
         </div>
     </div>
 </section>
@@ -460,7 +537,7 @@
             <p class="rv">Te ayudamos a elegir la que de verdad le hace falta a tu negocio, sin pagar por lo que no vas a usar.</p>
         </div>
         <div class="plans">
-            <div class="plan rv">
+            <div class="plan">
                 <span class="ptag">Básica</span>
                 <h3>Página básica</h3>
                 <p>Una sola página, clara y rápida, con tus servicios o productos, precios y contacto. Ideal para el enlace de tu Instagram.</p>
@@ -471,7 +548,7 @@
                 </ul>
                 <a class="btn btn-line" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20b%C3%A1sica%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir presupuesto</a>
             </div>
-            <div class="plan feat rv">
+            <div class="plan feat">
                 <span class="ptag">Recomendada</span>
                 <h3>Página media</h3>
                 <p>Una página más completa para dar confianza, o una página pensada para tus anuncios: una oferta, un mensaje y un botón.</p>
@@ -482,7 +559,7 @@
                 </ul>
                 <a class="btn btn-light" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20media%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir presupuesto</a>
             </div>
-            <div class="plan rv">
+            <div class="plan">
                 <span class="ptag">Profesional</span>
                 <h3>Web profesional</h3>
                 <p>Tu web completa, diseñada desde cero, con varias secciones y preparada para salir en Google y crecer contigo.</p>
@@ -612,7 +689,31 @@
     });
 
     var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (quieto || !window.gsap || !window.ScrollTrigger) return;
+
+    // Conversación de la portada: se escribe sola y vuelve a empezar
+    (function () {
+        var card = document.getElementById('chatcard');
+        if (!card) return;
+        var piezas = card.querySelectorAll('.cc-b, .cc-ok'), esc = card.querySelector('.cc-typing');
+        function todo(on) { piezas.forEach(function (p) { p.classList.toggle('on', on); }); }
+        if (quieto) { todo(true); return; }
+        var pasos = [[900, 0], [1500, 't'], [1600, 1], [1400, 2], [1100, 't'], [1300, 3]];
+        function ronda() {
+            todo(false); esc.classList.remove('on');
+            var t = 0;
+            pasos.forEach(function (p) {
+                t += p[0];
+                setTimeout(function () {
+                    if (p[1] === 't') { esc.classList.add('on'); return; }
+                    esc.classList.remove('on'); piezas[p[1]].classList.add('on');
+                }, t);
+            });
+            setTimeout(ronda, t + 5200);
+        }
+        setTimeout(ronda, 1400);
+    })();
+
+    if (quieto || !window.gsap || !window.ScrollTrigger) { document.documentElement.classList.add('ld-done'); return; }
     gsap.registerPlugin(ScrollTrigger);
 
     // Desplazamiento suave
@@ -631,16 +732,26 @@
         });
     }
 
+    // Telón de entrada con el logo
+    var telon = gsap.timeline({ onComplete: function () { document.documentElement.classList.add('ld-done'); } });
+    telon.from('.ld-in img', { scale: 0.7, opacity: 0, duration: 0.7, ease: 'expo.out' })
+         .from('.ld-in span', { y: 14, opacity: 0, duration: 0.6, ease: 'expo.out' }, 0.15)
+         .to('.ld-in', { y: -30, opacity: 0, duration: 0.5, ease: 'power3.in' }, 0.95)
+         .to('#loader', { yPercent: -100, duration: 0.9, ease: 'expo.inOut' }, 1.05);
+
+    // Barra de progreso
+    gsap.to('#progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
+
     // Entrada de la portada
-    var intro = gsap.timeline({ defaults: { ease: 'expo.out' } });
+    var intro = gsap.timeline({ delay: 1.35, defaults: { ease: 'expo.out' } });
     intro.from('.hero h1 .line > span', { yPercent: 110, duration: 1.3, stagger: 0.09 }, 0.15)
          .from('.hero-in', { y: 24, opacity: 0, duration: 1.1, stagger: 0.08 }, 0.45)
-         .from('.devices .phone', { y: 120, opacity: 0, rotate: function (i) { return i ? 8 : -6; }, duration: 1.6, stagger: 0.12 }, 0.35)
+         .from('.devices .phone, .chatcard', { y: 120, opacity: 0, rotate: function (i) { return i ? 8 : -6; }, duration: 1.6, stagger: 0.15 }, 0.35)
          .from('.chip', { scale: 0.6, opacity: 0, duration: 0.9, stagger: 0.12, ease: 'back.out(1.7)' }, 1.0);
 
     // Los móviles de la portada se separan al bajar
     gsap.to('.phone.p1', { yPercent: -18, rotate: -4, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-    gsap.to('.phone.p2', { yPercent: 14, rotate: 5, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('#chatcard', { yPercent: 22, rotate: 4, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
     // Brillo que sigue al ratón en la portada
     var glow = document.getElementById('glow');
@@ -663,6 +774,40 @@
         gsap.to([m1, m2], { timeScale: 1 + v, duration: 0.3, overwrite: true });
         gsap.to([m1, m2], { timeScale: 1, duration: 1.2, delay: 0.3 });
     } });
+
+    // Títulos que suben palabra a palabra
+    function partir(nodo) {
+        Array.prototype.slice.call(nodo.childNodes).forEach(function (n) {
+            if (n.nodeType === 3) {
+                var frag = document.createDocumentFragment();
+                n.textContent.split(/(\s+)/).forEach(function (t) {
+                    if (!t) return;
+                    if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(' ')); return; }
+                    var w = document.createElement('span'), s = document.createElement('span');
+                    w.className = 'w'; s.textContent = t; w.appendChild(s); frag.appendChild(w);
+                });
+                nodo.replaceChild(frag, n);
+            } else if (n.nodeType === 1 && n.tagName !== 'BR') partir(n);
+        });
+    }
+    gsap.utils.toArray('h2.rv').forEach(function (h) {
+        h.classList.remove('rv'); partir(h);
+        gsap.from(h.querySelectorAll('.w > span'), { yPercent: 115, duration: 1.1, ease: 'expo.out', stagger: 0.045, scrollTrigger: { trigger: h, start: 'top 88%', once: true } });
+    });
+
+    // Tarjetas de páginas que se destapan
+    gsap.from('.plan', { clipPath: 'inset(30% 8% 30% 8% round 28px)', y: 60, opacity: 0, duration: 1.3, ease: 'expo.out', stagger: 0.12, clearProps: 'clipPath', scrollTrigger: { trigger: '.plans', start: 'top 85%', once: true } });
+
+    // Capturas de trabajos y sectores
+    gsap.from('.project .shot', { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.4, ease: 'expo.inOut', stagger: 0.15, clearProps: 'clipPath', scrollTrigger: { trigger: '#trabajos', start: 'top 70%', once: true } });
+    gsap.from('.sector-grid > *', { y: 24, opacity: 0, duration: 0.8, ease: 'expo.out', stagger: 0.05, scrollTrigger: { trigger: '#trabajos', start: 'top 55%', once: true } });
+
+    // Cifras que cuentan
+    document.querySelectorAll('[data-count]').forEach(function (b) {
+        var fin = +b.dataset.count, suf = b.dataset.suf || '', o = { v: 0 };
+        b.textContent = '0' + suf;
+        gsap.to(o, { v: fin, duration: 1.8, ease: 'power2.out', onUpdate: function () { b.textContent = Math.round(o.v) + suf; }, scrollTrigger: { trigger: '#trabajos', start: 'top 55%', once: true } });
+    });
 
     // Bloques que aparecen
     gsap.utils.toArray('.rv').forEach(function (el) {
@@ -697,6 +842,30 @@
             s.addEventListener('pointermove', function (e) { px(e.clientX + 170); py(e.clientY); });
         });
 
+        // Tarjetas de páginas que se inclinan
+        var quitar = [];
+        document.querySelectorAll('.plan').forEach(function (c) {
+            var rx = gsap.quickTo(c, 'rotationX', { duration: 0.6, ease: 'power3' }), ry = gsap.quickTo(c, 'rotationY', { duration: 0.6, ease: 'power3' });
+            function mov(e) { var r = c.getBoundingClientRect(); ry(((e.clientX - r.left) / r.width - 0.5) * 8); rx(-((e.clientY - r.top) / r.height - 0.5) * 8); }
+            function sal() { rx(0); ry(0); }
+            c.addEventListener('pointermove', mov); c.addEventListener('pointerleave', sal);
+            quitar.push(function () { c.removeEventListener('pointermove', mov); c.removeEventListener('pointerleave', sal); gsap.set(c, { rotationX: 0, rotationY: 0 }); });
+        });
+
+        // Cursor circular que crece sobre enlaces y pone «Ver» sobre los trabajos
+        var cur = document.getElementById('cursor');
+        if (window.matchMedia('(pointer: fine)').matches) {
+            var cx = gsap.quickTo(cur, 'x', { duration: 0.45, ease: 'power3' }), cy = gsap.quickTo(cur, 'y', { duration: 0.45, ease: 'power3' });
+            var mover = function (e) {
+                cx(e.clientX); cy(e.clientY); cur.classList.add('vivo');
+                var t = e.target.closest ? e.target : null;
+                cur.classList.toggle('view', !!(t && t.closest('.project .shot')));
+                cur.classList.toggle('link', !!(t && !t.closest('.project .shot') && t.closest('a, button, summary, .svc')));
+            };
+            window.addEventListener('pointermove', mover);
+            quitar.push(function () { window.removeEventListener('pointermove', mover); });
+        }
+
         // Botones que siguen al ratón
         document.querySelectorAll('.magnet').forEach(function (b) {
             var bx = gsap.quickTo(b, 'x', { duration: 0.5, ease: 'power3' }), by = gsap.quickTo(b, 'y', { duration: 0.5, ease: 'power3' });
@@ -704,7 +873,7 @@
             b.addEventListener('pointerleave', function () { bx(0); by(0); });
         });
 
-        return function () { work.classList.remove('pin-on'); gsap.set(track, { x: 0 }); };
+        return function () { quitar.forEach(function (q) { q(); }); work.classList.remove('pin-on'); gsap.set(track, { x: 0 }); };
     });
 
     // Nombre gigante del pie
