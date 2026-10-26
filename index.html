@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>AutoWeb Studio · Webs y automatizaciones para negocios</title>
     <meta name="description" content="Páginas web, atención automática en Instagram, automatización de redes, cartas digitales y captación de clientes para todo tipo de negocios.">
-    <meta name="theme-color" content="#F6F5F1">
+    <meta name="theme-color" content="#0B0B0C">
     <meta property="og:title" content="AutoWeb Studio · Webs y automatizaciones para negocios">
     <meta property="og:description" content="Webs, automatizaciones y captación de clientes para negocios.">
     <meta property="og:image" content="https://jlopedigital.vercel.app/galindo-preview.jpg">
@@ -17,276 +17,434 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #F6F5F1;
-            --surface: #FFFFFF;
-            --ink: #111214;
-            --ink-2: #2A2C31;
-            --muted: #5F6168;
-            --line: #E2E0D9;
-            --navy: #1C2840;
-            --gold: #A9843F;
+            --bg: #0B0B0C;
+            --bg-2: #121214;
+            --card: #17171A;
+            --line: #26262B;
+            --text: #F2F0EB;
+            --muted: #8E8C88;
+            --accent: #D4AF6A;
             --head: 'Inter Tight', 'Inter', system-ui, sans-serif;
             --body: 'Inter', system-ui, -apple-system, sans-serif;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 76px; }
-        body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+        html { -webkit-text-size-adjust: 100%; }
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
         img { display: block; max-width: 100%; height: auto; }
-        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
-        h1, h2, h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; }
-        .kicker { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.01em; }
+        .wrap { max-width: 1240px; margin: 0 auto; padding: 0 22px; }
+        h1, h2, h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.035em; line-height: 0.98; }
+        .tag { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--muted); }
+        .tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 
         /* Botones */
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 50px; padding: 0 22px; border-radius: 10px; font-size: 15px; font-weight: 600; transition: background-color .15s ease, border-color .15s ease; white-space: nowrap; }
-        .btn-dark { background: var(--ink); color: #fff; }
-        .btn-dark:hover { background: var(--navy); }
-        .btn-line { border: 1px solid #CFCCC3; color: var(--ink); background: transparent; }
-        .btn-line:hover { border-color: var(--ink); }
+        .btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; isolation: isolate; transition: color .35s var(--ease); }
+        .btn::before { content: ""; position: absolute; inset: 0; border-radius: inherit; transform: translateY(101%); transition: transform .45s var(--ease); z-index: -1; }
+        .btn:hover::before { transform: translateY(0); }
+        .btn-light { background: var(--text); color: var(--bg); }
+        .btn-light::before { background: var(--accent); }
+        .btn-line { border: 1px solid #3A3A40; color: var(--text); }
+        .btn-line::before { background: var(--text); }
+        .btn-line:hover { color: var(--bg); }
         .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-        .arrow-link { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; color: var(--ink); }
-        .arrow-link svg { width: 16px; height: 16px; transition: transform .15s ease; }
-        .arrow-link:hover svg { transform: translateX(3px); }
 
         /* Cabecera */
-        .top { position: sticky; top: 0; z-index: 50; background: rgba(246,245,241,0.92); backdrop-filter: saturate(150%) blur(10px); -webkit-backdrop-filter: saturate(150%) blur(10px); border-bottom: 1px solid var(--line); }
-        .top .wrap { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+        .top { position: fixed; top: 0; left: 0; right: 0; z-index: 60; transition: transform .5s var(--ease), background-color .3s ease; }
+        .top.hide { transform: translateY(-100%); }
+        .top.solid { background: rgba(11,11,12,0.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .top .wrap { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
         .brand { display: flex; align-items: center; gap: 10px; font-family: var(--head); font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
         .brand img { width: 34px; height: 34px; border-radius: 50%; }
-        .nav { display: none; gap: 28px; font-size: 14.5px; color: var(--muted); }
-        .nav a:hover { color: var(--ink); }
-        .top .btn { min-height: 40px; padding: 0 16px; font-size: 14px; border-radius: 8px; }
+        .nav { display: none; gap: 30px; font-size: 14.5px; color: var(--muted); }
+        .nav a { position: relative; transition: color .2s ease; }
+        .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--text); transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+        .nav a:hover { color: var(--text); }
+        .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+        .top .btn { min-height: 42px; padding: 0 18px; font-size: 14px; }
 
         /* Portada */
-        .hero { padding: 56px 0 64px; border-bottom: 1px solid var(--line); }
-        .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: center; }
-        .hero h1 { font-size: clamp(40px, 10.5vw, 72px); margin: 16px 0 20px; }
-        .hero p.lead { font-size: 18px; color: var(--muted); max-width: 520px; }
-        .hero .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-        .hero-note { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: var(--muted); }
-        .hero-note span { display: inline-flex; align-items: center; gap: 7px; }
-        .hero-note svg { width: 16px; height: 16px; color: var(--navy); }
+        .hero { position: relative; min-height: 100svh; padding: 120px 0 70px; display: flex; align-items: center; overflow: hidden; }
+        .glow { position: absolute; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgba(212,175,106,0.20), rgba(212,175,106,0) 62%); left: 55%; top: 10%; transform: translate(-50%, -50%); pointer-events: none; filter: blur(10px); }
+        .glow.two { width: 620px; height: 620px; background: radial-gradient(circle, rgba(70,90,160,0.22), rgba(70,90,160,0) 62%); left: 85%; top: 75%; }
+        .hero .wrap { position: relative; z-index: 2; width: 100%; display: grid; grid-template-columns: minmax(0, 1fr); gap: 56px; align-items: center; }
+        .hero h1 { font-size: clamp(48px, 13vw, 116px); margin: 22px 0 26px; }
+        .line { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+        .line > span { display: inline-block; }
+        .hero h1 em { font-style: normal; color: var(--accent); }
+        .hero p.lead { font-size: 18px; color: var(--muted); max-width: 500px; }
+        .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+        .scroll-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 2; display: none; flex-direction: column; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+        .scroll-hint i { width: 1px; height: 46px; background: linear-gradient(var(--muted), transparent); position: relative; overflow: hidden; }
+        .scroll-hint i::after { content: ""; position: absolute; left: 0; top: -46px; width: 1px; height: 46px; background: var(--text); animation: baja 2s var(--ease) infinite; }
+        @keyframes baja { to { top: 46px; } }
 
-        /* Móvil con la web real */
-        .showcase { justify-self: center; width: 100%; max-width: 330px; }
-        .phone { display: block; aspect-ratio: 390 / 780; border-radius: 42px; padding: 10px; background: #15161A; box-shadow: 0 30px 60px -28px rgba(17,18,20,0.45); position: relative; }
-        .phone::before { content: ""; position: absolute; top: 19px; left: 50%; transform: translateX(-50%); width: 82px; height: 23px; border-radius: 20px; background: #000; z-index: 2; }
-        .screen { width: 100%; height: 100%; border-radius: 33px; overflow: hidden; background: #0A0A0A; }
-        .screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; animation: recorre 26s ease-in-out 1.5s infinite alternate; }
+        /* Móviles con trabajos reales */
+        .devices { position: relative; height: 560px; max-width: 460px; width: 100%; justify-self: center; }
+        .phone { position: absolute; width: 250px; aspect-ratio: 390 / 800; border-radius: 40px; padding: 9px; background: #1C1C20; box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 50px 90px -30px rgba(0,0,0,0.9); }
+        .phone::before { content: ""; position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 78px; height: 22px; border-radius: 20px; background: #000; z-index: 2; }
+        .phone .screen { width: 100%; height: 100%; border-radius: 32px; overflow: hidden; background: #000; }
+        .phone .screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; animation: recorre 24s ease-in-out 1.5s infinite alternate; }
+        .phone.p2 .screen img { animation-delay: 4s; }
         @keyframes recorre { 0%, 10% { object-position: 50% 0%; } 90%, 100% { object-position: 50% 100%; } }
-        .caption { margin-top: 14px; font-size: 13px; color: var(--muted); text-align: center; }
-        .caption a { color: var(--ink); font-weight: 600; border-bottom: 1px solid var(--line); }
+        .phone.p1 { left: 0; top: 30px; z-index: 2; }
+        .phone.p2 { right: 0; top: 0; }
+        .float-a { animation: flota 7s ease-in-out infinite; }
+        .float-b { animation: flota 8s ease-in-out -3s infinite; }
+        @keyframes flota { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
+        .chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: 10px; background: rgba(23,23,26,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid #2E2E34; border-radius: 14px; padding: 10px 14px; font-size: 13px; box-shadow: 0 20px 40px -18px rgba(0,0,0,0.8); }
+        .chip b { display: block; font-size: 13.5px; }
+        .chip span { color: var(--muted); font-size: 12px; }
+        .chip .dot { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; background: rgba(212,175,106,0.15); color: var(--accent); flex-shrink: 0; }
+        .chip .dot svg { width: 16px; height: 16px; }
+        .chip.c1 { left: -18px; bottom: 30px; }
+        .chip.c2 { right: -16px; bottom: 120px; }
+
+        /* Franja gigante */
+        .marquee { padding: 34px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
+        .marquee .row { display: flex; width: max-content; will-change: transform; }
+        .marquee .row + .row { margin-top: 8px; }
+        .marquee span { font-family: var(--head); font-weight: 600; font-size: clamp(44px, 9vw, 104px); letter-spacing: -0.04em; line-height: 1.05; white-space: nowrap; display: inline-flex; align-items: center; padding-right: 0.45em; }
+        .marquee .row.outline span { color: transparent; -webkit-text-stroke: 1px #4A4A52; }
+        .marquee span i { display: inline-block; width: 0.28em; height: 0.28em; background: var(--accent); border-radius: 50%; margin-left: 0.45em; }
+        .marquee .row.outline span i { background: transparent; border: 1px solid #4A4A52; }
 
         /* Secciones */
-        .section { padding: 80px 0; border-bottom: 1px solid var(--line); }
-        .sec-head { display: grid; gap: 14px; margin-bottom: 40px; max-width: 760px; }
-        .sec-head h2 { font-size: clamp(32px, 7.5vw, 48px); }
-        .sec-head p { color: var(--muted); font-size: 17px; max-width: 560px; }
+        .section { padding: 110px 0; position: relative; }
+        .sec-head { display: grid; gap: 18px; margin-bottom: 56px; }
+        .sec-head h2 { font-size: clamp(40px, 9vw, 84px); max-width: 900px; }
+        .sec-head h2 em { font-style: normal; color: var(--muted); }
+        .sec-head p { color: var(--muted); font-size: 17.5px; max-width: 520px; }
 
         /* Servicios */
         .svc-list { border-top: 1px solid var(--line); }
-        .svc { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 28px 0; border-bottom: 1px solid var(--line); }
-        .svc .num { font-size: 13px; color: var(--muted); font-weight: 500; font-variant-numeric: tabular-nums; }
-        .svc h3 { font-size: 24px; letter-spacing: -0.02em; }
-        .svc p { color: var(--muted); max-width: 560px; }
-        .svc p strong { color: var(--ink); font-weight: 600; }
-        .svc ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
-        .svc li { font-size: 13.5px; color: var(--ink-2); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; }
+        .svc { position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 6px 14px; padding: 30px 0; border-bottom: 1px solid var(--line); cursor: default; }
+        .svc .num { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 10px; }
+        .svc h3 { font-size: clamp(28px, 6vw, 56px); letter-spacing: -0.04em; transition: color .3s ease, transform .5s var(--ease); }
+        .svc .info { grid-column: 2; display: grid; gap: 12px; margin-top: 6px; }
+        .svc .info p { color: var(--muted); max-width: 560px; }
+        .svc .info p strong { color: var(--text); font-weight: 600; }
+        .svc ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+        .svc li { font-size: 13px; color: #CFCDC8; border: 1px solid #33333A; border-radius: 999px; padding: 5px 12px; }
+        .svc .go { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: var(--accent); }
+        .svc .go svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+        .svc .go:hover svg { transform: translateX(4px); }
+        .preview { position: fixed; left: 0; top: 0; width: 260px; height: 320px; border-radius: 18px; overflow: hidden; pointer-events: none; z-index: 40; opacity: 0; transform: translate(-50%, -50%) scale(0.85); transition: opacity .3s ease, transform .4s var(--ease); background: var(--card); border: 1px solid #2E2E34; box-shadow: 0 40px 80px -30px rgba(0,0,0,0.9); display: none; }
+        .preview.on { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        .preview img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .preview .pv { position: absolute; inset: 0; display: none; }
+        .preview .pv.show { display: block; }
+        .pv-card { position: absolute; inset: 0; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; background: radial-gradient(120% 80% at 70% 10%, rgba(212,175,106,0.28), transparent 60%), var(--card); }
+        .pv-card svg { width: 44px; height: 44px; color: var(--accent); margin-bottom: auto; }
+        .pv-card b { font-family: var(--head); font-size: 22px; letter-spacing: -0.02em; line-height: 1.1; }
+        .pv-card span { color: var(--muted); font-size: 13.5px; }
+
+        /* Trabajos */
+        .work { position: relative; overflow: hidden; }
+        .work-track { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+        .project { background: var(--card); border: 1px solid var(--line); border-radius: 26px; padding: 26px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; overflow: hidden; position: relative; }
+        .project .shot { position: relative; height: 380px; border-radius: 18px; overflow: hidden; display: grid; place-items: center; }
+        .project .shot.dark { background: radial-gradient(70% 70% at 50% 30%, rgba(212,175,106,0.25), #0F0F11 70%); }
+        .project .shot.lilac { background: radial-gradient(70% 70% at 50% 30%, #EBDDF2, #CDB7D8 75%); }
+        .project .shot .phone { position: relative; width: 190px; border-radius: 32px; padding: 7px; }
+        .project .shot .phone::before { top: 14px; width: 60px; height: 17px; }
+        .project .shot .phone .screen { border-radius: 26px; }
+        .project .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .project .meta span { font-size: 12.5px; color: #CFCDC8; border: 1px solid #33333A; border-radius: 999px; padding: 4px 11px; }
+        .project h3 { font-size: clamp(32px, 6vw, 48px); margin-bottom: 14px; }
+        .project p { color: var(--muted); }
+        .project dl { display: grid; gap: 14px; margin: 22px 0 26px; padding-top: 20px; border-top: 1px solid var(--line); }
+        .project dt { font-size: 12.5px; color: var(--muted); margin-bottom: 2px; }
+        .project dd { font-size: 15px; }
+        .project.sectors .shot { background: none; display: block; height: auto; }
+        .sector-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+        .sector-grid div { border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: var(--bg-2); transition: border-color .3s ease, transform .4s var(--ease); }
+        .sector-grid div:hover { border-color: #45454D; transform: translateY(-3px); }
+        .sector-grid b { font-family: var(--head); font-weight: 600; font-size: 17px; letter-spacing: -0.015em; display: block; }
+        .sector-grid span { font-size: 13px; color: var(--muted); line-height: 1.45; display: block; margin-top: 4px; }
 
         /* Tipos de página */
         .plans { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
-        .plan { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; }
-        .plan.feat { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
-        .plan .tag { font-size: 12.5px; font-weight: 600; color: var(--muted); }
-        .plan.feat .tag { color: var(--navy); }
-        .plan h3 { font-size: 26px; margin: 10px 0 10px; }
+        .plan { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 30px 26px; display: flex; flex-direction: column; overflow: hidden; transition: transform .5s var(--ease), border-color .3s ease; }
+        .plan:hover { transform: translateY(-6px); border-color: #3E3E46; }
+        .plan.feat { background: linear-gradient(160deg, #241F16 0%, var(--card) 55%); border-color: rgba(212,175,106,0.45); }
+        .plan .ptag { font-size: 12.5px; font-weight: 600; color: var(--muted); }
+        .plan.feat .ptag { color: var(--accent); }
+        .plan h3 { font-size: 32px; margin: 12px 0 12px; letter-spacing: -0.03em; }
         .plan > p { color: var(--muted); font-size: 15.5px; }
-        .plan ul { list-style: none; margin: 20px 0 24px; padding-top: 18px; border-top: 1px solid var(--line); display: grid; gap: 10px; }
+        .plan ul { list-style: none; margin: 22px 0 28px; padding-top: 20px; border-top: 1px solid var(--line); display: grid; gap: 11px; }
         .plan li { display: flex; gap: 10px; font-size: 14.5px; }
-        .plan li svg { width: 17px; height: 17px; color: var(--navy); flex-shrink: 0; margin-top: 2px; }
-        .plan .arrow-link { margin-top: auto; }
+        .plan li svg { width: 17px; height: 17px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .plan .btn { margin-top: auto; align-self: flex-start; min-height: 46px; padding: 0 20px; font-size: 14px; }
 
         /* Captación */
-        .steps4 { display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--line); }
-        .step4 { padding: 22px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 12px; }
-        .step4 .n { font-family: var(--head); font-weight: 600; font-size: 15px; color: var(--muted); }
-        .step4 h3 { font-size: 18px; letter-spacing: -0.015em; }
-        .step4 p { grid-column: 2; color: var(--muted); font-size: 15px; }
-        .terms { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin: 32px 0 32px; }
-        .terms div { font-size: 15px; color: var(--muted); }
-        .terms b { color: var(--ink); font-weight: 600; }
-
-        /* Caso real */
-        .case { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; }
-        .case-box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px 24px; }
-        .case-box h3 { font-size: 28px; }
-        .case-box .meta { font-size: 14px; color: var(--muted); margin: 6px 0 22px; }
-        .case-box dl { display: grid; gap: 18px; }
-        .case-box dt { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 3px; }
-        .case-box dd { font-size: 15.5px; }
-        .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 26px 0 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-        .facts div { padding: 16px 0; }
-        .facts div + div { padding-left: 14px; border-left: 1px solid var(--line); }
-        .facts b { font-family: var(--head); font-weight: 600; font-size: 30px; letter-spacing: -0.03em; display: block; line-height: 1; }
-        .facts span { font-size: 12.5px; color: var(--muted); display: block; margin-top: 6px; line-height: 1.35; }
-        .sectors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
-        .sectors div { background: var(--surface); padding: 18px 18px; }
-        .sectors b { font-family: var(--head); font-weight: 600; font-size: 16px; letter-spacing: -0.01em; display: block; }
-        .sectors span { font-size: 13.5px; color: var(--muted); line-height: 1.45; display: block; margin-top: 3px; }
-        .sectors-title { font-family: var(--head); font-weight: 600; font-size: 20px; letter-spacing: -0.02em; margin-bottom: 6px; }
-        .sectors-sub { color: var(--muted); font-size: 15px; margin-bottom: 18px; }
+        .steps { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; position: relative; }
+        .step { position: relative; padding: 0 0 34px 54px; }
+        .step::before { content: attr(data-n); position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); display: grid; place-items: center; font-family: var(--head); font-weight: 600; font-size: 14px; background: var(--bg); z-index: 1; }
+        .step h3 { font-size: 22px; letter-spacing: -0.02em; margin: 6px 0 6px; }
+        .step p { color: var(--muted); font-size: 15px; }
+        .rail { position: absolute; left: 18px; top: 10px; bottom: 40px; width: 1px; background: var(--line); }
+        .rail i { position: absolute; inset: 0; background: var(--accent); transform-origin: top; }
+        .terms { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 26px 0 36px; }
+        .terms div { border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; color: var(--muted); font-size: 15px; background: var(--bg-2); }
+        .terms b { color: var(--text); display: block; font-family: var(--head); font-size: 19px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 4px; }
 
         /* Proceso */
         .process { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
-        .process div { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
-        .process .n { font-family: var(--head); font-weight: 600; font-size: 14px; color: var(--muted); display: block; margin-bottom: 18px; }
-        .process h3 { font-size: 19px; letter-spacing: -0.015em; margin-bottom: 6px; }
+        .process div { border-top: 1px solid var(--text); padding-top: 22px; }
+        .process .n { font-family: var(--head); font-weight: 600; font-size: 64px; letter-spacing: -0.05em; line-height: 1; color: #2A2A30; display: block; margin-bottom: 16px; }
+        .process h3 { font-size: 22px; letter-spacing: -0.02em; margin-bottom: 8px; }
         .process p { color: var(--muted); font-size: 15px; }
 
         /* Preguntas */
         .faq { border-top: 1px solid var(--line); }
         .faq details { border-bottom: 1px solid var(--line); }
-        .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 22px 0; font-family: var(--head); font-weight: 600; font-size: 18px; letter-spacing: -0.015em; }
+        .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px 0; font-family: var(--head); font-weight: 600; font-size: clamp(19px, 3.6vw, 26px); letter-spacing: -0.02em; transition: color .2s ease; }
+        .faq summary:hover { color: var(--accent); }
         .faq summary::-webkit-details-marker { display: none; }
-        .faq summary::after { content: ""; width: 10px; height: 10px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(45deg) translateY(-3px); transition: transform .2s ease; flex-shrink: 0; margin-right: 4px; }
-        .faq details[open] summary::after { transform: rotate(225deg) translateY(-3px); }
-        .faq details p { color: var(--muted); padding: 0 40px 22px 0; max-width: 700px; }
+        .faq summary .pm { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #3A3A40; position: relative; flex-shrink: 0; transition: transform .4s var(--ease), background-color .3s ease; }
+        .faq summary .pm::before, .faq summary .pm::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 1.5px; background: var(--text); transform: translate(-50%, -50%); }
+        .faq summary .pm::after { transform: translate(-50%, -50%) rotate(90deg); transition: transform .4s var(--ease); }
+        .faq details[open] summary .pm { background: var(--text); }
+        .faq details[open] summary .pm::before { background: var(--bg); }
+        .faq details[open] summary .pm::after { transform: translate(-50%, -50%) rotate(0deg); background: var(--bg); }
+        .faq .ans { overflow: hidden; }
+        .faq .ans p { color: var(--muted); padding: 0 56px 26px 0; max-width: 720px; }
 
-        /* Contacto */
-        .contact { background: var(--ink); color: #fff; padding: 80px 0; }
-        .contact h2 { font-size: clamp(34px, 8vw, 56px); max-width: 720px; }
-        .contact p { color: rgba(255,255,255,0.7); font-size: 17px; margin: 16px 0 30px; max-width: 520px; }
-        .contact .actions { display: flex; flex-wrap: wrap; gap: 10px; }
-        .contact .btn-light { background: #fff; color: var(--ink); }
-        .contact .btn-light:hover { background: #E9E7E0; }
-        .contact .btn-ghost { border: 1px solid rgba(255,255,255,0.3); color: #fff; }
-        .contact .btn-ghost:hover { border-color: #fff; }
-        .contact .details { margin-top: 34px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.15); display: flex; flex-wrap: wrap; gap: 10px 32px; font-size: 15px; color: rgba(255,255,255,0.8); }
-        .contact .details a:hover { color: #fff; }
+        /* Cierre */
+        .cta { padding: 130px 0 90px; text-align: center; position: relative; overflow: hidden; }
+        .cta .glow { left: 50%; top: 60%; }
+        .cta h2 { position: relative; font-size: clamp(56px, 15vw, 170px); letter-spacing: -0.05em; line-height: 0.92; }
+        .cta h2 em { font-style: normal; color: var(--accent); }
+        .cta p { position: relative; color: var(--muted); font-size: 18px; margin: 26px auto 38px; max-width: 480px; }
+        .cta .actions { position: relative; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .cta .btn-big { min-height: 64px; padding: 0 34px; font-size: 16px; }
 
-        footer { padding: 28px 0 calc(28px + env(safe-area-inset-bottom)); font-size: 13.5px; color: var(--muted); }
-        footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+        footer { border-top: 1px solid var(--line); padding: 34px 0 calc(34px + env(safe-area-inset-bottom)); overflow: hidden; }
+        .foot-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 14px; color: var(--muted); }
+        .foot-row a:hover { color: var(--text); }
+        .foot-links { display: flex; gap: 20px; flex-wrap: wrap; }
+        .wordmark { font-family: var(--head); font-weight: 700; font-size: 14.6vw; letter-spacing: -0.06em; line-height: 0.8; color: #1B1B1F; white-space: nowrap; margin-top: 36px; text-align: center; user-select: none; }
 
         @media (min-width: 720px) {
             .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .sectors { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .process { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .terms { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+            .terms { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .process { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+            .sector-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         }
-        @media (min-width: 960px) {
+        @media (min-width: 1000px) {
             .nav { display: flex; }
-            .hero { padding: 88px 0 96px; }
-            .hero .wrap { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 72px; }
-            .section { padding: 112px 0; }
-            .svc { grid-template-columns: 70px minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 24px; padding: 34px 0; align-items: start; }
-            .svc .body { display: grid; gap: 10px; }
-            .steps4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 28px; border-top: 0; }
-            .step4 { grid-template-columns: 1fr; border-top: 1px solid var(--ink); border-bottom: 0; padding-top: 18px; }
-            .step4 p { grid-column: 1; }
-            .case { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 56px; align-items: start; }
-            .contact { padding: 112px 0; }
+            .hero .wrap { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 40px; }
+            .scroll-hint { display: flex; }
+            .devices { height: 600px; }
+            .phone { width: 268px; }
+            .section { padding: 150px 0; }
+            .sec-head { grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr); align-items: end; }
+            .sec-head .tag { grid-column: 1 / -1; }
+            .svc { grid-template-columns: 60px minmax(0, 1fr) minmax(0, 0.9fr); gap: 0 30px; padding: 40px 0; align-items: start; }
+            .svc .info { grid-column: 3; margin-top: 4px; }
+            .svc:hover h3 { color: var(--accent); transform: translateX(14px); }
+            .preview { display: block; }
+            .work.pin-on { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+            .work.pin-on .sec-head { margin-bottom: 30px; }
+            .work.pin-on .sec-head h2 { font-size: clamp(40px, 5vw, 64px); }
+            .work.pin-on .work-track { display: flex; align-items: center; gap: 22px; width: max-content; padding-right: 22px; }
+            .work.pin-on .project { width: min(980px, 82vw); grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: center; padding: 30px; }
+            .work.pin-on .project .shot { height: 440px; }
+            .work.pin-on .project.sectors .shot { height: auto; }
+            .work.pin-on .project.sectors { grid-template-columns: minmax(0, 1fr); width: min(720px, 60vw); }
+            .project .shot .phone { width: 210px; }
+            .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; padding-top: 56px; }
+            .step { padding: 0; }
+            .step::before { top: -56px; }
+            .rail { left: 18px; right: 0; top: -38px; bottom: auto; width: auto; height: 1px; }
+            .rail i { transform-origin: left; }
+            footer { padding-bottom: 34px; }
         }
-        @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+        }
     </style>
 </head>
 <body>
 
 <!-- Cabecera -->
-<header class="top">
+<header class="top" id="top">
     <div class="wrap">
         <a href="#" class="brand" aria-label="AutoWeb Studio, inicio"><img src="logo-autoweb.jpg" alt="" width="34" height="34">AutoWeb Studio</a>
         <nav class="nav" aria-label="Secciones">
             <a href="#servicios">Servicios</a>
+            <a href="#trabajos">Trabajos</a>
             <a href="#paginas">Páginas web</a>
             <a href="#captacion">Captación</a>
-            <a href="#trabajos">Trabajos</a>
             <a href="#preguntas">Preguntas</a>
         </nav>
-        <a class="btn btn-dark" href="https://wa.me/34644694667?text=Hola%2C%20vengo%20de%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">Contactar</a>
+        <a class="btn btn-light magnet" href="https://wa.me/34644694667?text=Hola%2C%20vengo%20de%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">Hablemos</a>
     </div>
 </header>
 
 <!-- Portada -->
-<section class="hero">
+<section class="hero" id="inicio">
+    <div class="glow" id="glow"></div>
+    <div class="glow two"></div>
     <div class="wrap">
         <div>
-            <span class="kicker">Webs · Automatizaciones · Captación de clientes</span>
-            <h1>Webs y automatizaciones que trabajan para tu negocio.</h1>
-            <p class="lead">Diseñamos tu página web, automatizamos la atención de tu Instagram y te ayudamos a conseguir clientes nuevos. Tú te dedicas a tu negocio; nosotros nos encargamos del resto.</p>
-            <div class="actions">
-                <a class="btn btn-dark" href="https://wa.me/34644694667?text=Hola%2C%20vengo%20de%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">
+            <span class="tag hero-in">Webs · Automatizaciones · Captación de clientes</span>
+            <h1 aria-label="Webs que trabajan mientras tú atiendes tu negocio.">
+                <span class="line"><span>Webs que</span></span>
+                <span class="line"><span>trabajan</span></span>
+                <span class="line"><span>mientras tú</span></span>
+                <span class="line"><span><em>atiendes.</em></span></span>
+            </h1>
+            <p class="lead hero-in">Diseñamos tu web, automatizamos la atención de tu Instagram y te traemos clientes nuevos. Tú te dedicas a tu negocio; nosotros, a que te encuentren.</p>
+            <div class="actions hero-in">
+                <a class="btn btn-light magnet" href="https://wa.me/34644694667?text=Hola%2C%20vengo%20de%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.41 9.41 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.24 9.43-9.44 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.7C5.8.7.7 5.8.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.3l5.72-1.5a11.33 11.33 0 0 0 5.42 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.32-8.02"/></svg>
                     Escríbenos por WhatsApp
                 </a>
-                <a class="btn btn-line" href="#trabajos">Ver un trabajo real</a>
-            </div>
-            <div class="hero-note">
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Diseño a medida</span>
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pensado para el móvil</span>
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Primera consulta sin compromiso</span>
+                <a class="btn btn-line magnet" href="#trabajos">Ver trabajos</a>
             </div>
         </div>
-        <div class="showcase">
-            <a class="phone" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Ver la página de Galindo Barber Shop">
-                <div class="screen"><img src="galindo-completa.jpg" alt="Página web de Galindo Barber Shop en un móvil" width="600" height="3306"></div>
-            </a>
-            <p class="caption">Web real de un cliente: <a href="#trabajos">Galindo Barber Shop</a></p>
+        <div class="devices" id="devices">
+            <div class="float-b"><a class="phone p2" href="https://beautygalindo.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Beauty Galindo"><div class="screen"><img src="beauty-completa.jpg" alt="Web de Beauty Galindo" width="600" height="3448"></div></a></div>
+            <div class="float-a"><a class="phone p1" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Galindo Barber Shop"><div class="screen"><img src="galindo-completa.jpg" alt="Web de Galindo Barber Shop" width="600" height="3306"></div></a></div>
+            <div class="chip c1"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Webs reales</b><span>de clientes, en funcionamiento</span></div></div>
+            <div class="chip c2"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/></svg></span><div><b>Hechas para el móvil</b><span>donde están tus clientes</span></div></div>
         </div>
     </div>
+    <div class="scroll-hint" aria-hidden="true">Desliza<i></i></div>
 </section>
+
+<!-- Franja -->
+<div class="marquee" aria-hidden="true">
+    <div class="row" id="mq1"><span>Páginas web<i></i></span><span>Automatización<i></i></span><span>Instagram 24/7<i></i></span><span>Captación de clientes<i></i></span><span>Páginas web<i></i></span><span>Automatización<i></i></span><span>Instagram 24/7<i></i></span><span>Captación de clientes<i></i></span></div>
+    <div class="row outline" id="mq2"><span>Cartas digitales<i></i></span><span>Redes sociales<i></i></span><span>Reservas por WhatsApp<i></i></span><span>Diseño a medida<i></i></span><span>Cartas digitales<i></i></span><span>Redes sociales<i></i></span><span>Reservas por WhatsApp<i></i></span><span>Diseño a medida<i></i></span></div>
+</div>
 
 <!-- Servicios -->
 <section class="section" id="servicios">
     <div class="wrap">
         <div class="sec-head">
-            <span class="kicker">Servicios</span>
-            <h2>Lo que hacemos por tu negocio</h2>
-            <p>Cada encargo se hace a medida. Puedes empezar por uno y sumar los demás cuando quieras.</p>
+            <span class="tag rv">Servicios</span>
+            <h2 class="rv">Todo lo que tu negocio necesita para <em>trabajar solo.</em></h2>
+            <p class="rv">Cada encargo se hace a medida. Puedes empezar por uno y sumar los demás cuando quieras.</p>
         </div>
         <div class="svc-list">
-            <article class="svc">
+            <article class="svc rv" data-pv="web">
                 <span class="num">01</span>
                 <h3>Páginas web</h3>
-                <div class="body">
+                <div class="info">
                     <p><strong>Si no te encuentran en internet, encuentran a tu competencia.</strong> Diseñamos tu web a medida para que tu negocio transmita confianza desde el primer vistazo.</p>
                     <ul><li>Diseño propio</li><li>Adaptada al móvil</li><li>Preparada para Google</li></ul>
-                    <a class="arrow-link" href="#paginas">Ver tipos de página <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a class="go" href="#paginas">Ver tipos de página <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
                 </div>
             </article>
-            <article class="svc">
+            <article class="svc rv" data-pv="ig">
                 <span class="num">02</span>
                 <h3>Atención automática en Instagram</h3>
-                <div class="body">
-                    <p><strong>El cliente que escribe a las once de la noche no espera a mañana.</strong> Un asistente responde al momento a los mensajes directos: resuelve dudas, da información y toma reservas o peticiones de presupuesto.</p>
+                <div class="info">
+                    <p><strong>El cliente que escribe a las once de la noche no espera a mañana.</strong> Un asistente responde al momento a tus mensajes directos: resuelve dudas, da información y toma reservas o peticiones de presupuesto.</p>
                     <ul><li>Responde 24/7</li><li>Horarios, precios y ubicación</li><li>Reservas y presupuestos</li></ul>
-                    <a class="arrow-link" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20el%20asistente%20autom%C3%A1tico%20para%20Instagram." target="_blank" rel="noopener">Pedir información <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a class="go" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20el%20asistente%20autom%C3%A1tico%20para%20Instagram." target="_blank" rel="noopener">Pedir información <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
                 </div>
             </article>
-            <article class="svc">
+            <article class="svc rv" data-pv="redes">
                 <span class="num">03</span>
-                <h3>Automatización de redes sociales</h3>
-                <div class="body">
+                <h3>Automatización de redes</h3>
+                <div class="info">
                     <p><strong>Tus redes activas todos los días, sin estar pendiente del móvil.</strong> Programamos tus publicaciones y automatizamos las respuestas para que tu negocio no deje de comunicar.</p>
                     <ul><li>Programación de contenidos</li><li>Respuestas automáticas</li><li>Gestión de cuentas</li><li>Crecimiento orgánico</li></ul>
-                    <a class="arrow-link" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20automatizar%20mis%20redes%20sociales." target="_blank" rel="noopener">Pedir información <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a class="go" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20automatizar%20mis%20redes%20sociales." target="_blank" rel="noopener">Pedir información <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
                 </div>
             </article>
-            <article class="svc">
+            <article class="svc rv" data-pv="carta">
                 <span class="num">04</span>
                 <h3>Carta o catálogo digital</h3>
-                <div class="body">
+                <div class="info">
                     <p><strong>Deja de contestar «¿qué precio tiene?» todos los días.</strong> Tus servicios, productos o carta en un enlace para la bio de Instagram, con un botón que abre WhatsApp con el pedido o la reserva preparados.</p>
                     <ul><li>Con tu logo y colores</li><li>Pedido o reserva en un toque</li><li>Enlace propio</li></ul>
-                    <a class="arrow-link" href="#trabajos">Ver un ejemplo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a class="go" href="#trabajos">Ver ejemplos reales <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
                 </div>
             </article>
-            <article class="svc">
+            <article class="svc rv" data-pv="ads">
                 <span class="num">05</span>
                 <h3>Captación de clientes</h3>
-                <div class="body">
+                <div class="info">
                     <p><strong>Cada día hay gente buscando lo que vendes.</strong> Creamos y gestionamos anuncios en Instagram y Facebook para que te encuentren a ti y no a otro.</p>
-                    <ul><li>Anuncios en Instagram y Facebook</li><li>Público de tu zona o de toda España</li></ul>
-                    <a class="arrow-link" href="#captacion">Cómo funciona <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <ul><li>Anuncios en Instagram y Facebook</li><li>Tu zona o toda España</li></ul>
+                    <a class="go" href="#captacion">Cómo funciona <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Vista previa que sigue al ratón (ordenador) -->
+<div class="preview" id="preview" aria-hidden="true">
+    <div class="pv" data-k="web"><img src="galindo-completa.jpg" alt=""></div>
+    <div class="pv" data-k="carta"><img src="beauty-completa.jpg" alt=""></div>
+    <div class="pv" data-k="ig"><div class="pv-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg><b>«¿Tenéis hueco mañana?»</b><span>Respondido al momento, a cualquier hora.</span></div></div>
+    <div class="pv" data-k="redes"><div class="pv-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h3M8 17h6"/></svg><b>Publicaciones programadas</b><span>Tu negocio comunica todos los días.</span></div></div>
+    <div class="pv" data-k="ads"><div class="pv-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg><b>Clientes nuevos</b><span>Anuncios dirigidos a quien puede comprarte.</span></div></div>
+</div>
+
+<!-- Trabajos -->
+<section class="section work" id="trabajos">
+    <div class="wrap">
+        <div class="sec-head">
+            <span class="tag rv">Trabajos</span>
+            <h2 class="rv">Clientes reales, <em>resultados reales.</em></h2>
+        </div>
+    </div>
+    <div class="wrap work-wrap">
+        <div class="work-track" id="track">
+            <article class="project">
+                <div class="shot dark">
+                    <a class="phone" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Galindo Barber Shop"><div class="screen"><img src="galindo-completa.jpg" alt="Web de Galindo Barber Shop" width="600" height="3306" loading="lazy"></div></a>
+                </div>
+                <div>
+                    <div class="meta"><span>Barbería</span><span>Página básica</span></div>
+                    <h3>Galindo Barber Shop</h3>
+                    <p>Nos pidió una web sencilla, solo para sus tarifas, para poner en su Instagram. Quedó totalmente satisfecho.</p>
+                    <dl>
+                        <div><dt>Lo que hicimos</dt><dd>Una carta digital con su logo: cada servicio con su precio y un botón que abre WhatsApp con la reserva escrita.</dd></div>
+                        <div><dt>El resultado</dt><dd>15 servicios a la vista y reserva en un toque, las 24 horas.</dd></div>
+                    </dl>
+                    <a class="btn btn-line magnet" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener">Ver en directo</a>
+                </div>
+            </article>
+            <article class="project">
+                <div class="shot lilac">
+                    <a class="phone" href="https://beautygalindo.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Beauty Galindo"><div class="screen"><img src="beauty-completa.jpg" alt="Web de Beauty Galindo" width="600" height="3448" loading="lazy"></div></a>
+                </div>
+                <div>
+                    <div class="meta"><span>Peluquería y estética</span><span>Página básica</span></div>
+                    <h3>Beauty Galindo</h3>
+                    <p>Una página con la imagen de su marca para presentar sus servicios de peluquería, barbería y estética.</p>
+                    <dl>
+                        <div><dt>Lo que hicimos</dt><dd>Una web en sus colores, con su logo, sus servicios, su equipo y la reserva por llamada en un toque.</dd></div>
+                        <div><dt>El resultado</dt><dd>Un enlace propio para su perfil, con todo lo que hacen a la vista.</dd></div>
+                    </dl>
+                    <a class="btn btn-line magnet" href="https://beautygalindo.vercel.app" target="_blank" rel="noopener">Ver en directo</a>
+                </div>
+            </article>
+            <article class="project sectors">
+                <div>
+                    <div class="meta"><span>Y para tu negocio</span></div>
+                    <h3>Lo mismo, a medida, para cualquier sector</h3>
+                    <p>Estos son solo ejemplos. Diseñamos lo mismo para:</p>
+                </div>
+                <div class="shot">
+                    <div class="sector-grid">
+                        <div><b>Restaurantes</b><span>Carta y reservas de mesa</span></div>
+                        <div><b>Hoteles</b><span>Habitaciones y disponibilidad</span></div>
+                        <div><b>Clínicas</b><span>Tratamientos y citas</span></div>
+                        <div><b>Tiendas</b><span>Catálogo y pedidos</span></div>
+                        <div><b>Gimnasios</b><span>Horarios, clases y cuotas</span></div>
+                        <div><b>Cualquier negocio</b><span>Talleres, asesorías…</span></div>
+                    </div>
                 </div>
             </article>
         </div>
@@ -297,13 +455,13 @@
 <section class="section" id="paginas">
     <div class="wrap">
         <div class="sec-head">
-            <span class="kicker">Páginas web</span>
-            <h2>Una web para cada necesidad</h2>
-            <p>Te ayudamos a elegir la que de verdad le hace falta a tu negocio, sin pagar por lo que no vas a usar.</p>
+            <span class="tag rv">Páginas web</span>
+            <h2 class="rv">Una web para cada <em>necesidad.</em></h2>
+            <p class="rv">Te ayudamos a elegir la que de verdad le hace falta a tu negocio, sin pagar por lo que no vas a usar.</p>
         </div>
         <div class="plans">
-            <div class="plan">
-                <span class="tag">Básica</span>
+            <div class="plan rv">
+                <span class="ptag">Básica</span>
                 <h3>Página básica</h3>
                 <p>Una sola página, clara y rápida, con tus servicios o productos, precios y contacto. Ideal para el enlace de tu Instagram.</p>
                 <ul>
@@ -311,10 +469,10 @@
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Precios y botón de WhatsApp</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tu logo y tus colores</li>
                 </ul>
-                <a class="arrow-link" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20b%C3%A1sica%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir presupuesto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="btn btn-line" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20b%C3%A1sica%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir presupuesto</a>
             </div>
-            <div class="plan feat">
-                <span class="tag">Recomendada</span>
+            <div class="plan feat rv">
+                <span class="ptag">Recomendada</span>
                 <h3>Página media</h3>
                 <p>Una página más completa para dar confianza, o una página pensada para tus anuncios: una oferta, un mensaje y un botón.</p>
                 <ul>
@@ -322,10 +480,10 @@
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Galería, opiniones y ubicación</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Versión para campañas de anuncios</li>
                 </ul>
-                <a class="arrow-link" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20media%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir presupuesto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="btn btn-light" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20media%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir presupuesto</a>
             </div>
-            <div class="plan">
-                <span class="tag">Profesional</span>
+            <div class="plan rv">
+                <span class="ptag">Profesional</span>
                 <h3>Web profesional</h3>
                 <p>Tu web completa, diseñada desde cero, con varias secciones y preparada para salir en Google y crecer contigo.</p>
                 <ul>
@@ -333,7 +491,7 @@
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Preparada para Google</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ampliable con reservas o asistente</li>
                 </ul>
-                <a class="arrow-link" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20web%20profesional%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir presupuesto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="btn btn-line" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20una%20web%20profesional%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir presupuesto</a>
             </div>
         </div>
     </div>
@@ -343,62 +501,23 @@
 <section class="section" id="captacion">
     <div class="wrap">
         <div class="sec-head">
-            <span class="kicker">Captación de clientes</span>
-            <h2>No esperes a que te encuentren</h2>
-            <p>Creamos y gestionamos anuncios en Instagram y Facebook para las personas que pueden comprarte, en tu zona o en toda España. Los interesados te escriben directamente.</p>
+            <span class="tag rv">Captación de clientes</span>
+            <h2 class="rv">No esperes a que te encuentren. <em>Te llevamos los clientes.</em></h2>
+            <p class="rv">Anuncios en Instagram y Facebook para las personas que pueden comprarte, en tu zona o en toda España.</p>
         </div>
-        <div class="steps4">
-            <div class="step4"><span class="n">1</span><h3>Anuncio a tu público</h3><p>En Instagram y Facebook, para quien te interesa.</p></div>
-            <div class="step4"><span class="n">2</span><h3>El cliente se interesa</h3><p>Pulsa el anuncio y te escribe o deja sus datos.</p></div>
-            <div class="step4"><span class="n">3</span><h3>Te llega el contacto</h3><p>Al momento, con lo que busca.</p></div>
-            <div class="step4"><span class="n">4</span><h3>Tú cierras la venta</h3><p>Nosotros medimos y mejoramos los anuncios.</p></div>
+        <div class="steps" id="steps">
+            <div class="rail"><i id="railFill"></i></div>
+            <div class="step rv" data-n="1"><h3>Anuncio a tu público</h3><p>En Instagram y Facebook, para quien te interesa.</p></div>
+            <div class="step rv" data-n="2"><h3>El cliente se interesa</h3><p>Pulsa el anuncio y te escribe o deja sus datos.</p></div>
+            <div class="step rv" data-n="3"><h3>Te llega el contacto</h3><p>Al momento, con lo que busca.</p></div>
+            <div class="step rv" data-n="4"><h3>Tú cierras la venta</h3><p>Nosotros medimos y mejoramos los anuncios.</p></div>
         </div>
         <div class="terms">
-            <div><b>Cuentas claras.</b> Ves en todo momento cuánto se invierte y cuántos clientes llegan.</div>
-            <div><b>Todo conectado.</b> Con tu web, tu carta digital y tu asistente automático.</div>
-            <div><b>Sin complicaciones.</b> Nosotros lo montamos y lo gestionamos.</div>
+            <div class="rv"><b>Cuentas claras</b>Ves en todo momento cuánto se invierte y cuántos clientes llegan.</div>
+            <div class="rv"><b>Todo conectado</b>Con tu web, tu carta digital y tu asistente automático.</div>
+            <div class="rv"><b>Sin complicaciones</b>Nosotros lo montamos y lo gestionamos por ti.</div>
         </div>
-        <a class="btn btn-dark" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20que%20me%20consig%C3%A1is%20clientes%20nuevos%20para%20mi%20negocio." target="_blank" rel="noopener">Quiero más clientes</a>
-    </div>
-</section>
-
-<!-- Trabajos -->
-<section class="section" id="trabajos">
-    <div class="wrap">
-        <div class="sec-head">
-            <span class="kicker">Trabajos</span>
-            <h2>Un cliente real, un resultado real</h2>
-            <p>Galindo Barber Shop nos pidió una web sencilla, solo para sus tarifas, para poner en su Instagram. Esto es lo que le entregamos, y quedó totalmente satisfecho.</p>
-        </div>
-        <div class="case">
-            <div class="case-box">
-                <h3>Galindo Barber Shop</h3>
-                <p class="meta">Barbería · Página básica de tarifas</p>
-                <dl>
-                    <div><dt>Lo que nos pidió</dt><dd>Una página sencilla, solo con sus tarifas y bonos, para el enlace de su perfil.</dd></div>
-                    <div><dt>Lo que hicimos</dt><dd>Una carta digital con su logo y sus colores: cada servicio con su precio y un botón que abre WhatsApp con la reserva escrita.</dd></div>
-                    <div><dt>El resultado</dt><dd>Sus clientes ven todos los precios y reservan en un toque.</dd></div>
-                </dl>
-                <div class="facts">
-                    <div><b>15</b><span>servicios con su precio</span></div>
-                    <div><b>1</b><span>toque para reservar</span></div>
-                    <div><b>24 h</b><span>abierta a sus clientes</span></div>
-                </div>
-                <a class="arrow-link" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener">Ver su página en directo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            </div>
-            <div>
-                <p class="sectors-title">Lo mismo, para cualquier negocio</p>
-                <p class="sectors-sub">Esto es solo un ejemplo. Hacemos lo mismo, a medida, para:</p>
-                <div class="sectors">
-                    <div><b>Restaurantes</b><span>Carta con precios y reservas de mesa</span></div>
-                    <div><b>Hoteles</b><span>Habitaciones y consultas de disponibilidad</span></div>
-                    <div><b>Clínicas</b><span>Tratamientos y petición de cita</span></div>
-                    <div><b>Tiendas</b><span>Catálogo y pedidos por WhatsApp</span></div>
-                    <div><b>Gimnasios y academias</b><span>Horarios, clases e inscripciones</span></div>
-                    <div><b>Cualquier negocio</b><span>Talleres, asesorías, inmobiliarias…</span></div>
-                </div>
-            </div>
-        </div>
+        <a class="btn btn-light magnet rv" href="https://wa.me/34644694667?text=Hola%2C%20me%20interesa%20que%20me%20consig%C3%A1is%20clientes%20nuevos%20para%20mi%20negocio." target="_blank" rel="noopener">Quiero más clientes</a>
     </div>
 </section>
 
@@ -406,57 +525,193 @@
 <section class="section">
     <div class="wrap">
         <div class="sec-head">
-            <span class="kicker">Cómo trabajamos</span>
-            <h2>Sencillo, de principio a fin</h2>
+            <span class="tag rv">Cómo trabajamos</span>
+            <h2 class="rv">Sencillo, <em>de principio a fin.</em></h2>
         </div>
         <div class="process">
-            <div><span class="n">Paso 1</span><h3>Nos cuentas tu negocio</h3><p>Por WhatsApp o por Instagram: qué haces, cómo trabajas y qué necesitas.</p></div>
-            <div><span class="n">Paso 2</span><h3>Te proponemos una solución</h3><p>Qué haríamos, cómo quedaría y cuánto cuesta, antes de empezar.</p></div>
-            <div><span class="n">Paso 3</span><h3>Te lo entregamos funcionando</h3><p>Lo montamos, lo revisamos contigo y lo usas desde el primer día.</p></div>
+            <div class="rv"><span class="n">01</span><h3>Nos cuentas tu negocio</h3><p>Por WhatsApp o por Instagram: qué haces, cómo trabajas y qué necesitas.</p></div>
+            <div class="rv"><span class="n">02</span><h3>Te proponemos una solución</h3><p>Qué haríamos, cómo quedaría y cuánto cuesta, antes de empezar.</p></div>
+            <div class="rv"><span class="n">03</span><h3>Te lo entregamos funcionando</h3><p>Lo montamos, lo revisamos contigo y lo usas desde el primer día.</p></div>
         </div>
     </div>
 </section>
 
 <!-- Preguntas -->
-<section class="section" id="preguntas">
+<section class="section" id="preguntas" style="padding-top:0">
     <div class="wrap">
         <div class="sec-head">
-            <span class="kicker">Preguntas frecuentes</span>
-            <h2>Lo que suelen preguntarnos</h2>
+            <span class="tag rv">Preguntas frecuentes</span>
+            <h2 class="rv">Lo que suelen <em>preguntarnos.</em></h2>
         </div>
-        <div class="faq">
-            <details><summary>¿Tengo que saber de tecnología?</summary><p>No. Nos encargamos de montarlo todo y te lo entregamos funcionando. Te enseñamos lo justo para usarlo y, si algo no te queda claro, nos escribes.</p></details>
-            <details><summary>¿Qué tipo de página necesito?</summary><p>Si quieres algo rápido para tu Instagram, una página básica. Si vas a hacer anuncios o quieres dar más confianza, una página media. Si quieres la imagen completa de tu negocio en internet, una web profesional. Cuéntanos qué buscas y te recomendamos la que te compensa.</p></details>
-            <details><summary>¿Cómo me conseguís clientes nuevos?</summary><p>Con anuncios en Instagram y Facebook dirigidos a las personas que pueden comprarte. Quien se interesa te escribe o deja sus datos, y tú lo atiendes. Ves en todo momento cuánto se invierte y cuántos clientes llegan.</p></details>
-            <details><summary>¿Sirve para mi tipo de negocio?</summary><p>Trabajamos con todo tipo de negocios: tiendas, restaurantes, clínicas, talleres, academias, inmobiliarias, asesorías… Si tus clientes te buscan en internet o te escriben para preguntar, reservar o pedir presupuesto, podemos ayudarte.</p></details>
-            <details><summary>¿Cuánto cuesta?</summary><p>Depende de lo que necesites: no es lo mismo una página básica que una web profesional. Te decimos el precio antes de empezar, sin compromiso.</p></details>
+        <div class="faq rv">
+            <details><summary>¿Tengo que saber de tecnología?<span class="pm"></span></summary><div class="ans"><p>No. Nos encargamos de montarlo todo y te lo entregamos funcionando. Te enseñamos lo justo para usarlo y, si algo no te queda claro, nos escribes.</p></div></details>
+            <details><summary>¿Qué tipo de página necesito?<span class="pm"></span></summary><div class="ans"><p>Si quieres algo rápido para tu Instagram, una página básica. Si vas a hacer anuncios o quieres dar más confianza, una página media. Si quieres la imagen completa de tu negocio en internet, una web profesional. Cuéntanos qué buscas y te recomendamos la que te compensa.</p></div></details>
+            <details><summary>¿Cómo me conseguís clientes nuevos?<span class="pm"></span></summary><div class="ans"><p>Con anuncios en Instagram y Facebook dirigidos a las personas que pueden comprarte. Quien se interesa te escribe o deja sus datos, y tú lo atiendes. Ves en todo momento cuánto se invierte y cuántos clientes llegan.</p></div></details>
+            <details><summary>¿Sirve para mi tipo de negocio?<span class="pm"></span></summary><div class="ans"><p>Trabajamos con todo tipo de negocios: tiendas, restaurantes, clínicas, talleres, academias, inmobiliarias, asesorías… Si tus clientes te buscan en internet o te escriben para preguntar, reservar o pedir presupuesto, podemos ayudarte.</p></div></details>
+            <details><summary>¿Cuánto cuesta?<span class="pm"></span></summary><div class="ans"><p>Depende de lo que necesites: no es lo mismo una página básica que una web profesional. Te decimos el precio antes de empezar, sin compromiso.</p></div></details>
         </div>
     </div>
 </section>
 
-<!-- Contacto -->
-<section class="contact">
+<!-- Cierre -->
+<section class="cta">
+    <div class="glow"></div>
     <div class="wrap">
-        <h2>¿Hablamos de tu negocio?</h2>
-        <p>Cuéntanos a qué te dedicas y te decimos qué haríamos. La primera consulta no tiene compromiso.</p>
-        <div class="actions">
-            <a class="btn btn-light" href="https://wa.me/34644694667?text=Hola%2C%20vengo%20de%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
-            <a class="btn btn-ghost" href="https://ig.me/m/jlope7820" target="_blank" rel="noopener">Mensaje en Instagram</a>
-        </div>
-        <div class="details">
-            <a href="tel:+34644694667">644 694 667</a>
-            <a href="https://www.instagram.com/jlope7820/" target="_blank" rel="noopener">@jlope7820</a>
+        <h2 class="rv">¿Hablamos<br>de tu <em>negocio?</em></h2>
+        <p class="rv">Cuéntanos a qué te dedicas y te decimos qué haríamos. La primera consulta no tiene compromiso.</p>
+        <div class="actions rv">
+            <a class="btn btn-light btn-big magnet" href="https://wa.me/34644694667?text=Hola%2C%20vengo%20de%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+            <a class="btn btn-line btn-big magnet" href="https://ig.me/m/jlope7820" target="_blank" rel="noopener">Mensaje en Instagram</a>
         </div>
     </div>
 </section>
 
 <footer>
-    <div class="wrap"><span>© <span data-anio>2026</span> AutoWeb Studio</span><span>Webs, automatizaciones y captación de clientes</span></div>
+    <div class="wrap">
+        <div class="foot-row">
+            <span>© <span data-anio>2026</span> AutoWeb Studio</span>
+            <div class="foot-links"><a href="tel:+34644694667">644 694 667</a><a href="https://www.instagram.com/jlope7820/" target="_blank" rel="noopener">Instagram</a><a href="#inicio">Volver arriba ↑</a></div>
+        </div>
+    </div>
+    <div class="wordmark" id="wordmark" aria-hidden="true">AutoWeb Studio</div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
+(function () {
     var a = document.querySelector('[data-anio]');
     if (a) a.textContent = new Date().getFullYear();
+
+    // Cabecera: fondo al bajar, se esconde al bajar rápido y vuelve al subir
+    var top = document.getElementById('top'), lastY = 0;
+    function cabecera() {
+        var y = window.scrollY;
+        top.classList.toggle('solid', y > 20);
+        top.classList.toggle('hide', y > 400 && y > lastY + 4);
+        if (y < lastY - 4) top.classList.remove('hide');
+        lastY = y;
+    }
+    window.addEventListener('scroll', cabecera, { passive: true });
+    cabecera();
+
+    // Preguntas: abrir y cerrar con suavidad
+    document.querySelectorAll('.faq details').forEach(function (d) {
+        var s = d.querySelector('summary'), ans = d.querySelector('.ans');
+        s.addEventListener('click', function (e) {
+            if (!window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            e.preventDefault();
+            if (d.open) {
+                gsap.to(ans, { height: 0, duration: 0.45, ease: 'power3.inOut', onComplete: function () { d.open = false; ans.style.height = ''; } });
+            } else {
+                d.open = true;
+                gsap.fromTo(ans, { height: 0 }, { height: 'auto', duration: 0.55, ease: 'power3.out' });
+            }
+        });
+    });
+
+    var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (quieto || !window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Desplazamiento suave
+    if (window.Lenis) {
+        var lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+        gsap.ticker.lagSmoothing(0);
+        document.querySelectorAll('a[href^="#"]').forEach(function (l) {
+            l.addEventListener('click', function (e) {
+                var id = l.getAttribute('href');
+                if (id.length < 2) return;
+                var el = document.querySelector(id);
+                if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -70 }); }
+            });
+        });
+    }
+
+    // Entrada de la portada
+    var intro = gsap.timeline({ defaults: { ease: 'expo.out' } });
+    intro.from('.hero h1 .line > span', { yPercent: 110, duration: 1.3, stagger: 0.09 }, 0.15)
+         .from('.hero-in', { y: 24, opacity: 0, duration: 1.1, stagger: 0.08 }, 0.45)
+         .from('.devices .phone', { y: 120, opacity: 0, rotate: function (i) { return i ? 8 : -6; }, duration: 1.6, stagger: 0.12 }, 0.35)
+         .from('.chip', { scale: 0.6, opacity: 0, duration: 0.9, stagger: 0.12, ease: 'back.out(1.7)' }, 1.0);
+
+    // Los móviles de la portada se separan al bajar
+    gsap.to('.phone.p1', { yPercent: -18, rotate: -4, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.phone.p2', { yPercent: 14, rotate: 5, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+    // Brillo que sigue al ratón en la portada
+    var glow = document.getElementById('glow');
+    if (window.matchMedia('(pointer: fine)').matches) {
+        var gx = gsap.quickTo(glow, 'left', { duration: 1.2, ease: 'power3' }), gy = gsap.quickTo(glow, 'top', { duration: 1.2, ease: 'power3' });
+        document.querySelector('.hero').addEventListener('pointermove', function (e) { gx(e.clientX); gy(e.clientY); });
+        gsap.set(glow, { left: window.innerWidth * 0.6, top: window.innerHeight * 0.3 });
+    }
+
+    // Franja: avanza sola y acelera con el scroll
+    function bucle(sel, dir) {
+        var row = document.querySelector(sel);
+        var tw = gsap.to(row, { xPercent: -50 * dir, duration: 38, ease: 'none', repeat: -1 });
+        if (dir < 0) { gsap.set(row, { xPercent: -50 }); tw.kill(); tw = gsap.fromTo(row, { xPercent: -50 }, { xPercent: 0, duration: 38, ease: 'none', repeat: -1 }); }
+        return tw;
+    }
+    var m1 = bucle('#mq1', 1), m2 = bucle('#mq2', -1);
+    ScrollTrigger.create({ trigger: '.marquee', start: 'top bottom', end: 'bottom top', onUpdate: function (s) {
+        var v = Math.min(Math.abs(s.getVelocity()) / 300, 6);
+        gsap.to([m1, m2], { timeScale: 1 + v, duration: 0.3, overwrite: true });
+        gsap.to([m1, m2], { timeScale: 1, duration: 1.2, delay: 0.3 });
+    } });
+
+    // Bloques que aparecen
+    gsap.utils.toArray('.rv').forEach(function (el) {
+        gsap.from(el, { y: 50, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+    });
+
+    var mm = gsap.matchMedia();
+    mm.add('(max-width: 999px)', function () {
+        // En móvil la línea de los pasos es vertical
+        gsap.fromTo('#railFill', { scaleY: 0, scaleX: 1 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#steps', start: 'top 75%', end: 'bottom 60%', scrub: true } });
+    });
+    mm.add('(min-width: 1000px)', function () {
+        // En ordenador la línea es horizontal
+        gsap.fromTo('#railFill', { scaleX: 0, scaleY: 1 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '#steps', start: 'top 80%', end: 'top 35%', scrub: true } });
+
+        // Trabajos en horizontal
+        var work = document.querySelector('.work'), track = document.getElementById('track');
+        work.classList.add('pin-on');
+        ScrollTrigger.refresh();
+        var dist = function () { return track.scrollWidth - document.querySelector('.work-wrap').clientWidth + 22; };
+        var tl = gsap.to(track, { x: function () { return -dist(); }, ease: 'none', scrollTrigger: { trigger: work, start: 'top top', end: function () { return '+=' + dist(); }, pin: true, scrub: 1, invalidateOnRefresh: true } });
+
+        // Vista previa de servicios que sigue al ratón
+        var pv = document.getElementById('preview');
+        var px = gsap.quickTo(pv, 'left', { duration: 0.6, ease: 'power3' }), py = gsap.quickTo(pv, 'top', { duration: 0.6, ease: 'power3' });
+        document.querySelectorAll('.svc').forEach(function (s) {
+            s.addEventListener('pointerenter', function () {
+                pv.querySelectorAll('.pv').forEach(function (p) { p.classList.toggle('show', p.dataset.k === s.dataset.pv); });
+                pv.classList.add('on');
+            });
+            s.addEventListener('pointerleave', function () { pv.classList.remove('on'); });
+            s.addEventListener('pointermove', function (e) { px(e.clientX + 170); py(e.clientY); });
+        });
+
+        // Botones que siguen al ratón
+        document.querySelectorAll('.magnet').forEach(function (b) {
+            var bx = gsap.quickTo(b, 'x', { duration: 0.5, ease: 'power3' }), by = gsap.quickTo(b, 'y', { duration: 0.5, ease: 'power3' });
+            b.addEventListener('pointermove', function (e) { var r = b.getBoundingClientRect(); bx((e.clientX - r.left - r.width / 2) * 0.25); by((e.clientY - r.top - r.height / 2) * 0.35); });
+            b.addEventListener('pointerleave', function () { bx(0); by(0); });
+        });
+
+        return function () { work.classList.remove('pin-on'); gsap.set(track, { x: 0 }); };
+    });
+
+    // Nombre gigante del pie
+    gsap.from('#wordmark', { yPercent: 60, opacity: 0, ease: 'none', scrollTrigger: { trigger: 'footer', start: 'top bottom', end: 'bottom bottom', scrub: true } });
+
+    window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+})();
 </script>
 
 </body>
