@@ -31,10 +31,10 @@
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { -webkit-text-size-adjust: 100%; }
+        html { -webkit-text-size-adjust: 100%; background: var(--bg); }
         html.lenis, html.lenis body { height: auto; }
         .lenis.lenis-smooth { scroll-behavior: auto !important; }
-        body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
+        body { background: transparent; color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
         img { display: block; max-width: 100%; height: auto; }
         .wrap { max-width: 1240px; margin: 0 auto; padding: 0 22px; }
@@ -115,6 +115,19 @@
 
         /* Secciones */
         .section { padding: 110px 0; position: relative; }
+
+        /* Fondo vivo: luces que se mueven despacio, cuadrícula en la portada y grano */
+        .aura { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+        .aura i { position: absolute; width: 80vmax; height: 80vmax; border-radius: 50%; will-change: transform; }
+        .aura i:nth-child(1) { background: radial-gradient(circle, rgba(212,175,106,0.11), transparent 60%); left: -30vmax; top: -30vmax; animation: luz1 34s ease-in-out infinite alternate; }
+        .aura i:nth-child(2) { background: radial-gradient(circle, rgba(60,80,150,0.12), transparent 60%); right: -35vmax; top: 20vh; animation: luz2 41s ease-in-out infinite alternate; }
+        .aura i:nth-child(3) { background: radial-gradient(circle, rgba(212,175,106,0.07), transparent 60%); left: 10vw; bottom: -45vmax; animation: luz3 47s ease-in-out infinite alternate; }
+        @keyframes luz1 { to { transform: translate(35vw, 40vh) scale(1.2); } }
+        @keyframes luz2 { to { transform: translate(-40vw, 30vh) scale(0.85); } }
+        @keyframes luz3 { to { transform: translate(30vw, -35vh) scale(1.15); } }
+        .grain { position: fixed; inset: 0; z-index: 65; pointer-events: none; opacity: 0.06; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+        .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(242,240,235,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(242,240,235,0.045) 1px, transparent 1px); background-size: 72px 72px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 20%, transparent 75%); animation: rejilla 24s linear infinite; }
+        @keyframes rejilla { to { background-position: 72px 72px, 72px 72px; } }
         .sec-head { display: grid; gap: 18px; margin-bottom: 56px; }
         .sec-head h2 { font-size: clamp(40px, 9vw, 84px); max-width: 900px; }
         .sec-head h2 em { color: #A8A49C; }
@@ -345,6 +358,8 @@
 <body>
 <div class="loader" id="loader" aria-hidden="true"><div class="ld-in"><img src="logo-aw.png" alt="" width="72" height="72"><span>AutoWeb Studio</span></div></div>
 <div class="progress" id="progress" aria-hidden="true"></div>
+<div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
 <div class="cursor" id="cursor" aria-hidden="true"><span>Ver</span></div>
 
 <!-- Cabecera -->
