@@ -124,12 +124,22 @@
         /* Fondo vivo: luces que se mueven despacio, cuadrícula en la portada y grano */
         .aura { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
         .aura i { position: absolute; width: 80vmax; height: 80vmax; border-radius: 50%; will-change: transform; }
-        .aura i:nth-child(1) { background: radial-gradient(circle, rgba(212,175,106,0.11), transparent 60%); left: -30vmax; top: -30vmax; animation: luz1 34s ease-in-out infinite alternate; }
-        .aura i:nth-child(2) { background: radial-gradient(circle, rgba(60,80,150,0.12), transparent 60%); right: -35vmax; top: 20vh; animation: luz2 41s ease-in-out infinite alternate; }
-        .aura i:nth-child(3) { background: radial-gradient(circle, rgba(212,175,106,0.07), transparent 60%); left: 10vw; bottom: -45vmax; animation: luz3 47s ease-in-out infinite alternate; }
+        .aura i:nth-child(1) { background: radial-gradient(circle, rgba(212,175,106,0.16), transparent 60%); left: -30vmax; top: -30vmax; animation: luz1 34s ease-in-out infinite alternate; }
+        .aura i:nth-child(2) { background: radial-gradient(circle, rgba(60,80,150,0.17), transparent 60%); right: -35vmax; top: 20vh; animation: luz2 41s ease-in-out infinite alternate; }
+        .aura i:nth-child(3) { background: radial-gradient(circle, rgba(212,175,106,0.10), transparent 60%); left: 10vw; bottom: -45vmax; animation: luz3 47s ease-in-out infinite alternate; }
         @keyframes luz1 { to { transform: translate(35vw, 40vh) scale(1.2); } }
         @keyframes luz2 { to { transform: translate(-40vw, 30vh) scale(0.85); } }
         @keyframes luz3 { to { transform: translate(30vw, -35vh) scale(1.15); } }
+        .guides { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+        .guides div { height: 100%; max-width: 1240px; width: calc(100% - 44px); margin: 0 auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-left: 1px solid rgba(242,240,235,0.05); }
+        .guides span { position: relative; border-right: 1px solid rgba(242,240,235,0.05); overflow: hidden; }
+        .guides span:nth-child(n+3) { display: none; }
+        .guides span::after { content: ""; position: absolute; right: -1px; top: -30%; width: 1px; height: 26%; background: linear-gradient(transparent, rgba(212,175,106,0.55), transparent); animation: destello 9s cubic-bezier(.45,0,.25,1) infinite; }
+        .guides span:nth-child(2)::after { animation-delay: 3.4s; animation-duration: 11s; }
+        .guides span:nth-child(3)::after { animation-delay: 6.1s; }
+        .guides span:nth-child(4)::after { animation-delay: 1.7s; animation-duration: 12s; }
+        @keyframes destello { 0% { top: -30%; } 55%, 100% { top: 130%; } }
+        @media (min-width: 900px) { .guides div { grid-template-columns: repeat(4, minmax(0, 1fr)); } .guides span:nth-child(n+3) { display: block; } }
         .grain { position: fixed; inset: 0; z-index: 65; pointer-events: none; opacity: 0.06; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
         .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(242,240,235,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(242,240,235,0.045) 1px, transparent 1px); background-size: 72px 72px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 20%, transparent 75%); animation: rejilla 24s linear infinite; }
         @keyframes rejilla { to { background-position: 72px 72px, 72px 72px; } }
@@ -378,6 +388,7 @@
 <div class="loader" id="loader" aria-hidden="true"><div class="ld-in"><img src="logo-aw.png" alt="" width="72" height="72"><span>AutoWeb Studio</span></div></div>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="guides" aria-hidden="true"><div><span></span><span></span><span></span><span></span></div></div>
 <div class="grain" aria-hidden="true"></div>
 <div class="cursor" id="cursor" aria-hidden="true"><span>Ver</span></div>
 
