@@ -24,6 +24,7 @@
             --line: #26262B;
             --text: #F2F0EB;
             --muted: #8E8C88;
+            --soft: #B3AFA7;
             --accent: #D4AF6A;
             --head: 'Inter Tight', 'Inter', system-ui, sans-serif;
             --serif: 'Instrument Serif', Georgia, serif;
@@ -79,6 +80,10 @@
         .hero h1 em, .sec-head h2 em, .cta h2 em, .project.next h3 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.015em; font-size: 1.1em; line-height: 0.9; }
         .hero p.lead { font-size: 18px; color: var(--muted); max-width: 500px; }
         .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+        .hero-foot { position: absolute; left: 0; right: 0; bottom: 0; display: none; z-index: 2; }
+        .hero-foot .hf { max-width: 1240px; margin: 0 auto; width: calc(100% - 44px); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+        .hero-foot span { padding: 15px 0; font-size: 13.5px; color: var(--soft); }
+        .hero-foot span + span { padding-left: 22px; border-left: 1px solid var(--line); }
         .scroll-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 2; display: none; flex-direction: column; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
         .scroll-hint i { width: 1px; height: 46px; background: linear-gradient(var(--muted), transparent); position: relative; overflow: hidden; }
         .scroll-hint i::after { content: ""; position: absolute; left: 0; top: -46px; width: 1px; height: 46px; background: var(--text); animation: baja 2s var(--ease) infinite; }
@@ -129,6 +134,10 @@
         .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(242,240,235,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(242,240,235,0.045) 1px, transparent 1px); background-size: 72px 72px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 20%, transparent 75%); animation: rejilla 24s linear infinite; }
         @keyframes rejilla { to { background-position: 72px 72px, 72px 72px; } }
         .sec-head { display: grid; gap: 18px; margin-bottom: 56px; }
+        body { counter-reset: sec; }
+        .sec-head .tag { counter-increment: sec; display: flex; justify-content: space-between; width: 100%; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; letter-spacing: 0.02em; color: var(--soft); margin-bottom: 14px; }
+        .sec-head .tag::before { display: none; }
+        .sec-head .tag::after { content: "(" counter(sec, decimal-leading-zero) ")"; color: var(--muted); font-variant-numeric: tabular-nums; }
         .sec-head h2 { font-size: clamp(40px, 9vw, 84px); max-width: 900px; }
         .sec-head h2 em { color: #A8A49C; }
         .sec-head p { color: var(--muted); font-size: 17.5px; max-width: 520px; }
@@ -141,8 +150,9 @@
         .svc .info { grid-column: 2; display: grid; gap: 12px; margin-top: 6px; }
         .svc .info p { color: var(--muted); max-width: 560px; }
         .svc .info p strong { color: var(--text); font-weight: 600; }
-        .svc ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
-        .svc li { font-size: 13px; color: #CFCDC8; border: 1px solid #33333A; border-radius: 999px; padding: 5px 12px; }
+        .svc ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 0; }
+        .svc li { font-size: 13.5px; color: var(--soft); }
+        .svc li:not(:last-child)::after { content: "/"; color: #4A4A52; margin: 0 10px; }
         .svc .go { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: var(--accent); }
         .svc .go svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
         .svc .go:hover svg { transform: translateX(4px); }
@@ -243,7 +253,14 @@
         footer { border-top: 1px solid var(--line); padding: 34px 0 calc(34px + env(safe-area-inset-bottom)); overflow: hidden; }
         .foot-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 14px; color: var(--muted); }
         .foot-row a:hover { color: var(--text); }
-        .foot-links { display: flex; gap: 20px; flex-wrap: wrap; }
+        .foot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; padding: 30px 0 44px; }
+        .foot-brand { grid-column: 1 / -1; }
+        .foot-brand p { color: var(--muted); font-size: 15px; margin-top: 14px; max-width: 30ch; }
+        .foot-grid h4 { font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 14px; }
+        .foot-grid div > a:not(.brand) { display: block; color: var(--soft); font-size: 15px; padding: 4px 0; transition: color .2s ease; }
+        .foot-grid div > a:not(.brand):hover { color: var(--accent); }
+        .foot-row { padding-top: 22px; border-top: 1px solid var(--line); }
+        @media (min-width: 900px) { .foot-grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; } .foot-brand { grid-column: auto; } }
         .wordmark { font-family: var(--head); font-weight: 700; font-size: 14.6vw; letter-spacing: -0.06em; line-height: 0.8; color: #1B1B1F; white-space: nowrap; margin-top: 36px; text-align: center; user-select: none; }
 
 
@@ -323,7 +340,8 @@
         @media (min-width: 1000px) {
             .nav { display: flex; }
             .hero .wrap { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 40px; }
-            .scroll-hint { display: flex; }
+            .hero-foot { display: block; }
+            .hero { padding: 100px 0 92px; }
             .devices { height: 600px; }
             .phone { width: 268px; }
             .section { padding: 150px 0; }
@@ -417,7 +435,7 @@
             
         </div>
     </div>
-    <div class="scroll-hint" aria-hidden="true">Desliza<i></i></div>
+    <div class="hero-foot"><div class="hf"><span>Diseño a medida</span><span>Hecha para el móvil</span><span>Sin saber de tecnología</span><span>Atención por WhatsApp</span></div></div>
 </section>
 
 <!-- Franja -->
@@ -665,9 +683,18 @@
 
 <footer>
     <div class="wrap">
+        <div class="foot-grid">
+            <div class="foot-brand">
+                <a href="#" class="brand"><img src="logo-aw.png" alt="" width="34" height="34" loading="lazy">AutoWeb Studio</a>
+                <p>Webs, automatizaciones y captación de clientes para negocios.</p>
+            </div>
+            <div><h4>Servicios</h4><a href="#servicios">Páginas web</a><a href="#servicios">Atención automática</a><a href="#servicios">Carta digital</a><a href="#captacion">Captación de clientes</a></div>
+            <div><h4>Estudio</h4><a href="#trabajos">Trabajos</a><a href="#paginas">Tipos de página</a><a href="#preguntas">Preguntas</a></div>
+            <div><h4>Contacto</h4><a href="https://wa.me/34644694667" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/jlope7820/" target="_blank" rel="noopener">Instagram</a><a href="tel:+34644694667">644 694 667</a></div>
+        </div>
         <div class="foot-row">
             <span>© <span data-anio>2026</span> AutoWeb Studio</span>
-            <div class="foot-links"><a href="tel:+34644694667">644 694 667</a><a href="https://www.instagram.com/jlope7820/" target="_blank" rel="noopener">Instagram</a><a href="#inicio">Volver arriba ↑</a></div>
+            <a href="#inicio">Volver arriba ↑</a>
         </div>
     </div>
     <div class="wordmark" id="wordmark" aria-hidden="true">AutoWeb Studio</div>
