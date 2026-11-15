@@ -182,7 +182,9 @@
         .project { background: var(--card); border: 1px solid var(--line); border-radius: 26px; padding: 26px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; overflow: hidden; position: relative; }
         .project .shot { position: relative; height: 380px; border-radius: 18px; overflow: hidden; display: grid; place-items: center; }
         .project .shot.dark { background: radial-gradient(70% 70% at 50% 30%, rgba(212,175,106,0.25), #0F0F11 70%); }
-        .project .shot.lilac { background: radial-gradient(70% 70% at 50% 30%, #EBDDF2, #CDB7D8 75%); }
+        .project .shot.warm { background: radial-gradient(70% 70% at 50% 30%, #E9D2B4, #B4401F 130%); }
+        .project .shot.sage { background: radial-gradient(70% 70% at 50% 30%, #F1E2D9, #9DB3A4 110%); }
+        .project .meta span.ej { color: var(--accent); border-color: rgba(212,175,106,0.5); }
         .project .shot .phone { position: relative; width: 190px; border-radius: 32px; padding: 7px; }
         .project .shot .phone::before { top: 14px; width: 60px; height: 17px; }
         .project .shot .phone .screen { border-radius: 26px; }
@@ -200,6 +202,7 @@
         .sector-grid a:active { border-color: var(--accent); }
         @media (hover: hover) { .sector-grid a:hover { border-color: var(--accent); background-color: #1A1A1E; } }
         .sector-grid svg { width: 22px; height: 22px; color: var(--accent); display: block; margin-bottom: 12px; }
+        .sector-grid .ver { display: block; font-family: var(--body); font-style: normal; font-size: 13px; font-weight: 600; color: var(--accent); margin-top: 10px; }
         .sector-grid b { font-family: var(--head); font-weight: 600; font-size: 17px; letter-spacing: -0.015em; display: block; }
         .sector-grid span { font-size: 13px; color: var(--muted); line-height: 1.45; display: block; margin-top: 4px; }
 
@@ -527,7 +530,7 @@
     <div class="wrap">
         <div class="sec-head">
             <span class="tag rv">Trabajos</span>
-            <h2 class="rv">Trabajo real, <em>resultados reales.</em></h2>
+            <h2 class="rv">Un trabajo real y dos <em>diseños de ejemplo.</em></h2>
         </div>
     </div>
     <div class="wrap work-wrap">
@@ -548,6 +551,36 @@
                     <a class="btn btn-line magnet" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener">Ver en directo</a>
                 </div>
             </article>
+            <article class="project">
+                <div class="shot warm">
+                    <a class="phone" href="ejemplos/restaurante/" aria-label="Ver el diseño de ejemplo: Asador Lumbre"><div class="screen"><video class="demo" poster="ejemplos/img/restaurante-video.jpg" muted loop playsinline preload="none" aria-label="Vídeo: el diseño de ejemplo de un restaurante en un móvil"><source src="ejemplos/img/restaurante-video.webm" type="video/webm"><source src="ejemplos/img/restaurante-video.mp4" type="video/mp4"></video></div></a>
+                </div>
+                <div>
+                    <div class="meta"><span>Restaurante</span><span class="ej">Diseño de ejemplo</span></div>
+                    <h3>Asador Lumbre</h3>
+                    <p>Así haríamos la web de un restaurante: la carta siempre a mano y la mesa reservada en medio minuto.</p>
+                    <dl>
+                        <div><dt>Qué lleva</dt><dd>Carta con precios por secciones, reserva con día, hora y personas, aviso de si está abierto ahora y cómo llegar.</dd></div>
+                        <div><dt>Pruébalo</dt><dd>Toca cualquier botón del ejemplo: te enseña qué pasaría en tu web.</dd></div>
+                    </dl>
+                    <a class="btn btn-line magnet" href="ejemplos/restaurante/">Ver el ejemplo</a>
+                </div>
+            </article>
+            <article class="project">
+                <div class="shot sage">
+                    <a class="phone" href="ejemplos/clinica/" aria-label="Ver el diseño de ejemplo: Clínica Alba"><div class="screen"><video class="demo" poster="ejemplos/img/clinica-video.jpg" muted loop playsinline preload="none" aria-label="Vídeo: el diseño de ejemplo de una clínica en un móvil"><source src="ejemplos/img/clinica-video.webm" type="video/webm"><source src="ejemplos/img/clinica-video.mp4" type="video/mp4"></video></div></a>
+                </div>
+                <div>
+                    <div class="meta"><span>Clínica de estética</span><span class="ej">Diseño de ejemplo</span></div>
+                    <h3>Clínica Alba</h3>
+                    <p>Así haríamos la web de una clínica: tratamientos explicados con claridad y la cita pedida por WhatsApp.</p>
+                    <dl>
+                        <div><dt>Qué lleva</dt><dd>Tratamientos con duración, molestias y precio, primera visita paso a paso, equipo, preguntas frecuentes y petición de cita.</dd></div>
+                        <div><dt>Pruébalo</dt><dd>Toca cualquier botón del ejemplo: te enseña qué pasaría en tu web.</dd></div>
+                    </dl>
+                    <a class="btn btn-line magnet" href="ejemplos/clinica/">Ver el ejemplo</a>
+                </div>
+            </article>
             <article class="project sectors">
                 <div>
                     <div class="meta"><span>Y para tu negocio</span></div>
@@ -556,9 +589,9 @@
                 </div>
                 <div class="shot">
                     <div class="sector-grid">
-                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20restaurante." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.2 1-3.5 3.6-3.5 7v3H17"/></svg><b>Restaurantes</b><span>Carta y reservas de mesa</span></a>
-                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20hotel." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V6M3 16h18M21 20v-6a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg><b>Hoteles</b><span>Habitaciones y disponibilidad</span></a>
-                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20cl%C3%ADnica." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M12 10v4M10 12h4"/></svg><b>Clínicas</b><span>Tratamientos y citas</span></a>
+                        <a href="ejemplos/restaurante/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.2 1-3.5 3.6-3.5 7v3H17"/></svg><b>Restaurantes</b><span>Carta y reservas de mesa</span><em class="ver">Ver ejemplo →</em></a>
+                        <a href="ejemplos/clinica/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V6M3 16h18M21 20v-6a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg><b>Hoteles</b><span>Habitaciones y disponibilidad</span></a>
+                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20cl%C3%ADnica." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M12 10v4M10 12h4"/></svg><b>Clínicas</b><span>Tratamientos y citas</span><em class="ver">Ver ejemplo →</em></a>
                         <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20tienda." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b>Tiendas</b><span>Catálogo y pedidos</span></a>
                         <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20gimnasio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg><b>Gimnasios</b><span>Horarios, clases y cuotas</span></a>
                         <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20negocio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg><b>Cualquier negocio</b><span>Talleres, asesorías…</span></a>

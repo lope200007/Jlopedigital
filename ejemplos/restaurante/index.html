@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Asador Lumbre · Diseño de ejemplo de AutoWeb Studio</title>
+    <meta name="description" content="Diseño de ejemplo de una web para restaurante, hecho por AutoWeb Studio. El negocio es ficticio.">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#16110E">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;500;600;700&family=Inter:wght@500;600&family=Inter+Tight:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../demo.css">
+    <style>
+        :root { --cream: #F5EEE3; --paper: #FBF7F0; --ink: #1E1A17; --soft: #6B6259; --line: #E2D7C6; --ember: #B4401F; --ember-d: #963317; --night: #16110E; --gold: #C9A15B; --serif: 'Playfair Display', Georgia, serif; --sans: 'Karla', system-ui, sans-serif; --ease: cubic-bezier(0.22, 1, 0.36, 1); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; padding-bottom: 76px; }
+        img { display: block; max-width: 100%; }
+        a { color: inherit; text-decoration: none; }
+        button, input, select { font: inherit; color: inherit; }
+        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; letter-spacing: -0.015em; }
+        h2 { font-size: clamp(34px, 6.4vw, 54px); }
+        h2 em { font-style: italic; color: var(--ember); }
+        .kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); display: block; margin-bottom: 14px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 52px; padding: 0 26px; border-radius: 6px; font-weight: 700; font-size: 16px; border: 1.5px solid transparent; cursor: pointer; transition: background-color .25s ease, color .25s ease, transform .15s ease, border-color .25s ease; }
+        .btn:active { transform: scale(0.97); }
+        .btn-ember { background: var(--ember); color: #fff; }
+        .btn-ghost { border-color: rgba(255,255,255,0.55); color: #fff; }
+        .btn-line { border-color: var(--ink); }
+        @media (hover: hover) { .btn-ember:hover { background: var(--ember-d); } .btn-ghost:hover { background: #fff; color: var(--night); } .btn-line:hover { background: var(--ink); color: var(--cream); } }
+        .rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+        .rv.in { opacity: 1; transform: none; }
+
+        /* Cabecera */
+        .top { position: sticky; top: 0; z-index: 40; background: rgba(22,17,14,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #fff; }
+        .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+        .logo { font-family: var(--serif); font-size: 23px; letter-spacing: 0.01em; }
+        .logo small { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -3px; }
+        .nav { display: none; gap: 30px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.8); }
+        .top .btn { min-height: 40px; padding: 0 16px; font-size: 14.5px; }
+
+        /* Portada */
+        .hero { position: relative; color: #fff; background: var(--night); min-height: min(86svh, 760px); display: flex; align-items: flex-end; overflow: hidden; }
+        .hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 92% 60%; animation: acerca 18s ease-out forwards; }
+        @keyframes acerca { from { transform: scale(1.12); } to { transform: scale(1); } }
+        .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,17,14,0.35) 0%, rgba(22,17,14,0.3) 30%, rgba(22,17,14,0.94) 78%); }
+        .hero .wrap { position: relative; z-index: 2; width: 100%; padding-top: 120px; padding-bottom: 44px; }
+        .estado { display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; background: rgba(22,17,14,0.6); border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; padding: 7px 14px; margin-bottom: 20px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+        .estado i { width: 8px; height: 8px; border-radius: 50%; background: #5BD08A; }
+        .estado.cerrado i { background: #E0A04A; }
+        .hero h1 { font-size: clamp(50px, 12vw, 104px); letter-spacing: -0.025em; }
+        .hero h1 em { font-style: italic; color: var(--gold); }
+        .hero p { font-size: clamp(17px, 2.6vw, 21px); color: rgba(255,255,255,0.86); max-width: 30em; margin: 16px 0 28px; }
+        .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+        .datos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 38px; border-top: 1px solid rgba(255,255,255,0.22); }
+        .datos div { padding: 16px 0 0; font-size: 13.5px; color: rgba(255,255,255,0.72); }
+        .datos div + div { padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.22); }
+        .datos b { display: block; font-family: var(--serif); font-weight: 500; font-size: 18px; color: #fff; line-height: 1.2; margin-bottom: 3px; }
+        .datos div { line-height: 1.35; }
+
+        section { padding: 76px 0; }
+        .head { max-width: 640px; margin-bottom: 38px; }
+        .head p { color: var(--soft); margin-top: 14px; }
+
+        /* Platos de la casa */
+        .platos { display: grid; gap: 16px; }
+        .plato { position: relative; border-radius: 10px; overflow: hidden; background: var(--night); color: #fff; aspect-ratio: 4 / 3; }
+        .plato img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+        .plato::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(22,17,14,0.88)); }
+        .plato div { position: absolute; left: 18px; right: 18px; bottom: 16px; z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+        .plato h3 { font-size: 24px; }
+        .plato span { font-size: 14px; color: rgba(255,255,255,0.78); display: block; margin-top: 3px; }
+        .plato b { font-family: var(--serif); font-weight: 500; font-size: 24px; color: var(--gold); white-space: nowrap; }
+        @media (hover: hover) { .plato:hover img { transform: scale(1.06); } }
+
+        /* Carta */
+        .carta { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .tabs { display: flex; gap: 8px; overflow-x: auto; margin: 0 -20px 26px; padding: 0 20px 4px; scrollbar-width: none; }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tab { flex-shrink: 0; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--line); background: transparent; font-weight: 600; font-size: 15.5px; cursor: pointer; transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
+        .tab[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: var(--cream); }
+        .lista { display: none; }
+        .lista.on { display: grid; gap: 0 56px; animation: entra .45s var(--ease); }
+        @keyframes entra { from { opacity: 0; transform: translateY(10px); } }
+        .item { display: grid; grid-template-columns: 1fr auto; gap: 4px 18px; padding: 17px 0; border-bottom: 1px dashed #D5C8B4; }
+        .item h3 { font-family: var(--sans); font-weight: 700; font-size: 17.5px; letter-spacing: 0; line-height: 1.3; }
+        .item h3 i { font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ember); border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: 2px; }
+        .item b { font-family: var(--serif); font-weight: 500; font-size: 20px; }
+        .item p { grid-column: 1; color: var(--soft); font-size: 15.5px; line-height: 1.45; }
+        .nota { font-size: 14px; color: var(--soft); margin-top: 22px; }
+
+        /* Reserva */
+        .reserva { background: var(--night); color: #fff; position: relative; overflow: hidden; }
+        .reserva .fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.22; }
+        .reserva .wrap { position: relative; display: grid; gap: 34px; }
+        .reserva h2 em { color: var(--gold); }
+        .reserva .head p { color: rgba(255,255,255,0.75); }
+        .form { background: var(--cream); color: var(--ink); border-radius: 12px; padding: 24px; display: grid; gap: 16px; }
+        .form label { display: grid; gap: 6px; font-size: 13.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--soft); }
+        .form input, .form select { min-height: 50px; border: 1.5px solid var(--line); border-radius: 6px; background: #fff; padding: 0 14px; font-size: 16px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--ink); width: 100%; }
+        .form input:focus, .form select:focus { outline: 2px solid var(--ember); outline-offset: 1px; }
+        .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .form small { font-size: 14px; color: var(--soft); text-align: center; }
+        .form .btn { width: 100%; }
+
+        /* La casa */
+        .casa .wrap { display: grid; gap: 30px; align-items: center; }
+        .casa img { border-radius: 10px; aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+        .casa p { color: var(--soft); margin-top: 16px; }
+        .firmas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
+        .firmas div { border-top: 2px solid var(--ember); padding-top: 12px; font-size: 14.5px; color: var(--soft); line-height: 1.4; }
+        .firmas b { display: block; font-family: var(--serif); font-weight: 500; font-size: 26px; color: var(--ink); }
+
+        /* Opiniones */
+        .opis { display: grid; gap: 16px; }
+        .opi { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+        .opi .st { color: var(--gold); letter-spacing: 3px; font-size: 16px; }
+        .opi p { font-family: var(--serif); font-style: italic; font-size: 20px; line-height: 1.4; margin: 12px 0 16px; }
+        .opi span { font-size: 14px; color: var(--soft); }
+        .aviso { font-size: 13.5px; color: var(--soft); margin-top: 18px; }
+
+        /* Dónde */
+        .donde { background: var(--paper); border-top: 1px solid var(--line); }
+        .donde .wrap { display: grid; gap: 30px; }
+        .horas { width: 100%; border-collapse: collapse; margin-top: 8px; }
+        .horas td { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 16.5px; }
+        .horas td:last-child { text-align: right; font-weight: 600; }
+        .horas tr.hoy td { color: var(--ember); font-weight: 700; }
+        .mapa { border-radius: 10px; min-height: 280px; background: linear-gradient(0deg, rgba(180,64,31,0.07), rgba(180,64,31,0.07)), repeating-linear-gradient(0deg, transparent 0 46px, #E2D7C6 46px 47px), repeating-linear-gradient(90deg, transparent 0 62px, #E2D7C6 62px 63px), #F0E7D8; position: relative; display: flex; align-items: flex-end; padding: 18px; overflow: hidden; }
+        .mapa::before { content: ""; position: absolute; left: -10%; right: -10%; top: 46%; height: 20px; background: #fff; transform: rotate(-9deg); box-shadow: 0 0 0 1px #E2D7C6; }
+        .pin { position: absolute; left: 50%; top: 42%; width: 34px; height: 34px; margin: -34px 0 0 -17px; background: var(--ember); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 10px 20px -6px rgba(0,0,0,0.4); }
+        .pin::after { content: ""; position: absolute; inset: 10px; border-radius: 50%; background: #fff; }
+        .mapa .tarjeta { position: relative; background: #fff; border-radius: 8px; padding: 14px 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,0.3); width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .mapa .tarjeta b { display: block; font-size: 16px; }
+        .mapa .tarjeta span { font-size: 14px; color: var(--soft); }
+        .mapa .btn { min-height: 42px; padding: 0 16px; font-size: 14.5px; flex-shrink: 0; }
+
+        footer { background: var(--night); color: rgba(255,255,255,0.7); padding: 40px 0 34px; font-size: 14.5px; }
+        footer .wrap { display: grid; gap: 14px; }
+        footer .logo { color: #fff; }
+        footer a.aw { color: var(--gold); font-weight: 600; }
+
+        /* Barra fija en el móvil */
+        .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; display: grid; grid-template-columns: 1fr 1.6fr; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(245,238,227,0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); }
+        .barra .btn { min-height: 50px; padding: 0 12px; }
+
+        @media (min-width: 720px) {
+            body { padding-bottom: 0; }
+            .barra { display: none; }
+            .nav { display: flex; }
+            .platos { grid-template-columns: 1.3fr 1fr 1fr; }
+            .plato { aspect-ratio: auto; height: 420px; }
+            .lista.on { grid-template-columns: 1fr 1fr; }
+            .tabs { margin: 0 0 30px; padding: 0; }
+            .reserva .wrap { grid-template-columns: 1fr 0.9fr; align-items: center; gap: 60px; }
+            .casa .wrap { grid-template-columns: 1fr 1fr; gap: 60px; }
+            .opis { grid-template-columns: repeat(3, 1fr); }
+            .donde .wrap { grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+            section { padding: 110px 0; }
+            .hero .wrap { padding-bottom: 60px; }
+            .datos { max-width: 620px; }
+        }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .rv { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+    </style>
+</head>
+<body data-demo="restaurante">
+
+<div class="demo-bar">
+    <a class="back" href="../../#trabajos"><img src="../../logo-aw.png" alt=""><span><b>Diseño de ejemplo</b><i> · negocio ficticio · AutoWeb Studio</i></span></a>
+    <a class="want" data-pedir target="_blank" rel="noopener">Quiero una así</a>
+</div>
+
+<header class="top">
+    <div class="wrap">
+        <a href="#" class="logo">Lumbre<small>Asador</small></a>
+        <nav class="nav" aria-label="Secciones"><a href="#carta">Carta</a><a href="#casa">La casa</a><a href="#donde">Horario y ubicación</a></nav>
+        <a class="btn btn-ember" href="#reserva">Reservar</a>
+    </div>
+</header>
+
+<main>
+<section class="hero" style="padding:0">
+    <img class="bg" src="../img/r-plato.jpg" alt="Chuletón a la brasa con patatas" width="1400" height="933" fetchpriority="high">
+    <div class="wrap">
+        <span class="estado" id="estado"><i></i><span>Hoy: 13:00–16:00 y 20:30–23:30</span></span>
+        <h1>Carne a la brasa, <em>sin prisa.</em></h1>
+        <p>Vaca madurada, leña de encina y producto de temporada. Asador familiar en el centro desde 1998.</p>
+        <div class="cta">
+            <a class="btn btn-ember" href="#reserva">Reservar mesa</a>
+            <a class="btn btn-ghost" href="#carta">Ver la carta</a>
+        </div>
+        <div class="datos">
+            <div><b>45 días</b>de maduración</div>
+            <div><b>Leña de encina</b>en cada servicio</div>
+            <div><b>Menú del día</b>16,50 € entre semana</div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">Lo que más se pide</span><h2>Tres platos que <em>explican la casa.</em></h2></div>
+        <div class="platos">
+            <a class="plato rv" href="#carta"><img src="../img/r-hero.jpg" alt="Chuletón recién cortado sobre tabla de madera" loading="lazy" width="1400" height="788"><div><h3>Chuletón de vaca<span>Madurado 45 días · para compartir</span></h3><b>68 €/kg</b></div></a>
+            <a class="plato rv" href="#carta"><img src="../img/r-costillar.jpg" alt="Costillar asado con tomate" loading="lazy" width="900" height="601"><div><h3>Costillar a baja temperatura<span>Doce horas y golpe de brasa</span></h3><b>21 €</b></div></a>
+            <a class="plato rv" href="#carta"><img src="../img/r-ensalada.jpg" alt="Ensalada de temporada" loading="lazy" width="900" height="900"><div><h3>Ensalada de la huerta<span>Lo que haya esa semana</span></h3><b>11 €</b></div></a>
+        </div>
+    </div>
+</section>
+
+<section class="carta" id="carta">
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">La carta</span><h2>Corta, y <em>toda a la brasa.</em></h2><p>Precios con IVA incluido. Pregúntanos por los alérgenos: te los explicamos plato a plato.</p></div>
+        <div class="tabs" role="tablist" aria-label="Partes de la carta">
+            <button class="tab" role="tab" aria-selected="true" data-t="entrantes">Para empezar</button>
+            <button class="tab" role="tab" aria-selected="false" data-t="brasa">De la brasa</button>
+            <button class="tab" role="tab" aria-selected="false" data-t="postres">Postres</button>
+            <button class="tab" role="tab" aria-selected="false" data-t="bodega">Bodega</button>
+        </div>
+        <div class="lista on" id="t-entrantes">
+            <div class="item"><h3>Croquetas de cecina<i>De la casa</i></h3><b>9,50 €</b><p>Seis unidades, cremosas, con bechamel de leche fresca.</p></div>
+            <div class="item"><h3>Pimientos asados a la leña</h3><b>10 €</b><p>Pelados a mano, con ajo laminado y aceite de oliva virgen.</p></div>
+            <div class="item"><h3>Chorizo criollo a la brasa</h3><b>8,50 €</b><p>Con chimichurri de la casa y pan de hogaza.</p></div>
+            <div class="item"><h3>Ensalada de la huerta</h3><b>11 €</b><p>Hoja verde, tomate de temporada y cebolla dulce.</p></div>
+            <div class="item"><h3>Puerros a la brasa</h3><b>12 €</b><p>Con salsa romesco y avellana tostada.</p></div>
+            <div class="item"><h3>Tabla de quesos</h3><b>14 €</b><p>Tres quesos de pastor, membrillo y nueces.</p></div>
+        </div>
+        <div class="lista" id="t-brasa">
+            <div class="item"><h3>Chuletón de vaca madurada<i>Para compartir</i></h3><b>68 €/kg</b><p>45 días de maduración. Se sirve trinchado, con piedra caliente.</p></div>
+            <div class="item"><h3>Entrecot de ternera</h3><b>24 €</b><p>350 gramos, con patatas fritas en aceite de oliva.</p></div>
+            <div class="item"><h3>Costillar a baja temperatura</h3><b>21 €</b><p>Doce horas de cocción y acabado a la brasa.</p></div>
+            <div class="item"><h3>Presa ibérica</h3><b>22 €</b><p>Con pimientos asados y sal en escamas.</p></div>
+            <div class="item"><h3>Lubina a la brasa</h3><b>23 €</b><p>Entera, abierta a la espalda, con refrito de ajo.</p></div>
+            <div class="item"><h3>Verduras de temporada</h3><b>15 €</b><p>Parrillada vegetal con aceite de hierbas.</p></div>
+        </div>
+        <div class="lista" id="t-postres">
+            <div class="item"><h3>Tarta de queso al horno<i>De la casa</i></h3><b>7 €</b><p>Cremosa por dentro, tostada por fuera.</p></div>
+            <div class="item"><h3>Torrija caramelizada</h3><b>7,50 €</b><p>Con helado de leche merengada.</p></div>
+            <div class="item"><h3>Piña a la brasa</h3><b>6,50 €</b><p>Con ron añejo y helado de vainilla.</p></div>
+            <div class="item"><h3>Helados artesanos</h3><b>5 €</b><p>Dos bolas: vainilla, chocolate o avellana.</p></div>
+        </div>
+        <div class="lista" id="t-bodega">
+            <div class="item"><h3>Tinto de la casa</h3><b>3,50 € copa</b><p>Tempranillo joven. Botella, 16 €.</p></div>
+            <div class="item"><h3>Crianza de Ribera</h3><b>26 €</b><p>Doce meses en barrica. Va con todo lo de la brasa.</p></div>
+            <div class="item"><h3>Reserva de Rioja</h3><b>34 €</b><p>Para el chuletón.</p></div>
+            <div class="item"><h3>Blanco verdejo</h3><b>18 €</b><p>Fresco, para los entrantes y el pescado.</p></div>
+        </div>
+        <p class="nota">Menú del día, de martes a viernes al mediodía: primero, segundo, postre y bebida por 16,50 €.</p>
+    </div>
+</section>
+
+<section class="reserva" id="reserva">
+    <img class="fondo" src="../img/r-mesa.jpg" alt="" loading="lazy" width="1000" height="666">
+    <div class="wrap">
+        <div class="head rv" style="margin:0"><span class="kicker" style="color:var(--gold)">Reservas</span><h2>Tu mesa, <em>en medio minuto.</em></h2><p>Elige día, hora y cuántos sois. Te confirmamos por WhatsApp en cuanto lo vemos.</p></div>
+        <form class="form rv" id="form" novalidate>
+            <div class="dos">
+                <label>Día<input type="date" id="f-dia" required></label>
+                <label>Hora<select id="f-hora"><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option selected>21:00</option><option>21:30</option><option>22:00</option></select></label>
+            </div>
+            <div class="dos">
+                <label>Personas<select id="f-pers"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8 o más</option></select></label>
+                <label>Nombre<input type="text" id="f-nombre" placeholder="Tu nombre" autocomplete="given-name"></label>
+            </div>
+            <button class="btn btn-ember" type="submit">Reservar por WhatsApp</button>
+            <small>Para grupos de más de ocho, mejor llámanos.</small>
+        </form>
+    </div>
+</section>
+
+<section class="casa" id="casa">
+    <div class="wrap">
+        <img class="rv" src="../img/r-sala.jpg" alt="Comedor del restaurante" loading="lazy" width="1200" height="800">
+        <div class="rv">
+            <span class="kicker">La casa</span>
+            <h2>Dos generaciones <em>delante del fuego.</em></h2>
+            <p>Empezó como una casa de comidas con una parrilla en el patio. Hoy seguimos haciendo lo mismo: comprar buena carne, dejarla madurar el tiempo que pide y asarla con leña, sin esconderla debajo de nada.</p>
+            <div class="firmas">
+                <div><b>1998</b>el año en que abrimos</div>
+                <div><b>60</b>plazas en el comedor</div>
+                <div><b>Terraza</b>abierta de mayo a octubre</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding-top:0">
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">Opiniones</span><h2>Lo que dicen <em>al salir.</em></h2></div>
+        <div class="opis">
+            <div class="opi rv"><div class="st">★★★★★</div><p>«El chuletón, en su punto. Y te explican la carne sin darte una charla.»</p><span>Opinión de ejemplo</span></div>
+            <div class="opi rv"><div class="st">★★★★★</div><p>«Reservé por WhatsApp en un minuto y a la media hora ya tenía la mesa confirmada.»</p><span>Opinión de ejemplo</span></div>
+            <div class="opi rv"><div class="st">★★★★★</div><p>«Vinimos por la brasa y volvimos por la tarta de queso.»</p><span>Opinión de ejemplo</span></div>
+        </div>
+        <p class="aviso">En tu web irían las opiniones reales de tus clientes, enlazadas con tu ficha de Google.</p>
+    </div>
+</section>
+
+<section class="donde" id="donde">
+    <div class="wrap">
+        <div class="rv">
+            <span class="kicker">Horario</span>
+            <h2>Cuándo <em>venir.</em></h2>
+            <table class="horas" id="horas">
+                <tr data-d="1"><td>Lunes</td><td>Cerrado</td></tr>
+                <tr data-d="2"><td>Martes</td><td>13:00–16:00 · 20:30–23:30</td></tr>
+                <tr data-d="3"><td>Miércoles</td><td>13:00–16:00 · 20:30–23:30</td></tr>
+                <tr data-d="4"><td>Jueves</td><td>13:00–16:00 · 20:30–23:30</td></tr>
+                <tr data-d="5"><td>Viernes</td><td>13:00–16:00 · 20:30–00:00</td></tr>
+                <tr data-d="6"><td>Sábado</td><td>13:00–16:30 · 20:30–00:00</td></tr>
+                <tr data-d="0"><td>Domingo</td><td>13:00–16:30</td></tr>
+            </table>
+        </div>
+        <div class="mapa rv">
+            <div class="pin"></div>
+            <div class="tarjeta"><div><b>Calle de la Brasa, 12</b><span>Centro · aparcamiento a 100 m</span></div><a class="btn btn-line" href="#" data-mapa>Cómo llegar</a></div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="wrap">
+        <span class="logo">Lumbre<small>Asador</small></span>
+        <span>Calle de la Brasa, 12 · 900 000 000 · Lunes cerrado</span>
+        <span>Asador Lumbre no existe: es un diseño de ejemplo de <a class="aw" href="../../">AutoWeb Studio</a>. Fotos de Unsplash.</span>
+    </div>
+</footer>
+
+<div class="barra">
+    <a class="btn btn-line" href="#" data-tel>Llamar</a>
+    <a class="btn btn-ember" href="#reserva">Reservar mesa</a>
+</div>
+
+<script src="../demo.js"></script>
+<script>
+(function () {
+    // Pestañas de la carta
+    var tabs = document.querySelectorAll('.tab');
+    tabs.forEach(function (t) {
+        t.addEventListener('click', function () {
+            tabs.forEach(function (x) { x.setAttribute('aria-selected', x === t ? 'true' : 'false'); });
+            document.querySelectorAll('.lista').forEach(function (l) { l.classList.toggle('on', l.id === 't-' + t.dataset.t); });
+        });
+    });
+
+    // Estado de hoy: abierto o cerrado según la hora del visitante
+    var H = { 0: [[13, 16.5]], 1: [], 2: [[13, 16], [20.5, 23.5]], 3: [[13, 16], [20.5, 23.5]], 4: [[13, 16], [20.5, 23.5]], 5: [[13, 16], [20.5, 24]], 6: [[13, 16.5], [20.5, 24]] };
+    function hhmm(x) { var h = Math.floor(x) % 24, m = Math.round((x - Math.floor(x)) * 60); return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m; }
+    var n = new Date(), d = n.getDay(), ahora = n.getHours() + n.getMinutes() / 60, tramos = H[d];
+    var el = document.getElementById('estado'), txt = el.querySelector('span');
+    var abierto = tramos.filter(function (t) { return ahora >= t[0] && ahora < t[1]; })[0];
+    var luego = tramos.filter(function (t) { return ahora < t[0]; })[0];
+    if (abierto) txt.textContent = 'Abierto ahora · hasta las ' + hhmm(abierto[1]);
+    else { el.classList.add('cerrado'); txt.textContent = luego ? 'Cerrado ahora · abrimos a las ' + hhmm(luego[0]) : (tramos.length ? 'Cerrado por hoy' : 'Hoy cerramos por descanso'); }
+    var fila = document.querySelector('#horas tr[data-d="' + d + '"]');
+    if (fila) fila.classList.add('hoy');
+
+    // Reserva: monta el mensaje de WhatsApp
+    var dia = document.getElementById('f-dia');
+    var iso = function (x) { return x.getFullYear() + '-' + ('0' + (x.getMonth() + 1)).slice(-2) + '-' + ('0' + x.getDate()).slice(-2); };
+    dia.min = iso(n); dia.value = iso(n);
+    document.getElementById('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var f = dia.value ? new Date(dia.value + 'T12:00:00') : n;
+        var cuando = f.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+        var pers = document.getElementById('f-pers').value, nom = document.getElementById('f-nombre').value.trim();
+        var msg = 'Hola, quiero reservar mesa para ' + pers + (pers === '1' ? ' persona' : ' personas') + ' el ' + cuando + ' a las ' + document.getElementById('f-hora').value + (nom ? ', a nombre de ' + nom : '') + '.';
+        window.demoAbrir('En tu web, la reserva te llega por WhatsApp', 'El cliente elige día, hora y personas, y a ti te llega este mensaje ya escrito:', msg);
+    });
+})();
+</script>
+</body>
+</html>

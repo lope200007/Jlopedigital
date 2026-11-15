@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Clínica Alba · Diseño de ejemplo de AutoWeb Studio</title>
+    <meta name="description" content="Diseño de ejemplo de una web para clínica de estética, hecho por AutoWeb Studio. El negocio es ficticio.">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#FAF6F1">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@500;600&family=Inter+Tight:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../demo.css">
+    <style>
+        :root { --ivory: #FAF6F1; --card: #FFFFFF; --ink: #22302A; --soft: #62706A; --line: #E6DED4; --sage: #56705F; --sage-d: #435A4B; --blush: #F1E2D9; --rose: #B46F5A; --serif: 'Lora', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif; --ease: cubic-bezier(0.22, 1, 0.36, 1); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body { background: var(--ivory); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; padding-bottom: 76px; }
+        img { display: block; max-width: 100%; }
+        a { color: inherit; text-decoration: none; }
+        button, input, select { font: inherit; color: inherit; }
+        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
+        h2 { font-size: clamp(32px, 6vw, 50px); }
+        h1 em, h2 em { font-style: italic; color: var(--sage); }
+        .kicker { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); display: block; margin-bottom: 14px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 52px; padding: 0 26px; border-radius: 999px; font-weight: 600; font-size: 16px; border: 1.5px solid transparent; cursor: pointer; transition: background-color .25s ease, color .25s ease, transform .15s ease, border-color .25s ease; }
+        .btn:active { transform: scale(0.97); }
+        .btn-sage { background: var(--sage); color: #fff; }
+        .btn-line { border-color: var(--ink); }
+        @media (hover: hover) { .btn-sage:hover { background: var(--sage-d); } .btn-line:hover { background: var(--ink); color: var(--ivory); } }
+        .rv { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+        .rv.in { opacity: 1; transform: none; }
+
+        .top { position: sticky; top: 0; z-index: 40; background: rgba(250,246,241,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+        .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .logo { font-family: var(--serif); font-size: 24px; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 8px; }
+        .logo small { font-family: var(--sans); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); }
+        .nav { display: none; gap: 30px; font-size: 15px; font-weight: 500; color: var(--soft); }
+        .top .btn { min-height: 42px; padding: 0 18px; font-size: 14.5px; }
+
+        /* Portada */
+        .hero { padding: 34px 0 0; overflow: hidden; }
+        .hero .wrap { display: grid; gap: 30px; }
+        .hero h1 { font-size: clamp(44px, 10.5vw, 84px); letter-spacing: -0.03em; }
+        .hero p { font-size: clamp(17px, 2.4vw, 20px); color: var(--soft); max-width: 30em; margin: 18px 0 26px; }
+        .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+        .garant { list-style: none; display: grid; gap: 10px; margin-top: 30px; }
+        .garant li { display: flex; gap: 12px; align-items: center; font-size: 15.5px; font-weight: 500; }
+        .garant svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--sage); }
+        .foto { position: relative; border-radius: 200px 200px 18px 18px; overflow: hidden; aspect-ratio: 4 / 4.4; background: var(--blush); }
+        .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 40%; animation: acerca 16s ease-out forwards; }
+        @keyframes acerca { from { transform: scale(1.1); } to { transform: scale(1); } }
+        .nota-foto { position: absolute; left: 14px; right: 14px; bottom: 14px; background: rgba(255,255,255,0.94); border-radius: 14px; padding: 13px 16px; display: flex; align-items: center; gap: 12px; font-size: 14.5px; line-height: 1.35; }
+        .nota-foto i { width: 10px; height: 10px; border-radius: 50%; background: #58B07F; flex-shrink: 0; box-shadow: 0 0 0 5px rgba(88,176,127,0.2); }
+        .nota-foto b { display: block; font-weight: 600; }
+        .nota-foto span { color: var(--soft); }
+
+        section { padding: 78px 0; }
+        .head { max-width: 640px; margin-bottom: 38px; }
+        .head p { color: var(--soft); margin-top: 14px; }
+
+        /* Tratamientos */
+        .trats { display: grid; gap: 14px; }
+        .trat { background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; display: grid; }
+        .trat img { width: 100%; height: 190px; object-fit: cover; }
+        .trat .in { padding: 22px; display: grid; gap: 14px; }
+        .trat h3 { font-size: 25px; }
+        .trat p { color: var(--soft); font-size: 16px; line-height: 1.5; }
+        .ficha { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .ficha div { padding: 12px 0; font-size: 13px; color: var(--soft); line-height: 1.3; }
+        .ficha div + div { padding-left: 12px; border-left: 1px solid var(--line); }
+        .ficha b { display: block; font-size: 15px; font-weight: 600; color: var(--ink); }
+        .pie { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .pie span { font-size: 14px; color: var(--soft); }
+        .pie span b { font-family: var(--serif); font-weight: 500; font-size: 24px; color: var(--ink); margin-left: 4px; }
+        .pie a { font-weight: 600; font-size: 15px; color: var(--sage); display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+        .pie a svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+        @media (hover: hover) { .pie a:hover svg { transform: translateX(4px); } }
+        .trat.simple { background: var(--blush); border-color: transparent; align-content: center; }
+        .trat.simple .ficha { border-color: rgba(34,48,42,0.14); }
+        .trat.simple .ficha div + div { border-color: rgba(34,48,42,0.14); }
+
+        /* Primera visita */
+        .visita { background: var(--blush); }
+        .pasos { display: grid; gap: 26px; counter-reset: p; }
+        .paso { counter-increment: p; display: grid; grid-template-columns: 54px 1fr; gap: 16px; }
+        .paso::before { content: counter(p); font-family: var(--serif); font-style: italic; font-size: 44px; line-height: 0.9; color: var(--rose); }
+        .paso h3 { font-size: 23px; margin-bottom: 6px; }
+        .paso p { color: var(--soft); font-size: 16px; }
+
+        /* Antes y después */
+        .ad { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .hueco { aspect-ratio: 3 / 3.6; border-radius: 16px; border: 1.5px dashed #CFC3B5; background: repeating-linear-gradient(135deg, rgba(86,112,95,0.05) 0 12px, transparent 12px 24px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 14px; color: var(--soft); font-size: 14px; }
+        .hueco b { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 22px; color: var(--ink); }
+        .explica { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; font-size: 15.5px; color: var(--soft); }
+        .explica b { color: var(--ink); font-weight: 600; }
+
+        /* Equipo */
+        .equipo { display: grid; gap: 14px; }
+        .persona { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: center; }
+        .persona i { width: 64px; height: 64px; border-radius: 50%; background: var(--sage); color: #fff; display: grid; place-items: center; font-family: var(--serif); font-style: italic; font-size: 24px; }
+        .persona h3 { font-size: 22px; }
+        .persona span { display: block; font-size: 14.5px; color: var(--soft); margin-top: 4px; line-height: 1.4; }
+
+        .opis { display: grid; gap: 14px; }
+        .opi { border-left: 2px solid var(--rose); padding: 4px 0 4px 20px; }
+        .opi p { font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.4; }
+        .opi span { display: block; font-size: 14px; color: var(--soft); margin-top: 10px; }
+        .aviso { font-size: 13.5px; color: var(--soft); margin-top: 20px; }
+
+        /* Preguntas */
+        .faq details { border-top: 1px solid var(--line); }
+        .faq details:last-child { border-bottom: 1px solid var(--line); }
+        .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-family: var(--serif); font-size: 21px; line-height: 1.25; }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::after { content: "+"; font-family: var(--sans); font-size: 24px; color: var(--sage); transition: transform .3s var(--ease); flex-shrink: 0; }
+        .faq details[open] summary::after { transform: rotate(45deg); }
+        .faq details p { color: var(--soft); padding: 0 0 22px; max-width: 46em; }
+
+        /* Cita */
+        .cita { background: var(--ink); color: #fff; }
+        .cita .wrap { display: grid; gap: 30px; }
+        .cita h2 em { color: #B9D2C2; }
+        .cita .head { margin: 0; }
+        .cita .head p { color: rgba(255,255,255,0.72); }
+        .form { background: var(--ivory); color: var(--ink); border-radius: 20px; padding: 24px; display: grid; gap: 16px; }
+        .form label { display: grid; gap: 6px; font-size: 13.5px; font-weight: 600; color: var(--soft); }
+        .form input, .form select { min-height: 52px; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; padding: 0 14px; font-size: 16px; color: var(--ink); width: 100%; }
+        .form input:focus, .form select:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
+        .cuando { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .cuando label { position: relative; }
+        .cuando input { position: absolute; opacity: 0; inset: 0; min-height: 0; }
+        .cuando span { display: flex; align-items: center; justify-content: center; min-height: 52px; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; font-size: 16px; font-weight: 500; color: var(--ink); cursor: pointer; transition: border-color .2s ease, background-color .2s ease; }
+        .cuando input:checked + span { border-color: var(--sage); background: #EEF3EF; font-weight: 600; }
+        .cuando input:focus-visible + span { outline: 2px solid var(--sage); outline-offset: 1px; }
+        .form small { text-align: center; font-size: 14px; color: var(--soft); }
+        .form .btn { width: 100%; }
+
+        .donde .wrap { display: grid; gap: 28px; }
+        .donde img { border-radius: 18px; aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+        .datos { display: grid; gap: 0; margin-top: 10px; }
+        .datos div { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 16.5px; }
+        .datos div span { color: var(--soft); }
+        .datos div b { font-weight: 600; text-align: right; }
+
+        footer { border-top: 1px solid var(--line); padding: 36px 0 30px; font-size: 14.5px; color: var(--soft); }
+        footer .wrap { display: grid; gap: 12px; }
+        footer a.aw { color: var(--sage); font-weight: 600; }
+
+        .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; display: grid; grid-template-columns: 1fr 1.6fr; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(250,246,241,0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); }
+        .barra .btn { min-height: 50px; padding: 0 12px; }
+
+        @media (min-width: 720px) {
+            body { padding-bottom: 0; }
+            .barra { display: none; }
+            .nav { display: flex; }
+            .hero { padding-top: 60px; }
+            .hero .wrap { grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+            .foto { aspect-ratio: 4 / 5; }
+            .trats { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+            .trat.wide { grid-column: span 3; grid-template-columns: 1fr 1fr; }
+            .trat.wide img { height: 100%; min-height: 320px; }
+            .trat.wide .in { padding: 34px; align-content: center; }
+            .pasos { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+            .paso { grid-template-columns: 1fr; }
+            .ad { grid-template-columns: repeat(4, 1fr); }
+            .equipo { grid-template-columns: 1fr 1fr; }
+            .opis { grid-template-columns: repeat(3, 1fr); gap: 30px; }
+            .cita .wrap { grid-template-columns: 1fr 0.9fr; gap: 60px; align-items: center; }
+            .donde .wrap { grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+            section { padding: 112px 0; }
+        }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .rv { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+    </style>
+</head>
+<body data-demo="clínica">
+
+<div class="demo-bar">
+    <a class="back" href="../../#trabajos"><img src="../../logo-aw.png" alt=""><span><b>Diseño de ejemplo</b><i> · negocio ficticio · AutoWeb Studio</i></span></a>
+    <a class="want" data-pedir target="_blank" rel="noopener">Quiero una así</a>
+</div>
+
+<header class="top">
+    <div class="wrap">
+        <a href="#" class="logo">Alba <small>Clínica estética</small></a>
+        <nav class="nav" aria-label="Secciones"><a href="#tratamientos">Tratamientos</a><a href="#visita">Primera visita</a><a href="#equipo">Equipo</a><a href="#preguntas">Preguntas</a></nav>
+        <a class="btn btn-sage" href="#cita">Pedir cita</a>
+    </div>
+</header>
+
+<main>
+<section class="hero">
+    <div class="wrap">
+        <div>
+            <span class="kicker">Medicina estética facial y corporal</span>
+            <h1>Que se note <em>que estás bien,</em> no lo que te has hecho.</h1>
+            <p>Tratamientos médicos con resultado natural. Antes de empezar te explicamos qué vamos a hacer, cuánto dura y cuánto cuesta.</p>
+            <div class="cta">
+                <a class="btn btn-sage" href="#cita">Pedir primera valoración</a>
+                <a class="btn btn-line" href="#tratamientos">Ver tratamientos</a>
+            </div>
+            <ul class="garant">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.4 2.4 4.6-5.2"/></svg>Te atiende siempre un médico colegiado</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.4 2.4 4.6-5.2"/></svg>La primera valoración no se cobra</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.4 2.4 4.6-5.2"/></svg>Presupuesto cerrado y por escrito</li>
+            </ul>
+        </div>
+        <div class="foto">
+            <img src="../img/c-hero.jpg" alt="Tratamiento facial en la clínica" width="1400" height="933" fetchpriority="high">
+            <div class="nota-foto"><i></i><div><b>Citas esta semana</b><span>Mañanas y tardes, de lunes a viernes</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="tratamientos">
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">Tratamientos</span><h2>Lo que hacemos, <em>explicado claro.</em></h2><p>En cada uno te decimos lo que casi nadie cuenta: cuánto dura la sesión, si molesta y cuándo vuelves a tu rutina.</p></div>
+        <div class="trats">
+            <article class="trat wide rv">
+                <img src="../img/c-facial.jpg" alt="Limpieza facial profunda" loading="lazy" width="900" height="600">
+                <div class="in">
+                    <h3>Higiene facial profunda</h3>
+                    <p>Limpieza con extracción, exfoliación y mascarilla según tu tipo de piel. Es la base antes de cualquier otro tratamiento.</p>
+                    <div class="ficha"><div><b>60 min</b>por sesión</div><div><b>No molesta</b>sin anestesia</div><div><b>Vida normal</b>el mismo día</div></div>
+                    <div class="pie"><span>desde<b>55 €</b></span><a href="#" data-wa="Hola, quiero pedir cita para una higiene facial profunda.">Pedir cita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+                </div>
+            </article>
+            <article class="trat rv">
+                <img src="../img/c-mascarilla.jpg" alt="Tratamiento de hidratación" loading="lazy" width="900" height="600">
+                <div class="in">
+                    <h3>Hidratación con vitaminas</h3>
+                    <p>Microinyecciones de ácido hialurónico y vitaminas para una piel más jugosa.</p>
+                    <div class="ficha"><div><b>40 min</b>por sesión</div><div><b>Leve</b>con crema anestésica</div><div><b>24 h</b>sin maquillaje</div></div>
+                    <div class="pie"><span>desde<b>120 €</b></span><a href="#" data-wa="Hola, quiero pedir cita para una hidratación con vitaminas.">Pedir cita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+                </div>
+            </article>
+            <article class="trat rv">
+                <img src="../img/c-masaje.jpg" alt="Masaje drenante" loading="lazy" width="900" height="600">
+                <div class="in">
+                    <h3>Drenaje y remodelación</h3>
+                    <p>Masaje manual y aparatología para piernas, abdomen y brazos.</p>
+                    <div class="ficha"><div><b>50 min</b>por sesión</div><div><b>No molesta</b>es agradable</div><div><b>Vida normal</b>el mismo día</div></div>
+                    <div class="pie"><span>desde<b>45 €</b></span><a href="#" data-wa="Hola, quiero pedir cita para un drenaje y remodelación corporal.">Pedir cita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+                </div>
+            </article>
+            <article class="trat simple rv">
+                <div class="in">
+                    <h3>Arrugas de expresión</h3>
+                    <p>Tratamiento médico para frente, entrecejo y patas de gallo. Lo valora y lo aplica siempre un médico.</p>
+                    <div class="ficha"><div><b>30 min</b>por sesión</div><div><b>Leve</b>pinchazos finos</div><div><b>4 h</b>sin tumbarte</div></div>
+                    <div class="pie"><span>Precio tras<b style="font-size:19px">valoración</b></span><a href="#" data-wa="Hola, quiero una valoración para arrugas de expresión.">Pedir cita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="visita" id="visita">
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">Tu primera visita</span><h2>Sin compromiso y <em>sin sorpresas.</em></h2></div>
+        <div class="pasos">
+            <div class="paso rv"><div><h3>Nos cuentas qué te preocupa</h3><p>Media hora con el médico. Mira tu piel, te pregunta por tu salud y por lo que esperas conseguir.</p></div></div>
+            <div class="paso rv"><div><h3>Te proponemos un plan</h3><p>Qué tratamiento, cuántas sesiones y cuánto cuesta en total. Te lo llevas por escrito.</p></div></div>
+            <div class="paso rv"><div><h3>Decides con calma</h3><p>Nadie te va a insistir. Si quieres empezar, te damos cita; si no, la valoración no se cobra.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">Resultados</span><h2>Antes y después, <em>de pacientes reales.</em></h2></div>
+        <div class="ad rv">
+            <div class="hueco"><b>Antes</b>foto real de tu paciente</div>
+            <div class="hueco"><b>Después</b>misma luz, mismo encuadre</div>
+            <div class="hueco"><b>Antes</b>foto real de tu paciente</div>
+            <div class="hueco"><b>Después</b>misma luz, mismo encuadre</div>
+        </div>
+        <p class="explica"><b>Por qué aquí no hay fotos:</b> en un diseño de ejemplo no ponemos resultados inventados. En tu web irían las fotos de tus pacientes, con su permiso por escrito y hechas siempre con la misma luz. Es lo que más confianza da antes de pedir cita.</p>
+    </div>
+</section>
+
+<section id="equipo" style="padding-top:0">
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">Equipo</span><h2>Quién te va a <em>atender.</em></h2></div>
+        <div class="equipo">
+            <div class="persona rv"><i>MA</i><div><h3>Dra. Marta Alba</h3><span>Médica estética · N.º de colegiada 00/0000000<br>Dirección médica de la clínica</span></div></div>
+            <div class="persona rv"><i>LR</i><div><h3>Lucía Romero</h3><span>Técnica superior en estética<br>Tratamientos faciales y corporales</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section style="padding-top:0">
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">Opiniones</span><h2>Lo que cuentan <em>después.</em></h2></div>
+        <div class="opis">
+            <div class="opi rv"><p>«Me explicaron todo antes de tocarme y me dijeron lo que no me hacía falta.»</p><span>Opinión de ejemplo</span></div>
+            <div class="opi rv"><p>«Nadie me ha notado nada raro. Solo me dicen que tengo buena cara.»</p><span>Opinión de ejemplo</span></div>
+            <div class="opi rv"><p>«Pedí cita por WhatsApp un domingo y el lunes ya tenía hora.»</p><span>Opinión de ejemplo</span></div>
+        </div>
+        <p class="aviso">En tu web irían las opiniones reales de tus pacientes, enlazadas con tu ficha de Google.</p>
+    </div>
+</section>
+
+<section class="faq" id="preguntas" style="padding-top:0">
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">Preguntas frecuentes</span><h2>Lo que todo el mundo <em>pregunta.</em></h2></div>
+        <details><summary>¿Duele?</summary><p>Depende del tratamiento. Los faciales y corporales no molestan. En los que llevan pinchazos usamos agujas muy finas y, si hace falta, crema anestésica. Te lo decimos antes, tratamiento por tratamiento.</p></details>
+        <details><summary>¿Cuándo puedo volver a mi rutina?</summary><p>En casi todos, el mismo día. En cada tratamiento indicamos si hay que esperar unas horas para maquillarse, hacer deporte o tomar el sol.</p></details>
+        <details><summary>¿Se va a notar que me he hecho algo?</summary><p>Trabajamos con dosis bajas y por fases, para que el cambio sea gradual. Preferimos quedarnos cortos y retocar a las dos semanas.</p></details>
+        <details><summary>¿Cuánto cuesta?</summary><p>Los tratamientos de cabina tienen el precio a la vista. En los médicos, el precio depende de cada caso: te damos un presupuesto cerrado en la primera valoración, que no se cobra.</p></details>
+    </div>
+</section>
+
+<section class="cita" id="cita">
+    <div class="wrap">
+        <div class="head rv"><span class="kicker" style="color:#E3B8A8">Pedir cita</span><h2>Dinos qué necesitas y <em>te llamamos nosotros.</em></h2><p>Rellena esto en veinte segundos. Te contestamos por WhatsApp con las horas que tenemos libres.</p></div>
+        <form class="form rv" id="form" novalidate>
+            <label>¿Qué te interesa?<select id="f-trat"><option>Primera valoración</option><option>Higiene facial profunda</option><option>Hidratación con vitaminas</option><option>Drenaje y remodelación</option><option>Arrugas de expresión</option></select></label>
+            <div>
+                <span style="display:block;font-size:13.5px;font-weight:600;color:var(--soft);margin-bottom:6px">¿Cuándo te viene mejor?</span>
+                <div class="cuando">
+                    <label><input type="radio" name="cuando" value="por la mañana" checked><span>Mañanas</span></label>
+                    <label><input type="radio" name="cuando" value="por la tarde"><span>Tardes</span></label>
+                </div>
+            </div>
+            <label>Tu nombre<input type="text" id="f-nombre" placeholder="Nombre" autocomplete="given-name"></label>
+            <button class="btn btn-sage" type="submit">Pedir cita por WhatsApp</button>
+            <small>La primera valoración no se cobra.</small>
+        </form>
+    </div>
+</section>
+
+<section class="donde">
+    <div class="wrap">
+        <img class="rv" src="../img/c-sala.jpg" alt="Sala de espera de la clínica" loading="lazy" width="1200" height="961">
+        <div class="rv">
+            <span class="kicker">Dónde estamos</span>
+            <h2>Una clínica <em>tranquila,</em> en el centro.</h2>
+            <div class="datos">
+                <div><span>Dirección</span><b>Paseo del Alba, 8, 1.º</b></div>
+                <div><span>Lunes a viernes</span><b>10:00–14:00 · 16:00–20:00</b></div>
+                <div><span>Sábados</span><b>10:00–14:00</b></div>
+                <div><span>Teléfono</span><b>900 000 000</b></div>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+                <a class="btn btn-line" href="#" data-mapa>Cómo llegar</a>
+                <a class="btn btn-line" href="#" data-tel>Llamar</a>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="wrap">
+        <span class="logo" style="color:var(--ink)">Alba <small>Clínica estética</small></span>
+        <span>Paseo del Alba, 8, 1.º · 900 000 000 · Centro sanitario autorizado n.º 0000</span>
+        <span>Clínica Alba no existe: es un diseño de ejemplo de <a class="aw" href="../../">AutoWeb Studio</a>. Las personas y los datos son inventados. Fotos de Unsplash.</span>
+    </div>
+</footer>
+
+<div class="barra">
+    <a class="btn btn-line" href="#" data-tel>Llamar</a>
+    <a class="btn btn-sage" href="#cita">Pedir cita</a>
+</div>
+
+<script src="../demo.js"></script>
+<script>
+document.getElementById('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var t = document.getElementById('f-trat').value, c = document.querySelector('input[name="cuando"]:checked').value, n = document.getElementById('f-nombre').value.trim();
+    var msg = 'Hola' + (n ? ', soy ' + n : '') + '. Quiero pedir cita para: ' + t.toLowerCase() + '. Me viene mejor ' + c + '.';
+    window.demoAbrir('En tu web, la cita te llega por WhatsApp', 'El paciente elige tratamiento y horario, y a ti te llega este mensaje ya escrito:', msg);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+/* Piezas comunes de los diseños de ejemplo: cinta superior y ventana «así funcionaría» */
+.demo-bar { position: relative; z-index: 60; background: #0B0B0C; color: #F2F0EB; font: 500 13px/1.3 'Inter', system-ui, sans-serif; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 16px; }
+.demo-bar a.back { display: flex; align-items: center; gap: 9px; color: #F2F0EB; text-decoration: none; min-width: 0; }
+.demo-bar img { width: 24px; height: 24px; flex-shrink: 0; }
+.demo-bar span { color: #B3AFA7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.demo-bar span b { color: #F2F0EB; font-weight: 600; }
+.demo-bar a.want { flex-shrink: 0; background: #D4AF6A; color: #141210; text-decoration: none; font-weight: 600; padding: 7px 13px; border-radius: 999px; }
+@media (max-width: 520px) { .demo-bar span i { display: none; } }
+
+.demo-modal { position: fixed; inset: 0; z-index: 100; display: none; align-items: flex-end; justify-content: center; background: rgba(8,8,9,0.62); padding: 16px; font-family: 'Inter', system-ui, sans-serif; }
+.demo-modal.on { display: flex; }
+.demo-card { width: 100%; max-width: 420px; background: #141416; color: #F2F0EB; border: 1px solid #2A2A2F; border-radius: 22px; padding: 22px; box-shadow: 0 40px 90px -20px rgba(0,0,0,0.8); animation: sube .35s cubic-bezier(.22,1,.36,1); }
+@keyframes sube { from { transform: translateY(24px); opacity: 0; } }
+.demo-card small { display: block; color: #D4AF6A; font-size: 12.5px; font-weight: 600; margin-bottom: 8px; }
+.demo-card h3 { font: 600 21px/1.2 'Inter Tight', 'Inter', sans-serif; letter-spacing: -0.02em; margin: 0 0 8px; color: #F2F0EB; }
+.demo-card p { font-size: 14.5px; line-height: 1.5; color: #B3AFA7; margin: 0; }
+.demo-bubble { margin: 14px 0 18px; background: #0E3B2E; color: #EAF7F0; border-radius: 16px 16px 4px 16px; padding: 11px 14px; font-size: 14.5px; line-height: 1.45; margin-left: 28px; }
+.demo-bubble:empty { display: none; }
+.demo-actions { display: grid; gap: 9px; margin-top: 16px; }
+.demo-actions a, .demo-actions button { font: 600 15px/1 'Inter', sans-serif; border-radius: 999px; padding: 15px 18px; text-align: center; text-decoration: none; cursor: pointer; border: 1px solid #33333A; background: transparent; color: #F2F0EB; }
+.demo-actions a { background: #F2F0EB; color: #0B0B0C; border-color: #F2F0EB; }
+@media (min-width: 640px) { .demo-modal { align-items: center; } }
+@media (prefers-reduced-motion: reduce) { .demo-card { animation: none; } }
