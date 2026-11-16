@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /ejemplos/
+
+Sitemap: https://jlopedigital.vercel.app/sitemap.xml

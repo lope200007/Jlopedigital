@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-<script>(function(d){d.classList.add('js');var q=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;if(q)d.classList.add('ld-done');else setTimeout(function(){d.classList.add('ld-done')},3200);})(document.documentElement);</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>AutoWeb Studio · Webs y automatizaciones para negocios</title>
     <meta name="description" content="Páginas web, atención automática en Instagram, automatización de redes, cartas digitales y captación de clientes para todo tipo de negocios.">
-    <meta name="theme-color" content="#0B0B0C">
+    <meta name="theme-color" content="#0B0A09">
     <meta property="og:title" content="AutoWeb Studio · Webs y automatizaciones para negocios">
     <meta property="og:description" content="Webs, automatizaciones y captación de clientes para negocios.">
     <meta property="og:image" content="https://jlopedigital.vercel.app/og-autoweb.jpg">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jlopedigital.vercel.app/">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://jlopedigital.vercel.app/">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"AutoWeb Studio","description":"Páginas web, atención automática en Instagram, cartas digitales y captación de clientes para negocios.","url":"https://jlopedigital.vercel.app/","image":"https://jlopedigital.vercel.app/og-autoweb.jpg","telephone":"+34644694667","areaServed":"ES","sameAs":["https://www.instagram.com/jlope7820/"]}</script>
+    <script>(function(d){d.classList.add('js');var q=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;if(q)d.classList.add('ld-done');else setTimeout(function(){d.classList.add('ld-done')},2200);})(document.documentElement);</script>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,10 +23,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0B0B0C;
-            --bg-2: #121214;
-            --card: #17171A;
-            --line: #26262B;
+            --bg: #0B0A09;
+            --bg-2: #12110F;
+            --card: #161513;
+            --line: #272522;
             --text: #F2F0EB;
             --muted: #8E8C88;
             --soft: #B3AFA7;
@@ -49,15 +54,19 @@
         .btn:hover::before { transform: translateY(0); }
         .btn-light { background: var(--text); color: var(--bg); }
         .btn-light::before { background: var(--accent); }
-        .btn-line { border: 1px solid #3A3A40; color: var(--text); }
+        .btn-line { border: 1px solid #3C3833; color: var(--text); }
         .btn-line::before { background: var(--text); }
         .btn-line:hover { color: var(--bg); }
         .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
         /* Cabecera */
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+        .skip { position: fixed; left: 12px; top: -60px; z-index: 120; background: var(--text); color: var(--bg); padding: 12px 16px; border-radius: 10px; font-weight: 600; transition: top .2s ease; }
+        .skip:focus { top: 12px; }
+        h1, h2, h3 { text-wrap: balance; }
         .top { position: fixed; top: 0; left: 0; right: 0; z-index: 60; transition: transform .5s var(--ease), background-color .3s ease; }
         .top.hide { transform: translateY(-100%); }
-        .top.solid { background: rgba(11,11,12,0.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .top.solid { background: rgba(11,10,9,0.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .top .wrap { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
         .brand { display: flex; align-items: center; gap: 10px; font-family: var(--head); font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
         .brand img { width: 34px; height: 34px; border-radius: 50%; }
@@ -67,11 +76,26 @@
         .nav a:hover { color: var(--text); }
         .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
         .top .btn { min-height: 42px; padding: 0 18px; font-size: 14px; }
+        .top-r { display: flex; align-items: center; gap: 10px; }
+        .burger { width: 44px; height: 44px; border-radius: 50%; border: 1px solid #3C3833; background: transparent; display: grid; place-content: center; gap: 6px; cursor: pointer; }
+        .burger i { display: block; width: 18px; height: 1.5px; background: var(--text); transition: transform .35s var(--ease); }
+        .menu-on .burger i:first-child { transform: translateY(3.75px) rotate(45deg); }
+        .menu-on .burger i:last-child { transform: translateY(-3.75px) rotate(-45deg); }
+        .menu { position: fixed; inset: 0; z-index: 55; background: rgba(11,10,9,0.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); display: flex; flex-direction: column; justify-content: space-between; padding: 104px 22px calc(28px + env(safe-area-inset-bottom)); opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility 0s linear .35s; }
+        .menu-on .menu { opacity: 1; visibility: visible; transition: opacity .35s ease; }
+        .menu nav { display: grid; }
+        .menu nav a { display: flex; align-items: baseline; gap: 16px; font-family: var(--head); font-weight: 600; font-size: clamp(34px, 10vw, 46px); letter-spacing: -0.035em; line-height: 1; padding: 16px 0; border-bottom: 1px solid var(--line); opacity: 0; transform: translateY(18px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+        .menu nav a small { font-family: var(--body); font-weight: 400; font-size: 13px; letter-spacing: 0; color: var(--muted); font-variant-numeric: tabular-nums; }
+        .menu-on .menu nav a { opacity: 1; transform: none; }
+        .menu-on .menu nav a:nth-child(2) { transition-delay: .05s; } .menu-on .menu nav a:nth-child(3) { transition-delay: .1s; } .menu-on .menu nav a:nth-child(4) { transition-delay: .15s; } .menu-on .menu nav a:nth-child(5) { transition-delay: .2s; }
+        .menu-foot { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 15px; color: var(--soft); }
+        .menu-foot a { padding: 10px 0; }
+        .menu-on .top { background: none; border-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; }
 
         /* Portada */
         .hero { position: relative; min-height: 100svh; padding: 120px 0 70px; display: flex; align-items: center; overflow: hidden; }
-        .glow { position: absolute; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgba(212,175,106,0.20), rgba(212,175,106,0) 62%); left: 55%; top: 10%; transform: translate(-50%, -50%); pointer-events: none; filter: blur(10px); }
-        .glow.two { width: 620px; height: 620px; background: radial-gradient(circle, rgba(70,90,160,0.22), rgba(70,90,160,0) 62%); left: 85%; top: 75%; }
+        .glow { position: absolute; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgba(212,175,106,0.18) 0%, rgba(212,175,106,0.08) 34%, rgba(212,175,106,0.02) 58%, transparent 72%); left: 55%; top: 10%; transform: translate(-50%, -50%); pointer-events: none; filter: blur(10px); }
+        .glow.two { width: 620px; height: 620px; background: radial-gradient(circle, rgba(150,96,52,0.20) 0%, rgba(150,96,52,0.08) 36%, rgba(150,96,52,0.02) 60%, transparent 74%); left: 85%; top: 75%; }
         .hero .wrap { position: relative; z-index: 2; width: 100%; display: grid; grid-template-columns: minmax(0, 1fr); gap: 56px; align-items: center; }
         .hero h1 { font-size: clamp(48px, 13vw, 116px); margin: 22px 0 26px; }
         .line { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
@@ -90,23 +114,38 @@
         @keyframes baja { to { top: 46px; } }
 
         /* Móviles con trabajos reales */
-        .devices { position: relative; height: 560px; max-width: 460px; width: 100%; justify-self: center; }
-        .phone { position: absolute; width: 250px; aspect-ratio: 390 / 800; border-radius: 40px; padding: 9px; background: #1C1C20; box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 50px 90px -30px rgba(0,0,0,0.9); }
+        .devices { position: relative; height: 560px; max-width: 460px; width: 100%; justify-self: center; perspective: 1500px; perspective-origin: 50% 40%; }
+        .stage { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(6deg) rotateY(-16deg); animation: vaiven 12s ease-in-out infinite alternate; will-change: transform; }
+        @keyframes vaiven { from { transform: rotateX(7deg) rotateY(-19deg); } to { transform: rotateX(4deg) rotateY(-9deg); } }
+        .stage.libre { animation: none; }
+        .slot { position: absolute; transform-style: preserve-3d; }
+        .slot .phone { position: relative; display: block; }
+        .s-c { left: 50%; top: 26px; margin-left: -125px; transform: translateZ(60px); }
+        .s-l { left: 50%; top: 70px; margin-left: -125px; transform: translate3d(-150px, 0, -140px) rotateY(20deg) scale(0.86); }
+        .s-r { left: 50%; top: 70px; margin-left: -125px; transform: translate3d(150px, 0, -140px) rotateY(-20deg) scale(0.86); }
+        .s-l .phone, .s-r .phone { filter: brightness(0.72) saturate(0.9); transition: filter .4s ease; }
+        .s-chat { right: -78px; top: -40px; transform: translateZ(110px) scale(0.86); transform-origin: 100% 0; }
+        .s-chip { left: -30px; bottom: 26px; transform: translateZ(150px) scale(0.92); transform-origin: 0 100%; }
+        .phone .screen img.fijo { animation: none; }
+        /* Canto del móvil: da grosor al girarlo */
+        .slot .phone::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10), inset 2px 0 3px rgba(255,255,255,0.10), inset -3px 0 6px rgba(0,0,0,0.6); pointer-events: none; }
+        .s-c .phone { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), -18px 60px 90px -30px rgba(0,0,0,0.95), 0 0 80px -20px rgba(212,175,106,0.22); }
+        .phone { position: absolute; width: 250px; aspect-ratio: 390 / 800; border-radius: 40px; padding: 9px; background: #1D1B19; box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 50px 90px -30px rgba(0,0,0,0.9); }
         .phone::before { content: ""; position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 78px; height: 22px; border-radius: 20px; background: #000; z-index: 2; }
         .phone .screen { width: 100%; height: 100%; border-radius: 32px; overflow: hidden; background: #000; }
         .phone .screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; animation: recorre 24s ease-in-out 1.5s infinite alternate; }
         @keyframes recorre { 0%, 10% { object-position: 50% 0%; } 90%, 100% { object-position: 50% 100%; } }
-        .phone.p1 { left: 0; top: 30px; z-index: 2; }
-        @media (max-width: 520px) { .chatcard { width: 210px; } .phone { width: 220px; } .devices { height: 520px; } }
+        .phone.p1 { z-index: 2; }
+        @media (max-width: 520px) { .chatcard { width: 200px; } .phone { width: 216px; } .devices { height: 520px; } .s-c, .s-l, .s-r { margin-left: -108px; } .s-l { transform: translate3d(-118px, 0, -140px) rotateY(20deg) scale(0.86); } .s-r { transform: translate3d(118px, 0, -140px) rotateY(-20deg) scale(0.86); } .s-chat { right: -62px; top: -58px; transform: translateZ(80px) scale(0.66); } .s-chip { left: -8px; bottom: 6px; transform: translateZ(110px) scale(0.84); } .brand { font-size: 16px; white-space: nowrap; gap: 8px; } .brand img { width: 30px; height: 30px; } .top .btn { padding: 0 14px; } .top-r { gap: 8px; } }
         .float-a { animation: flota 7s ease-in-out infinite; }
         .float-b { animation: flota 8s ease-in-out -3s infinite; }
         @keyframes flota { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
-        .chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: 10px; background: rgba(23,23,26,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid #2E2E34; border-radius: 14px; padding: 10px 14px; font-size: 13px; box-shadow: 0 20px 40px -18px rgba(0,0,0,0.8); }
+        .chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: 10px; background: rgba(22,21,19,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid #302D29; border-radius: 14px; padding: 10px 14px; font-size: 13px; box-shadow: 0 20px 40px -18px rgba(0,0,0,0.8); }
         .chip b { display: block; font-size: 13.5px; }
         .chip span { color: var(--muted); font-size: 12px; }
         .chip .dot { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; background: rgba(212,175,106,0.15); color: var(--accent); flex-shrink: 0; }
         .chip .dot svg { width: 16px; height: 16px; }
-        .chip.c1 { left: -18px; bottom: 30px; }
+        .chip.c1 { position: relative; left: auto; bottom: auto; }
         .chip.c2 { right: -16px; bottom: 120px; }
 
         /* Franja gigante */
@@ -114,19 +153,19 @@
         .marquee .row { display: flex; width: max-content; will-change: transform; }
         .marquee .row + .row { margin-top: 8px; }
         .marquee span { font-family: var(--head); font-weight: 600; font-size: clamp(44px, 9vw, 104px); letter-spacing: -0.04em; line-height: 1.05; white-space: nowrap; display: inline-flex; align-items: center; padding-right: 0.45em; }
-        .marquee .row.outline span { color: transparent; -webkit-text-stroke: 1px #4A4A52; }
+        .marquee .row.outline span { color: transparent; -webkit-text-stroke: 1px #4C4740; }
         .marquee span i { display: inline-block; width: 0.28em; height: 0.28em; background: var(--accent); border-radius: 50%; margin-left: 0.45em; }
-        .marquee .row.outline span i { background: transparent; border: 1px solid #4A4A52; }
+        .marquee .row.outline span i { background: transparent; border: 1px solid #4C4740; }
 
         /* Secciones */
         .section { padding: 110px 0; position: relative; }
 
         /* Fondo vivo: luces que se mueven despacio, cuadrícula en la portada y grano */
         .aura { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-        .aura i { position: absolute; width: 80vmax; height: 80vmax; border-radius: 50%; will-change: transform; }
-        .aura i:nth-child(1) { background: radial-gradient(circle, rgba(212,175,106,0.16), transparent 60%); left: -30vmax; top: -30vmax; animation: luz1 34s ease-in-out infinite alternate; }
-        .aura i:nth-child(2) { background: radial-gradient(circle, rgba(60,80,150,0.17), transparent 60%); right: -35vmax; top: 20vh; animation: luz2 41s ease-in-out infinite alternate; }
-        .aura i:nth-child(3) { background: radial-gradient(circle, rgba(212,175,106,0.10), transparent 60%); left: 10vw; bottom: -45vmax; animation: luz3 47s ease-in-out infinite alternate; }
+        .aura i { position: absolute; width: 110vmax; height: 110vmax; border-radius: 50%; will-change: transform; }
+        .aura i:nth-child(1) { background: radial-gradient(circle, rgba(212,175,106,0.12) 0%, rgba(212,175,106,0.055) 32%, rgba(212,175,106,0.015) 56%, transparent 72%); left: -30vmax; top: -30vmax; animation: luz1 34s ease-in-out infinite alternate; }
+        .aura i:nth-child(2) { background: radial-gradient(circle, rgba(150,96,52,0.13) 0%, rgba(150,96,52,0.06) 32%, rgba(150,96,52,0.015) 56%, transparent 72%); right: -35vmax; top: 20vh; animation: luz2 41s ease-in-out infinite alternate; }
+        .aura i:nth-child(3) { background: radial-gradient(circle, rgba(212,175,106,0.08) 0%, rgba(212,175,106,0.035) 32%, rgba(212,175,106,0.01) 56%, transparent 72%); left: 10vw; bottom: -45vmax; animation: luz3 47s ease-in-out infinite alternate; }
         @keyframes luz1 { to { transform: translate(35vw, 40vh) scale(1.2); } }
         @keyframes luz2 { to { transform: translate(-40vw, 30vh) scale(0.85); } }
         @keyframes luz3 { to { transform: translate(30vw, -35vh) scale(1.15); } }
@@ -162,11 +201,11 @@
         .svc .info p strong { color: var(--text); font-weight: 600; }
         .svc ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 0; }
         .svc li { font-size: 13.5px; color: var(--soft); }
-        .svc li:not(:last-child)::after { content: "/"; color: #4A4A52; margin: 0 10px; }
-        .svc .go { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: var(--accent); }
+        .svc li:not(:last-child)::after { content: "/"; color: #4C4740; margin: 0 10px; }
+        .svc .go { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: var(--accent); min-height: 44px; }
         .svc .go svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
         .svc .go:hover svg { transform: translateX(4px); }
-        .preview { position: fixed; left: 0; top: 0; width: 260px; height: 320px; border-radius: 18px; overflow: hidden; pointer-events: none; z-index: 40; opacity: 0; transform: translate(-50%, -50%) scale(0.85); transition: opacity .3s ease, transform .4s var(--ease); background: var(--card); border: 1px solid #2E2E34; box-shadow: 0 40px 80px -30px rgba(0,0,0,0.9); display: none; }
+        .preview { position: fixed; left: 0; top: 0; width: 260px; height: 320px; border-radius: 18px; overflow: hidden; pointer-events: none; z-index: 40; opacity: 0; transform: translate(-50%, -50%) scale(0.85); transition: opacity .3s ease, transform .4s var(--ease); background: var(--card); border: 1px solid #302D29; box-shadow: 0 40px 80px -30px rgba(0,0,0,0.9); display: none; }
         .preview.on { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         .preview img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
         .preview .pv { position: absolute; inset: 0; display: none; }
@@ -181,7 +220,7 @@
         .work-track { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
         .project { background: var(--card); border: 1px solid var(--line); border-radius: 26px; padding: 26px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; overflow: hidden; position: relative; }
         .project .shot { position: relative; height: 380px; border-radius: 18px; overflow: hidden; display: grid; place-items: center; }
-        .project .shot.dark { background: radial-gradient(70% 70% at 50% 30%, rgba(212,175,106,0.25), #0F0F11 70%); }
+        .project .shot.dark { background: radial-gradient(70% 70% at 50% 30%, rgba(212,175,106,0.25), #0F0E0D 70%); }
         .project .shot.warm { background: radial-gradient(70% 70% at 50% 30%, #E9D2B4, #B4401F 130%); }
         .project .shot.sage { background: radial-gradient(70% 70% at 50% 30%, #F1E2D9, #9DB3A4 110%); }
         .project .meta span.ej { color: var(--accent); border-color: rgba(212,175,106,0.5); }
@@ -190,7 +229,7 @@
         .project .shot .phone .screen { border-radius: 26px; }
         .phone .screen video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; display: block; }
         .project .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-        .project .meta span { font-size: 12.5px; color: #CFCDC8; border: 1px solid #33333A; border-radius: 999px; padding: 4px 11px; }
+        .project .meta span { font-size: 12.5px; color: #CFCDC8; border: 1px solid #35322D; border-radius: 999px; padding: 4px 11px; }
         .project h3 { font-size: clamp(32px, 6vw, 48px); margin-bottom: 14px; }
         .project p { color: var(--muted); }
         .project dl { display: grid; gap: 14px; margin: 22px 0 26px; padding-top: 20px; border-top: 1px solid var(--line); }
@@ -200,7 +239,7 @@
         .sector-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
         .sector-grid a { display: block; border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: var(--bg-2); transition: border-color .3s ease, background-color .3s ease; }
         .sector-grid a:active { border-color: var(--accent); }
-        @media (hover: hover) { .sector-grid a:hover { border-color: var(--accent); background-color: #1A1A1E; } }
+        @media (hover: hover) { .sector-grid a:hover { border-color: var(--accent); background-color: #1A1917; } }
         .sector-grid svg { width: 22px; height: 22px; color: var(--accent); display: block; margin-bottom: 12px; }
         .sector-grid .ver { display: block; font-family: var(--body); font-style: normal; font-size: 13px; font-weight: 600; color: var(--accent); margin-top: 10px; }
         .sector-grid b { font-family: var(--head); font-weight: 600; font-size: 17px; letter-spacing: -0.015em; display: block; }
@@ -209,7 +248,7 @@
         /* Tipos de página */
         .plans { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
         .plan { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 30px 26px; display: flex; flex-direction: column; overflow: hidden; transition: transform .5s var(--ease), border-color .3s ease; }
-        .plan:hover { transform: translateY(-6px); border-color: #3E3E46; }
+        .plan:hover { transform: translateY(-6px); border-color: #403C36; }
         .plan.feat { background: linear-gradient(160deg, #241F16 0%, var(--card) 55%); border-color: rgba(212,175,106,0.45); }
         .plan .ptag { font-size: 12.5px; font-weight: 600; color: var(--muted); }
         .plan.feat .ptag { color: var(--accent); }
@@ -235,7 +274,7 @@
         /* Proceso */
         .process { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
         .process div { border-top: 1px solid var(--text); padding-top: 22px; }
-        .process .n { font-family: var(--head); font-weight: 600; font-size: 64px; letter-spacing: -0.05em; line-height: 1; color: #2A2A30; display: block; margin-bottom: 16px; }
+        .process .n { font-family: var(--head); font-weight: 600; font-size: 64px; letter-spacing: -0.05em; line-height: 1; color: #2B2926; display: block; margin-bottom: 16px; }
         .process h3 { font-size: 22px; letter-spacing: -0.02em; margin-bottom: 8px; }
         .process p { color: var(--muted); font-size: 15px; }
 
@@ -245,7 +284,7 @@
         .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px 0; font-family: var(--head); font-weight: 600; font-size: clamp(19px, 3.6vw, 26px); letter-spacing: -0.02em; transition: color .2s ease; }
         .faq summary:hover { color: var(--accent); }
         .faq summary::-webkit-details-marker { display: none; }
-        .faq summary .pm { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #3A3A40; position: relative; flex-shrink: 0; transition: transform .4s var(--ease), background-color .3s ease; }
+        .faq summary .pm { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #3C3833; position: relative; flex-shrink: 0; transition: transform .4s var(--ease), background-color .3s ease; }
         .faq summary .pm::before, .faq summary .pm::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 1.5px; background: var(--text); transform: translate(-50%, -50%); }
         .faq summary .pm::after { transform: translate(-50%, -50%) rotate(90deg); transition: transform .4s var(--ease); }
         .faq details[open] summary .pm { background: var(--text); }
@@ -266,19 +305,21 @@
         footer { border-top: 1px solid var(--line); padding: 34px 0 calc(34px + env(safe-area-inset-bottom)); overflow: hidden; }
         .foot-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 14px; color: var(--muted); }
         .foot-row a:hover { color: var(--text); }
+        .foot-row a { display: inline-flex; align-items: center; min-height: 44px; }
+        .brand { min-height: 44px; }
         .foot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; padding: 30px 0 44px; }
         .foot-brand { grid-column: 1 / -1; }
         .foot-brand p { color: var(--muted); font-size: 15px; margin-top: 14px; max-width: 30ch; }
         .foot-grid h4 { font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 14px; }
-        .foot-grid div > a:not(.brand) { display: block; color: var(--soft); font-size: 15px; padding: 4px 0; transition: color .2s ease; }
+        .foot-grid div > a:not(.brand) { display: block; color: var(--soft); font-size: 15px; padding: 10px 0; transition: color .2s ease; }
         .foot-grid div > a:not(.brand):hover { color: var(--accent); }
         .foot-row { padding-top: 22px; border-top: 1px solid var(--line); }
         @media (min-width: 900px) { .foot-grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; } .foot-brand { grid-column: auto; } }
-        .wordmark { font-family: var(--head); font-weight: 700; font-size: 14.6vw; letter-spacing: -0.06em; line-height: 0.8; color: #1B1B1F; white-space: nowrap; margin-top: 36px; text-align: center; user-select: none; }
+        .wordmark { font-family: var(--head); font-weight: 700; font-size: 14.6vw; letter-spacing: -0.06em; line-height: 0.8; color: #1C1A17; white-space: nowrap; margin-top: 36px; text-align: center; user-select: none; }
 
 
         /* Entrada */
-        .loader { position: fixed; inset: 0; z-index: 100; background: #0B0B0C; display: none; align-items: center; justify-content: center; }
+        .loader { position: fixed; inset: 0; z-index: 100; background: #0B0A09; display: none; align-items: center; justify-content: center; }
         .js .loader { display: flex; }
         .ld-done .loader { display: none; }
         .ld-in { display: flex; flex-direction: column; align-items: center; gap: 16px; }
@@ -306,9 +347,9 @@
         @keyframes deriva { to { transform: translate(-60%, -40%) scale(1.15); } }
 
         /* Conversación de la portada */
-        .chatwrap { position: absolute; right: 0; top: 0; z-index: 1; }
-        .chatcard { width: 250px; background: #16161A; border: 1px solid #2C2C33; border-radius: 22px; padding: 14px; box-shadow: 0 40px 80px -30px rgba(0,0,0,0.9); }
-        .cc-head { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid #26262B; margin-bottom: 12px; }
+
+        .chatcard { width: 250px; background: #161513; border: 1px solid #2E2B27; border-radius: 22px; padding: 14px; box-shadow: 0 40px 80px -30px rgba(0,0,0,0.9); }
+        .cc-head { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid #272522; margin-bottom: 12px; }
         .cc-av { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #F58529, #DD2A7B 55%, #8134AF); display: grid; place-items: center; font-weight: 700; font-size: 13px; }
         .cc-head b { font-size: 13.5px; display: block; line-height: 1.2; }
         .cc-head small { font-size: 11.5px; color: #8FDCA9; display: flex; align-items: center; gap: 5px; }
@@ -316,7 +357,7 @@
         .cc-thread { display: grid; gap: 7px; min-height: 196px; align-content: start; }
         .cc-day { text-align: center; font-size: 10.5px; color: var(--muted); }
         .cc-b { max-width: 86%; padding: 8px 11px; border-radius: 15px; font-size: 13px; line-height: 1.35; }
-        .cc-b.them { background: #26262C; justify-self: start; border-bottom-left-radius: 5px; }
+        .cc-b.them { background: #282623; justify-self: start; border-bottom-left-radius: 5px; }
         .cc-b.bot { background: var(--text); color: var(--bg); justify-self: end; border-bottom-right-radius: 5px; }
         .cc-typing { justify-self: end; background: var(--text); border-radius: 15px; border-bottom-right-radius: 5px; padding: 10px 12px; display: none; gap: 4px; }
         .cc-typing.on { display: inline-flex; }
@@ -352,12 +393,17 @@
         }
         @media (min-width: 1000px) {
             .nav { display: flex; }
+            .burger, .menu { display: none; }
             .hero .wrap { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 40px; }
             .hero-foot { display: block; }
             .hero { padding: 100px 0 92px; }
             .devices { height: 600px; }
             .phone { width: 268px; }
-            .section { padding: 150px 0; }
+            .s-c, .s-l, .s-r { margin-left: -134px; }
+            .s-l { transform: translate3d(-176px, 0, -160px) rotateY(22deg) scale(0.86); }
+            .s-r { transform: translate3d(176px, 0, -160px) rotateY(-22deg) scale(0.86); }
+            .s-l .phone:hover, .s-r .phone:hover { filter: none; }
+            .section { padding: 128px 0; }
             .sec-head { grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr); align-items: end; }
             .sec-head .tag { grid-column: 1 / -1; }
             .svc { grid-template-columns: 60px minmax(0, 1fr) minmax(0, 0.9fr); gap: 0 30px; padding: 40px 0; align-items: start; }
@@ -396,6 +442,7 @@
 <div class="cursor" id="cursor" aria-hidden="true"><span>Ver</span></div>
 
 <!-- Cabecera -->
+<a class="skip" href="#servicios">Saltar al contenido</a>
 <header class="top" id="top">
     <div class="wrap">
         <a href="#" class="brand" aria-label="AutoWeb Studio, inicio"><img src="logo-aw.png" alt="" width="34" height="34">AutoWeb Studio</a>
@@ -406,9 +453,22 @@
             <a href="#captacion">Captación</a>
             <a href="#preguntas">Preguntas</a>
         </nav>
-        <a class="btn btn-light magnet" href="https://wa.me/34644694667?text=Hola%2C%20vengo%20de%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">Hablemos</a>
+        <div class="top-r">
+            <a class="btn btn-light magnet" href="https://wa.me/34644694667?text=Hola%2C%20vengo%20de%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">Hablemos</a>
+            <button class="burger" id="burger" type="button" aria-label="Abrir el menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+        </div>
     </div>
 </header>
+<div class="menu" id="menu" aria-hidden="true">
+    <nav aria-label="Menú">
+        <a href="#servicios"><small>01</small>Servicios</a>
+        <a href="#trabajos"><small>02</small>Trabajos</a>
+        <a href="#paginas"><small>03</small>Páginas web</a>
+        <a href="#captacion"><small>04</small>Captación</a>
+        <a href="#preguntas"><small>05</small>Preguntas</a>
+    </nav>
+    <div class="menu-foot"><a href="https://wa.me/34644694667" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/jlope7820/" target="_blank" rel="noopener">Instagram</a><a href="tel:+34644694667">644 694 667</a></div>
+</div>
 
 <!-- Portada -->
 <section class="hero" id="inicio">
@@ -433,7 +493,11 @@
             </div>
         </div>
         <div class="devices" id="devices">
-            <div class="float-b chatwrap"><div class="chatcard" id="chatcard" aria-label="Ejemplo: el asistente de Instagram contesta a un cliente">
+            <div class="stage" id="stage">
+                <div class="slot s-l"><a class="phone" href="ejemplos/restaurante/" aria-label="Ver el diseño de ejemplo de restaurante" tabindex="-1"><div class="screen"><img class="fijo" src="ejemplos/img/restaurante-video.jpg" alt="" width="360" height="780"></div></a></div>
+                <div class="slot s-r"><a class="phone" href="ejemplos/clinica/" aria-label="Ver el diseño de ejemplo de clínica" tabindex="-1"><div class="screen"><img class="fijo" src="ejemplos/img/clinica-video.jpg" alt="" width="360" height="780"></div></a></div>
+                <div class="slot s-c"><div class="float-a"><a class="phone p1" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Galindo Barber Shop"><div class="screen"><img src="galindo-completa.jpg" alt="Web de Galindo Barber Shop" width="600" height="3306"></div></a></div></div>
+                <div class="slot s-chat"><div class="float-b"><div class="chatcard" id="chatcard" aria-label="Ejemplo: el asistente de Instagram contesta a un cliente">
                 <div class="cc-head"><span class="cc-av">N</span><div><b>Tu negocio</b><small><i></i>Asistente activo 24/7</small></div></div>
                 <div class="cc-thread">
                     <div class="cc-day">Hoy · 23:47</div>
@@ -443,10 +507,9 @@
                     <div class="cc-typing"><b></b><b></b><b></b></div>
                     <div class="cc-ok">✓ Reserva apuntada</div>
                 </div>
-            </div></div>
-            <div class="float-a"><a class="phone p1" href="https://galindo-barbershop-tarifas.vercel.app" target="_blank" rel="noopener" aria-label="Ver la web de Galindo Barber Shop"><div class="screen"><img src="galindo-completa.jpg" alt="Web de Galindo Barber Shop" width="600" height="3306"></div></a></div>
-            <div class="chip c1"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Webs reales</b><span>de clientes, funcionando</span></div></div>
-            
+            </div></div></div>
+                <div class="slot s-chip"><div class="chip c1"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Hechas a medida</b><span>una distinta para cada negocio</span></div></div></div>
+            </div>
         </div>
     </div>
     <div class="hero-foot"><div class="hf"><span>Diseño a medida</span><span>Hecha para el móvil</span><span>Sin saber de tecnología</span><span>Atención por WhatsApp</span></div></div>
@@ -500,7 +563,7 @@
                 <div class="info">
                     <p><strong>Deja de contestar «¿qué precio tiene?» todos los días.</strong> Tus servicios, productos o carta en un enlace para la bio de Instagram, con un botón que abre WhatsApp con el pedido o la reserva preparados.</p>
                     <ul><li>Con tu logo y colores</li><li>Pedido o reserva en un toque</li><li>Enlace propio</li></ul>
-                    <a class="go" href="#trabajos">Ver ejemplos reales <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a class="go" href="#trabajos">Ver ejemplos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
                 </div>
             </article>
             <article class="svc rv" data-pv="ads">
@@ -590,8 +653,8 @@
                 <div class="shot">
                     <div class="sector-grid">
                         <a href="ejemplos/restaurante/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.2 1-3.5 3.6-3.5 7v3H17"/></svg><b>Restaurantes</b><span>Carta y reservas de mesa</span><em class="ver">Ver ejemplo →</em></a>
-                        <a href="ejemplos/clinica/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V6M3 16h18M21 20v-6a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg><b>Hoteles</b><span>Habitaciones y disponibilidad</span></a>
-                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20cl%C3%ADnica." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M12 10v4M10 12h4"/></svg><b>Clínicas</b><span>Tratamientos y citas</span><em class="ver">Ver ejemplo →</em></a>
+                        <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20hotel." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V6M3 16h18M21 20v-6a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg><b>Hoteles</b><span>Habitaciones y disponibilidad</span></a>
+                        <a href="ejemplos/clinica/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M12 10v4M10 12h4"/></svg><b>Clínicas</b><span>Tratamientos y citas</span><em class="ver">Ver ejemplo →</em></a>
                         <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20tienda." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b>Tiendas</b><span>Catálogo y pedidos</span></a>
                         <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20gimnasio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg><b>Gimnasios</b><span>Horarios, clases y cuotas</span></a>
                         <a href="https://wa.me/34644694667?text=Hola%2C%20quiero%20una%20web%20para%20mi%20negocio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg><b>Cualquier negocio</b><span>Talleres, asesorías…</span></a>
@@ -752,6 +815,20 @@
     var a = document.querySelector('[data-anio]');
     if (a) a.textContent = new Date().getFullYear();
 
+    // Menú del móvil
+    var burger = document.getElementById('burger'), menu = document.getElementById('menu'), raiz = document.documentElement;
+    function menuAbrir(on) {
+        raiz.classList.toggle('menu-on', on);
+        burger.setAttribute('aria-expanded', on ? 'true' : 'false');
+        burger.setAttribute('aria-label', on ? 'Cerrar el menú' : 'Abrir el menú');
+        menu.setAttribute('aria-hidden', on ? 'false' : 'true');
+        document.body.style.overflow = on ? 'hidden' : '';
+        if (window.__lenis) { if (on) window.__lenis.stop(); else window.__lenis.start(); }
+    }
+    burger.addEventListener('click', function () { menuAbrir(!raiz.classList.contains('menu-on')); });
+    menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { menuAbrir(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') menuAbrir(false); });
+
     // Cabecera: fondo al bajar, se esconde al bajar rápido y vuelve al subir
     var top = document.getElementById('top'), lastY = 0;
     function cabecera() {
@@ -818,6 +895,7 @@
     // Desplazamiento suave
     if (window.Lenis) {
         var lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+        window.__lenis = lenis;
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
         gsap.ticker.lagSmoothing(0);
@@ -833,24 +911,24 @@
 
     // Telón de entrada con el logo
     var telon = gsap.timeline({ onComplete: function () { document.documentElement.classList.add('ld-done'); } });
-    telon.from('.ld-in img', { scale: 0.7, opacity: 0, duration: 0.7, ease: 'expo.out' })
-         .from('.ld-in span', { y: 14, opacity: 0, duration: 0.6, ease: 'expo.out' }, 0.15)
-         .to('.ld-in', { y: -30, opacity: 0, duration: 0.5, ease: 'power3.in' }, 0.95)
-         .to('#loader', { yPercent: -100, duration: 0.9, ease: 'expo.inOut' }, 1.05);
+    telon.from('.ld-in img', { scale: 0.8, opacity: 0, duration: 0.45, ease: 'expo.out' })
+         .from('.ld-in span', { y: 10, opacity: 0, duration: 0.4, ease: 'expo.out' }, 0.08)
+         .to('.ld-in', { y: -20, opacity: 0, duration: 0.3, ease: 'power3.in' }, 0.5)
+         .to('#loader', { yPercent: -100, duration: 0.6, ease: 'expo.inOut' }, 0.55);
 
     // Barra de progreso
     gsap.to('#progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
 
     // Entrada de la portada
-    var intro = gsap.timeline({ delay: 1.35, defaults: { ease: 'expo.out' } });
+    var intro = gsap.timeline({ delay: 0.7, defaults: { ease: 'expo.out' } });
     intro.from('.hero h1 .line > span', { yPercent: 110, duration: 1.3, stagger: 0.09 }, 0.15)
          .from('.hero-in', { y: 24, opacity: 0, duration: 1.1, stagger: 0.08 }, 0.45)
-         .from('.devices .phone, .chatcard', { y: 120, opacity: 0, rotate: function (i) { return i ? 8 : -6; }, duration: 1.6, stagger: 0.15 }, 0.35)
+         .from('.devices .phone, .chatcard', { y: 140, opacity: 0, duration: 1.6, stagger: 0.12 }, 0.3)
          .from('.chip', { scale: 0.6, opacity: 0, duration: 0.9, stagger: 0.12, ease: 'back.out(1.7)' }, 1.0);
 
     // Los móviles de la portada se separan al bajar
-    gsap.to('.phone.p1', { yPercent: -18, rotate: -4, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-    gsap.to('#chatcard', { yPercent: 22, rotate: 4, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.phone.p1', { yPercent: -12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('#chatcard', { yPercent: 26, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
     // Brillo que sigue al ratón en la portada
     var glow = document.getElementById('glow');
@@ -940,6 +1018,17 @@
             s.addEventListener('pointerleave', function () { pv.classList.remove('on'); });
             s.addEventListener('pointermove', function (e) { px(e.clientX + 170); py(e.clientY); });
         });
+
+        // Portada en 3D: la escena gira con el ratón
+        var stage = document.getElementById('stage'), hero = document.querySelector('.hero');
+        if (stage && window.matchMedia('(pointer: fine)').matches) {
+            stage.classList.add('libre');
+            gsap.set(stage, { rotationX: 6, rotationY: -16, transformPerspective: 0 });
+            var sy = gsap.quickTo(stage, 'rotationY', { duration: 1.1, ease: 'power3' }), sx = gsap.quickTo(stage, 'rotationX', { duration: 1.1, ease: 'power3' });
+            var giro = function (e) { var r = hero.getBoundingClientRect(); sy(-16 + ((e.clientX - r.left) / r.width - 0.5) * 26); sx(6 - ((e.clientY - r.top) / r.height - 0.5) * 12); };
+            var suelta = function () { sy(-16); sx(6); };
+            hero.addEventListener('pointermove', giro); hero.addEventListener('pointerleave', suelta);
+        }
 
         // Tarjetas de páginas que se inclinan
         var quitar = [];
