@@ -134,6 +134,22 @@
         .tams button[aria-pressed="true"] { background: var(--ink); color: #fff; }
         .card .btn { width: 100%; margin-top: 4px; align-self: end; }
 
+        .card .foto .real-t { position: absolute; right: 14px; bottom: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #fff; background: rgba(28,14,18,.62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 999px; padding: 6px 11px; }
+        .card .foto .real-t svg { width: 14px; height: 14px; }
+        .card .acc { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+        .card .acc .btn { margin: 0; min-height: 50px; padding: 0 12px; font-size: 15px; }
+        .gancho { margin-top: 28px; background: var(--ink); color: #FBE9EE; border-radius: 26px; padding: 24px; display: grid; gap: 16px; align-items: center; box-shadow: 0 30px 60px -40px rgba(58,34,41,.8); }
+        .gancho p { font-family: var(--serif); font-size: 23px; line-height: 1.25; }
+        .gancho b { color: #F5A3BB; font-weight: 500; font-style: italic; }
+        .reales { display: flex; gap: 10px; flex-wrap: wrap; }
+        .reales button { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 5px 16px 5px 5px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; font-weight: 600; font-size: 14.5px; transition: border-color .2s ease, background-color .2s ease, color .2s ease; }
+        .reales button img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+        .reales button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+        .vista .desde { position: absolute; right: 18px; top: 18px; z-index: 2; width: 92px; background: #fff; padding: 5px 5px 20px; border-radius: 6px; transform: rotate(5deg); box-shadow: 0 16px 30px -16px rgba(58,34,41,.55); display: none; }
+        .vista .desde.on { display: block; animation: abre .4s var(--ease); }
+        .vista .desde img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 3px; }
+        .vista .desde span { position: absolute; left: 0; right: 0; bottom: 2px; text-align: center; font-family: var(--hand); font-size: 15px; color: var(--soft); }
+
         /* De cerca */
         .cerca { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
         .cerca figure { position: relative; border-radius: 22px; overflow: hidden; aspect-ratio: 1; box-shadow: 0 24px 40px -34px rgba(58,34,41,.6); }
@@ -235,7 +251,7 @@
             .hero { padding: 60px 0 90px; }
             .hero .wrap { grid-template-columns: 1.05fr .95fr; align-items: center; gap: 50px; }
             .porque { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-            .ramos { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .gancho { grid-template-columns: 1fr auto; padding: 26px 30px; }
             .cerca { grid-template-columns: repeat(4, 1fr); gap: 16px; }
             .cerca .grande { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
             .proceso { grid-template-columns: repeat(2, 1fr); }
@@ -246,8 +262,9 @@
             section { padding: 112px 0; }
             .aviso { bottom: 30px; }
         }
+        @media (min-width: 900px) { .ramos { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
         @media (min-width: 1080px) {
-            .ramos { grid-template-columns: repeat(4, 1fr); }
+
             .porque { grid-template-columns: repeat(4, 1fr); }
             .razon { grid-template-columns: 1fr; }
             .proceso { grid-template-columns: repeat(4, 1fr); }
@@ -317,6 +334,27 @@
             <figure class="rv zoom" data-big="img/det-lirio.jpg"><img src="img/det-lirio.jpg" alt="Lirios morados de limpiapipas" loading="lazy"><figcaption><b>Lirio morado</b>Seis pétalos con relieve.</figcaption></figure>
             <figure class="rv zoom" data-big="img/det-lavanda.jpg"><img src="img/det-lavanda.jpg" alt="Espigas de lavanda de limpiapipas en dos tonos" loading="lazy"><figcaption><b>Lavanda</b>En dos tonos de lila.</figcaption></figure>
         </div>
+        <div class="gancho rv"><p>¿Te gusta lo que ves? <b>Crea el tuyo</b> partiendo de uno de estos ramos.</p><a class="btn btn-rose" href="#disena">Crear mi ramo</a></div>
+    </div>
+</section>
+
+<section class="disena" id="disena">
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">Diseña el tuyo</span><h2>¿Te gusta uno? <em>Créalo a tu manera.</em></h2><p>Empieza desde uno de nuestros ramos reales o desde cero, cambia los colores y mira cómo queda. Cuando te guste, envíanoslo por WhatsApp y lo hacemos a mano.</p></div>
+        <div class="lab">
+            <div class="vista rv"><span class="chip"><i></i>Vista previa en directo</span><div class="desde" id="desde"><img alt=""><span>basado en</span></div><div id="preview"></div><small>Dibujo orientativo: tu ramo lo hacemos a mano con limpiapipas.</small></div>
+            <div class="panel rv">
+                <div class="grupo"><b>Empieza desde un ramo real <span>· o elige a tu gusto</span></b><div class="reales" id="reales"></div></div>
+                <div class="grupo"><b>Flores</b><div class="opts" data-k="flor"><button class="ch" data-v="lirios">Lirios</button><button class="ch" data-v="tulipanes">Tulipanes</button><button class="ch" data-v="mezcla">Lirios y tulipanes</button></div></div>
+                <div class="grupo"><b>Color principal <span id="t-color"></span></b><div class="opts" data-k="color"></div></div>
+                <div class="grupo"><b>Segundo color <span id="t-color2"></span></b><div class="opts" data-k="color2"></div></div>
+                <div class="grupo"><b>Papel <span id="t-papel"></span></b><div class="opts" data-k="papel"></div></div>
+                <div class="grupo"><b>Tamaño</b><div class="opts" data-k="tam"><button class="ch" data-v="pequeno">Pequeño</button><button class="ch" data-v="mediano">Mediano</button><button class="ch" data-v="grande">Grande</button></div></div>
+                <div class="grupo"><b>Añadir</b><div class="opts"><button class="ch" data-x="gerbera">Gerbera</button><button class="ch" data-x="lavanda">Lavanda</button><button class="ch" data-x="perlas">Perlas</button><button class="ch" data-x="tarjeta">Tarjeta con mensaje</button></div></div>
+                <p class="resumen" id="resumen"></p>
+                <a class="btn btn-rose" href="#" id="pedir-diseno"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Pedir este ramo por WhatsApp</a>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -340,25 +378,6 @@
             <div class="paso-p rv"><div class="ilu" id="ilu2"></div><div><h3>Doblamos cada pétalo</h3><p>Uno a uno, con sus estrías y su forma.</p></div></div>
             <div class="paso-p rv"><div class="ilu" id="ilu3"></div><div><h3>Montamos la flor</h3><p>Pétalos, estambres y tallo, hasta que parece de verdad.</p></div></div>
             <div class="paso-p rv"><div class="ilu f"><div class="foto"><img src="img/rojo.jpg" alt="Ramo terminado de lirios rojos" loading="lazy"></div></div><div><h3>Lo envolvemos</h3><p>Papel de floristería en capas, listo para regalar.</p></div></div>
-        </div>
-    </div>
-</section>
-
-<section class="disena" id="disena">
-    <div class="wrap">
-        <div class="head rv"><span class="kicker">Diseña el tuyo</span><h2>Crea tu ramo <em>en treinta segundos.</em></h2><p>Toca los colores y mira cómo cambia. Cuando te guste, envíanoslo por WhatsApp y lo hacemos a mano.</p></div>
-        <div class="lab">
-            <div class="vista rv"><span class="chip"><i></i>Vista previa en directo</span><div id="preview"></div><small>Dibujo orientativo: tu ramo lo hacemos a mano con limpiapipas.</small></div>
-            <div class="panel rv">
-                <div class="grupo"><b>Flores</b><div class="opts" data-k="flor"><button class="ch" data-v="lirios">Lirios</button><button class="ch" data-v="tulipanes">Tulipanes</button><button class="ch" data-v="mezcla">Lirios y tulipanes</button></div></div>
-                <div class="grupo"><b>Color principal <span id="t-color"></span></b><div class="opts" data-k="color"></div></div>
-                <div class="grupo"><b>Segundo color <span id="t-color2"></span></b><div class="opts" data-k="color2"></div></div>
-                <div class="grupo"><b>Papel <span id="t-papel"></span></b><div class="opts" data-k="papel"></div></div>
-                <div class="grupo"><b>Tamaño</b><div class="opts" data-k="tam"><button class="ch" data-v="pequeno">Pequeño</button><button class="ch" data-v="mediano">Mediano</button><button class="ch" data-v="grande">Grande</button></div></div>
-                <div class="grupo"><b>Añadir</b><div class="opts"><button class="ch" data-x="gerbera">Gerbera</button><button class="ch" data-x="lavanda">Lavanda</button><button class="ch" data-x="perlas">Perlas</button><button class="ch" data-x="tarjeta">Tarjeta con mensaje</button></div></div>
-                <p class="resumen" id="resumen"></p>
-                <a class="btn btn-rose" href="#" id="pedir-diseno"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Pedir este ramo por WhatsApp</a>
-            </div>
         </div>
     </div>
 </section>
@@ -411,7 +430,7 @@
 
 <footer><b>Pétalo Eterno</b>Ramos de flores de limpiapipas hechos a mano · <span id="anio">2026</span></footer>
 
-<div class="barra"><a class="btn btn-rose" href="#ramos">Ver ramos</a><a class="btn wa" href="#" data-wa="Hola, quiero información sobre los ramos de flores de limpiapipas." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a></div>
+<div class="barra"><a class="btn btn-rose" href="#disena">Crear mi ramo</a><a class="btn wa" href="#" data-wa="Hola, quiero información sobre los ramos de flores de limpiapipas." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a></div>
 <a class="flota" href="#" data-wa="Hola, quiero información sobre los ramos de flores de limpiapipas." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a>
 <div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Foto en grande"><img alt=""><button type="button" aria-label="Cerrar">×</button></div>
 <div class="aviso" id="aviso" role="status"></div>
@@ -456,37 +475,34 @@
 
     // Catálogo: ramos reales
     var RAMOS = [
-        { n: 'Jardín Rosa', d: 'Gerbera rosa, lirios rosas y blancos, margaritas y una mariposa, con hojas y zarcillos verdes.', tag: 'El más pedido', fotos: ['img/rosa-1.jpg', 'img/rosa-2.jpg'], lleva: ['Gerbera', 'Lirios', 'Margaritas', 'Mariposa'] },
-        { n: 'Lavanda', d: 'Lirios morados y espigas de lavanda en dos tonos, envueltos en papel kraft con mariposas.', tag: 'Nuevo', fotos: ['img/lavanda.jpg'], lleva: ['Lirios', 'Lavanda', 'Papel kraft'] },
-        { n: 'Rojo Pasión', d: 'Lirios rojos y granate con borde blanco esponjoso, un tulipán rojo y capullos verdes.', tag: 'Para San Valentín', fotos: ['img/rojo.jpg'], lleva: ['Lirios', 'Tulipán', 'Capullos'] }
+        { id: 'jardin', n: 'Jardín Rosa', d: 'Gerbera rosa, lirios rosas y blancos, margaritas y una mariposa, con hojas y zarcillos verdes.', tag: 'El más pedido', fotos: ['img/rosa-1.jpg', 'img/rosa-2.jpg'], lleva: ['Gerbera', 'Lirios', 'Margaritas', 'Mariposa'],
+          base: { flor: 'mezcla', color: 'rosa', color2: 'blanco', papel: 'blanco', tam: 'mediano', gerbera: true, lavanda: false, perlas: false, tarjeta: false } },
+        { id: 'lavanda', n: 'Lavanda', d: 'Lirios morados y espigas de lavanda en dos tonos, envueltos en papel kraft con mariposas.', tag: 'Nuevo', fotos: ['img/lavanda.jpg'], lleva: ['Lirios', 'Lavanda', 'Papel kraft'],
+          base: { flor: 'lirios', color: 'morado', color2: 'lila', papel: 'crema', tam: 'mediano', gerbera: false, lavanda: true, perlas: false, tarjeta: false } },
+        { id: 'rojo', n: 'Rojo Pasión', d: 'Lirios rojos y granate con borde blanco esponjoso, un tulipán rojo y capullos verdes.', tag: 'Para San Valentín', fotos: ['img/rojo.jpg'], lleva: ['Lirios', 'Tulipán', 'Capullos'],
+          base: { flor: 'mezcla', color: 'rojo', color2: 'blanco', papel: 'crema', tam: 'mediano', gerbera: false, lavanda: false, perlas: false, tarjeta: true } }
     ];
+    var CAM = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
     var lista = document.getElementById('lista');
-    function tarjeta(nombre, cuerpo, msg) {
-        var card = document.createElement('article'); card.className = 'card rv'; card.innerHTML = cuerpo +
+    RAMOS.forEach(function (r) {
+        var card = document.createElement('article'); card.className = 'card rv';
+        card.innerHTML = '<div class="foto zoom" data-big="' + r.fotos[0] + '"><span class="tag ok">' + r.tag + '</span><span class="real-t">' + CAM + 'Foto real</span>' +
+            '<img src="' + r.fotos[0] + '" alt="Ramo ' + r.n + ' de limpiapipas" loading="lazy">' + (r.fotos[1] ? '<img class="b" src="' + r.fotos[1] + '" alt="" loading="lazy">' : '') + '</div>' +
+            '<div class="in"><h3>' + r.n + '</h3><p>' + r.d + '</p><div class="lleva">' + r.lleva.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div>' +
             '<div class="tams" role="group" aria-label="Tamaño"><button aria-pressed="false" data-t="pequeño">Pequeño</button><button aria-pressed="true" data-t="mediano">Mediano</button><button aria-pressed="false" data-t="grande">Grande</button></div>' +
-            '<a class="btn btn-rose" href="#">Pedir precio</a></div>';
+            '<div class="acc"><a class="btn btn-rose pedir" href="#">Pedir precio</a><a class="btn btn-line crear" href="#disena">Crear uno así</a></div></div>';
         var tam = 'mediano';
         card.querySelectorAll('.tams button').forEach(function (b) { b.addEventListener('click', function () { tam = b.dataset.t; card.querySelectorAll('.tams button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); }); });
-        card.querySelector('.btn').addEventListener('click', function (e) { e.preventDefault(); abrirWA(msg(tam)); });
+        card.querySelector('.pedir').addEventListener('click', function (e) { e.preventDefault(); abrirWA('Hola, me gusta el ramo «' + r.n + '» que tenéis en la web, en tamaño ' + tam + '. ¿Qué precio tiene y para cuándo estaría?'); });
+        card.querySelector('.crear').addEventListener('click', function () { desdeReal(r.id); });
         lista.appendChild(card);
-    }
-    RAMOS.forEach(function (r) {
-        var fotos = '<img src="' + r.fotos[0] + '" alt="Ramo ' + r.n + ' de limpiapipas" loading="lazy">' + (r.fotos[1] ? '<img class="b" src="' + r.fotos[1] + '" alt="" loading="lazy">' : '');
-        tarjeta(r.n, '<div class="foto zoom" data-big="' + r.fotos[0] + '"><span class="tag ok">' + r.tag + '</span>' + fotos + '</div>' +
-            '<div class="in"><h3>' + r.n + '</h3><p>' + r.d + '</p><div class="lleva">' + r.lleva.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div>',
-            function (t) { return 'Hola, me gusta el ramo «' + r.n + '» que tenéis en la web, en tamaño ' + t + '. ¿Qué precio tiene y para cuándo estaría?'; });
     });
-    // Cuarta tarjeta: a medida
-    var medida = document.createElement('article'); medida.className = 'card rv';
-    medida.innerHTML = '<div class="foto dib" style="background:radial-gradient(85% 70% at 50% 42%, #fff, #F8DCE5)"><span class="tag">A tu medida</span>' + ramo({ id: 'cm', flor: 'mezcla', color: 'rosa', color2: 'blanco', papel: 'blanco', gerbera: true, tam: 'mediano' }) + '</div>' +
-        '<div class="in"><h3>Tu ramo</h3><p>¿Otros colores u otras flores? Diséñalo tú y lo hacemos a mano tal cual.</p><div class="lleva"><span>Tus colores</span><span>Tus flores</span><span>Tu papel</span></div><a class="btn btn-rose" href="#disena">Diseñar el mío</a></div>';
-    lista.appendChild(medida);
 
     // Diseñador
     var NOMBRES = { rosa: 'Rosa', rosaclaro: 'Rosa claro', lila: 'Lila', morado: 'Morado', blanco: 'Blanco', rojo: 'Rojo', amarillo: 'Amarillo', azul: 'Azul', melocoton: 'Melocotón', crema: 'Crema', negro: 'Negro', periodico: 'Periódico', panal: 'Panal rosa', ninguno: 'Ninguno' };
     var HEX = { rosa: '#F5A3BB', rosaclaro: '#FBC4D3', blanco: '#FFFFFF', lila: '#C7A1EB', morado: '#9A69D2', rojo: '#EC5867', amarillo: '#FFD46C', azul: '#92C7F1', melocoton: '#FFBF9A' };
     var PAP = { blanco: '#FFFFFF', rosa: '#F8CAD7', crema: '#F3E6D4', lila: '#E6D5F5', negro: '#3A3233', panal: 'radial-gradient(circle at 3px 3px, #E7A3B7 1.4px, #F7C6D3 1.6px) 0 0/7px 7px', periodico: 'repeating-linear-gradient(0deg,#F4EFE6 0 5px,#B9B0A5 5px 6px)' };
-    var est = { flor: 'mezcla', color: 'rosa', color2: 'blanco', papel: 'blanco', tam: 'mediano', gerbera: true, lavanda: false, perlas: false, tarjeta: true };
+    var est = { flor: 'mezcla', color: 'rosa', color2: 'blanco', papel: 'blanco', tam: 'mediano', gerbera: true, lavanda: false, perlas: false, tarjeta: false }, base = 'jardin';
     function chips(k, mapa, extra) {
         var c = document.querySelector('.opts[data-k="' + k + '"]');
         (extra || []).concat(Object.keys(mapa)).forEach(function (v) {
@@ -500,7 +516,9 @@
         var fl = { lirios: 'lirios', tulipanes: 'tulipanes', mezcla: 'lirios y tulipanes' }[est.flor];
         var t = { pequeno: 'pequeño', mediano: 'mediano', grande: 'grande' }[est.tam];
         var cl = NOMBRES[est.color].toLowerCase() + (est.color2 !== 'ninguno' && est.color2 !== est.color ? ' y ' + NOMBRES[est.color2].toLowerCase() : '');
-        var ex = []; if (est.gerbera) ex.push('gerbera'); if (est.lavanda) ex.push('lavanda'); if (est.perlas) ex.push('perlas'); if (est.tarjeta) ex.push('tarjeta con mensaje');
+        var rb = base ? RAMOS.filter(function (x) { return x.id === base; })[0] : null, ex = [];
+        if (est.gerbera) ex.push('gerbera'); if (est.lavanda) ex.push('lavanda'); if (est.perlas) ex.push('perlas'); if (est.tarjeta) ex.push('tarjeta con mensaje');
+        if (rb) return 'un ramo como vuestro «' + rb.n + '», en tamaño ' + t;
         return 'ramo ' + t + ' de ' + fl + ' en ' + cl + ', papel ' + NOMBRES[est.papel].toLowerCase() + (ex.length ? ', con ' + ex.join(', ') : '');
     }
     function pintar() {
@@ -509,9 +527,15 @@
         document.querySelectorAll('[data-x]').forEach(function (b) { b.setAttribute('aria-pressed', est[b.dataset.x] ? 'true' : 'false'); });
         ['color', 'color2', 'papel'].forEach(function (k) { document.getElementById('t-' + k).textContent = '· ' + NOMBRES[est[k]]; });
         res.innerHTML = 'Tu ramo: <b>' + texto() + '</b>';
+        var r = RAMOS.filter(function (x) { return x.id === base; })[0], d = document.getElementById('desde');
+        document.querySelectorAll('#reales button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.id === base ? 'true' : 'false'); });
+        if (r) { d.querySelector('img').src = r.fotos[0]; d.querySelector('span').textContent = 'basado en ' + r.n; d.classList.add('on'); } else d.classList.remove('on');
     }
-    document.querySelectorAll('.opts[data-k]').forEach(function (g) { g.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; est[g.dataset.k] = b.dataset.v; pintar(); }); });
-    document.querySelectorAll('[data-x]').forEach(function (b) { b.addEventListener('click', function () { est[b.dataset.x] = !est[b.dataset.x]; pintar(); }); });
+    function desdeReal(id) { var r = RAMOS.filter(function (x) { return x.id === id; })[0]; if (!r) return; Object.keys(r.base).forEach(function (k) { est[k] = r.base[k]; }); base = id; pintar(); }
+    var reales = document.getElementById('reales');
+    RAMOS.forEach(function (r) { var b = document.createElement('button'); b.type = 'button'; b.dataset.id = r.id; b.innerHTML = '<img src="' + r.fotos[0] + '" alt="">' + r.n; b.addEventListener('click', function () { desdeReal(r.id); }); reales.appendChild(b); });
+    document.querySelectorAll('.opts[data-k]').forEach(function (g) { g.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; est[g.dataset.k] = b.dataset.v; base = null; pintar(); }); });
+    document.querySelectorAll('[data-x]').forEach(function (b) { b.addEventListener('click', function () { est[b.dataset.x] = !est[b.dataset.x]; base = null; pintar(); }); });
     document.getElementById('pedir-diseno').addEventListener('click', function (e) { e.preventDefault(); abrirWA('Hola, he diseñado este ramo en vuestra web: ' + texto() + '. ¿Qué precio tiene y para cuándo estaría?'); });
     pintar();
 
