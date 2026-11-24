@@ -276,6 +276,8 @@
         var medianos = [[164, 216, 62, -10], [302, 264, 58, 16], [233, 190, 52, 6], [112, 270, 50, -24]];
         var nG = tam === 'grande' ? 4 : tam === 'pequeno' ? 2 : 3, nM = nG;
         var it = [{ t: 'helecho', x: 296, y: 310, s: 132, r: 14 }, { t: 'helecho', x: 106, y: 318, s: 116, r: -18 }, { t: 'hoja', x: 158, y: 342, s: 92, r: -32 }, { t: 'hoja', x: 252, y: 346, s: 82, r: 28 }, { t: 'hoja', x: 206, y: 352, s: 70, r: 4 }];
+        if (o.lavanda) it.push({ t: 'lavanda', x: 112, y: 300, s: 176, r: -24, c: 'lila' }, { t: 'lavanda', x: 290, y: 298, s: 172, r: 22, c: 'morado' }, { t: 'lavanda', x: 266, y: 292, s: 160, r: 10, c: 'lila' });
+        if (o.gerbera) it.push({ t: 'gerbera', x: 200, y: 168, s: 44, k: .92, c: c1 === 'blanco' ? 'rosa' : c1 });
         if (o.espigas) it.push({ t: 'espiga', x: 150, y: 300, s: 150, r: -18 }, { t: 'espiga', x: 270, y: 300, s: 146, r: 20 }, { t: 'espiga', x: 196, y: 300, s: 168, r: -2 });
         medianos.slice(0, nM).forEach(function (m) {
             if (flor === 'lirios') it.push({ t: 'lirio', x: m[0], y: m[1] - 22, s: m[2] * .82, r: m[3] * 2, k: .9, c: c2 });

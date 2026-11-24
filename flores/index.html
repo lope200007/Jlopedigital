@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Pétalo Eterno · Ramos de flores de limpiapipas hechos a mano</title>
-    <meta name="description" content="Ramos de flores hechos a mano con limpiapipas. No se marchitan, no necesitan agua y los diseñas a tu gusto. Pídelo por WhatsApp.">
+    <meta name="description" content="Ramos de lirios, gerberas, tulipanes y lavanda hechos a mano con limpiapipas. No se marchitan, no necesitan agua y los diseñas a tu gusto. Pídelo por WhatsApp.">
     <meta name="theme-color" content="#FBF4F1">
     <meta property="og:title" content="Pétalo Eterno · Flores que nunca se marchitan">
     <meta property="og:description" content="Ramos de flores hechos a mano con limpiapipas. Diseña el tuyo y pídelo por WhatsApp.">
+    <meta property="og:image" content="https://jlopedigital.vercel.app/flores/img/rosa-1.jpg">
     <meta property="og:type" content="website">
     <meta name="robots" content="noindex">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #FBF4F1; --paper: #FFFFFF; --ink: #3A2229; --soft: #7A5F66; --line: #EEDCE0; --rose: #E0708F; --rose-d: #C4506E; --blush: #F9E3EA; --sage: #5E8A4E; --gold: #C9993F; --serif: 'Fraunces', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif; --hand: 'Caveat', cursive; --ease: cubic-bezier(0.22, 1, 0.36, 1); }
+        :root { --bg: #FBF4F1; --paper: #FFFFFF; --ink: #3A2229; --soft: #7A5F66; --line: #EEDCE0; --rose: #E0708F; --rose-d: #C4506E; --blush: #F9E3EA; --sage: #5E8A4E; --serif: 'Fraunces', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif; --hand: 'Caveat', cursive; --ease: cubic-bezier(0.22, 1, 0.36, 1); }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
         body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; overflow-x: hidden; padding-bottom: 84px; }
         body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .5; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .35 0 0 0 0 .4 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
         a { color: inherit; text-decoration: none; }
         button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; }
-        svg { display: block; max-width: 100%; }
+        img, svg { display: block; max-width: 100%; }
         .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
         h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; letter-spacing: -0.02em; text-wrap: balance; }
         h2 { font-size: clamp(36px, 7vw, 60px); }
@@ -36,11 +37,12 @@
         .btn-line { border-color: rgba(58,34,41,.8); }
         .btn svg { width: 20px; height: 20px; }
         @media (hover: hover) { .btn-rose:hover { background: var(--rose-d); } .btn-line:hover { background: var(--ink); color: var(--bg); } }
-
         .rv { opacity: 0; transform: translateY(26px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
         .rv.in { opacity: 1; transform: none; }
+        .foto { position: relative; overflow: hidden; background: #EADAD5; }
+        .foto img { width: 100%; height: 100%; object-fit: cover; }
+        .zoom { cursor: zoom-in; }
 
-        /* Aviso superior */
         .cinta { background: var(--ink); color: #FBE9EE; font-size: 13.5px; text-align: center; padding: 9px 16px; }
         .cinta b { color: #F7B9CB; font-weight: 600; }
 
@@ -59,15 +61,15 @@
         .top .btn { min-height: 42px; padding: 0 18px; font-size: 14.5px; }
 
         /* Portada */
-        .hero { position: relative; overflow: hidden; padding: 36px 0 0; }
+        .hero { position: relative; overflow: hidden; padding: 36px 0 70px; }
         .hero::before { content: ""; position: absolute; width: 900px; height: 900px; right: -320px; top: -220px; border-radius: 50%; background: radial-gradient(circle, #F8D3DF 0%, rgba(248,211,223,.45) 38%, transparent 68%); pointer-events: none; }
         .hero::after { content: ""; position: absolute; width: 600px; height: 600px; left: -300px; bottom: -200px; border-radius: 50%; background: radial-gradient(circle, rgba(221,201,243,.55) 0%, transparent 65%); pointer-events: none; }
-        .hero .wrap { position: relative; z-index: 2; display: grid; gap: 6px; }
+        .hero .wrap { position: relative; z-index: 2; display: grid; gap: 40px; }
         .pill { display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 15px 6px 6px; margin-bottom: 20px; box-shadow: 0 10px 24px -18px rgba(58,34,41,.4); }
         .pill b { background: var(--blush); color: var(--rose-d); border-radius: 999px; padding: 3px 10px; font-size: 12.5px; }
         .hero h1 { font-size: clamp(52px, 13vw, 104px); letter-spacing: -0.04em; line-height: .98; }
         .subraya { position: relative; display: inline-block; }
-        .subraya svg { position: absolute; left: -4%; right: -4%; width: 108%; bottom: -.12em; height: .28em; overflow: visible; }
+        .subraya svg { position: absolute; left: -4%; width: 108%; bottom: -.12em; height: .28em; overflow: visible; }
         .subraya path { stroke-dasharray: 400; stroke-dashoffset: 400; animation: traza 1.4s var(--ease) .6s forwards; }
         @keyframes traza { to { stroke-dashoffset: 0; } }
         .hero p.lead { font-size: clamp(17px, 2.4vw, 20px); color: var(--soft); max-width: 30em; margin: 22px 0 28px; }
@@ -76,22 +78,26 @@
         .ventajas li { display: flex; align-items: center; gap: 8px; }
         .ventajas svg { width: 20px; height: 20px; color: var(--sage); }
 
-        .escena { position: relative; height: 500px; margin: 0 -20px; }
-        .escena .r { position: absolute; transform-origin: 50% 100%; filter: drop-shadow(0 30px 30px rgba(90,40,55,.14)); }
-        .escena .r1 { left: 50%; bottom: -6px; width: 330px; margin-left: -165px; z-index: 3; animation: mece 7s ease-in-out infinite; }
-        .escena .r2 { left: -46px; bottom: 34px; width: 230px; z-index: 1; animation: mece2 8s ease-in-out -2s infinite; }
-        .escena .r3 { right: -46px; bottom: 34px; width: 230px; z-index: 1; animation: mece3 9s ease-in-out -4s infinite; }
-        @keyframes mece { 0%, 100% { transform: rotate(-1.4deg); } 50% { transform: rotate(1.4deg); } }
-        @keyframes mece2 { 0%, 100% { transform: rotate(-11deg); } 50% { transform: rotate(-7deg); } }
-        @keyframes mece3 { 0%, 100% { transform: rotate(11deg); } 50% { transform: rotate(7deg); } }
-        .sello { position: absolute; right: 14px; top: 0; z-index: 5; width: 108px; height: 108px; animation: gira 24s linear infinite; }
-        .sello-c { position: absolute; right: 14px; top: 0; z-index: 6; width: 108px; height: 108px; display: grid; place-items: center; pointer-events: none; }
-        .sello-c span { width: 54px; height: 54px; border-radius: 50%; background: var(--ink); color: #F7B9CB; display: grid; place-items: center; font-family: var(--serif); font-style: italic; font-size: 22px; }
+        .marco { position: relative; max-width: 520px; width: 100%; margin: 0 auto; padding: 0 8px 40px; }
+        .arco { border-radius: 260px 260px 30px 30px; aspect-ratio: 4 / 4.6; box-shadow: 0 50px 80px -50px rgba(90,40,55,.6); border: 8px solid #fff; }
+        .arco img { object-position: 50% 42%; animation: acerca 16s ease-out forwards; }
+        @keyframes acerca { from { transform: scale(1.1); } to { transform: scale(1); } }
+        .polaroid { position: absolute; right: -6px; bottom: 0; width: 42%; background: #fff; padding: 8px 8px 30px; border-radius: 6px; transform: rotate(6deg); box-shadow: 0 30px 50px -26px rgba(58,34,41,.55); animation: flota 6s ease-in-out infinite; }
+        .polaroid .foto { aspect-ratio: 1; border-radius: 3px; }
+        .polaroid span { position: absolute; left: 0; right: 0; bottom: 5px; text-align: center; font-family: var(--hand); font-size: 20px; color: var(--soft); }
+        @keyframes flota { 0%, 100% { transform: rotate(6deg) translateY(0); } 50% { transform: rotate(5deg) translateY(-8px); } }
+        .sello { position: absolute; left: -4px; top: 6%; z-index: 5; width: 104px; height: 104px; animation: gira 24s linear infinite; }
+        .sello-c { position: absolute; left: -4px; top: 6%; z-index: 6; width: 104px; height: 104px; display: grid; place-items: center; pointer-events: none; }
+        .sello-c span { width: 52px; height: 52px; border-radius: 50%; background: var(--ink); color: #F7B9CB; display: grid; place-items: center; font-size: 20px; }
         @keyframes gira { to { transform: rotate(360deg); } }
+        .real { position: absolute; left: 6%; bottom: 52px; z-index: 6; background: #fff; border-radius: 16px; padding: 10px 14px; display: flex; gap: 10px; align-items: center; font-size: 13.5px; line-height: 1.3; box-shadow: 0 18px 36px -20px rgba(58,34,41,.5); }
+        .real i { width: 10px; height: 10px; border-radius: 50%; background: #5FB27F; flex-shrink: 0; box-shadow: 0 0 0 5px rgba(95,178,127,.18); }
+        .real b { display: block; font-weight: 700; }
+        .real span { color: var(--soft); }
         .nota { display: none; position: absolute; z-index: 6; font-family: var(--hand); font-size: 25px; line-height: 1; color: var(--rose-d); white-space: nowrap; }
         .nota svg { position: absolute; width: 70px; height: 50px; overflow: visible; }
-        .petalo { position: absolute; top: 0; width: 13px; height: 18px; border-radius: 60% 60% 60% 0; background: #F5A3BB; opacity: 0; animation: cae linear infinite; z-index: 4; }
-        @keyframes cae { 0% { transform: translate(0, -30px) rotate(0); opacity: 0; } 12% { opacity: .8; } 100% { transform: translate(70px, 540px) rotate(320deg); opacity: 0; } }
+        .petalo { position: absolute; top: 0; width: 13px; height: 18px; border-radius: 60% 60% 60% 0; background: #F5A3BB; opacity: 0; animation: cae linear infinite; z-index: 1; pointer-events: none; }
+        @keyframes cae { 0% { transform: translate(0, -30px) rotate(0); opacity: 0; } 12% { opacity: .8; } 100% { transform: translate(70px, 640px) rotate(320deg); opacity: 0; } }
 
         section { padding: 80px 0; position: relative; }
         .head { max-width: 660px; margin-bottom: 40px; }
@@ -99,11 +105,44 @@
         .center { text-align: center; margin-left: auto; margin-right: auto; }
         .center .kicker::after { content: ""; width: 24px; height: 1.5px; background: currentColor; }
 
-        /* Franja */
         .franja { background: var(--ink); color: #FBE9EE; padding: 20px 0; overflow: hidden; white-space: nowrap; }
         .franja div { display: inline-flex; gap: 36px; animation: corre 36s linear infinite; font-family: var(--serif); font-style: italic; font-size: 23px; }
         .franja span::after { content: "✿"; margin-left: 36px; color: #F5A3BB; font-style: normal; }
         @keyframes corre { to { transform: translateX(-50%); } }
+
+        /* Catálogo */
+        .cat { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .ramos { display: grid; gap: 22px; }
+        .card { border: 1px solid var(--line); border-radius: 28px; overflow: hidden; background: var(--bg); display: grid; grid-template-rows: auto 1fr; box-shadow: 0 24px 50px -40px rgba(58,34,41,.5); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+        @media (hover: hover) { .card:hover { transform: translateY(-6px); box-shadow: 0 34px 60px -40px rgba(58,34,41,.6); } }
+        .card .foto { aspect-ratio: 1 / 1.02; }
+        .card .foto img { transition: transform 1.2s var(--ease), opacity .6s ease; }
+        .card .foto .b { position: absolute; inset: 0; opacity: 0; }
+        @media (hover: hover) { .card:hover .foto img { transform: scale(1.05); } .card:hover .foto .b { opacity: 1; } }
+        .card .dib { aspect-ratio: 1 / 1.02; background: radial-gradient(85% 70% at 50% 42%, #fff, #F8DCE5); padding: 14px 40px 0; }
+        .card .dib svg { width: 100%; height: 100%; }
+        .card .tag { position: absolute; left: 16px; top: 16px; z-index: 2; font-size: 12.5px; font-weight: 700; background: #fff; border-radius: 999px; padding: 5px 12px; color: var(--rose-d); box-shadow: 0 6px 16px -10px rgba(0,0,0,.3); }
+        .card .tag.ok { color: #2F6B45; }
+        .card .tag.ok::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #5FB27F; margin-right: 6px; vertical-align: 1px; }
+        .card .in { padding: 24px; display: grid; gap: 12px; align-content: start; }
+        .card h3 { font-size: 28px; }
+        .card p { color: var(--soft); font-size: 15.5px; }
+        .lleva { display: flex; flex-wrap: wrap; gap: 6px; }
+        .lleva span { font-size: 12.5px; font-weight: 600; color: var(--soft); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+        .tams { display: flex; gap: 6px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px; margin-top: 4px; }
+        .tams button { flex: 1; white-space: nowrap; min-height: 40px; border-radius: 999px; font-weight: 600; font-size: 14px; color: var(--soft); transition: background-color .25s ease, color .25s ease; }
+        .tams button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+        .card .btn { width: 100%; margin-top: 4px; align-self: end; }
+
+        /* De cerca */
+        .cerca { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+        .cerca figure { position: relative; border-radius: 22px; overflow: hidden; aspect-ratio: 1; box-shadow: 0 24px 40px -34px rgba(58,34,41,.6); }
+        .cerca figure img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+        @media (hover: hover) { .cerca figure:hover img { transform: scale(1.07); } }
+        .cerca figcaption { position: absolute; left: 10px; right: 10px; bottom: 10px; background: rgba(255,255,255,.94); border-radius: 14px; padding: 10px 12px; font-size: 13.5px; line-height: 1.3; color: var(--soft); }
+        .cerca figcaption b { display: block; font-family: var(--serif); font-weight: 500; font-size: 17px; color: var(--ink); }
+        .cerca .grande { grid-column: span 2; aspect-ratio: 1.6; }
+        @media (max-width: 759px) { .cerca figure:not(.grande) figcaption { font-size: 0; padding: 7px 11px; left: 8px; right: auto; bottom: 8px; } .cerca figure:not(.grande) figcaption b { font-size: 15px; } }
 
         /* Por qué */
         .porque { display: grid; gap: 14px; }
@@ -113,30 +152,13 @@
         .razon h3 { font-size: 24px; margin-bottom: 6px; }
         .razon p { color: var(--soft); font-size: 15.5px; }
 
-        /* Catálogo */
-        .cat { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-        .ramos { display: grid; gap: 20px; }
-        .card { border: 1px solid var(--line); border-radius: 28px; overflow: hidden; background: var(--bg); display: grid; box-shadow: 0 24px 50px -40px rgba(58,34,41,.5); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
-        @media (hover: hover) { .card:hover { transform: translateY(-6px); box-shadow: 0 34px 60px -40px rgba(58,34,41,.6); } }
-        .card .dib { background: radial-gradient(85% 70% at 50% 42%, #fff, var(--tono, #F9E3EA)); padding: 20px 34px 4px; position: relative; overflow: hidden; }
-        .card .dib svg { width: 100%; max-width: 290px; margin: 0 auto; transition: transform 1s var(--ease); }
-        @media (hover: hover) { .card:hover .dib svg { transform: scale(1.05) rotate(-1.5deg); } }
-        .card .tag { position: absolute; left: 16px; top: 16px; z-index: 2; font-size: 12.5px; font-weight: 700; background: #fff; border-radius: 999px; padding: 5px 12px; color: var(--rose-d); box-shadow: 0 6px 16px -10px rgba(0,0,0,.3); }
-        .card .in { padding: 24px; display: grid; gap: 12px; align-content: start; }
-        .card h3 { font-size: 28px; }
-        .card p { color: var(--soft); font-size: 15.5px; }
-        .lleva { display: flex; flex-wrap: wrap; gap: 6px; }
-        .lleva span { font-size: 12.5px; font-weight: 600; color: var(--soft); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
-        .tams { display: flex; gap: 6px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px; margin-top: 4px; }
-        .tams button { flex: 1; white-space: nowrap; min-height: 40px; border-radius: 999px; font-weight: 600; font-size: 14px; color: var(--soft); transition: background-color .25s ease, color .25s ease; }
-        .tams button[aria-pressed="true"] { background: var(--ink); color: #fff; }
-        .card .btn { width: 100%; margin-top: 4px; }
-
         /* Proceso */
         .proceso { display: grid; gap: 16px; counter-reset: p; }
         .paso-p { counter-increment: p; background: var(--paper); border: 1px solid var(--line); border-radius: 26px; padding: 22px; display: grid; grid-template-columns: 96px 1fr; gap: 18px; align-items: center; }
         .paso-p .ilu { width: 96px; height: 96px; border-radius: 22px; background: radial-gradient(circle at 50% 40%, #fff, var(--blush)); display: grid; place-items: center; position: relative; }
-        .paso-p .ilu::after { content: counter(p); position: absolute; left: -8px; top: -8px; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; font-family: var(--serif); font-style: italic; font-size: 15px; display: grid; place-items: center; }
+        .paso-p .ilu.f { overflow: visible; background: none; }
+        .paso-p .ilu.f .foto { width: 100%; height: 100%; border-radius: 22px; }
+        .paso-p .ilu::after { content: counter(p); position: absolute; left: -8px; top: -8px; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; font-family: var(--serif); font-style: italic; font-size: 15px; display: grid; place-items: center; z-index: 2; }
         .paso-p .ilu svg { width: 82px; height: 82px; }
         .paso-p h3 { font-size: 23px; margin-bottom: 4px; }
         .paso-p p { color: var(--soft); font-size: 15.5px; }
@@ -146,9 +168,10 @@
         .lab { display: grid; gap: 26px; align-items: start; }
         .vista { position: relative; background: radial-gradient(70% 60% at 50% 45%, #fff, #F8DCE5); border-radius: 32px; border: 1px solid var(--line); padding: 30px 34px 16px; box-shadow: 0 30px 60px -44px rgba(58,34,41,.55); }
         .vista svg { width: 100%; max-width: 360px; margin: 0 auto; }
-        .vista .chip { position: absolute; left: 18px; top: 18px; font-size: 13px; font-weight: 700; background: #fff; border-radius: 999px; padding: 6px 12px; box-shadow: 0 6px 16px -10px rgba(0,0,0,.25); }
+        .vista .chip { position: absolute; left: 18px; top: 18px; z-index: 2; font-size: 13px; font-weight: 700; background: #fff; border-radius: 999px; padding: 6px 12px; box-shadow: 0 6px 16px -10px rgba(0,0,0,.25); }
         .vista .chip i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #5FB27F; margin-right: 6px; vertical-align: 1px; animation: late 1.6s ease-in-out infinite; }
         @keyframes late { 50% { opacity: .3; } }
+        .vista small { display: block; text-align: center; font-size: 13px; color: var(--soft); margin-top: 6px; }
         .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: 24px; display: grid; gap: 22px; box-shadow: 0 30px 60px -48px rgba(58,34,41,.5); }
         .grupo > b { display: block; font-size: 13.5px; font-weight: 700; letter-spacing: .02em; margin-bottom: 10px; }
         .grupo > b span { font-weight: 500; color: var(--soft); }
@@ -160,27 +183,17 @@
         .resumen { background: var(--bg); border: 1px dashed #E0BFC8; border-radius: 16px; padding: 14px 16px; font-size: 15px; color: var(--soft); }
         .resumen b { color: var(--ink); }
 
-        /* Detalles */
-        .detalles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-        .det { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 20px 18px; text-align: center; }
-        .det svg { width: 64px; height: 64px; margin: 0 auto 10px; }
-        .det h3 { font-size: 19px; }
-        .det p { font-size: 14px; color: var(--soft); margin-top: 4px; }
-
-        /* Ocasiones */
         .ocas { display: flex; flex-wrap: wrap; gap: 10px; }
         .ocas a { display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 22px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-weight: 600; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
         .ocas a span { font-size: 20px; }
         @media (hover: hover) { .ocas a:hover { border-color: var(--rose); transform: translateY(-2px); box-shadow: 0 12px 24px -18px rgba(196,80,110,.6); } }
 
-        /* Pasos */
         .pasos { display: grid; gap: 22px; counter-reset: q; }
         .paso { counter-increment: q; display: grid; grid-template-columns: 60px 1fr; gap: 16px; padding-top: 22px; border-top: 1px solid var(--line); }
         .paso::before { content: counter(q); font-family: var(--serif); font-style: italic; font-size: 50px; line-height: .9; color: var(--rose); }
         .paso h3 { font-size: 23px; margin-bottom: 4px; }
         .paso p { color: var(--soft); font-size: 15.5px; }
 
-        /* Preguntas */
         .faq details { border-top: 1px solid var(--line); }
         .faq details:last-child { border-bottom: 1px solid var(--line); }
         .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 22px 0; font-family: var(--serif); font-size: 21px; line-height: 1.25; }
@@ -189,13 +202,12 @@
         .faq details[open] summary::after { transform: rotate(45deg); }
         .faq details p { color: var(--soft); padding: 0 0 22px; max-width: 46em; }
 
-        /* Cierre */
         .cierre { background: var(--ink); color: #FBE9EE; text-align: center; overflow: hidden; }
         .cierre::before { content: ""; position: absolute; width: 700px; height: 700px; left: 50%; top: -300px; margin-left: -350px; border-radius: 50%; background: radial-gradient(circle, rgba(245,163,187,.22), transparent 65%); }
         .cierre .wrap { position: relative; }
         .cierre h2 em { color: #F5A3BB; }
         .cierre p { color: rgba(251,233,238,.75); max-width: 30em; margin: 16px auto 30px; }
-        .cierre .r { width: 220px; margin: 0 auto 10px; filter: drop-shadow(0 24px 30px rgba(0,0,0,.35)); }
+        .cierre .redonda { width: 190px; height: 190px; border-radius: 50%; margin: 0 auto 30px; border: 6px solid rgba(255,255,255,.12); box-shadow: 0 30px 50px -20px rgba(0,0,0,.5); }
         footer { padding: 34px 0 30px; font-size: 14.5px; color: var(--soft); text-align: center; }
         footer b { font-family: var(--serif); font-weight: 500; color: var(--ink); font-size: 18px; display: block; margin-bottom: 4px; }
 
@@ -205,26 +217,30 @@
         .flota { display: none; position: fixed; right: 24px; bottom: 24px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: #25D366; color: #fff; place-items: center; box-shadow: 0 16px 30px -12px rgba(37,211,102,.7); transition: transform .25s var(--ease); }
         .flota svg { width: 30px; height: 30px; }
         @media (hover: hover) { .flota:hover { transform: scale(1.08); } }
-        .aviso { position: fixed; left: 50%; bottom: 96px; z-index: 60; transform: translate(-50%, 20px); background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 18px; font-size: 14.5px; opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s var(--ease); width: max-content; max-width: calc(100% - 32px); text-align: center; }
+        .aviso { position: fixed; left: 50%; bottom: 96px; z-index: 80; transform: translate(-50%, 20px); background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 18px; font-size: 14.5px; opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s var(--ease); width: max-content; max-width: calc(100% - 32px); text-align: center; }
         .aviso.on { opacity: 1; transform: translate(-50%, 0); }
+
+        /* Visor de fotos */
+        .visor { position: fixed; inset: 0; z-index: 90; background: rgba(28,14,18,.92); display: none; align-items: center; justify-content: center; padding: 20px; }
+        .visor.on { display: flex; }
+        .visor img { max-width: 100%; max-height: 86vh; border-radius: 18px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.8); animation: abre .35s var(--ease); }
+        @keyframes abre { from { transform: scale(.94); opacity: 0; } }
+        .visor button { position: absolute; top: 16px; right: 16px; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.14); color: #fff; font-size: 26px; line-height: 1; }
 
         @media (min-width: 760px) {
             body { padding-bottom: 0; }
             .barra { display: none; }
             .flota { display: grid; }
             .nav { display: flex; }
-            .hero { padding: 56px 0 0; }
-            .hero .wrap { grid-template-columns: 1fr 1fr; align-items: center; gap: 20px; }
-            .escena { height: 640px; margin: 0; }
-            .escena .r1 { width: 420px; margin-left: -210px; }
-            .escena .r2, .escena .r3 { width: 280px; }
-            .escena .r2 { left: -30px; } .escena .r3 { right: -30px; }
+            .hero { padding: 60px 0 90px; }
+            .hero .wrap { grid-template-columns: 1.05fr .95fr; align-items: center; gap: 50px; }
             .porque { grid-template-columns: repeat(2, 1fr); gap: 18px; }
             .ramos { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .cerca { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+            .cerca .grande { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
             .proceso { grid-template-columns: repeat(2, 1fr); }
             .lab { grid-template-columns: 1.05fr .95fr; gap: 40px; }
             .vista { position: sticky; top: 96px; }
-            .detalles { grid-template-columns: repeat(4, 1fr); gap: 16px; }
             .pasos { grid-template-columns: repeat(3, 1fr); gap: 36px; }
             .paso { grid-template-columns: 1fr; }
             section { padding: 112px 0; }
@@ -249,21 +265,21 @@
 <header class="top">
     <div class="wrap">
         <a href="#" class="logo" aria-label="Pétalo Eterno, inicio"><i id="logo-flor" aria-hidden="true"></i><span><b>Pétalo Eterno</b><small>Flores de limpiapipas</small></span></a>
-        <nav class="nav" aria-label="Secciones"><a href="#ramos">Ramos</a><a href="#proceso">Cómo se hacen</a><a href="#disena">Diseña el tuyo</a><a href="#preguntas">Preguntas</a></nav>
+        <nav class="nav" aria-label="Secciones"><a href="#ramos">Ramos</a><a href="#cerca">De cerca</a><a href="#disena">Diseña el tuyo</a><a href="#preguntas">Preguntas</a></nav>
         <a class="btn btn-rose" href="#" data-wa="Hola, quiero información sobre los ramos de flores de limpiapipas.">Pedir</a>
     </div>
 </header>
 
 <main>
-<section class="hero" style="padding-bottom:0">
+<section class="hero">
     <div class="wrap">
         <div>
             <span class="pill"><b>Hecho a mano</b> Flor a flor, pétalo a pétalo</span>
             <h1>Flores que <span class="subraya"><em>nunca</em><svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3,14 C50,4 120,2 197,10" stroke="#E0708F" stroke-width="5" fill="none" stroke-linecap="round"/></svg></span> se marchitan.</h1>
-            <p class="lead">Ramos de lirios, tulipanes y florecitas con perla, hechos a mano con limpiapipas de terciopelo. Un regalo que no acaba en la basura a la semana: se queda para siempre.</p>
+            <p class="lead">Ramos de lirios, gerberas, tulipanes y lavanda, hechos a mano con limpiapipas de terciopelo. Un regalo que no acaba en la basura a la semana: se queda para siempre.</p>
             <div class="cta">
-                <a class="btn btn-rose" href="#disena">Diseñar mi ramo</a>
-                <a class="btn btn-line" href="#ramos">Ver ramos</a>
+                <a class="btn btn-rose" href="#ramos">Ver ramos</a>
+                <a class="btn btn-line" href="#disena">Diseñar el mío</a>
             </div>
             <ul class="ventajas">
                 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No se marchitan</li>
@@ -271,75 +287,78 @@
                 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>En los colores que quieras</li>
             </ul>
         </div>
-        <div class="escena" id="escena" aria-hidden="true">
-            <svg class="sello" viewBox="0 0 120 120"><defs><path id="circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><circle cx="60" cy="60" r="58" fill="#fff" stroke="#EEDCE0"/><text font-family="DM Sans, sans-serif" font-size="11.5" font-weight="700" letter-spacing="3.2" fill="#3A2229"><textPath href="#circ">HECHO A MANO · PARA SIEMPRE · </textPath></text></svg>
-            <div class="sello-c"><span>✿</span></div>
-            <div class="nota" style="left:16%; top:16%">pétalos de terciopelo<svg viewBox="0 0 70 50" style="left:150px; top:14px"><path d="M2,4 C30,4 50,16 62,40" stroke="#C4506E" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M54,36 L62,41 L64,31" stroke="#C4506E" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
-            <div class="nota" style="right:2%; bottom:13%">lazo de organza<br>con perlas<svg viewBox="0 0 70 50" style="left:-74px; top:-4px"><path d="M68,8 C40,6 18,16 6,36" stroke="#C4506E" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M4,26 L5,37 L15,34" stroke="#C4506E" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
+        <div class="marco" id="marco">
+            <div class="foto arco zoom" data-big="img/rosa-1.jpg"><img src="img/rosa-1.jpg" alt="Ramo de limpiapipas con gerbera rosa, lirios rosas y blancos y margaritas" width="1400" height="1325" fetchpriority="high"></div>
+            <div class="polaroid zoom" data-big="img/lavanda.jpg"><div class="foto"><img src="img/lavanda.jpg" alt="Lirios morados y lavanda de limpiapipas" width="1100" height="1127" loading="lazy"></div><span>lavanda y lirios</span></div>
+            <svg class="sello" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><circle cx="60" cy="60" r="58" fill="#fff" stroke="#EEDCE0"/><text font-family="DM Sans, sans-serif" font-size="11.5" font-weight="700" letter-spacing="3.2" fill="#3A2229"><textPath href="#circ">HECHO A MANO · PARA SIEMPRE · </textPath></text></svg>
+            <div class="sello-c" aria-hidden="true"><span>✿</span></div>
+            <div class="real"><i></i><div><b>Fotos reales</b><span>de nuestros ramos</span></div></div>
+            <div class="nota" style="right:-60px; top:14%" aria-hidden="true">cada pétalo,<br>a mano<svg viewBox="0 0 70 50" style="left:-76px; top:16px"><path d="M68,6 C44,4 22,14 8,34" stroke="#C4506E" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M5,24 L7,35 L17,32" stroke="#C4506E" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
         </div>
     </div>
 </section>
 
 <div class="franja" aria-hidden="true"><div><span>Cumpleaños</span><span>San Valentín</span><span>Aniversarios</span><span>Día de la Madre</span><span>Graduaciones</span><span>Bodas</span><span>Porque sí</span><span>Cumpleaños</span><span>San Valentín</span><span>Aniversarios</span><span>Día de la Madre</span><span>Graduaciones</span><span>Bodas</span><span>Porque sí</span></div></div>
 
-<section>
-    <div class="wrap">
-        <div class="head rv"><span class="kicker">Por qué regalar uno</span><h2>Un ramo que <em>dura</em> lo mismo que el recuerdo.</h2></div>
-        <div class="porque">
-            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i><div><h3>No se marchita</h3><p>Ni a la semana ni al año. Sigue igual de bonito en la estantería.</p></div></div>
-            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M4 4l16 16"/></svg></i><div><h3>Cero cuidados</h3><p>Sin agua, sin jarrón y sin hojas caídas por la casa.</p></div></div>
-            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v1M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8a8 8 0 0 0 16 0v-4a2 2 0 0 0-4 0"/></svg></i><div><h3>Hecho a mano</h3><p>Cada pétalo se dobla a mano. No hay dos ramos iguales.</p></div></div>
-            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 1 0 0 20c1 0 1.7-.8 1.7-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.8-1.7 1.7-1.7H17a5 5 0 0 0 5-5C22 6 17.5 2 12 2z"/></svg></i><div><h3>A tu gusto</h3><p>Tú eliges las flores, los colores, el papel y el lazo.</p></div></div>
-        </div>
-    </div>
-</section>
-
 <section class="cat" id="ramos">
     <div class="wrap">
-        <div class="head rv"><span class="kicker">Ramos</span><h2>Cuatro estilos, <em>hechos para ti.</em></h2><p>Cada ramo se hace por encargo. Elige el tamaño y pide el precio por WhatsApp: te contestamos con el precio y el plazo.</p></div>
+        <div class="head rv"><span class="kicker">Ramos</span><h2>Hechos por nosotros, <em>pensados para ti.</em></h2><p>Estos son ramos que hemos hecho de verdad. Cada uno se hace por encargo: elige el tamaño y pide el precio por WhatsApp.</p></div>
         <div class="ramos" id="lista"></div>
     </div>
 </section>
 
-<section id="proceso">
+<section id="cerca">
     <div class="wrap">
-        <div class="head center rv"><span class="kicker">Cómo se hacen</span><h2>De un limpiapipas <em>a un ramo.</em></h2><p>Sin máquinas ni moldes: cada flor sale de nuestras manos.</p></div>
-        <div class="proceso">
-            <div class="paso-p rv"><div class="ilu" id="ilu1"></div><div><h3>Elegimos los colores</h3><p>Limpiapipas de terciopelo en los tonos de tu ramo.</p></div></div>
-            <div class="paso-p rv"><div class="ilu" id="ilu2"></div><div><h3>Doblamos cada pétalo</h3><p>Uno a uno, con su borde blanco y sus estrías.</p></div></div>
-            <div class="paso-p rv"><div class="ilu" id="ilu3"></div><div><h3>Montamos la flor</h3><p>Pétalos, estambres y tallo, hasta que parece de verdad.</p></div></div>
-            <div class="paso-p rv"><div class="ilu" id="ilu4"></div><div><h3>Lo envolvemos</h3><p>Papel de floristería en capas, lazo y, si quieres, tarjeta.</p></div></div>
-        </div>
-    </div>
-</section>
-
-<section class="disena" id="disena">
-    <div class="wrap">
-        <div class="head rv"><span class="kicker">Diseña el tuyo</span><h2>Crea tu ramo <em>en treinta segundos.</em></h2><p>Toca los colores y mira cómo cambia. Cuando te guste, envíanoslo por WhatsApp tal cual.</p></div>
-        <div class="lab">
-            <div class="vista rv"><span class="chip"><i></i>Vista previa en directo</span><div id="preview"></div></div>
-            <div class="panel rv">
-                <div class="grupo"><b>Flores</b><div class="opts" data-k="flor"><button class="ch" data-v="lirios">Lirios</button><button class="ch" data-v="tulipanes">Tulipanes</button><button class="ch" data-v="mezcla">Lirios y tulipanes</button></div></div>
-                <div class="grupo"><b>Color principal <span id="t-color"></span></b><div class="opts" data-k="color"></div></div>
-                <div class="grupo"><b>Segundo color <span id="t-color2"></span></b><div class="opts" data-k="color2"></div></div>
-                <div class="grupo"><b>Papel <span id="t-papel"></span></b><div class="opts" data-k="papel"></div></div>
-                <div class="grupo"><b>Tamaño</b><div class="opts" data-k="tam"><button class="ch" data-v="pequeno">Pequeño</button><button class="ch" data-v="mediano">Mediano</button><button class="ch" data-v="grande">Grande</button></div></div>
-                <div class="grupo"><b>Detalles</b><div class="opts"><button class="ch" data-x="perlas">Perlas</button><button class="ch" data-x="tarjeta">Tarjeta con mensaje</button><button class="ch" data-x="espigas">Espigas</button></div></div>
-                <p class="resumen" id="resumen"></p>
-                <a class="btn btn-rose" href="#" id="pedir-diseno"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Pedir este ramo por WhatsApp</a>
-            </div>
+        <div class="head center rv"><span class="kicker">De cerca</span><h2>Mira los detalles: <em>son de verdad.</em></h2><p>Fotos sin filtros de nuestras flores. Toca cualquiera para verla en grande.</p></div>
+        <div class="cerca">
+            <figure class="grande rv zoom" data-big="img/det-estambres.jpg"><img src="img/det-estambres.jpg" alt="Lirio rosa claro de limpiapipas con estambres blancos" loading="lazy"><figcaption><b>Estambres uno a uno</b>El corazón de cada lirio, montado a mano.</figcaption></figure>
+            <figure class="rv zoom" data-big="img/det-gerbera.jpg"><img src="img/det-gerbera.jpg" alt="Gerbera rosa de limpiapipas con centro amarillo" loading="lazy"><figcaption><b>Gerbera</b>Centro en espiral.</figcaption></figure>
+            <figure class="rv zoom" data-big="img/det-borde.jpg"><img src="img/det-borde.jpg" alt="Lirio rojo con borde blanco esponjoso" loading="lazy"><figcaption><b>Borde de nube</b>Para los lirios rojos.</figcaption></figure>
+            <figure class="rv zoom" data-big="img/det-lirio.jpg"><img src="img/det-lirio.jpg" alt="Lirios morados de limpiapipas" loading="lazy"><figcaption><b>Lirio morado</b>Seis pétalos con relieve.</figcaption></figure>
+            <figure class="rv zoom" data-big="img/det-lavanda.jpg"><img src="img/det-lavanda.jpg" alt="Espigas de lavanda de limpiapipas en dos tonos" loading="lazy"><figcaption><b>Lavanda</b>En dos tonos de lila.</figcaption></figure>
         </div>
     </div>
 </section>
 
 <section style="padding-top:0">
     <div class="wrap">
-        <div class="head center rv"><span class="kicker">Los detalles</span><h2>Lo que hace <em>especial</em> cada ramo.</h2></div>
-        <div class="detalles">
-            <div class="det rv"><svg viewBox="0 0 64 64"><g fill="#FBC4D3" stroke="#fff" stroke-width="3"><circle cx="32" cy="18" r="11"/><circle cx="45" cy="28" r="11"/><circle cx="40" cy="44" r="11"/><circle cx="24" cy="44" r="11"/><circle cx="19" cy="28" r="11"/></g><circle cx="32" cy="32" r="7" fill="#F4EEE5"/><circle cx="30" cy="30" r="2.4" fill="#fff"/></svg><h3>Florecitas con perla</h3><p>Un toque de brillo entre las flores.</p></div>
-            <div class="det rv"><svg viewBox="0 0 64 64"><g fill="#fff" fill-opacity=".6" stroke="#E0B2C0" stroke-width="1.6"><path d="M32,30 C22,14 4,18 6,30 C8,40 22,38 32,30Z"/><path d="M32,30 C42,14 60,18 58,30 C56,40 42,38 32,30Z"/><path d="M30,32 C24,44 28,52 20,60 L26,62 C34,52 30,44 34,33Z"/><path d="M34,32 C40,44 36,52 44,60 L38,62 C30,52 34,44 30,33Z"/></g><ellipse cx="32" cy="31" rx="5" ry="4" fill="#fff" stroke="#E0B2C0" stroke-width="1.6"/></svg><h3>Lazo de organza</h3><p>Transparente, con caída y movimiento.</p></div>
-            <div class="det rv"><svg viewBox="0 0 64 64"><path d="M32,60 L10,14 Q32,6 54,14Z" fill="#F7C6D3"/><path d="M32,60 L18,10 Q32,4 46,10Z" fill="#fff" stroke="#EEDCE0"/><path d="M32,60 L24,8 Q32,4 40,8Z" fill="#E8D6F7"/><path d="M32,60 L32,6" stroke="#3A1320" stroke-opacity=".08" stroke-width="2"/></svg><h3>Papel en capas</h3><p>Envuelto a la coreana, como en floristería.</p></div>
-            <div class="det rv"><svg viewBox="0 0 64 64"><path d="M32,6 V18" stroke="#5E8A4E" stroke-width="2"/><rect x="10" y="18" width="44" height="32" rx="3" fill="#fff" stroke="#E2C9CF" stroke-width="1.6" transform="rotate(-6 32 34)"/><path d="M20,30 H44 M20,36 H40 M20,42 H34" stroke="#E0708F" stroke-width="2" stroke-linecap="round" transform="rotate(-6 32 34)"/></svg><h3>Tarjeta con tu mensaje</h3><p>Escrita a mano con lo que quieras decir.</p></div>
+        <div class="head rv"><span class="kicker">Por qué regalar uno</span><h2>Un ramo que <em>dura</em> lo mismo que el recuerdo.</h2></div>
+        <div class="porque">
+            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i><div><h3>No se marchita</h3><p>Ni a la semana ni al año. Sigue igual de bonito en la estantería.</p></div></div>
+            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M4 4l16 16"/></svg></i><div><h3>Cero cuidados</h3><p>Sin agua, sin jarrón y sin hojas caídas por la casa.</p></div></div>
+            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v1M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8a8 8 0 0 0 16 0v-4a2 2 0 0 0-4 0"/></svg></i><div><h3>Hecho a mano</h3><p>Cada pétalo se dobla a mano. No hay dos ramos iguales.</p></div></div>
+            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 1 0 0 20c1 0 1.7-.8 1.7-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.8-1.7 1.7-1.7H17a5 5 0 0 0 5-5C22 6 17.5 2 12 2z"/></svg></i><div><h3>A tu gusto</h3><p>Tú eliges las flores, los colores y el papel.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="proceso" style="padding-top:0">
+    <div class="wrap">
+        <div class="head center rv"><span class="kicker">Cómo se hacen</span><h2>De un limpiapipas <em>a un ramo.</em></h2><p>Sin máquinas ni moldes: cada flor sale de nuestras manos.</p></div>
+        <div class="proceso">
+            <div class="paso-p rv"><div class="ilu" id="ilu1"></div><div><h3>Elegimos los colores</h3><p>Limpiapipas de terciopelo en los tonos de tu ramo.</p></div></div>
+            <div class="paso-p rv"><div class="ilu" id="ilu2"></div><div><h3>Doblamos cada pétalo</h3><p>Uno a uno, con sus estrías y su forma.</p></div></div>
+            <div class="paso-p rv"><div class="ilu" id="ilu3"></div><div><h3>Montamos la flor</h3><p>Pétalos, estambres y tallo, hasta que parece de verdad.</p></div></div>
+            <div class="paso-p rv"><div class="ilu f"><div class="foto"><img src="img/rojo.jpg" alt="Ramo terminado de lirios rojos" loading="lazy"></div></div><div><h3>Lo envolvemos</h3><p>Papel de floristería en capas, listo para regalar.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="disena" id="disena">
+    <div class="wrap">
+        <div class="head rv"><span class="kicker">Diseña el tuyo</span><h2>Crea tu ramo <em>en treinta segundos.</em></h2><p>Toca los colores y mira cómo cambia. Cuando te guste, envíanoslo por WhatsApp y lo hacemos a mano.</p></div>
+        <div class="lab">
+            <div class="vista rv"><span class="chip"><i></i>Vista previa en directo</span><div id="preview"></div><small>Dibujo orientativo: tu ramo lo hacemos a mano con limpiapipas.</small></div>
+            <div class="panel rv">
+                <div class="grupo"><b>Flores</b><div class="opts" data-k="flor"><button class="ch" data-v="lirios">Lirios</button><button class="ch" data-v="tulipanes">Tulipanes</button><button class="ch" data-v="mezcla">Lirios y tulipanes</button></div></div>
+                <div class="grupo"><b>Color principal <span id="t-color"></span></b><div class="opts" data-k="color"></div></div>
+                <div class="grupo"><b>Segundo color <span id="t-color2"></span></b><div class="opts" data-k="color2"></div></div>
+                <div class="grupo"><b>Papel <span id="t-papel"></span></b><div class="opts" data-k="papel"></div></div>
+                <div class="grupo"><b>Tamaño</b><div class="opts" data-k="tam"><button class="ch" data-v="pequeno">Pequeño</button><button class="ch" data-v="mediano">Mediano</button><button class="ch" data-v="grande">Grande</button></div></div>
+                <div class="grupo"><b>Añadir</b><div class="opts"><button class="ch" data-x="gerbera">Gerbera</button><button class="ch" data-x="lavanda">Lavanda</button><button class="ch" data-x="perlas">Perlas</button><button class="ch" data-x="tarjeta">Tarjeta con mensaje</button></div></div>
+                <p class="resumen" id="resumen"></p>
+                <a class="btn btn-rose" href="#" id="pedir-diseno"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Pedir este ramo por WhatsApp</a>
+            </div>
         </div>
     </div>
 </section>
@@ -362,7 +381,7 @@
     <div class="wrap">
         <div class="head rv"><span class="kicker">Cómo pedir</span><h2>Tres pasos y <em>listo.</em></h2></div>
         <div class="pasos">
-            <div class="paso rv"><div><h3>Elige o diseña</h3><p>Escoge un ramo de la lista o crea el tuyo con los colores que quieras.</p></div></div>
+            <div class="paso rv"><div><h3>Elige o diseña</h3><p>Escoge uno de nuestros ramos o crea el tuyo con los colores que quieras.</p></div></div>
             <div class="paso rv"><div><h3>Escríbenos por WhatsApp</h3><p>El mensaje te sale ya escrito. Te contestamos con el precio y el plazo.</p></div></div>
             <div class="paso rv"><div><h3>Lo hacemos a mano</h3><p>Montamos tu ramo flor a flor y te avisamos cuando esté listo.</p></div></div>
         </div>
@@ -372,9 +391,9 @@
 <section class="faq" id="preguntas" style="padding-top:0">
     <div class="wrap">
         <div class="head rv"><span class="kicker">Preguntas</span><h2>Lo que <em>suelen preguntar.</em></h2></div>
-        <details><summary>¿De qué están hechas las flores?</summary><p>De limpiapipas: un alambre forrado de pelo suave, como el terciopelo. Se doblan a mano pétalo a pétalo y se montan en ramo con papel de floristería y lazo.</p></details>
+        <details><summary>¿De qué están hechas las flores?</summary><p>De limpiapipas: un alambre forrado de pelo suave, como el terciopelo. Se doblan a mano pétalo a pétalo, se les ponen estambres y se montan en ramo con papel de floristería.</p></details>
         <details><summary>¿Cómo se cuidan?</summary><p>No necesitan agua ni sol. Para quitarles el polvo basta con soplar o pasar un pincel suave de vez en cuando. Mejor que no se mojen.</p></details>
-        <details><summary>¿Puedo elegir los colores?</summary><p>Sí. Usa el diseñador o dinos los colores por WhatsApp, también si quieres que vaya a juego con algo.</p></details>
+        <details><summary>¿Puedo pedir uno como los de las fotos?</summary><p>Sí. Dinos cuál te gusta y en qué colores lo quieres. Como se hace a mano, cada ramo sale único: muy parecido, nunca idéntico.</p></details>
         <details><summary>¿Cuánto tarda y cuánto cuesta?</summary><p>Depende del tamaño y de cuántas flores lleve. Escríbenos con el ramo que te gusta y te decimos el precio exacto y cuándo estaría listo.</p></details>
         <details><summary>¿Hacéis envíos?</summary><p>Pregúntanos por WhatsApp dónde estás y te decimos las opciones de entrega.</p></details>
     </div>
@@ -382,7 +401,7 @@
 
 <section class="cierre">
     <div class="wrap">
-        <div class="r" id="cierre-ramo" aria-hidden="true"></div>
+        <div class="foto redonda"><img src="img/rosa-2.jpg" alt="" loading="lazy" style="object-position:50% 35%"></div>
         <h2 class="rv">Regala algo que <em>no se marchite.</em></h2>
         <p class="rv">Cuéntanos para quién es y te ayudamos a elegir el ramo perfecto.</p>
         <a class="btn btn-rose rv" href="#" data-wa="Hola, quiero encargar un ramo de flores de limpiapipas.">Pedir mi ramo por WhatsApp</a>
@@ -392,8 +411,9 @@
 
 <footer><b>Pétalo Eterno</b>Ramos de flores de limpiapipas hechos a mano · <span id="anio">2026</span></footer>
 
-<div class="barra"><a class="btn btn-rose" href="#disena">Diseñar mi ramo</a><a class="btn wa" href="#" data-wa="Hola, quiero información sobre los ramos de flores de limpiapipas." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a></div>
+<div class="barra"><a class="btn btn-rose" href="#ramos">Ver ramos</a><a class="btn wa" href="#" data-wa="Hola, quiero información sobre los ramos de flores de limpiapipas." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a></div>
 <a class="flota" href="#" data-wa="Hola, quiero información sobre los ramos de flores de limpiapipas." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a>
+<div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Foto en grande"><img alt=""><button type="button" aria-label="Cerrar">×</button></div>
 <div class="aviso" id="aviso" role="status"></div>
 
 <script src="ramo.js"></script>
@@ -408,53 +428,65 @@
         if (!WHATSAPP) { avisar('Muy pronto podrás pedir por WhatsApp desde aquí.'); return; }
         window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     }
-    document.addEventListener('click', function (e) { var a = e.target.closest('[data-wa]'); if (a) { e.preventDefault(); abrirWA(a.getAttribute('data-wa')); } });
-    document.getElementById('anio').textContent = new Date().getFullYear();
     var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.getElementById('anio').textContent = new Date().getFullYear();
+
+    // Visor de fotos
+    var visor = document.getElementById('visor'), vimg = visor.querySelector('img');
+    function cerrarVisor() { visor.classList.remove('on'); }
+    visor.addEventListener('click', function (e) { if (e.target !== vimg) cerrarVisor(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrarVisor(); });
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest('[data-wa]');
+        if (a) { e.preventDefault(); abrirWA(a.getAttribute('data-wa')); return; }
+        var z = e.target.closest('.zoom');
+        if (z) { vimg.src = z.getAttribute('data-big'); vimg.alt = (z.querySelector('img') || {}).alt || ''; visor.classList.add('on'); }
+    });
 
     // Logo
     document.getElementById('logo-flor').innerHTML = '<svg viewBox="0 0 24 24"><g fill="#F5A3BB" stroke="#fff" stroke-width=".8">' + [0, 72, 144, 216, 288].map(function (a) { return '<ellipse cx="12" cy="6.6" rx="3.6" ry="5.4" transform="rotate(' + a + ' 12 12)"/>'; }).join('') + '</g><circle cx="12" cy="12" r="2.8" fill="#F4EEE5"/><circle cx="11.2" cy="11.2" r=".9" fill="#fff"/></svg>';
 
-    // Portada
-    var esc = document.getElementById('escena');
-    function poner(cls, o) { var d = document.createElement('div'); d.className = 'r ' + cls; d.innerHTML = ramo(o); esc.appendChild(d); }
-    poner('r2', { id: 'h2', receta: 'blush', alt: 'Ramo de lirios blancos y rosas con eucalipto' });
-    poner('r3', { id: 'h3', receta: 'lavanda', alt: 'Ramo de flores lilas con lavanda' });
-    poner('r1', { id: 'h1', receta: 'perla', alt: 'Ramo de lirios y tulipanes rosas con florecitas de perla' });
-    if (!quieto) for (var i = 0; i < 10; i++) { var p = document.createElement('i'); p.className = 'petalo'; p.style.left = (6 + Math.random() * 84) + '%'; p.style.animationDuration = (8 + Math.random() * 7) + 's'; p.style.animationDelay = (-Math.random() * 12) + 's'; p.style.width = (9 + Math.random() * 7) + 'px'; p.style.height = (13 + Math.random() * 8) + 'px'; if (i % 3 === 1) p.style.background = '#C7A1EB'; if (i % 4 === 2) p.style.background = '#FFFFFF'; esc.appendChild(p); }
+    // Pétalos que caen sobre la foto de portada
+    if (!quieto) { var m = document.getElementById('marco'); for (var i = 0; i < 9; i++) { var p = document.createElement('i'); p.className = 'petalo'; p.style.left = (4 + Math.random() * 88) + '%'; p.style.animationDuration = (8 + Math.random() * 7) + 's'; p.style.animationDelay = (-Math.random() * 12) + 's'; p.style.width = (9 + Math.random() * 7) + 'px'; p.style.height = (13 + Math.random() * 8) + 'px'; if (i % 3 === 1) p.style.background = '#C7A1EB'; if (i % 4 === 2) p.style.background = '#FFFFFF'; m.appendChild(p); } }
 
     // Proceso
     document.getElementById('ilu1').innerHTML = flor('hebras', 'rosa', 'a');
     document.getElementById('ilu2').innerHTML = flor('petalo', 'rosa', 'b');
     document.getElementById('ilu3').innerHTML = flor('lirio', 'rosa', 'c');
-    document.getElementById('ilu4').innerHTML = ramo({ id: 'pz', receta: 'perla' });
-    document.getElementById('cierre-ramo').innerHTML = ramo({ id: 'cz', flor: 'lirios', color: 'blanco', color2: 'rosa', papel: 'negro', perlas: true, tam: 'mediano' });
 
-    // Catálogo
+    // Catálogo: ramos reales
     var RAMOS = [
-        { n: 'Rosa Perla', d: 'Lirios y tulipanes rosas con florecitas de perla y helechos, en papel panal con lazo de organza.', tag: 'El más pedido', tono: '#F9E0E8', lleva: ['Lirios', 'Tulipanes', 'Perlas', 'Tarjeta'], r: 'perla' },
-        { n: 'Lirio Blush', d: 'Lirios blancos con corazón rosa, capullos de tulipán y eucalipto, en conos de papel rosa.', tag: 'Delicado', tono: '#FBE6EC', lleva: ['Lirios', 'Tulipanes', 'Eucalipto'], r: 'blush' },
-        { n: 'Periódico', d: 'Lirios y tulipanes rosas con margaritas y muguet, envueltos en papel de periódico.', tag: 'Original', tono: '#F2ECE2', lleva: ['Lirios', 'Margaritas', 'Muguet'], r: 'periodico' },
-        { n: 'Lavanda', d: 'Lirios y tulipanes lilas, gerberas moradas, margaritas y espigas de lavanda, con lazo de raso.', tag: 'Nuevo', tono: '#EEE3F8', lleva: ['Lirios', 'Lavanda', 'Gerberas'], r: 'lavanda' }
+        { n: 'Jardín Rosa', d: 'Gerbera rosa, lirios rosas y blancos, margaritas y una mariposa, con hojas y zarcillos verdes.', tag: 'El más pedido', fotos: ['img/rosa-1.jpg', 'img/rosa-2.jpg'], lleva: ['Gerbera', 'Lirios', 'Margaritas', 'Mariposa'] },
+        { n: 'Lavanda', d: 'Lirios morados y espigas de lavanda en dos tonos, envueltos en papel kraft con mariposas.', tag: 'Nuevo', fotos: ['img/lavanda.jpg'], lleva: ['Lirios', 'Lavanda', 'Papel kraft'] },
+        { n: 'Rojo Pasión', d: 'Lirios rojos y granate con borde blanco esponjoso, un tulipán rojo y capullos verdes.', tag: 'Para San Valentín', fotos: ['img/rojo.jpg'], lleva: ['Lirios', 'Tulipán', 'Capullos'] }
     ];
     var lista = document.getElementById('lista');
-    RAMOS.forEach(function (r, i) {
-        var card = document.createElement('article'); card.className = 'card rv';
-        card.innerHTML = '<div class="dib" style="--tono:' + r.tono + '"><span class="tag">' + r.tag + '</span>' + ramo({ id: 'c' + i, receta: r.r, alt: 'Ramo ' + r.n }) + '</div>' +
-            '<div class="in"><h3>' + r.n + '</h3><p>' + r.d + '</p><div class="lleva">' + r.lleva.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div>' +
+    function tarjeta(nombre, cuerpo, msg) {
+        var card = document.createElement('article'); card.className = 'card rv'; card.innerHTML = cuerpo +
             '<div class="tams" role="group" aria-label="Tamaño"><button aria-pressed="false" data-t="pequeño">Pequeño</button><button aria-pressed="true" data-t="mediano">Mediano</button><button aria-pressed="false" data-t="grande">Grande</button></div>' +
             '<a class="btn btn-rose" href="#">Pedir precio</a></div>';
         var tam = 'mediano';
         card.querySelectorAll('.tams button').forEach(function (b) { b.addEventListener('click', function () { tam = b.dataset.t; card.querySelectorAll('.tams button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); }); });
-        card.querySelector('.btn').addEventListener('click', function (e) { e.preventDefault(); abrirWA('Hola, me gusta el ramo «' + r.n + '» en tamaño ' + tam + '. ¿Qué precio tiene y para cuándo estaría?'); });
+        card.querySelector('.btn').addEventListener('click', function (e) { e.preventDefault(); abrirWA(msg(tam)); });
         lista.appendChild(card);
+    }
+    RAMOS.forEach(function (r) {
+        var fotos = '<img src="' + r.fotos[0] + '" alt="Ramo ' + r.n + ' de limpiapipas" loading="lazy">' + (r.fotos[1] ? '<img class="b" src="' + r.fotos[1] + '" alt="" loading="lazy">' : '');
+        tarjeta(r.n, '<div class="foto zoom" data-big="' + r.fotos[0] + '"><span class="tag ok">' + r.tag + '</span>' + fotos + '</div>' +
+            '<div class="in"><h3>' + r.n + '</h3><p>' + r.d + '</p><div class="lleva">' + r.lleva.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div>',
+            function (t) { return 'Hola, me gusta el ramo «' + r.n + '» que tenéis en la web, en tamaño ' + t + '. ¿Qué precio tiene y para cuándo estaría?'; });
     });
+    // Cuarta tarjeta: a medida
+    var medida = document.createElement('article'); medida.className = 'card rv';
+    medida.innerHTML = '<div class="foto dib" style="background:radial-gradient(85% 70% at 50% 42%, #fff, #F8DCE5)"><span class="tag">A tu medida</span>' + ramo({ id: 'cm', flor: 'mezcla', color: 'rosa', color2: 'blanco', papel: 'blanco', gerbera: true, tam: 'mediano' }) + '</div>' +
+        '<div class="in"><h3>Tu ramo</h3><p>¿Otros colores u otras flores? Diséñalo tú y lo hacemos a mano tal cual.</p><div class="lleva"><span>Tus colores</span><span>Tus flores</span><span>Tu papel</span></div><a class="btn btn-rose" href="#disena">Diseñar el mío</a></div>';
+    lista.appendChild(medida);
 
     // Diseñador
     var NOMBRES = { rosa: 'Rosa', rosaclaro: 'Rosa claro', lila: 'Lila', morado: 'Morado', blanco: 'Blanco', rojo: 'Rojo', amarillo: 'Amarillo', azul: 'Azul', melocoton: 'Melocotón', crema: 'Crema', negro: 'Negro', periodico: 'Periódico', panal: 'Panal rosa', ninguno: 'Ninguno' };
     var HEX = { rosa: '#F5A3BB', rosaclaro: '#FBC4D3', blanco: '#FFFFFF', lila: '#C7A1EB', morado: '#9A69D2', rojo: '#EC5867', amarillo: '#FFD46C', azul: '#92C7F1', melocoton: '#FFBF9A' };
-    var PAP = { rosa: '#F8CAD7', blanco: '#FFFFFF', crema: '#F3E6D4', lila: '#E6D5F5', negro: '#3A3233', panal: 'radial-gradient(circle at 3px 3px, #E7A3B7 1.4px, #F7C6D3 1.6px) 0 0/7px 7px', periodico: 'repeating-linear-gradient(0deg,#F4EFE6 0 5px,#B9B0A5 5px 6px)' };
-    var est = { flor: 'mezcla', color: 'rosa', color2: 'blanco', papel: 'panal', tam: 'mediano', perlas: true, tarjeta: true, espigas: false };
+    var PAP = { blanco: '#FFFFFF', rosa: '#F8CAD7', crema: '#F3E6D4', lila: '#E6D5F5', negro: '#3A3233', panal: 'radial-gradient(circle at 3px 3px, #E7A3B7 1.4px, #F7C6D3 1.6px) 0 0/7px 7px', periodico: 'repeating-linear-gradient(0deg,#F4EFE6 0 5px,#B9B0A5 5px 6px)' };
+    var est = { flor: 'mezcla', color: 'rosa', color2: 'blanco', papel: 'blanco', tam: 'mediano', gerbera: true, lavanda: false, perlas: false, tarjeta: true };
     function chips(k, mapa, extra) {
         var c = document.querySelector('.opts[data-k="' + k + '"]');
         (extra || []).concat(Object.keys(mapa)).forEach(function (v) {
@@ -468,11 +500,11 @@
         var fl = { lirios: 'lirios', tulipanes: 'tulipanes', mezcla: 'lirios y tulipanes' }[est.flor];
         var t = { pequeno: 'pequeño', mediano: 'mediano', grande: 'grande' }[est.tam];
         var cl = NOMBRES[est.color].toLowerCase() + (est.color2 !== 'ninguno' && est.color2 !== est.color ? ' y ' + NOMBRES[est.color2].toLowerCase() : '');
-        var ex = []; if (est.perlas) ex.push('perlas'); if (est.tarjeta) ex.push('tarjeta con mensaje'); if (est.espigas) ex.push('espigas');
+        var ex = []; if (est.gerbera) ex.push('gerbera'); if (est.lavanda) ex.push('lavanda'); if (est.perlas) ex.push('perlas'); if (est.tarjeta) ex.push('tarjeta con mensaje');
         return 'ramo ' + t + ' de ' + fl + ' en ' + cl + ', papel ' + NOMBRES[est.papel].toLowerCase() + (ex.length ? ', con ' + ex.join(', ') : '');
     }
     function pintar() {
-        prev.innerHTML = ramo({ id: 'pv', flor: est.flor, color: est.color, color2: est.color2, papel: est.papel, tam: est.tam, perlas: est.perlas, tarjeta: est.tarjeta, espigas: est.espigas, alt: 'Vista previa de tu ramo' });
+        prev.innerHTML = ramo({ id: 'pv', flor: est.flor, color: est.color, color2: est.color2, papel: est.papel, tam: est.tam, gerbera: est.gerbera, lavanda: est.lavanda, perlas: est.perlas, tarjeta: est.tarjeta, alt: 'Vista previa de tu ramo' });
         document.querySelectorAll('.opts[data-k]').forEach(function (g) { var k = g.dataset.k; g.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === est[k] ? 'true' : 'false'); }); });
         document.querySelectorAll('[data-x]').forEach(function (b) { b.setAttribute('aria-pressed', est[b.dataset.x] ? 'true' : 'false'); });
         ['color', 'color2', 'papel'].forEach(function (k) { document.getElementById('t-' + k).textContent = '· ' + NOMBRES[est[k]]; });
