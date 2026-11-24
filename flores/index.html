@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Pétalo Eterno · Ramos de limpiapipas que no se marchitan</title>
-    <meta name="description" content="Regala un ramo hecho a mano con limpiapipas: no se marchita, no necesita agua y lleva su nombre en la tarjeta. Diséñalo y pídelo por WhatsApp, sin compromiso.">
+    <meta name="description" content="Regala un ramo hecho a mano con limpiapipas: no se marchita, no necesita agua y lleva su nombre en la tarjeta. Diséñalo y pídelo desde aquí, sin compromiso.">
     <meta name="theme-color" content="#FBF4F1">
     <meta property="og:title" content="Regala flores que nunca se marchitan">
-    <meta property="og:description" content="Ramos de limpiapipas hechos a mano, con su nombre en la tarjeta. Diséñalo y pídelo por WhatsApp.">
+    <meta property="og:description" content="Ramos de limpiapipas hechos a mano, con su nombre en la tarjeta. Diséñalo y pídelo desde aquí.">
     <meta property="og:image" content="https://jlopedigital.vercel.app/flores/img/rojo.jpg">
     <meta property="og:type" content="website">
     <meta name="robots" content="noindex">
@@ -249,13 +249,9 @@
         footer { padding: 34px 0 30px; font-size: 14.5px; color: var(--soft); text-align: center; }
         footer b { font-family: var(--serif); font-weight: 500; color: var(--ink); font-size: 18px; display: block; margin-bottom: 4px; }
 
-        .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(251,244,241,.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+        .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(251,244,241,.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr; gap: 10px; }
         .barra .btn { min-height: 52px; }
-        .barra .wa { width: 52px; padding: 0; background: #25D366; color: #fff; }
-        .flota { display: none; position: fixed; right: 24px; bottom: 24px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: #25D366; color: #fff; place-items: center; box-shadow: 0 16px 30px -12px rgba(37,211,102,.7); transition: transform .25s var(--ease); }
-        .flota svg { width: 30px; height: 30px; }
-        @media (hover: hover) { .flota:hover { transform: scale(1.08); } }
-        .aviso { position: fixed; left: 50%; bottom: 96px; z-index: 80; transform: translate(-50%, 20px); background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 18px; font-size: 14.5px; opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s var(--ease); width: max-content; max-width: calc(100% - 32px); text-align: center; }
+        .aviso { position: fixed; left: 50%; bottom: 96px; z-index: 95; transform: translate(-50%, 20px); background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 18px; font-size: 14.5px; opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s var(--ease); width: max-content; max-width: calc(100% - 32px); text-align: center; }
         .aviso.on { opacity: 1; transform: translate(-50%, 0); }
 
         /* Visor de fotos */
@@ -268,7 +264,6 @@
         @media (min-width: 760px) {
             body { padding-bottom: 0; }
             .barra { display: none; }
-            .flota { display: grid; }
             .nav { display: flex; }
             .hero { padding: 60px 0 90px; }
             .hero .wrap { grid-template-columns: 1.05fr .95fr; align-items: center; gap: 50px; }
@@ -361,6 +356,28 @@
             .op-lista { position: sticky; top: 96px; }
             .ig { grid-template-columns: auto 1fr auto; gap: 22px; padding: 24px 30px; }
         }
+
+        /* Ventana del pedido */
+        .pedido { position: fixed; inset: 0; z-index: 85; background: rgba(28,14,18,.55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: flex; align-items: flex-end; justify-content: center; }
+        .pedido[hidden] { display: none; }
+        .pd-caja { position: relative; width: 100%; max-width: 520px; max-height: 92vh; overflow-y: auto; overscroll-behavior: contain; background: var(--bg); border-radius: 28px 28px 0 0; padding: 28px 22px calc(22px + env(safe-area-inset-bottom)); box-shadow: 0 -20px 60px -20px rgba(28,14,18,.5); animation: sube .4s var(--ease); }
+        .pd-paso { display: grid; gap: 14px; }
+        .pd-paso[hidden] { display: none; }
+        .pd-paso .kicker { margin-bottom: 0; }
+        .pd-caja h3 { font-size: 32px; }
+        .pd-sub { color: var(--soft); font-size: 15.5px; margin-top: -6px; }
+        .pd-caja label { display: block; font-size: 13.5px; font-weight: 700; letter-spacing: .02em; }
+        .pd-caja label span { font-weight: 500; color: var(--soft); }
+        .pd-caja label .campo { margin-top: 7px; }
+        input[type="date"].campo { -webkit-appearance: none; appearance: none; line-height: 48px; }
+        .pd-priv { font-size: 13px; color: var(--soft); text-align: center; }
+        .pd-caja > .pd-cerrar { position: absolute; top: 14px; right: 14px; width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid var(--line); font-size: 24px; line-height: 1; }
+        .pd-ok { text-align: center; justify-items: center; padding: 18px 0 6px; }
+        .pd-check { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: var(--rose); color: #fff; font-size: 30px; }
+        .pd-ok p { color: var(--soft); max-width: 26em; }
+        .btn[disabled] { opacity: .6; cursor: wait; }
+        @keyframes sube { from { transform: translateY(40px); opacity: 0; } }
+        @media (min-width: 760px) { .pedido { align-items: center; padding: 20px; } .pd-caja { border-radius: 28px; padding: 34px 32px; } }
     </style>
 </head>
 <body>
@@ -370,7 +387,7 @@
     <div class="wrap">
         <a href="#" class="logo" aria-label="Pétalo Eterno, inicio"><i id="logo-flor" aria-hidden="true"></i><span><b>Pétalo Eterno</b><small>Flores de limpiapipas</small></span></a>
         <nav class="nav" aria-label="Secciones"><a href="#ramos">Ramos</a><a href="#detalles">Detalles</a><a href="#cerca">De cerca</a><a href="#disena">Diseña el tuyo</a><a href="#preguntas">Preguntas</a></nav>
-        <a class="btn btn-rose" href="#" data-wa="Hola, quiero información sobre los ramos de flores de limpiapipas.">Pedir</a>
+        <a class="btn btn-rose" href="#" data-pedido="">Pedir</a>
     </div>
 </header>
 
@@ -423,7 +440,7 @@
             <p>Un girasol en su maceta, hecho pétalo a pétalo. Para alegrarle el día a alguien sin esperar a ninguna fecha.</p>
             <div class="lleva"><span>Girasol</span><span>Hojas</span><span>Maceta</span></div>
             <p class="det-nota">¿Buscas algo más sencillo que un ramo? También hacemos <b>flores sueltas</b> y <b>ramos pequeños</b>: elige «Pequeño» en cualquier ramo o en el diseñador.</p>
-            <div class="det-acc"><a class="btn btn-rose" href="#" data-wa="Hola, me gusta el girasol en maceta que tenéis en la web. ¿Qué precio tiene y para cuándo estaría?">Quiero este girasol</a><a class="btn btn-line" href="#" data-wa="Hola, me gustaría una flor suelta de limpiapipas. ¿Qué flores hacéis?">Pedir otra flor suelta</a></div>
+            <div class="det-acc"><a class="btn btn-rose" href="#" data-pedido="El girasol en maceta.">Quiero este girasol</a><a class="btn btn-line" href="#" data-pedido="Una flor suelta. ¿Qué flores hacéis?">Pedir otra flor suelta</a></div>
         </div>
     </div>
 </section>
@@ -458,7 +475,7 @@
                 <div class="grupo"><b>Para regalar <span>· extras opcionales</span></b><div class="opts"><button class="ch" data-e="bombones">Bombones</button><button class="ch" data-e="peluche">Peluche</button><button class="ch" data-e="luces">Luces</button><button class="ch" data-e="caja">Caja de regalo</button></div></div>
                 <div class="grupo"><b>¿Para quién es? <span>· saldrá en la tarjeta</span></b><input class="campo" id="para" type="text" maxlength="18" placeholder="Su nombre, por ejemplo: Lucía" autocomplete="off"><div class="opts" data-k="ocasion" style="margin-top:10px"><button class="ch" data-v="su cumpleaños">Cumpleaños</button><button class="ch" data-v="San Valentín">San Valentín</button><button class="ch" data-v="vuestro aniversario">Aniversario</button><button class="ch" data-v="el Día de la Madre">Día de la Madre</button><button class="ch" data-v="porque sí">Porque sí</button></div></div>
                 <p class="resumen" id="resumen"></p>
-                <a class="btn btn-rose" href="#" id="pedir-diseno"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Quiero este ramo</a>
+                <a class="btn btn-rose" href="#" id="pedir-diseno">Quiero este ramo</a>
                 <p class="nota-c">Sin compromiso: primero te decimos el precio y cuándo estaría.</p>
             </div>
         </div>
@@ -502,12 +519,12 @@
     <div class="wrap">
         <div class="head rv"><span class="kicker">Para cada ocasión</span><h2>¿Qué quieres <em>decirle?</em></h2></div>
         <div class="ocas rv">
-            <a href="#" data-wa="Hola, quiero un ramo de limpiapipas para un cumpleaños."><span>🎂</span><div><b>Cumpleaños</b><small>Un regalo que no acaba en un cajón</small></div></a>
-            <a href="#" data-wa="Hola, quiero un ramo de limpiapipas para San Valentín."><span>💌</span><div><b>San Valentín</b><small>Que dure más que la cena</small></div></a>
-            <a href="#" data-wa="Hola, quiero un ramo de limpiapipas para un aniversario."><span>💍</span><div><b>Aniversario</b><small>Un año más, y este no se marchita</small></div></a>
-            <a href="#" data-wa="Hola, quiero un ramo de limpiapipas para el Día de la Madre."><span>🌷</span><div><b>Día de la Madre</b><small>Para la que se acuerda de todo</small></div></a>
-            <a href="#" data-wa="Hola, quiero un ramo de limpiapipas para una graduación."><span>🎓</span><div><b>Graduación</b><small>Para celebrar lo que ha costado</small></div></a>
-            <a href="#" data-wa="Hola, quiero un ramo de limpiapipas para una boda o evento."><span>🤍</span><div><b>Bodas y eventos</b><small>Detalles que duran más que la fiesta</small></div></a>
+            <a href="#" data-pedido="Un ramo para un cumpleaños."><span>🎂</span><div><b>Cumpleaños</b><small>Un regalo que no acaba en un cajón</small></div></a>
+            <a href="#" data-pedido="Un ramo para San Valentín."><span>💌</span><div><b>San Valentín</b><small>Que dure más que la cena</small></div></a>
+            <a href="#" data-pedido="Un ramo para un aniversario."><span>💍</span><div><b>Aniversario</b><small>Un año más, y este no se marchita</small></div></a>
+            <a href="#" data-pedido="Un ramo para el Día de la Madre."><span>🌷</span><div><b>Día de la Madre</b><small>Para la que se acuerda de todo</small></div></a>
+            <a href="#" data-pedido="Un ramo para una graduación."><span>🎓</span><div><b>Graduación</b><small>Para celebrar lo que ha costado</small></div></a>
+            <a href="#" data-pedido="Un ramo para una boda o evento."><span>🤍</span><div><b>Bodas y eventos</b><small>Detalles que duran más que la fiesta</small></div></a>
         </div>
     </div>
 </section>
@@ -517,7 +534,7 @@
         <div class="head rv"><span class="kicker">Cómo pedir</span><h2>Tres pasos y <em>listo.</em></h2></div>
         <div class="pasos">
             <div class="paso rv"><div><h3>Elige o diseña</h3><p>Escoge uno de nuestros ramos o crea el tuyo con los colores que quieras.</p></div></div>
-            <div class="paso rv"><div><h3>Escríbenos por WhatsApp</h3><p>El mensaje te sale ya escrito. Te contestamos con el precio y el plazo.</p></div></div>
+            <div class="paso rv"><div><h3>Envíanos tu pedido</h3><p>Te sale ya escrito: solo añades tu nombre y cómo contactarte. Te contestamos con el precio y el plazo.</p></div></div>
             <div class="paso rv"><div><h3>Lo hacemos a mano</h3><p>Montamos tu ramo flor a flor y te avisamos cuando esté listo.</p></div></div>
         </div>
     </div>
@@ -533,9 +550,10 @@
                 <div><span class="lbl">¿Cuántas estrellas le das?</span><div class="pon-estrellas" id="pon-estrellas" role="radiogroup" aria-label="Estrellas"></div></div>
                 <div><span class="lbl">¿Qué tienes?</span><div class="opts" id="op-ramo"></div></div>
                 <label>Tu nombre <span>· como quieres que salga</span><input class="campo" id="op-nombre" type="text" maxlength="30" placeholder="Por ejemplo: Lucía G." autocomplete="given-name"></label>
+                <label>Tu correo o teléfono <span>· no se publica</span><input class="campo" id="op-contacto" type="text" maxlength="80" autocomplete="email" placeholder="Para comprobar que has recibido un ramo"></label>
                 <label>Tu opinión<textarea class="campo" id="op-texto" maxlength="500" rows="4" placeholder="¿Qué te pareció? ¿Le gustó a quien lo recibió?"></textarea></label>
-                <button class="btn btn-rose" type="submit"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Enviar mi opinión</button>
-                <p class="op-nota">Nos llega por WhatsApp: así sabemos que es de alguien que ha recibido un ramo. Publicamos las opiniones tal cual nos llegan, buenas o malas, con el nombre que pongas.</p>
+                <button class="btn btn-rose" type="submit">Enviar mi opinión</button>
+                <p class="op-nota">Solo publicamos opiniones de personas que han recibido un ramo nuestro: lo comprobamos con tu correo o teléfono, que no se publica. Las publicamos tal cual nos llegan, buenas o malas, con el nombre que pongas.</p>
             </form>
         </div>
     </div>
@@ -552,11 +570,11 @@
         <details><summary>¿Puedo añadir algo más al regalo?</summary><p>Sí: bombones, un peluche, luces o una caja de regalo. Márcalo en el diseñador o dínoslo en tu mensaje.</p></details>
         <details><summary>¿Hacéis flores sueltas o ramos pequeños?</summary><p>Sí. Por ejemplo, el girasol en maceta. Y cualquiera de nuestros ramos se puede hacer en tamaño pequeño.</p></details>
         <details><summary>¿Cuánto tarda y cuánto cuesta?</summary><p>Depende del tamaño y de cuántas flores lleve. Escríbenos con el ramo que te gusta y te decimos el precio exacto y cuándo estaría listo.</p></details>
-        <details><summary>¿Hacéis envíos?</summary><p>Pregúntanos por WhatsApp dónde estás y te decimos las opciones de entrega.</p></details>
+        <details><summary>¿Hacéis envíos?</summary><p>Dinos dónde estás al hacer tu pedido y te contamos las opciones de entrega.</p></details>
     </div>
 </section>
 
-<section class="ig-sec" style="padding-top:0">
+<section class="ig-sec" id="instagram" style="padding-top:0" hidden>
     <div class="wrap">
         <div class="ig rv">
             <span class="ig-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></span>
@@ -572,30 +590,47 @@
         <span class="kicker rv">Delicadeza · Cariño · Alegría</span>
         <h2 class="rv">Hay regalos que se olvidan. <em>Este se queda a la vista.</em></h2>
         <p class="rv">Cuéntanos para quién es y te ayudamos a elegir. Te contestamos con el precio y el plazo, sin compromiso.</p>
-        <a class="btn btn-rose rv" href="#" data-wa="Hola, quiero encargar un ramo de flores de limpiapipas.">Pedir su ramo por WhatsApp</a>
+        <a class="btn btn-rose rv" href="#" data-pedido="">Pedir su ramo</a>
     </div>
 </section>
 </main>
 
 <footer><b>Pétalo Eterno</b>Ramos de flores de limpiapipas hechos a mano, con delicadeza, cariño y alegría · <span id="anio">2026</span><span id="pie-ig"></span></footer>
 
-<div class="barra"><a class="btn btn-rose" href="#disena">Diseñar su ramo</a><a class="btn wa" href="#" data-wa="Hola, quiero información sobre los ramos de flores de limpiapipas." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a></div>
-<a class="flota" href="#" data-wa="Hola, quiero información sobre los ramos de flores de limpiapipas." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a>
+<div class="barra"><a class="btn btn-rose" href="#disena">Diseñar su ramo</a></div>
+<div class="pedido" id="pedido" role="dialog" aria-modal="true" aria-labelledby="pd-titulo" hidden>
+    <form class="pd-caja" id="pd-form" novalidate>
+        <button type="button" class="pd-cerrar" aria-label="Cerrar">×</button>
+        <div class="pd-paso" id="pd-datos">
+            <span class="kicker">Sin compromiso</span>
+            <h3 id="pd-titulo">Tu pedido</h3>
+            <p class="pd-sub">Rellénalo y te contestamos con el precio y cuándo estaría listo.</p>
+            <label>Lo que quieres<textarea class="campo" id="pd-que" maxlength="600" rows="3" placeholder="Por ejemplo: un ramo de lirios rosas para el cumpleaños de mi madre."></textarea></label>
+            <label>Tu nombre<input class="campo" id="pd-nombre" type="text" maxlength="40" autocomplete="name"></label>
+            <label>Tu correo o teléfono <span>· para contestarte</span><input class="campo" id="pd-contacto" type="text" maxlength="80" autocomplete="email" placeholder="tucorreo@ejemplo.com o 600 000 000"></label>
+            <label>¿Para cuándo lo necesitas? <span>· si tienes fecha</span><input class="campo" id="pd-fecha" type="date"></label>
+            <button class="btn btn-rose" type="submit" id="pd-enviar">Enviar pedido</button>
+            <p class="pd-priv">Solo usamos tus datos para contestarte sobre este pedido.</p>
+        </div>
+        <div class="pd-paso pd-ok" id="pd-ok" hidden>
+            <div class="pd-check" aria-hidden="true">✓</div>
+            <h3>¡Recibido!</h3>
+            <p>Te contestaremos con el precio y el plazo. Gracias por tu pedido.</p>
+            <button type="button" class="btn btn-line pd-cerrar">Cerrar</button>
+        </div>
+    </form>
+</div>
 <div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Foto en grande"><img alt=""><button type="button" aria-label="Cerrar">×</button></div>
 <div class="aviso" id="aviso" role="status"></div>
 
 <script src="ramo.js"></script>
 <script>
 (function () {
-    // Número de WhatsApp para los pedidos: solo cifras, con el prefijo del país (34 en España).
-    var WHATSAPP = '';
+    // Dirección a la que se envían los pedidos y las opiniones. Vacía: todavía sin conectar.
+    var FORMULARIO = '';
 
     var aviso = document.getElementById('aviso'), tAviso;
     function avisar(t) { aviso.textContent = t; aviso.classList.add('on'); clearTimeout(tAviso); tAviso = setTimeout(function () { aviso.classList.remove('on'); }, 3200); }
-    function abrirWA(msg) {
-        if (!WHATSAPP) { avisar('Muy pronto podrás pedir por WhatsApp desde aquí.'); return; }
-        window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
-    }
     var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     (function () {
         var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
@@ -610,14 +645,50 @@
     })();
     document.getElementById('anio').textContent = new Date().getFullYear();
 
+
+    // Pedido: ventana con el formulario
+    var pd = document.getElementById('pedido'), pdForm = document.getElementById('pd-form');
+    function val(id) { return document.getElementById(id).value.trim(); }
+    function contactoValido(c) { return /^\S+@\S+\.\S+$/.test(c) || c.replace(/\D/g, '').length >= 9; }
+    function enviar(datos, boton, listo) {
+        if (!FORMULARIO) { avisar('Muy pronto podrás enviarlo desde aquí.'); return; }
+        boton.disabled = true;
+        fetch(FORMULARIO, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(datos) })
+            .then(function (r) { if (!r.ok) throw new Error(r.status); listo(); })
+            .catch(function () { avisar('No se ha podido enviar. Prueba otra vez en un momento.'); })
+            .then(function () { boton.disabled = false; });
+    }
+    function abrirPedido(t) {
+        document.getElementById('pd-que').value = t || '';
+        document.getElementById('pd-datos').hidden = false; document.getElementById('pd-ok').hidden = true;
+        var d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+        document.getElementById('pd-fecha').min = d.toISOString().slice(0, 10);
+        pd.hidden = false; document.documentElement.style.overflow = 'hidden';
+        pdForm.scrollTop = 0;
+        if (window.matchMedia('(hover: hover)').matches) document.getElementById(t ? 'pd-nombre' : 'pd-que').focus();
+    }
+    function cerrarPedido() { pd.hidden = true; document.documentElement.style.overflow = ''; }
+    pd.addEventListener('click', function (e) { if (e.target === pd || e.target.closest('.pd-cerrar')) cerrarPedido(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pd.hidden) cerrarPedido(); });
+    pdForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var que = val('pd-que'), nombre = val('pd-nombre'), contacto = val('pd-contacto'), fecha = val('pd-fecha');
+        if (que.length < 3) { avisar('Cuéntanos qué ramo quieres.'); document.getElementById('pd-que').focus(); return; }
+        if (!nombre) { avisar('Escribe tu nombre.'); document.getElementById('pd-nombre').focus(); return; }
+        if (!contactoValido(contacto)) { avisar('Escribe un correo o un teléfono para poder contestarte.'); document.getElementById('pd-contacto').focus(); return; }
+        enviar({ tipo: 'Pedido', pedido: que, nombre: nombre, contacto: contacto, fecha: fecha ? fecha.split('-').reverse().join('/') : 'sin fecha' }, document.getElementById('pd-enviar'), function () {
+            pdForm.reset(); document.getElementById('pd-datos').hidden = true; document.getElementById('pd-ok').hidden = false;
+        });
+    });
+
     // Visor de fotos
     var visor = document.getElementById('visor'), vimg = visor.querySelector('img');
     function cerrarVisor() { visor.classList.remove('on'); }
     visor.addEventListener('click', function (e) { if (e.target !== vimg) cerrarVisor(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrarVisor(); });
     document.addEventListener('click', function (e) {
-        var a = e.target.closest('[data-wa]');
-        if (a) { e.preventDefault(); abrirWA(a.getAttribute('data-wa')); return; }
+        var a = e.target.closest('[data-pedido]');
+        if (a) { e.preventDefault(); abrirPedido(a.getAttribute('data-pedido')); return; }
         var z = e.target.closest('.zoom');
         if (z) { vimg.src = z.getAttribute('data-big'); vimg.alt = (z.querySelector('img') || {}).alt || ''; visor.classList.add('on'); }
     });
@@ -653,7 +724,7 @@
             '<div class="acc"><a class="btn btn-rose pedir" href="#">Quiero este</a><a class="btn btn-line crear" href="#disena">Personalizar</a></div></div>';
         var tam = 'mediano';
         card.querySelectorAll('.tams button').forEach(function (b) { b.addEventListener('click', function () { tam = b.dataset.t; card.querySelectorAll('.tams button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); }); });
-        card.querySelector('.pedir').addEventListener('click', function (e) { e.preventDefault(); abrirWA('Hola, me gusta el ramo «' + r.n + '» que tenéis en la web, en tamaño ' + tam + '. ¿Qué precio tiene y para cuándo estaría?'); });
+        card.querySelector('.pedir').addEventListener('click', function (e) { e.preventDefault(); abrirPedido('El ramo «' + r.n + '», en tamaño ' + tam + '.'); });
         card.querySelector('.crear').addEventListener('click', function () { desdeReal(r.id); });
         lista.appendChild(card);
     });
@@ -703,10 +774,10 @@
     document.querySelectorAll('.opts[data-k]').forEach(function (g) { g.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; var k = g.dataset.k; if (k === 'ocasion') { est.ocasion = est.ocasion === b.dataset.v ? null : b.dataset.v; } else { est[k] = b.dataset.v; base = null; } pintar(); }); });
     document.querySelectorAll('[data-x]').forEach(function (b) { b.addEventListener('click', function () { est[b.dataset.x] = !est[b.dataset.x]; base = null; pintar(); }); });
     document.querySelectorAll('[data-e]').forEach(function (b) { b.addEventListener('click', function () { extras[b.dataset.e] = !extras[b.dataset.e]; pintar(); }); });
-    document.getElementById('pedir-diseno').addEventListener('click', function (e) { e.preventDefault(); abrirWA('Hola, he diseñado este ramo en vuestra web: ' + texto() + '. ¿Qué precio tiene y para cuándo estaría?'); });
+    document.getElementById('pedir-diseno').addEventListener('click', function (e) { e.preventDefault(); abrirPedido('Lo he diseñado en la web: ' + texto() + '.'); });
     pintar();
 
-    // Opiniones: solo reales, de quien nos las mande por WhatsApp. Formato de cada una:
+    // Opiniones: solo reales, de quien nos las mande desde el formulario. Formato de cada una:
     // { nombre: 'Lucía G.', ramo: 'Rojo Pasión', estrellas: 5, texto: 'Lo que nos escribió, tal cual', fecha: 'diciembre de 2026' }
     var OPINIONES = [];
     var ESTRELLA = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>';
@@ -729,11 +800,15 @@
     opR.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; opRamo = opRamo === b.textContent ? '' : b.textContent; opR.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x.textContent === opRamo ? 'true' : 'false'); }); });
     document.getElementById('op-form').addEventListener('submit', function (e) {
         e.preventDefault();
-        var texto = document.getElementById('op-texto').value.trim(), nombre = document.getElementById('op-nombre').value.trim();
+        var texto = val('op-texto'), nombre = val('op-nombre'), contacto = val('op-contacto'), boton = this.querySelector('[type=submit]'), form = this;
         if (!opN) { avisar('Elige cuántas estrellas le das.'); return; }
+        if (!contactoValido(contacto)) { avisar('Escribe tu correo o teléfono para comprobar tu pedido.'); document.getElementById('op-contacto').focus(); return; }
         if (texto.length < 3) { avisar('Escribe tu opinión antes de enviarla.'); document.getElementById('op-texto').focus(); return; }
         var st = ''; for (var i = 0; i < 5; i++) st += i < opN ? '★' : '☆';
-        abrirWA('Hola, quiero dejar una opinión en vuestra web.\n\nEstrellas: ' + st + ' (' + opN + ' de 5)' + (opRamo ? '\nTengo: ' + opRamo : '') + '\nNombre: ' + (nombre || 'prefiero que no salga') + '\nOpinión: ' + texto);
+        enviar({ tipo: 'Opinión', estrellas: st + ' (' + opN + ' de 5)', ramo: opRamo || 'no lo dice', nombre: nombre || 'prefiere que no salga', contacto: contacto, opinion: texto }, boton, function () {
+            form.reset(); opN = 0; opRamo = ''; pintaEstrellas(); opR.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+            avisar('¡Gracias! Hemos recibido tu opinión.');
+        });
     });
 
     // Instagram: el usuario, sin la @ (por ejemplo: petaloeterno)
@@ -744,8 +819,7 @@
         igBtn.href = igUrl; igBtn.target = '_blank'; igBtn.rel = 'noopener';
         document.getElementById('ig-user').textContent = ' · @' + INSTAGRAM;
         document.getElementById('pie-ig').innerHTML = ' · <a href="' + igUrl + '" target="_blank" rel="noopener">@' + esc(INSTAGRAM) + '</a>';
-    } else {
-        igBtn.addEventListener('click', function (e) { e.preventDefault(); avisar('Muy pronto pondremos aquí nuestro Instagram.'); });
+        document.getElementById('instagram').hidden = false;
     }
 
     // Aparición al bajar
