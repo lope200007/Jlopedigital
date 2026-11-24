@@ -145,10 +145,25 @@
         .reales button { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 5px 16px 5px 5px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; font-weight: 600; font-size: 14.5px; transition: border-color .2s ease, background-color .2s ease, color .2s ease; }
         .reales button img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
         .reales button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
-        .vista .desde { position: absolute; right: 18px; top: 18px; z-index: 2; width: 92px; background: #fff; padding: 5px 5px 20px; border-radius: 6px; transform: rotate(5deg); box-shadow: 0 16px 30px -16px rgba(58,34,41,.55); display: none; }
+        .vista .desde { position: absolute; right: 18px; top: 18px; z-index: 2; width: 98px; background: #fff; padding: 5px 5px 34px; border-radius: 6px; transform: rotate(5deg); box-shadow: 0 16px 30px -16px rgba(58,34,41,.55); display: none; }
         .vista .desde.on { display: block; animation: abre .4s var(--ease); }
         .vista .desde img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 3px; }
-        .vista .desde span { position: absolute; left: 0; right: 0; bottom: 2px; text-align: center; font-family: var(--hand); font-size: 15px; color: var(--soft); }
+        .vista .desde span { position: absolute; left: 0; right: 0; bottom: 4px; text-align: center; font-family: var(--hand); font-size: 15px; line-height: .95; color: var(--soft); }
+
+        .versus { display: grid; gap: 14px; align-items: stretch; max-width: 920px; margin: 0 auto; position: relative; }
+        .vcol { border-radius: 28px; padding: 28px 24px; position: relative; }
+        .vcol h3 { font-size: 25px; margin-bottom: 16px; }
+        .vcol ul { list-style: none; display: grid; }
+        .vcol li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 13px 0; border-top: 1px solid; font-size: 16px; }
+        .vcol li span { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding-top: 2px; }
+        .nat { background: #F3ECE9; color: #8C7A7E; }
+        .nat h3 { color: #8C7A7E; }
+        .nat li { border-color: #E2D6D3; }
+        .lim { background: var(--ink); color: #FBE9EE; box-shadow: 0 40px 70px -40px rgba(58,34,41,.8); }
+        .lim li { border-color: rgba(251,233,238,.14); font-weight: 500; }
+        .lim li span { color: #F5A3BB; }
+        .sello-v { position: absolute; right: 18px; top: -14px; background: var(--rose); color: #fff; font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 6px 13px; box-shadow: 0 10px 20px -10px rgba(196,80,110,.8); }
+        .vs { display: none; }
 
         /* De cerca */
         .cerca { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -196,8 +211,12 @@
         .sw[aria-pressed="true"] { box-shadow: 0 0 0 2.5px var(--ink); transform: scale(1.06); }
         .ch { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; font-weight: 600; font-size: 14.5px; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
         .ch[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+        .campo { width: 100%; min-height: 50px; border: 1.5px solid var(--line); border-radius: 14px; padding: 0 16px; font: inherit; font-size: 16px; color: var(--ink); background: #fff; }
+        .campo:focus { outline: 2px solid var(--rose); outline-offset: 1px; }
         .resumen { background: var(--bg); border: 1px dashed #E0BFC8; border-radius: 16px; padding: 14px 16px; font-size: 15px; color: var(--soft); }
         .resumen b { color: var(--ink); }
+        .nota-c { text-align: center; font-size: 13.5px; color: var(--soft); margin-top: -10px; }
+        .nota-c::before { content: "✓ "; color: var(--sage); font-weight: 700; }
 
         .ocas { display: flex; flex-wrap: wrap; gap: 10px; }
         .ocas a { display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 22px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-weight: 600; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
@@ -252,6 +271,10 @@
             .hero .wrap { grid-template-columns: 1.05fr .95fr; align-items: center; gap: 50px; }
             .porque { grid-template-columns: repeat(2, 1fr); gap: 18px; }
             .gancho { grid-template-columns: 1fr auto; padding: 26px 30px; }
+            .versus { grid-template-columns: 1fr auto 1.08fr; gap: 0; align-items: center; }
+            .nat { border-radius: 28px 0 0 28px; padding-right: 40px; }
+            .lim { padding: 36px 32px; }
+            .vs { display: grid; place-items: center; width: 56px; height: 56px; margin: 0 -28px; z-index: 2; border-radius: 50%; background: #fff; border: 1px solid var(--line); font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--rose-d); box-shadow: 0 10px 24px -14px rgba(58,34,41,.5); }
             .cerca { grid-template-columns: repeat(4, 1fr); gap: 16px; }
             .cerca .grande { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
             .proceso { grid-template-columns: repeat(2, 1fr); }
@@ -278,7 +301,7 @@
 </head>
 <body>
 
-<div class="cinta">Ramos hechos a mano, uno a uno · <b>Diseña el tuyo</b> y pídelo por WhatsApp</div>
+<div class="cinta" id="cinta">Ramos hechos a mano, uno a uno · <b>Diseña el tuyo</b> y pídelo por WhatsApp</div>
 <header class="top">
     <div class="wrap">
         <a href="#" class="logo" aria-label="Pétalo Eterno, inicio"><i id="logo-flor" aria-hidden="true"></i><span><b>Pétalo Eterno</b><small>Flores de limpiapipas</small></span></a>
@@ -351,8 +374,10 @@
                 <div class="grupo"><b>Papel <span id="t-papel"></span></b><div class="opts" data-k="papel"></div></div>
                 <div class="grupo"><b>Tamaño</b><div class="opts" data-k="tam"><button class="ch" data-v="pequeno">Pequeño</button><button class="ch" data-v="mediano">Mediano</button><button class="ch" data-v="grande">Grande</button></div></div>
                 <div class="grupo"><b>Añadir</b><div class="opts"><button class="ch" data-x="gerbera">Gerbera</button><button class="ch" data-x="lavanda">Lavanda</button><button class="ch" data-x="perlas">Perlas</button><button class="ch" data-x="tarjeta">Tarjeta con mensaje</button></div></div>
+                <div class="grupo"><b>¿Para quién es? <span>· saldrá en la tarjeta</span></b><input class="campo" id="para" type="text" maxlength="18" placeholder="Su nombre, por ejemplo: Lucía" autocomplete="off"><div class="opts" data-k="ocasion" style="margin-top:10px"><button class="ch" data-v="su cumpleaños">Cumpleaños</button><button class="ch" data-v="San Valentín">San Valentín</button><button class="ch" data-v="vuestro aniversario">Aniversario</button><button class="ch" data-v="el Día de la Madre">Día de la Madre</button><button class="ch" data-v="porque sí">Porque sí</button></div></div>
                 <p class="resumen" id="resumen"></p>
                 <a class="btn btn-rose" href="#" id="pedir-diseno"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Pedir este ramo por WhatsApp</a>
+                <p class="nota-c">Sin compromiso: primero te decimos el precio y cuándo estaría.</p>
             </div>
         </div>
     </div>
@@ -360,12 +385,21 @@
 
 <section style="padding-top:0">
     <div class="wrap">
-        <div class="head rv"><span class="kicker">Por qué regalar uno</span><h2>Un ramo que <em>dura</em> lo mismo que el recuerdo.</h2></div>
-        <div class="porque">
-            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i><div><h3>No se marchita</h3><p>Ni a la semana ni al año. Sigue igual de bonito en la estantería.</p></div></div>
-            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M4 4l16 16"/></svg></i><div><h3>Cero cuidados</h3><p>Sin agua, sin jarrón y sin hojas caídas por la casa.</p></div></div>
-            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v1M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8a8 8 0 0 0 16 0v-4a2 2 0 0 0-4 0"/></svg></i><div><h3>Hecho a mano</h3><p>Cada pétalo se dobla a mano. No hay dos ramos iguales.</p></div></div>
-            <div class="razon rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 1 0 0 20c1 0 1.7-.8 1.7-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.8-1.7 1.7-1.7H17a5 5 0 0 0 5-5C22 6 17.5 2 12 2z"/></svg></i><div><h3>A tu gusto</h3><p>Tú eliges las flores, los colores y el papel.</p></div></div>
+        <div class="head center rv"><span class="kicker">Por qué regalar uno</span><h2>Las flores duran una semana. <em>El recuerdo, no.</em></h2><p>Un ramo de flores naturales es precioso… hasta que se marchita. Este se queda.</p></div>
+        <div class="versus rv">
+            <div class="vcol nat"><h3>Flores naturales</h3><ul>
+                <li><span>Duran</span>una o dos semanas</li>
+                <li><span>Cuidados</span>agua cada día y jarrón</li>
+                <li><span>Al final</span>acaban en la basura</li>
+                <li><span>Colores</span>los que haya en la tienda</li>
+            </ul></div>
+            <div class="vs" aria-hidden="true">vs</div>
+            <div class="vcol lim"><span class="sello-v">Hecho a mano</span><h3>Flores de limpiapipas</h3><ul>
+                <li><span>Duran</span>no se marchitan</li>
+                <li><span>Cuidados</span>ninguno, ni agua ni sol</li>
+                <li><span>Al final</span>se quedan en su estantería</li>
+                <li><span>Colores</span>los que tú elijas</li>
+            </ul></div>
         </div>
     </div>
 </section>
@@ -448,6 +482,17 @@
         window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     }
     var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    (function () {
+        var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+        function madre(y) { var d = new Date(y, 4, 1); d.setDate(1 + (7 - d.getDay()) % 7); return d; }
+        var fechas = [];
+        [hoy.getFullYear(), hoy.getFullYear() + 1].forEach(function (y) { fechas.push(['San Valentín', new Date(y, 1, 14)], ['el Día de la Madre', madre(y)], ['Navidad', new Date(y, 11, 25)]); });
+        var prox = fechas.filter(function (x) { return x[1] >= hoy; }).sort(function (a, b) { return a[1] - b[1]; })[0];
+        if (!prox) return;
+        var dias = Math.round((prox[1] - hoy) / 864e5);
+        if (dias > 60) return;
+        document.getElementById('cinta').innerHTML = dias === 0 ? 'Hoy es ' + prox[0] + ' · Un regalo que no se marchita' : 'Faltan <b>' + dias + (dias === 1 ? ' día' : ' días') + '</b> para ' + prox[0] + ' · Cada ramo se hace a mano: encárgalo con tiempo';
+    })();
     document.getElementById('anio').textContent = new Date().getFullYear();
 
     // Visor de fotos
@@ -502,7 +547,7 @@
     var NOMBRES = { rosa: 'Rosa', rosaclaro: 'Rosa claro', lila: 'Lila', morado: 'Morado', blanco: 'Blanco', rojo: 'Rojo', amarillo: 'Amarillo', azul: 'Azul', melocoton: 'Melocotón', crema: 'Crema', negro: 'Negro', periodico: 'Periódico', panal: 'Panal rosa', ninguno: 'Ninguno' };
     var HEX = { rosa: '#F5A3BB', rosaclaro: '#FBC4D3', blanco: '#FFFFFF', lila: '#C7A1EB', morado: '#9A69D2', rojo: '#EC5867', amarillo: '#FFD46C', azul: '#92C7F1', melocoton: '#FFBF9A' };
     var PAP = { blanco: '#FFFFFF', rosa: '#F8CAD7', crema: '#F3E6D4', lila: '#E6D5F5', negro: '#3A3233', panal: 'radial-gradient(circle at 3px 3px, #E7A3B7 1.4px, #F7C6D3 1.6px) 0 0/7px 7px', periodico: 'repeating-linear-gradient(0deg,#F4EFE6 0 5px,#B9B0A5 5px 6px)' };
-    var est = { flor: 'mezcla', color: 'rosa', color2: 'blanco', papel: 'blanco', tam: 'mediano', gerbera: true, lavanda: false, perlas: false, tarjeta: false }, base = 'jardin';
+    var est = { flor: 'mezcla', color: 'rosa', color2: 'blanco', papel: 'blanco', tam: 'mediano', gerbera: true, lavanda: false, perlas: false, tarjeta: false, ocasion: null }, base = 'jardin', para = '';
     function chips(k, mapa, extra) {
         var c = document.querySelector('.opts[data-k="' + k + '"]');
         (extra || []).concat(Object.keys(mapa)).forEach(function (v) {
@@ -517,24 +562,26 @@
         var t = { pequeno: 'pequeño', mediano: 'mediano', grande: 'grande' }[est.tam];
         var cl = NOMBRES[est.color].toLowerCase() + (est.color2 !== 'ninguno' && est.color2 !== est.color ? ' y ' + NOMBRES[est.color2].toLowerCase() : '');
         var rb = base ? RAMOS.filter(function (x) { return x.id === base; })[0] : null, ex = [];
-        if (est.gerbera) ex.push('gerbera'); if (est.lavanda) ex.push('lavanda'); if (est.perlas) ex.push('perlas'); if (est.tarjeta) ex.push('tarjeta con mensaje');
-        if (rb) return 'un ramo como vuestro «' + rb.n + '», en tamaño ' + t;
-        return 'ramo ' + t + ' de ' + fl + ' en ' + cl + ', papel ' + NOMBRES[est.papel].toLowerCase() + (ex.length ? ', con ' + ex.join(', ') : '');
+        if (est.gerbera) ex.push('gerbera'); if (est.lavanda) ex.push('lavanda'); if (est.perlas) ex.push('perlas'); if (est.tarjeta || para) ex.push('tarjeta con mensaje');
+        var dest = (para ? '. Es para ' + para : '') + (est.ocasion ? (para ? ', por ' : '. Es por ') + est.ocasion : '');
+        if (rb) return 'un ramo como vuestro «' + rb.n + '», en tamaño ' + t + dest;
+        return 'ramo ' + t + ' de ' + fl + ' en ' + cl + ', papel ' + NOMBRES[est.papel].toLowerCase() + (ex.length ? ', con ' + ex.join(', ') : '') + dest;
     }
     function pintar() {
-        prev.innerHTML = ramo({ id: 'pv', flor: est.flor, color: est.color, color2: est.color2, papel: est.papel, tam: est.tam, gerbera: est.gerbera, lavanda: est.lavanda, perlas: est.perlas, tarjeta: est.tarjeta, alt: 'Vista previa de tu ramo' });
+        prev.innerHTML = ramo({ id: 'pv', flor: est.flor, color: est.color, color2: est.color2, papel: est.papel, tam: est.tam, gerbera: est.gerbera, lavanda: est.lavanda, perlas: est.perlas, tarjeta: est.tarjeta || !!para, para: para, alt: 'Vista previa de tu ramo' });
         document.querySelectorAll('.opts[data-k]').forEach(function (g) { var k = g.dataset.k; g.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === est[k] ? 'true' : 'false'); }); });
         document.querySelectorAll('[data-x]').forEach(function (b) { b.setAttribute('aria-pressed', est[b.dataset.x] ? 'true' : 'false'); });
         ['color', 'color2', 'papel'].forEach(function (k) { document.getElementById('t-' + k).textContent = '· ' + NOMBRES[est[k]]; });
         res.innerHTML = 'Tu ramo: <b>' + texto() + '</b>';
         var r = RAMOS.filter(function (x) { return x.id === base; })[0], d = document.getElementById('desde');
         document.querySelectorAll('#reales button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.id === base ? 'true' : 'false'); });
-        if (r) { d.querySelector('img').src = r.fotos[0]; d.querySelector('span').textContent = 'basado en ' + r.n; d.classList.add('on'); } else d.classList.remove('on');
+        if (r) { d.querySelector('img').src = r.fotos[0]; d.querySelector('span').innerHTML = 'basado en<br>' + r.n; d.classList.add('on'); } else d.classList.remove('on');
     }
+    document.getElementById('para').addEventListener('input', function (e) { para = e.target.value.trim(); pintar(); });
     function desdeReal(id) { var r = RAMOS.filter(function (x) { return x.id === id; })[0]; if (!r) return; Object.keys(r.base).forEach(function (k) { est[k] = r.base[k]; }); base = id; pintar(); }
     var reales = document.getElementById('reales');
     RAMOS.forEach(function (r) { var b = document.createElement('button'); b.type = 'button'; b.dataset.id = r.id; b.innerHTML = '<img src="' + r.fotos[0] + '" alt="">' + r.n; b.addEventListener('click', function () { desdeReal(r.id); }); reales.appendChild(b); });
-    document.querySelectorAll('.opts[data-k]').forEach(function (g) { g.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; est[g.dataset.k] = b.dataset.v; base = null; pintar(); }); });
+    document.querySelectorAll('.opts[data-k]').forEach(function (g) { g.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; var k = g.dataset.k; if (k === 'ocasion') { est.ocasion = est.ocasion === b.dataset.v ? null : b.dataset.v; } else { est[k] = b.dataset.v; base = null; } pintar(); }); });
     document.querySelectorAll('[data-x]').forEach(function (b) { b.addEventListener('click', function () { est[b.dataset.x] = !est[b.dataset.x]; base = null; pintar(); }); });
     document.getElementById('pedir-diseno').addEventListener('click', function (e) { e.preventDefault(); abrirWA('Hola, he diseñado este ramo en vuestra web: ' + texto() + '. ¿Qué precio tiene y para cuándo estaría?'); });
     pintar();

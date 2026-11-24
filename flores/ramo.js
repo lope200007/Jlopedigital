@@ -194,10 +194,12 @@
             '<path d="M4,4 C24,44 -4,78 22,116 L34,110 C10,74 34,42 10,6Z" fill="' + fill + '" fill-opacity="' + fo + '" stroke="' + b + '" stroke-width="1.5"/>' +
             '<ellipse rx="11" ry="9" fill="' + fill + '" fill-opacity="' + (raso ? 1 : .85) + '" stroke="' + b + '"/></g>';
     }
-    function tarjeta() {
+    function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function tarjeta(para) {
+        var txt = para ? 'Para ' + esc(para) : 'P&#233;talo Eterno', fs = para ? Math.max(6.5, Math.min(10, 120 / (para.length + 5))) : 8.5;
         return '<g transform="translate(262,300) rotate(9)"><path d="M38,-26 V0" stroke="#5E8A4E" stroke-width="2"/><rect width="78" height="50" rx="3" fill="#FFFDF9" stroke="rgba(58,19,32,.18)"/>' +
             '<g transform="translate(39,15)" fill="#F5A3BB"><ellipse cy="-4" rx="2.6" ry="4"/><ellipse cy="-4" rx="2.6" ry="4" transform="rotate(72)"/><ellipse cy="-4" rx="2.6" ry="4" transform="rotate(144)"/><ellipse cy="-4" rx="2.6" ry="4" transform="rotate(216)"/><ellipse cy="-4" rx="2.6" ry="4" transform="rotate(288)"/><circle r="2" fill="#D7A74C"/></g>' +
-            '<text x="39" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" font-style="italic" fill="#3A2229">P&#233;talo Eterno</text><path d="M20,41 H58" stroke="#E2C9CF" stroke-width="1"/></g>';
+            '<text x="39" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="' + fs + '" font-style="italic" fill="#3A2229">' + txt + '</text><path d="M20,41 H58" stroke="#E2C9CF" stroke-width="1"/></g>';
     }
 
     // ---------- Ramos del catálogo ----------
@@ -315,7 +317,7 @@
         body += funda(R.funda);
         if (R.perlas) body += collar(cx);
         body += lazo(cx, R.lazo);
-        if (R.tarjeta) body += tarjeta();
+        if (R.tarjeta) body += tarjeta(o.para);
         return '<svg viewBox="-22 -16 444 584" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="' + (o.alt || 'Ramo de flores de limpiapipas') + '"><defs>' + filtros(cx.id) + cx.defs.join('') + '</defs>' + body + '</svg>';
     };
 
