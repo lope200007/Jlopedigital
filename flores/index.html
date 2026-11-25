@@ -384,43 +384,45 @@
         .escena-in { position: relative; transform-style: preserve-3d; will-change: transform; }
         .escena .foto { isolation: isolate; }
         .halo { position: absolute; border-radius: 50%; pointer-events: none; }
-        .petalos { position: absolute; inset: 0; pointer-events: none; }
+        .petalos { position: absolute; inset: 0; z-index: 900; pointer-events: none; }
         /* Portada: tres fotos, la principal delante y dos detrás giradas */
         .trio { position: relative; height: 500px; max-width: 520px; width: 100%; margin: 0 auto; }
         #esc-hero { position: absolute; inset: 0; transform: none; transform-style: flat; --rx: 6deg; --ry: -12deg; }
         #esc-hero .slot { transform-style: flat; transform: perspective(1500px) rotateX(var(--rx)) rotateY(var(--ry)) var(--t); }
         #esc-hero .halo { left: -10%; right: -10%; top: -12%; bottom: -4%; background: radial-gradient(closest-side, rgba(236,88,103,.30), rgba(245,163,187,.18) 55%, rgba(245,163,187,0)); }
         .slot { position: absolute; transform-style: preserve-3d; }
-        .s-c, .s-l, .s-r { left: 50%; margin-left: -132px; }
-        .s-c { top: 18px; --t: translateZ(60px); }
-        .s-l { top: 66px; --t: translate3d(-172px, 0, -150px) rotateY(22deg) scale(.86); }
-        .s-r { top: 66px; --t: translate3d(172px, 0, -150px) rotateY(-22deg) scale(.86); }
-        .flota-a { animation: flotaA 7s ease-in-out infinite; }
-        @keyframes flotaA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        /* Carrusel: delante (p0), derecha (p1), detrás (p2), izquierda (p3). El JS las va moviendo de puesto */
+        .giro { left: 50%; margin-left: -132px; top: 18px; }
+        .giro.p0 { --t: translate3d(0px, 0px, 60px) rotateY(0deg) scale(1); z-index: 4; }
+        .giro.p1 { --t: translate3d(172px, 48px, -150px) rotateY(-22deg) scale(.86); z-index: 3; }
+        .giro.p2 { --t: translate3d(0px, 30px, -330px) rotateY(0deg) scale(.74); z-index: 1; }
+        .giro.p3 { --t: translate3d(-172px, 48px, -150px) rotateY(22deg) scale(.86); z-index: 3; }
+        .giro .cuadro { cursor: pointer; }
+        .giro .cuadro.zoom { cursor: zoom-in; }
+        .velo { position: absolute; inset: 0; z-index: 1; background: #1E0E14; opacity: 0; pointer-events: none; }
+        .giro.p1 .velo, .giro.p3 .velo { opacity: .16; }
+        .giro.p2 .velo { opacity: .3; }
         .cuadro { position: relative; display: block; width: 264px; aspect-ratio: 4 / 5.4; padding: 7px; border-radius: 30px; background: linear-gradient(150deg, #FFFFFF 0%, #FBF2F2 55%, #F0DEDE 100%); cursor: zoom-in; box-shadow: inset 0 1px 0 #fff, inset 3px 0 4px rgba(255,255,255,.7), inset -4px 0 7px rgba(120,70,80,.22), inset 0 -4px 7px rgba(120,70,80,.16), 0 2px 4px rgba(58,34,41,.06), 0 24px 40px -22px rgba(90,40,55,.45), 0 60px 90px -40px rgba(90,40,55,.6); }
         .cuadro .pic { position: relative; width: 100%; height: 100%; border-radius: 23px; overflow: hidden; isolation: isolate; background: #EADAD5; }
         .cuadro .pic img { width: 100%; height: 100%; object-fit: cover; }
         .cuadro .pic::after { content: ""; position: absolute; inset: 0; background: linear-gradient(125deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,0) 36%), linear-gradient(0deg, rgba(40,16,24,.45) 0%, rgba(40,16,24,0) 32%); pointer-events: none; }
-        .principal .pic img { animation: kenburns 18s ease-in-out infinite alternate; }
+        .giro .pic img { animation: kenburns 18s ease-in-out infinite alternate; }
         @keyframes kenburns { from { transform: scale(1.04) translate(0, 0); } to { transform: scale(1.14) translate(-2%, -3%); } }
-        .s-l .pic, .s-r .pic { filter: brightness(.84) saturate(.95); transition: filter .4s ease; }
-        @media (hover: hover) { .s-l .cuadro:hover .pic, .s-r .cuadro:hover .pic { filter: none; } }
         .cuadro-n { position: absolute; left: 0; right: 0; bottom: 20px; text-align: center; transform: translateZ(1px); font-family: var(--serif); font-style: italic; font-size: 20px; color: #fff; white-space: nowrap; text-shadow: 0 2px 12px rgba(0,0,0,.4); pointer-events: none; }
-        .s-sello { right: -8px; top: -18px; width: 104px; height: 104px; --t: translateZ(120px); }
+        .s-sello { right: -8px; top: -18px; width: 104px; height: 104px; z-index: 1000; --t: translateZ(120px); }
         .s-sello .sello, .s-sello .sello-c { left: 0; top: 0; }
         .s-sello .sello { --z: 0px; filter: drop-shadow(0 14px 18px rgba(58,34,41,.25)); }
         .s-sello .sello-c { transform: none; }
-        .s-chip { left: -6px; bottom: 92px; --t: translateZ(150px); }
+        .s-chip { left: -6px; bottom: 92px; z-index: 1000; --t: translateZ(150px); }
         .s-chip .real { position: relative; left: auto; bottom: auto; box-shadow: 0 2px 4px rgba(58,34,41,.06), 0 24px 40px -18px rgba(58,34,41,.45); }
         @media (max-width: 520px) {
             .trio { height: 400px; }
             .cuadro { width: 192px; border-radius: 26px; }
             .cuadro .pic { border-radius: 20px; }
-            .s-c, .s-l, .s-r { margin-left: -96px; }
-            .s-c { top: 16px; }
-            .s-l, .s-r { top: 50px; }
-            .s-l { --t: translate3d(-100px, 0, -150px) rotateY(22deg) scale(.8); }
-            .s-r { --t: translate3d(100px, 0, -150px) rotateY(-22deg) scale(.8); }
+            .giro { margin-left: -96px; top: 16px; }
+            .giro.p1 { --t: translate3d(100px, 34px, -150px) rotateY(-22deg) scale(.8); }
+            .giro.p2 { --t: translate3d(0px, 22px, -300px) rotateY(0deg) scale(.7); }
+            .giro.p3 { --t: translate3d(-100px, 34px, -150px) rotateY(22deg) scale(.8); }
             .s-sello { right: 0; top: -24px; width: 84px; height: 84px; --t: translateZ(60px); }
             .s-sello .sello, .s-sello .sello-c { width: 84px; height: 84px; }
             .s-sello .sello-c span { width: 42px; height: 42px; font-size: 17px; }
@@ -522,9 +524,10 @@
         <div class="trio escena" id="marco">
           <div class="escena-in" id="esc-hero">
             <div class="halo" aria-hidden="true"></div>
-            <div class="slot s-l"><div class="cuadro zoom" data-big="img/rosa-1.jpg"><div class="pic"><img src="img/rosa-1.jpg" alt="Ramo Jardín Rosa: gerbera rosa, lirios rosas y blancos y margaritas" width="1400" height="1325" loading="lazy"></div><span class="cuadro-n">Jardín Rosa</span></div></div>
-            <div class="slot s-r"><div class="cuadro zoom" data-big="img/lavanda.jpg"><div class="pic"><img src="img/lavanda.jpg" alt="Ramo Lavanda: lirios morados y lavanda de limpiapipas" width="1100" height="1127" loading="lazy"></div><span class="cuadro-n">Lavanda</span></div></div>
-            <div class="slot s-c"><div class="flota-a"><div class="cuadro principal zoom" data-big="img/rojo.jpg"><div class="pic"><img src="img/rojo.jpg" alt="Ramo de limpiapipas de lirios rojos con borde blanco, un tulipán rojo y capullos verdes" width="1300" height="1311" fetchpriority="high"></div><span class="cuadro-n">Rojo Pasión</span></div></div></div>
+            <div class="slot giro p0"><div class="cuadro zoom" data-big="img/rojo.jpg"><div class="pic"><img src="img/rojo.jpg" alt="Ramo Rojo Pasión: lirios rojos con borde blanco, un tulipán rojo y capullos verdes" width="1300" height="1311" fetchpriority="high"><i class="velo"></i></div><span class="cuadro-n">Rojo Pasión</span></div></div>
+            <div class="slot giro p1"><div class="cuadro" data-big="img/rosa-1.jpg"><div class="pic"><img src="img/rosa-1.jpg" alt="Ramo Jardín Rosa: gerbera rosa, lirios rosas y blancos y margaritas" width="1400" height="1325" loading="lazy"><i class="velo"></i></div><span class="cuadro-n">Jardín Rosa</span></div></div>
+            <div class="slot giro p2"><div class="cuadro" data-big="img/girasol-1.jpg"><div class="pic"><img src="img/girasol-1.jpg" alt="Girasol de limpiapipas en su maceta" width="1300" height="1455" loading="lazy"><i class="velo"></i></div><span class="cuadro-n">Girasol</span></div></div>
+            <div class="slot giro p3"><div class="cuadro" data-big="img/lavanda.jpg"><div class="pic"><img src="img/lavanda.jpg" alt="Ramo Lavanda: lirios morados y lavanda de limpiapipas" width="1100" height="1127" loading="lazy"><i class="velo"></i></div><span class="cuadro-n">Lavanda</span></div></div>
             <div class="slot s-sello" aria-hidden="true"><svg class="sello" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><circle cx="60" cy="60" r="58" fill="#fff" stroke="#EEDCE0"/><text font-family="DM Sans, sans-serif" font-size="11.5" font-weight="700" letter-spacing="3.2" fill="#3A2229"><textPath href="#circ">HECHO A MANO · PARA SIEMPRE · </textPath></text></svg><div class="sello-c"><span>✿</span></div></div>
             <div class="slot s-chip"><div class="real"><i></i><div><b>Fotos reales</b><span>de nuestros ramos</span></div></div></div>
             <div class="petalos" id="petalos" aria-hidden="true"></div>
@@ -967,6 +970,40 @@
             if (tipo === 'tarjeta') { el.classList.add('p3d'); var b = document.createElement('i'); b.className = 'brillo'; (el.querySelector('.foto') || el).appendChild(b); }
             el.__p3d = it; items.push(it); io.observe(el);
         }
+
+        // Carrusel de la portada: cada pocos segundos todas avanzan un puesto (derecha -> delante -> izquierda -> detrás -> derecha)
+        var carr = (function () {
+            var cartas = [].slice.call(document.querySelectorAll('#esc-hero .giro')); if (!cartas.length) return null;
+            var movil = window.innerWidth < 600;
+            var POS = movil
+                ? [{ x: 0, y: 0, z: 60, a: 0, s: 1, v: 0 }, { x: 100, y: 34, z: -150, a: -22, s: .8, v: .16 }, { x: 0, y: 22, z: -300, a: 0, s: .7, v: .3 }, { x: -100, y: 34, z: -150, a: 22, s: .8, v: .16 }]
+                : [{ x: 0, y: 0, z: 60, a: 0, s: 1, v: 0 }, { x: 172, y: 48, z: -150, a: -22, s: .86, v: .16 }, { x: 0, y: 30, z: -330, a: 0, s: .74, v: .3 }, { x: -172, y: 48, z: -150, a: 22, s: .86, v: .16 }];
+            function copia(o) { return { x: o.x, y: o.y, z: o.z, a: o.a, s: o.s, v: o.v }; }
+            var st = cartas.map(function (c) { var q = +c.className.match(/\bp(\d)\b/)[1]; return { el: c, cu: c.querySelector('.cuadro'), velo: c.querySelector('.velo'), p: q, de: copia(POS[q]), a: copia(POS[q]), ya: copia(POS[q]) }; });
+            var DUR = 1300, ESPERA = 3000, t0 = -1e9, ultimo = performance.now(), pausa = false;
+            function suave(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+            function avanza(dir) {
+                st.forEach(function (c) {
+                    c.de = copia(c.ya); c.p = dir > 0 ? (c.p + 3) % 4 : (c.p + 1) % 4; c.a = POS[c.p];
+                    c.el.className = c.el.className.replace(/\bp\d\b/, 'p' + c.p); c.cu.classList.toggle('zoom', c.p === 0);
+                });
+                t0 = ultimo = performance.now(); arranca();
+            }
+            st.forEach(function (c) { c.cu.addEventListener('click', function (e) { if (c.p === 0) return; e.stopPropagation(); avanza(c.p === 3 ? -1 : 1); }); });
+            var marco = document.getElementById('marco');
+            if (fino) { marco.addEventListener('pointerenter', function () { pausa = true; }); marco.addEventListener('pointerleave', function () { pausa = false; ultimo = performance.now() - ESPERA * 0.5; }); }
+            document.addEventListener('visibilitychange', function () { ultimo = performance.now(); });
+            return function (ahora, rx, ry) {
+                if (!pausa && ahora - ultimo > ESPERA + DUR) avanza(1);
+                var e = suave(Math.min(1, Math.max(0, (ahora - t0) / DUR)));
+                st.forEach(function (c) {
+                    var v = c.ya; for (var k in v) v[k] = c.de[k] + (c.a[k] - c.de[k]) * e;
+                    c.el.style.transform = 'perspective(1500px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) translate3d(' + v.x.toFixed(1) + 'px,' + v.y.toFixed(1) + 'px,' + v.z.toFixed(1) + 'px) rotateY(' + v.a.toFixed(2) + 'deg) scale(' + v.s.toFixed(3) + ')';
+                    c.el.style.zIndex = Math.round(500 + v.z);
+                    c.velo.style.opacity = v.v.toFixed(3);
+                });
+            };
+        })();
         function arranca() { if (!corriendo) { corriendo = true; t0 = performance.now(); requestAnimationFrame(paso); } }
         function paso(t) {
             var dt = Math.min(50, Math.max(0, t - t0)); t0 = t;
@@ -979,7 +1016,7 @@
                     var a = o.rx - p * 7 + Math.sin(s * 0.55 + o.fase) * 1.6 - it.my * 12;
                     var b = o.ry + Math.sin(s * 0.4 + o.fase) * 5 + it.mx * 24;
                     it.rx += (a - it.rx) * k; it.ry += (b - it.ry) * k;
-                    if (o.vars) { it.el.style.setProperty('--rx', it.rx.toFixed(2) + 'deg'); it.el.style.setProperty('--ry', it.ry.toFixed(2) + 'deg'); }
+                    if (o.vars) { it.el.style.setProperty('--rx', it.rx.toFixed(2) + 'deg'); it.el.style.setProperty('--ry', it.ry.toFixed(2) + 'deg'); if (carr) carr(t, it.rx, it.ry); }
                     else it.el.style.transform = 'rotateX(' + it.rx.toFixed(2) + 'deg) rotateY(' + it.ry.toFixed(2) + 'deg)';
                 } else {
                     if (it.visto && it.ent > 0) it.ent = Math.max(0, it.ent - dt / 950);
