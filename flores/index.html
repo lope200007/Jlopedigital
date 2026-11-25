@@ -504,6 +504,27 @@
         .reales button { background: linear-gradient(180deg, #FFFFFF, #FFF6F8); box-shadow: 0 8px 16px -14px rgba(58,34,41,.4); }
         .ch { background: linear-gradient(180deg, #FFFFFF, #FFF7F9); }
         .ch[aria-pressed="true"], .reales button[aria-pressed="true"], .tams button[aria-pressed="true"] { background: linear-gradient(135deg, #563140, var(--ink)); }
+
+        /* Logo de la marca */
+        .logo-img { width: 46px; height: 46px; border-radius: 12px; display: block; box-shadow: 0 6px 14px -8px rgba(196,80,110,.55), 0 0 0 1px rgba(224,112,143,.15); }
+        .logo-grande { display: block; width: 220px; height: 220px; margin: 0 auto 38px; border-radius: 30px; box-shadow: 0 0 0 6px rgba(255,255,255,.08), 0 40px 70px -28px rgba(0,0,0,.7), 0 0 90px -20px rgba(245,163,187,.35); }
+        /* Nota de ella al final */
+        .nota-final { position: relative; max-width: 640px; margin: 0 auto 54px; padding-top: 18px; }
+        .nota-final::before { content: "\201C"; position: absolute; left: 50%; top: -46px; transform: translateX(-50%); font-family: var(--serif); font-size: 120px; line-height: 1; color: rgba(245,163,187,.32); }
+        .cierre .nota-final p { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(20px, 4.8vw, 25px); line-height: 1.55; color: #FBE9EE; max-width: none; margin: 0; letter-spacing: -0.005em; }
+        .nota-final figcaption { margin-top: 18px; font-family: var(--hand); font-size: 32px; line-height: 1; color: #F5A3BB; }
+        .nota-final::after { content: ""; display: block; width: 64px; height: 1.5px; margin: 40px auto 0; background: linear-gradient(90deg, transparent, rgba(245,163,187,.7), transparent); }
+        /* Frase estratégica */
+        .frase-band { padding: 10px 0 80px; }
+        .frase { max-width: 900px; margin: 0 auto; text-align: center; }
+        .frase-orla { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 26px; }
+        .frase-orla i { width: 70px; height: 1.5px; background: linear-gradient(90deg, transparent, #E9A9BC); }
+        .frase-orla i:last-child { background: linear-gradient(90deg, #E9A9BC, transparent); }
+        .frase-orla svg { width: 30px; height: 30px; }
+        .frase p { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 6.4vw, 52px); line-height: 1.12; letter-spacing: -0.025em; color: var(--ink); text-wrap: balance; }
+        .frase p em { background: linear-gradient(100deg, #EA93AC 0%, var(--rose) 42%, var(--rose-d) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: .06em; }
+        .frase figcaption { margin-top: 22px; font-family: var(--hand); font-size: clamp(28px, 5vw, 36px); line-height: 1.1; color: var(--rose-d); }
+        @media (min-width: 760px) { .frase-band { padding: 10px 0 112px; } }
     </style>
 </head>
 <body>
@@ -511,7 +532,7 @@
 <div class="cinta" id="cinta">Hechos a mano, uno a uno · <b>Con su nombre en la tarjeta</b> · Pídelo sin compromiso</div>
 <header class="top">
     <div class="wrap">
-        <a href="#" class="logo" aria-label="Pétalo Eterno, inicio"><i id="logo-flor" aria-hidden="true"></i><span><b>Pétalo Eterno</b><small>Flores de limpiapipas</small></span></a>
+        <a href="#" class="logo" aria-label="Pétalo Eterno, inicio"><img class="logo-img" src="img/logo-128.jpg" alt="" width="46" height="46"><span><b>Pétalo Eterno</b><small>Flores de limpiapipas</small></span></a>
         <nav class="nav" aria-label="Secciones"><a href="#ramos">Ramos</a><a href="#detalles">Detalles</a><a href="#cerca">De cerca</a><a href="#disena">Diseña el tuyo</a><a href="#preguntas">Preguntas</a></nav>
         <a class="btn btn-rose" href="#" data-pedido="">Pedir</a>
     </div>
@@ -638,6 +659,16 @@
     </div>
 </section>
 
+<section class="frase-band">
+    <div class="wrap">
+        <figure class="frase rv">
+            <span class="frase-orla" aria-hidden="true"><i></i><svg viewBox="0 0 24 24"><g fill="#F5A3BB" stroke="#fff" stroke-width=".8"><ellipse cx="12" cy="6.6" rx="3.6" ry="5.4"/><ellipse cx="12" cy="6.6" rx="3.6" ry="5.4" transform="rotate(72 12 12)"/><ellipse cx="12" cy="6.6" rx="3.6" ry="5.4" transform="rotate(144 12 12)"/><ellipse cx="12" cy="6.6" rx="3.6" ry="5.4" transform="rotate(216 12 12)"/><ellipse cx="12" cy="6.6" rx="3.6" ry="5.4" transform="rotate(288 12 12)"/></g><circle cx="12" cy="12" r="2.8" fill="#F4EEE5"/></svg><i></i></span>
+            <blockquote><p>Porque hay personas que iluminan todos los días y merecen un detalle que siga ahí <em>mañana, el mes que viene y siempre.</em></p></blockquote>
+            <figcaption>Gracias por regalar recuerdos que florecen sin prisa <span aria-hidden="true">♡</span></figcaption>
+        </figure>
+    </div>
+</section>
+
 <section id="proceso" style="padding-top:0">
     <div class="wrap">
         <div class="head center rv"><span class="kicker">Cómo se hacen</span><h2>De un limpiapipas <em>a un ramo.</em></h2><p>Sin moldes ni máquinas. Por eso no hay dos ramos iguales.</p></div>
@@ -721,7 +752,11 @@
 
 <section class="cierre">
     <div class="wrap">
-        <div class="foto redonda"><img src="img/rosa-2.jpg" alt="" loading="lazy" style="object-position:50% 35%"></div>
+        <img class="logo-grande rv" src="img/logo-480.jpg" alt="Logotipo de Pétalo Eterno, flores de limpiapipas" width="220" height="220" loading="lazy">
+        <figure class="nota-final rv">
+            <blockquote><p>Cada flor lleva mi tiempo, mi paciencia y una delicadeza que pongo en cada giro y cada pétalo. Me gusta que mires de cerca y aprecies el trabajo hecho a mano, porque cuando regalas Pétalo Eterno estás dedicando ese mismo mimo a la persona que lo recibe.</p></blockquote>
+            <figcaption>Con cariño, Pétalo Eterno</figcaption>
+        </figure>
         <span class="kicker rv">Delicadeza · Cariño · Alegría</span>
         <h2 class="rv">Hay regalos que se olvidan. <em>Este se queda a la vista.</em></h2>
         <p class="rv">Cuéntanos para quién es y te ayudamos a elegir. Te contestamos con el precio y el plazo, sin compromiso.</p>
@@ -828,8 +863,6 @@
         if (z) { vimg.src = z.getAttribute('data-big'); vimg.alt = (z.querySelector('img') || {}).alt || ''; visor.classList.add('on'); }
     });
 
-    // Logo
-    document.getElementById('logo-flor').innerHTML = '<svg viewBox="0 0 24 24"><g fill="#F5A3BB" stroke="#fff" stroke-width=".8">' + [0, 72, 144, 216, 288].map(function (a) { return '<ellipse cx="12" cy="6.6" rx="3.6" ry="5.4" transform="rotate(' + a + ' 12 12)"/>'; }).join('') + '</g><circle cx="12" cy="12" r="2.8" fill="#F4EEE5"/><circle cx="11.2" cy="11.2" r=".9" fill="#fff"/></svg>';
 
     // Pétalos que caen sobre la foto de portada
     if (!quieto) { var m = document.getElementById('petalos'); for (var i = 0; i < 9; i++) { var p = document.createElement('i'); p.className = 'petalo'; p.style.left = (4 + Math.random() * 88) + '%'; p.style.animationDuration = (8 + Math.random() * 7) + 's'; p.style.animationDelay = (-Math.random() * 12) + 's'; p.style.width = (9 + Math.random() * 7) + 'px'; p.style.height = (13 + Math.random() * 8) + 'px'; if (i % 3 === 1) p.style.background = '#C7A1EB'; if (i % 4 === 2) p.style.background = '#FFFFFF'; m.appendChild(p); } }
