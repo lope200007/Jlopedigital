@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Pétalo Eterno · Ramos de limpiapipas que no se marchitan</title>
-    <meta name="description" content="Regala un ramo hecho a mano con limpiapipas: no se marchita, no necesita agua y lleva su nombre en la tarjeta. Diséñalo y pídelo desde aquí, sin compromiso.">
+    <meta name="description" content="Regala un ramo hecho a mano con limpiapipas: no se marchita, no necesita agua y lleva su nombre en la tarjeta. Diséñalo y pídelo por WhatsApp, sin compromiso.">
     <meta name="theme-color" content="#FBF4F1">
     <meta property="og:title" content="Regala flores que nunca se marchitan">
-    <meta property="og:description" content="Ramos de limpiapipas hechos a mano, con su nombre en la tarjeta. Diséñalo y pídelo desde aquí.">
+    <meta property="og:description" content="Ramos de limpiapipas hechos a mano, con su nombre en la tarjeta. Diséñalo y pídelo por WhatsApp.">
     <meta property="og:image" content="https://petaloeterno.vercel.app/img/compartir.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -260,8 +260,15 @@
         footer { padding: 34px 0 30px; font-size: 14.5px; color: var(--soft); text-align: center; }
         footer b { font-family: var(--serif); font-weight: 500; color: var(--ink); font-size: 18px; display: block; margin-bottom: 4px; }
 
-        .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(251,244,241,.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(251,244,241,.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 10px; }
         .barra .btn { min-height: 52px; }
+        .barra .wa { width: 52px; padding: 0; background: #25D366; color: #fff; box-shadow: 0 12px 24px -12px rgba(37,211,102,.7); }
+        .barra .wa svg { width: 26px; height: 26px; }
+        .flota { display: none; position: fixed; right: 24px; bottom: 24px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: #25D366; color: #fff; place-items: center; box-shadow: 0 16px 30px -12px rgba(37,211,102,.7); transition: transform .25s var(--ease); }
+        .flota svg { width: 30px; height: 30px; }
+        @media (hover: hover) { .flota:hover { transform: scale(1.08); } }
+        @media (min-width: 760px) { .flota { display: grid; } }
+        .pd-ok .btn { width: 100%; max-width: 360px; }
         .aviso { position: fixed; left: 50%; bottom: 96px; z-index: 95; transform: translate(-50%, 20px); background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 18px; font-size: 14.5px; opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s var(--ease); width: max-content; max-width: calc(100% - 32px); text-align: center; }
         .aviso.on { opacity: 1; transform: translate(-50%, 0); }
 
@@ -700,7 +707,7 @@
         <div class="head rv"><span class="kicker">Cómo pedir</span><h2>Tres pasos y <em>listo.</em></h2></div>
         <div class="pasos">
             <div class="paso rv"><div><h3>Elige o diseña</h3><p>Escoge uno de nuestros ramos o crea el tuyo con los colores que quieras.</p></div></div>
-            <div class="paso rv"><div><h3>Envíanos tu pedido</h3><p>Te sale ya escrito: solo añades tu nombre y cómo contactarte. Te contestamos con el precio y el plazo.</p></div></div>
+            <div class="paso rv"><div><h3>Escríbenos por WhatsApp</h3><p>El mensaje te sale ya escrito con tu pedido. Te contestamos con el precio y el plazo.</p></div></div>
             <div class="paso rv"><div><h3>Lo hacemos a mano</h3><p>Montamos tu ramo flor a flor y te avisamos cuando esté listo.</p></div></div>
         </div>
     </div>
@@ -716,10 +723,9 @@
                 <div><span class="lbl">¿Cuántas estrellas le das?</span><div class="pon-estrellas" id="pon-estrellas" role="radiogroup" aria-label="Estrellas"></div></div>
                 <div><span class="lbl">¿Qué tienes?</span><div class="opts" id="op-ramo"></div></div>
                 <label>Tu nombre <span>· como quieres que salga</span><input class="campo" id="op-nombre" type="text" maxlength="30" placeholder="Por ejemplo: Lucía G." autocomplete="given-name"></label>
-                <label>Tu correo o teléfono <span>· no se publica</span><input class="campo" id="op-contacto" type="text" maxlength="80" autocomplete="email" placeholder="Para comprobar que has recibido un ramo"></label>
                 <label>Tu opinión<textarea class="campo" id="op-texto" maxlength="500" rows="4" placeholder="¿Qué te pareció? ¿Le gustó a quien lo recibió?"></textarea></label>
-                <button class="btn btn-rose" type="submit">Enviar mi opinión</button>
-                <p class="op-nota">Solo publicamos opiniones de personas que han recibido un ramo nuestro: lo comprobamos con tu correo o teléfono, que no se publica. Las publicamos tal cual nos llegan, buenas o malas, con el nombre que pongas.</p>
+                <button class="btn btn-rose" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Enviar mi opinión</button>
+                <p class="op-nota">Nos llega por WhatsApp: así sabemos que es de alguien que ha recibido un ramo. Publicamos las opiniones tal cual nos llegan, buenas o malas, con el nombre que pongas.</p>
             </form>
         </div>
     </div>
@@ -767,25 +773,26 @@
 
 <footer><b>Pétalo Eterno</b>Ramos de flores de limpiapipas hechos a mano, con delicadeza, cariño y alegría · <span id="anio">2026</span><span id="pie-ig"></span></footer>
 
-<div class="barra"><a class="btn btn-rose" href="#disena">Diseñar su ramo</a></div>
+<div class="barra"><a class="btn btn-rose" href="#disena">Diseñar su ramo</a><a class="btn wa" href="#" data-wa="¡Hola, Pétalo Eterno! 🌷 Tengo una pregunta sobre los ramos." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a></div>
+<a class="flota" href="#" data-wa="¡Hola, Pétalo Eterno! 🌷 Tengo una pregunta sobre los ramos." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a>
 <div class="pedido" id="pedido" role="dialog" aria-modal="true" aria-labelledby="pd-titulo" hidden>
     <form class="pd-caja" id="pd-form" novalidate>
         <button type="button" class="pd-cerrar" aria-label="Cerrar">×</button>
         <div class="pd-paso" id="pd-datos">
             <span class="kicker">Sin compromiso</span>
             <h3 id="pd-titulo">Tu pedido</h3>
-            <p class="pd-sub">Rellénalo y te contestamos con el precio y cuándo estaría listo.</p>
+            <p class="pd-sub">Rellénalo y se abrirá WhatsApp con tu pedido ya escrito. Te contestamos con el precio y cuándo estaría listo.</p>
             <label>Lo que quieres<textarea class="campo" id="pd-que" maxlength="600" rows="3" placeholder="Por ejemplo: un ramo de lirios rosas para el cumpleaños de mi madre."></textarea></label>
             <label>Tu nombre<input class="campo" id="pd-nombre" type="text" maxlength="40" autocomplete="name"></label>
-            <label>Tu correo o teléfono <span>· para contestarte</span><input class="campo" id="pd-contacto" type="text" maxlength="80" autocomplete="email" placeholder="tucorreo@ejemplo.com o 600 000 000"></label>
             <label>¿Para cuándo lo necesitas? <span>· si tienes fecha</span><input class="campo" id="pd-fecha" type="date"></label>
-            <button class="btn btn-rose" type="submit" id="pd-enviar">Enviar pedido</button>
-            <p class="pd-priv">Solo usamos tus datos para contestarte sobre este pedido.</p>
+            <button class="btn btn-rose" type="submit" id="pd-enviar"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Enviar pedido por WhatsApp</button>
+            <p class="pd-priv">Se abre WhatsApp con el mensaje preparado. No se envía nada hasta que tú lo mandas.</p>
         </div>
         <div class="pd-paso pd-ok" id="pd-ok" hidden>
             <div class="pd-check" aria-hidden="true">✓</div>
-            <h3>¡Recibido!</h3>
-            <p>Te contestaremos con el precio y el plazo. Gracias por tu pedido.</p>
+            <h3>¡Ya casi está!</h3>
+            <p>Se ha abierto WhatsApp con tu pedido escrito: solo tienes que pulsar enviar. Te contestamos con el precio y el plazo.</p>
+            <a class="btn btn-rose" id="pd-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 23.5 12a11.7 11.7 0 0 0-3-8.5zM12 21.4c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.4 9.4 0 1 1 12 21.4zm5.2-7c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>¿No se ha abierto? Toca aquí</a>
             <button type="button" class="btn btn-line pd-cerrar">Cerrar</button>
         </div>
     </form>
@@ -796,8 +803,10 @@
 <script src="ramo.js"></script>
 <script>
 (function () {
-    // Dirección a la que se envían los pedidos y las opiniones. Vacía: todavía sin conectar.
-    var FORMULARIO = '';
+    // WhatsApp de Pétalo Eterno: los pedidos y las opiniones llegan aquí con el mensaje ya escrito
+    var WHATSAPP = '34641592271';
+    function enlaceWA(texto) { return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto); }
+    function abrirWA(texto) { var u = enlaceWA(texto), w = window.open(u, '_blank'); if (w) { try { w.opener = null; } catch (e) {} } else { location.href = u; } return u; }
 
     var aviso = document.getElementById('aviso'), tAviso;
     function avisar(t) { aviso.textContent = t; aviso.classList.add('on'); clearTimeout(tAviso); tAviso = setTimeout(function () { aviso.classList.remove('on'); }, 3200); }
@@ -819,15 +828,6 @@
     // Pedido: ventana con el formulario
     var pd = document.getElementById('pedido'), pdForm = document.getElementById('pd-form');
     function val(id) { return document.getElementById(id).value.trim(); }
-    function contactoValido(c) { return /^\S+@\S+\.\S+$/.test(c) || c.replace(/\D/g, '').length >= 9; }
-    function enviar(datos, boton, listo) {
-        if (!FORMULARIO) { avisar('Muy pronto podrás enviarlo desde aquí.'); return; }
-        boton.disabled = true;
-        fetch(FORMULARIO, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(datos) })
-            .then(function (r) { if (!r.ok) throw new Error(r.status); listo(); })
-            .catch(function () { avisar('No se ha podido enviar. Prueba otra vez en un momento.'); })
-            .then(function () { boton.disabled = false; });
-    }
     function abrirPedido(t) {
         document.getElementById('pd-que').value = t || '';
         document.getElementById('pd-datos').hidden = false; document.getElementById('pd-ok').hidden = true;
@@ -842,13 +842,12 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pd.hidden) cerrarPedido(); });
     pdForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        var que = val('pd-que'), nombre = val('pd-nombre'), contacto = val('pd-contacto'), fecha = val('pd-fecha');
+        var que = val('pd-que'), nombre = val('pd-nombre'), fecha = val('pd-fecha');
         if (que.length < 3) { avisar('Cuéntanos qué ramo quieres.'); document.getElementById('pd-que').focus(); return; }
         if (!nombre) { avisar('Escribe tu nombre.'); document.getElementById('pd-nombre').focus(); return; }
-        if (!contactoValido(contacto)) { avisar('Escribe un correo o un teléfono para poder contestarte.'); document.getElementById('pd-contacto').focus(); return; }
-        enviar({ tipo: 'Pedido', pedido: que, nombre: nombre, contacto: contacto, fecha: fecha ? fecha.split('-').reverse().join('/') : 'sin fecha' }, document.getElementById('pd-enviar'), function () {
-            pdForm.reset(); document.getElementById('pd-datos').hidden = true; document.getElementById('pd-ok').hidden = false;
-        });
+        var msg = '¡Hola, Pétalo Eterno! 🌷 Quiero hacer un pedido:\n\n*Pedido:* ' + que + '\n*Nombre:* ' + nombre + '\n*Para cuándo:* ' + (fecha ? fecha.split('-').reverse().join('/') : 'sin fecha fija') + '\n\n¿Me decís el precio y cuándo estaría listo?';
+        document.getElementById('pd-wa').href = abrirWA(msg);
+        pdForm.reset(); document.getElementById('pd-datos').hidden = true; document.getElementById('pd-ok').hidden = false;
     });
 
     // Visor de fotos
@@ -857,6 +856,8 @@
     visor.addEventListener('click', function (e) { if (e.target !== vimg) cerrarVisor(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrarVisor(); });
     document.addEventListener('click', function (e) {
+        var q = e.target.closest('[data-wa]');
+        if (q) { e.preventDefault(); abrirWA(q.getAttribute('data-wa')); return; }
         var a = e.target.closest('[data-pedido]');
         if (a) { e.preventDefault(); abrirPedido(a.getAttribute('data-pedido')); return; }
         var z = e.target.closest('.zoom');
@@ -968,15 +969,13 @@
     opR.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; opRamo = opRamo === b.textContent ? '' : b.textContent; opR.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x.textContent === opRamo ? 'true' : 'false'); }); });
     document.getElementById('op-form').addEventListener('submit', function (e) {
         e.preventDefault();
-        var texto = val('op-texto'), nombre = val('op-nombre'), contacto = val('op-contacto'), boton = this.querySelector('[type=submit]'), form = this;
+        var texto = val('op-texto'), nombre = val('op-nombre'), form = this;
         if (!opN) { avisar('Elige cuántas estrellas le das.'); return; }
-        if (!contactoValido(contacto)) { avisar('Escribe tu correo o teléfono para comprobar tu pedido.'); document.getElementById('op-contacto').focus(); return; }
         if (texto.length < 3) { avisar('Escribe tu opinión antes de enviarla.'); document.getElementById('op-texto').focus(); return; }
         var st = ''; for (var i = 0; i < 5; i++) st += i < opN ? '★' : '☆';
-        enviar({ tipo: 'Opinión', estrellas: st + ' (' + opN + ' de 5)', ramo: opRamo || 'no lo dice', nombre: nombre || 'prefiere que no salga', contacto: contacto, opinion: texto }, boton, function () {
-            form.reset(); opN = 0; opRamo = ''; pintaEstrellas(); opR.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
-            avisar('¡Gracias! Hemos recibido tu opinión.');
-        });
+        abrirWA('¡Hola, Pétalo Eterno! Quiero dejar una opinión para la web:\n\n*Estrellas:* ' + st + ' (' + opN + ' de 5)\n*Ramo:* ' + (opRamo || 'no lo digo') + '\n*Nombre:* ' + (nombre || 'prefiero que no salga') + '\n*Opinión:* ' + texto);
+        form.reset(); opN = 0; opRamo = ''; pintaEstrellas(); opR.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+        avisar('Se ha abierto WhatsApp con tu opinión: solo tienes que pulsar enviar. ¡Gracias!');
     });
 
     // Instagram: el usuario, sin la @ (por ejemplo: petaloeterno)
